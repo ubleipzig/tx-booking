@@ -1,0 +1,77 @@
+
+
+plugin.tx_3dgcommunity_pi1 {
+	CMD =
+	pidList =
+	recursive =
+}
+plugin.tx_3dgcommunity_pi1.listView {
+	results_at_a_time =
+	maxPages =
+}
+  # Example of default set CSS styles (these go into the document header):
+plugin.tx_3dgcommunity_pi1._CSS_DEFAULT_STYLE (
+
+
+
+
+.tx-xpublish-pi1 div.normalMessage {
+				width: 90%;
+				color: black;
+				background-color: #FFFFCC;
+				border: 1px solid #00FF33;
+				padding: 5px;
+				margin: 5px 0px 5px 0px;
+				font-weight: normal;
+				font-size: 10pt;
+				font-family: arial, helvetica, sans-serif;
+}
+.tx-xpublish-pi1 div.errorMessage {
+				width: 90%;
+				color: black;
+				background-color: #FFFF99;
+				border: 1px solid red;
+				padding: 5px;
+				margin: 5px 0px 5px 0px;
+				font-weight: normal;
+				font-size: 10pt;
+				font-family: arial, helvetica, sans-serif;
+}
+.tx-xpublish-pi1 div.warnMessage {
+				width: 90%;
+				color: black;
+				background-color: #FFFFCC;
+				border: 1px solid #FF9933;
+				padding: 5px;
+				margin: 5px 0px 5px 0px;
+				font-weight: normal;
+				font-size: 10pt;
+				font-family: arial, helvetica, sans-serif;
+}
+
+
+.tx-xpublish-pi1 .budgetYearDataTitles td {
+				font-family: arial, helvetica, sans-serif;
+				font-size: 12px;
+				font-weight: bold;
+				text-align: center;
+}
+
+.tx-xpublish-pi1 .budgetYearDataSubTitles td {
+				font-family: arial, helvetica, sans-serif;
+				font-size: 10px;
+				font-weight: normal;
+				text-align: center;
+}
+
+
+
+
+)
+
+  # Example of how to overrule LOCAL_LANG values for the plugin:
+plugin.tx_3dgcommunity_pi1._LOCAL_LANG.default {
+  pi_list_searchBox_search = Search!
+}
+  # Example of how to set default values from TS in the incoming array, $this->piVars of the plugin:
+plugin.tx_3dgcommunity_pi1._DEFAULT_PI_VARS.test = test

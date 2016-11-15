@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>module</type>
+		<description>Language labels for plugin &quot;tx_ubleipzigbooking_pi1&quot;</description>
+		<labelContext type="array">
+		</labelContext>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="noFeUser">For this extension a logged in fe user is required!</label>
+
+			<label index="Jan">January</label>
+			<label index="Feb">February</label>
+			<label index="Mar">March</label>
+			<label index="Apr">April</label>
+			<label index="May">May</label>
+			<label index="Jun">June</label>
+			<label index="Jul">July</label>
+			<label index="Aug">August</label>
+			<label index="Sep">September</label>
+			<label index="Oct">October</label>
+			<label index="Nov">November</label>
+			<label index="Dec">December</label>
+			<label index="Sat">S</label>
+			<label index="Sun">S</label>
+			<label index="Mon">M</label>
+			<label index="Tue">T</label>
+			<label index="Wed">W</label>
+			<label index="Thu">T</label>
+			<label index="Fri">F</label>
+
+			<label index="Sat2">Sa</label>
+			<label index="Sun2">Su</label>
+			<label index="Mon2">Mo</label>
+			<label index="Tue2">Tu</label>
+			<label index="Wed2">We</label>
+			<label index="Thu2">Th</label>
+			<label index="Fri2">Fr</label>
+
+
+			<label index="Saturday">Saturday</label>
+			<label index="Sunday">Sunday</label>
+			<label index="Monday">Monday</label>
+			<label index="Tuesday">Tuesday</label>
+			<label index="Wednesday">Wednesday</label>
+			<label index="Thursday">Thursday</label>
+			<label index="Friday">Friday</label>
+
+			<label index="time">Time</label>
+			<label index="feUserName">Name</label>
+			<label index="notAvailable">No free hours</label>
+			<label index="someAvailable">Some free hours</label>
+			<label index="available">Free</label>
+			<label index="memo">Memo</label>
+			<label index="book">Book</label>
+			<label index="delete">Delete</label>
+
+			<label index="calendarWeek">Calendar week</label>
+			<label index="offDutyHour">Off duty</label>
+			<label index="offDutyTime">Off duty time</label>
+			<label index="availableHour">Available hour</label>
+			<label index="bookedHour">Booked hour</label>
+			<label index="backToWeekView">Back to weekview</label>
+			<label index="backToMonthView">Back to monthview</label>
+
+			<label index="maxBookingsPerDay">Max. bookings per day reached!</label>
+			<label index="close">Close</label>
+
+		</languageKey>
+
+		<languageKey index="de">
+			<label index="noFeUser">Für diese Extension ist ein eingeloggter FE User notwendig!</label>
+
+			<label index="Jan">Januar</label>
+			<label index="Feb">Februar</label>
+			<label index="Mar">März</label>
+			<label index="Apr">April</label>
+			<label index="May">Mai</label>
+			<label index="Jun">Juni</label>
+			<label index="Jul">Juli</label>
+			<label index="Aug">August</label>
+			<label index="Sep">September</label>
+			<label index="Oct">Oktober</label>
+			<label index="Nov">November</label>
+			<label index="Dec">Dezember</label>
+			<label index="Sat">S</label>
+			<label index="Sun">S</label>
+			<label index="Mon">M</label>
+			<label index="Tue">D</label>
+			<label index="Wed">M</label>
+			<label index="Thu">D</label>
+			<label index="Fri">F</label>
+		
+			<label index="Sat2">Sa</label>
+			<label index="Sun2">So</label>
+			<label index="Mon2">Mo</label>
+			<label index="Tue2">Di</label>
+			<label index="Wed2">Mi</label>
+			<label index="Thu2">Do</label>
+			<label index="Fri2">Fr</label>
+
+			<label index="Saturday">Samstag</label>
+			<label index="Sunday">Sonntag</label>
+			<label index="Monday">Montag</label>
+			<label index="Tuesday">Dienstag</label>
+			<label index="Wednesday">Mittwoch</label>
+			<label index="Thursday">Donnerstag</label>
+			<label index="Friday">Freitag</label>
+
+			<label index="time">Uhrzeit</label>
+			<label index="feUserName">Name</label>
+			<label index="notAvailable">Keine freie Stunden</label>
+			<label index="someAvailable">Einige freie Stunden</label>
+			<label index="available">Keine Buchungen</label>
+			<label index="memo">Memo</label>
+			<label index="book">Buchen</label>
+			<label index="delete">Löschen</label>
+
+			<label index="calendarWeek">Kalenderwoche</label>
+
+			<label index="offDutyHour">Nicht buchbar</label>
+			<label index="availableHour">Verfügbar</label>
+			<label index="offDutyTime">Schliesszeit</label>
+			<label index="bookedHour">Gebucht</label>
+			<label index="backToWeekView">Zurück zur Wochenansicht</label>
+			<label index="backToMonthView">Zurück zur Monatsansicht</label>
+
+			<label index="maxBookingsPerDay">Sie haben die maximale Anzahl an Buchungen für diesen Tag erreicht!</label>
+			<label index="close">Schließen</label>
+		</languageKey>
+	</data>
+	<orig_hash type="array">
+	</orig_hash>
+	<orig_text type="array">
+	</orig_text>
+</T3locallang>

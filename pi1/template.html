@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<head>
+	<title>Booking Template</title>
+</head>
+
+<body>
+
+<!-- ###MONTHVIEW### begin -->
+<div class="listMonth">
+<div class="objectName">###OBJECTNAME###</div>
+<table class="listMonth" id="bookingeIDResult">
+	<tr>
+		<td>###PREVMONTH###</td>
+		<td colspan="6" class="month">###MONTH###</td>
+		<td>###NEXTMONTH###</td>
+	</tr>
+	###CAL###
+
+</table>
+</div>
+<!-- ###MONTHVIEW### end -->
+
+<!-- ###WEEKVIEWHEADER### begin -->
+<div class="clearer"></div>
+<div class="calendarWeek">
+<div class="objectName">###OBJECTNAME###</div>
+	<div class="legend">
+		<span class="offDutyHour">###OFFDUTY###</span>
+		<span class="bookedHour">###BOOKED###</span>
+		<span class="availableHour">###AVAILABLE###</span>
+	</div>
+	<img src="typo3/gfx/button_left.gif" onclick="###PREVIOUSWEEK###"/>
+<span id="bookingeIDWeekWorking"><span class="calendarWeek">###CALENDARWEEK### ###WEEK### - ###YEAR###</span></span>
+	<img src="typo3/gfx/button_right.gif" onclick="###NEXTWEEK###" style="display: ###HIDDENNEXTWEEK###"/>
+</div>
+
+
+<!-- ###WEEKVIEWHEADER### begin -->
+
+<!-- ###WEEKVIEWDATA### begin -->
+<div class="clearer"></div>
+<div class="weekView">
+			###WEEKDAYS###
+</div>
+<!-- ###WEEKVIEWDATA### end -->
+
+<!-- ###WEEKVIEWDAYDATA### begin -->
+<table class="weekViewDay ###TODAY###">
+	<tr>
+	    <td class="weekday" colspan="2">
+			<div class="weekday">###WEEKDAY###<br>###DAY###</div>
+		</td>
+	</tr>
+	<tr>
+		<td class="AM">###AM### ###PM###</td>
+	</tr>
+</table>
+<!-- ###WEEKVIEWDAYDATA### end -->
+
+
+<!-- ###BOOKINGFORMHEADER### begin -->
+<div id="messageBoxOverlay"></div>
+<div id="messageBox">###MESSAGE###<div class="closeButton"><button class="closeButton" onclick='$("#messageBox").css("display","none");$("#messageBoxOverlay").css("display","none")'>###CLOSE###</button></div></div>
+
+<div class="bookingFormDiv">
+<div class="bookingFormObjectName">###OBJECTNAME###</div>
+<div class="date">
+	<img src="typo3/gfx/button_left.gif" onclick="###PREVIOUSDAY###"/>
+<span id="bookingeIDWorking">###WEEKDAY###	###DATE### </span>
+	<img src="typo3/gfx/button_right.gif" onclick="###NEXTDAY###" style="display: ###HIDDENNEXTDAY###"/>
+</div>
+<span class="backToWeekView" onclick="###BACKTOWEEKVIEW###">###BACKTOWEEKVIEWTITLE###</span>
+<!-- <span class="backToMonthView" onclick="###BACKTOMONTHVIEW###">###BACKTOMONTHVIEWTITLE###</span> -->
+
+<table class="bookingForm ###TODAY###" >
+<tr class="titles">
+	<td>###TIME###</td>
+	<td>###MEMO###</td>
+	<td>###BOOK###</td>
+	<td>###DELETE###</td>
+</tr>
+<!-- ###BOOKINGFORMHEADER### end -->
+
+<!-- ###BOOKINGFORMDATA### begin -->
+<tr class="###EVEN###">
+	<td>###TIMEV###</td>
+<!-- 	<td>###FEUSERNAMEV###</td> -->
+	<td>###MEMOV###</td>
+	<td>###BOOKV###</td>
+	<td>###DELETEV###</td>
+</tr>
+
+<!-- ###BOOKINGFORMDATA### end -->
+
+<!-- ###BOOKINGFORMFOOTER### begin -->
+</table>
+<span class="backToWeekView" onclick="###BACKTOWEEKVIEW###">###BACKTOWEEKVIEWTITLE###</span>
+<!-- <span class="backToMonthView" onclick="###BACKTOMONTHVIEW###">###BACKTOMONTHVIEWTITLE###</span> -->
+</div>
+<!-- ###BOOKINGFORMFOOTER### end -->
+
+<!-- ###FEUSERMAIL### begin -->
+<div class="clearer"></div>
+Hello ###FEUSERNAMEV###,<br />
+
+you have booked on ###BOOKINGDATEV###, ###BOOKINGTIMEV### hour, ###BOOKINGOBJECTV###.<br />
+
+
+Our AGB.<br />
+
+
+Please feel free to contact us for questions.<br />
+
+Regards<br />
+
+
+The admin<br />
+Web Development
+
+
+<!-- ###FEUSERMAIL### end -->
+
+
+
+</body>
+</html>

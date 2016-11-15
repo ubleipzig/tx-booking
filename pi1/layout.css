@@ -1,0 +1,327 @@
+
+/* booking layout styles */
+
+.tx-ubleipzigbooking-pi1 .message {
+	background-color: yellow;
+	border: 2px solid red;
+	padding: 2px;
+}
+
+.tx-ubleipzigbooking-pi1 #messageBoxOverlay {
+	position: fixed;
+	display: none;
+	z-index: 1000;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+	background: #000000;
+	-moz-opacity: 0.5;
+	opacity:.50;
+	filter: alpha(opacity=50);
+}
+.tx-ubleipzigbooking-pi1 #messageBox {
+	padding: 15px;
+	position: fixed;
+	display: none;
+	z-index: 1001;
+	font-weight: bold;
+	background-color: white;
+	border: 2px solid red;
+}
+.tx-ubleipzigbooking-pi1 #messageBox .closeButton {
+	margin-top: 20px;
+	text-align: center;
+}
+
+
+.tx-ubleipzigbooking-pi1 .legend div {
+	float: left;
+}
+.tx-ubleipzigbooking-pi1 .legendTitle {
+	float: left;
+	margin: 0px 5px 10px 2px;
+	font-size: 0.8em;
+}
+.tx-ubleipzigbooking-pi1 .legend .available {
+	background-color: #ffffff;
+	border: 1px solid black;
+	text-align: center;
+	font-size: 0.8em;
+	width: 16px;
+	height: 16px;
+}
+.tx-ubleipzigbooking-pi1 .legend .someAvailable {
+	background-color: #CCFFCC;
+	border: 1px solid black;
+	text-align: center;
+	font-size: 0.8em;
+	width: 16px;
+	height: 16px;
+}
+
+.tx-ubleipzigbooking-pi1 .someQuarterAvailable {
+	background-color: #C0F0C0;
+	text-align: center;
+}
+
+.tx-ubleipzigbooking-pi1 .legend .notAvailable {
+	background-color: #FFCC00;
+	border: 1px solid black;
+	text-align: center;
+	font-size: 0.8em;
+	width: 16px;
+	height: 16px;
+}
+.tx-ubleipzigbooking-pi1 .legend .offDutyTime {
+	background-color: #FF000;
+	border: 1px solid black;
+	text-align: center;
+	font-size: 0.8em;
+	width: 16px;
+	height: 16px;
+}
+
+.tx-ubleipzigbooking-pi1 .calendarWeek {
+	margin-top: 20px;
+	font-weight: bold;
+	font-size: 1.0em;
+}
+
+.tx-ubleipzigbooking-pi1 .calendarWeek .legend .offDutyHour {
+	width: 10px;
+	height: 10px;
+	background-color: #e0e0e0;
+	font-weight: normal;
+	font-size: 0.8em;
+}
+.tx-ubleipzigbooking-pi1 .calendarWeek .legend .bookedHour {
+	width: 10px;
+	height: 10px;
+	background-color: #ff9900;
+	font-weight: normal;
+	font-size: 0.8em;
+}
+.tx-ubleipzigbooking-pi1 .calendarWeek .legend .availableHour {
+	width: 10px;
+	height: 10px;
+	background-color: #ccff66;
+	font-weight: normal;
+	font-size: 0.8em;
+}
+
+
+.tx-ubleipzigbooking-pi1 .calendarWeek .objectName {
+	font-weight: bold;
+	text-align: center;
+	font-size: 1.5em;
+	margin-bottom: 5px;
+}
+
+.tx-ubleipzigbooking-pi1 .weekView .today .weekday {
+	font-weight: bold;
+}
+.tx-ubleipzigbooking-pi1 .weekView .pastDay {
+	color: #c0c0c0;
+	/*visibility: hidden;*/
+	pointer-events: none;
+	/* for "disabled" effect */
+	opacity: 0.5;
+	background: #CCC;
+}
+
+
+.tx-ubleipzigbooking-pi1 .weekView td {
+	border: 1px solid gray;
+	border-collapse: collapse;
+}
+.tx-ubleipzigbooking-pi1 .weekView td.weekday {
+	text-align: center;
+}
+
+.tx-ubleipzigbooking-pi1 .weekViewDay {
+	float: left;
+	border-collapse: collapse;
+	width: 70px;
+}
+
+.tx-ubleipzigbooking-pi1 .weekViewDay td {
+	border: 1px solid gray;
+	border-collapse: collapse;
+}
+
+.tx-ubleipzigbooking-pi1 .weekViewDay .AM, .tx-ubleipzigbooking-pi1 .weekViewDay .PM {
+	
+}
+
+
+.tx-ubleipzigbooking-pi1 .weekViewDay .dutyHours {
+	background-color: #CCFF66;
+	border-bottom: 1px solid gray;
+	text-align: center;
+	cursor: pointer;
+}
+.tx-ubleipzigbooking-pi1 .weekViewDay .bookedHours {
+	background-color: #FF9900;
+	border-bottom: 1px solid gray;
+	text-align: center;
+}
+
+.tx-ubleipzigbooking-pi1 .weekViewDay .ownbookedHours {
+	background-color: #339966;
+	border-bottom: 1px solid gray;
+	text-align: center;
+}
+
+.tx-ubleipzigbooking-pi1 .weekViewDay .offDuty {
+	background-color: #e0e0e0;
+	border-bottom: 1px solid gray;
+	text-align: center;
+	display: none;
+	visibility: collapse;
+}
+
+.tx-ubleipzigbooking-pi1 .weekViewDay .offDutyTimeHours {
+	background-color: #f00000;
+	border-bottom: 1px solid gray;
+	text-align: center;
+	cursor: auto;
+}
+
+.tx-ubleipzigbooking-pi1 .offDutyTime {
+	background-color: #FF0000;
+	border-bottom: 1px solid gray;
+	text-align: center;
+	font-weight: normal;
+	font-size: 0.8em;
+	cursor: auto;
+}
+
+
+
+.tx-ubleipzigbooking-pi1 .clearer {
+	clear: both;
+}
+
+
+
+.tx-ubleipzigbooking-pi1 .listMonth {
+	background-color: #e0e0e0;
+	float: left;
+	margin: 5px;
+}
+.tx-ubleipzigbooking-pi1 .listMonth .month {
+	background-color: #e0e0e0;
+	text-align: center;
+	font-size: 0.8em;
+	color: blue;
+	font-weight: bold;
+}
+.tx-ubleipzigbooking-pi1 .listMonth .dayNames {
+	background-color: #e0e0e0;
+	text-align: center;
+	font-size: 0.8em;
+	color: blue;
+}
+.tx-ubleipzigbooking-pi1 .listMonth .day {
+	background-color: #ffffff;
+	border: 1px solid black;
+	text-align: center;
+	font-size: 0.8em;
+	width: 16px;
+}
+.tx-ubleipzigbooking-pi1 .listMonth .available {
+	background-color: #ffffff;
+	border: 1px solid black;
+	text-align: center;
+	font-size: 0.8em;
+	width: 16px;
+	cursor: pointer;
+}
+.tx-ubleipzigbooking-pi1 .listMonth .someAvailable {
+	background-color: #CCFFCC;
+	border: 1px solid black;
+	text-align: center;
+	font-size: 0.8em;
+	width: 16px;
+	cursor: pointer;
+}
+
+.tx-ubleipzigbooking-pi1 .listMonth .notAvailable {
+	background-color: #FFCC00;
+	border: 1px solid black;
+	text-align: center;
+	font-size: 0.8em;
+	width: 16px;
+}
+.tx-ubleipzigbooking-pi1 .listMonth .offDutyTime {
+	background-color: #FF0000;
+	border: 1px solid black;
+	text-align: center;
+	font-size: 0.8em;
+	width: 16px;
+	cursor: auto;
+
+}
+
+
+
+.tx-ubleipzigbooking-pi1 .listMonth .today {
+	border: 2px solid red;
+}
+
+
+
+.tx-ubleipzigbooking-pi1 .bookingFormObjectName {
+	font-weight: bold;
+	text-align: center;
+	font-size: 1.5em;
+	margin-bottom: 5px;
+}
+.tx-ubleipzigbooking-pi1 .bookingFormDiv .date {
+	font-weight: bold;
+}
+
+.tx-ubleipzigbooking-pi1 .bookingFormDiv .pastDay {
+	color: #c0c0c0;
+}
+
+.tx-ubleipzigbooking-pi1 .bookingForm {
+	background-color: #e0e0e0;
+}
+.tx-ubleipzigbooking-pi1 .bookingForm .titles {
+	font-weight: bold;
+}
+
+.tx-ubleipzigbooking-pi1 .bookingForm .even {
+	background-color: #ffffff;
+}
+.tx-ubleipzigbooking-pi1 .bookingForm .odd {
+	background-color: #CCFF99;
+}
+.tx-ubleipzigbooking-pi1 .bookingForm .booked {
+	background-color: #ff9900;
+}
+
+.tx-ubleipzigbooking-pi1 .bookingForm .ownbooked {
+	background-color: #339966;
+}
+
+.tx-ubleipzigbooking-pi1 .bookingForm input {
+	font-weight: bold;
+	color: black;
+}
+
+.tx-ubleipzigbooking-pi1 .bookingFormDiv .backToWeekView,
+.tx-ubleipzigbooking-pi1 .bookingFormDiv .backToMonthView {
+	font-weight: bold;
+	cursor: pointer;
+}
+
+.tx-ubleipzigbooking-pi1  .errorMessage {
+	width: 100%;
+	background-color: #FFFF66;
+	border: 2px solid red;
+	font-weight: bold;
+	padding: 5px;
+}
