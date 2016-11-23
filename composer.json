@@ -1,5 +1,5 @@
 {
-  "name": "ubl/booking",
+  "name": "ubl/ubleipzigbooking",
   "description": "Supports booking of rooms for fe users",
   "type": "typo3-cms-extension",
   "keywords": ["TYPO3 CMS", "booking"],
