@@ -132,6 +132,9 @@
 			<trans-unit id="delete">
 				<source>Delete</source>
 			</trans-unit>
+			<trans-unit id="dutyHours" approved="yes">
+				<source>bookable</source>
+			</trans-unit>
 			<trans-unit id="calendarWeek">
 				<source>Calendar week</source>
 			</trans-unit>
@@ -159,6 +162,12 @@
 			<trans-unit id="close">
 				<source>Close</source>
 			</trans-unit>
+			<trans-unit id="nextweek" approved="yes">
+            	<source>next week</source>
+            </trans-unit>
+          	<trans-unit id="previousweek" approved="yes">
+                <source>previous week</source>
+            </trans-unit>
 		</body>
 	</file>
 </xliff>

@@ -24,7 +24,7 @@
 
 
 		<languageKey index="de" type="array">
-			<label index="tt_content.list_type_pi1">Frontend User Buchung</label>
+			<label index="tt_content.list_type_pi1">Frontend-User-Buchung</label>
 			<label index="tx_ubleipzigbooking_object">Buchungsobjekt</label>
 			<label index="tx_ubleipzigbooking_object.name">Objektname</label>
 			<label index="tx_ubleipzigbooking_object.hours">Stunden [10,11 = 10-11, 11-12]</label>
@@ -35,7 +35,7 @@
 			<label index="tx_ubleipzigbooking.startdate">Startzeit</label>
 			<label index="tx_ubleipzigbooking.enddate">Endzeit</label>
 			<label index="tx_ubleipzigbooking.feuser">Fe User</label>
-			<label index="tx_ubleipzigbooking.memo">Memo</label>
+			<label index="tx_ubleipzigbooking.memo">Kommentar</label>
 		</languageKey>
 	</data>
 </T3locallang>

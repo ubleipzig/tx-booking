@@ -161,7 +161,7 @@
 			</trans-unit>
 			<trans-unit id="memo" approved="yes">
 				<source>Memo</source>
-				<target>Memo</target>
+				<target>Kommentar</target>
 			</trans-unit>
 			<trans-unit id="book" approved="yes">
 				<source>Book</source>
@@ -170,6 +170,10 @@
 			<trans-unit id="delete" approved="yes">
 				<source>Delete</source>
 				<target>Löschen</target>
+			</trans-unit>
+			<trans-unit id="dutyHours" approved="yes">
+				<source>bookable</source>
+				<target>buchbar</target>
 			</trans-unit>
 			<trans-unit id="calendarWeek" approved="yes">
 				<source>Calendar week</source>
@@ -207,6 +211,14 @@
 				<source>Close</source>
 				<target>Schließen</target>
 			</trans-unit>
+			<trans-unit id="nextweek" approved="yes">
+            	<source>next week</source>
+            	<target>eine Woche vor</target>
+            </trans-unit>
+          	<trans-unit id="previousweek" approved="yes">
+                <source>previous week</source>
+                <target>eine Woche zurück</target>
+            </trans-unit>
 		</body>
 	</file>
 </xliff>

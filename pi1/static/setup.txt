@@ -1,4 +1,9 @@
-
+page = PAGE
+page.10 = FLUIDTEMPLATE
+page.10 {
+	file = EXT:ubleipzigbooking/pi1/template.html
+	extbase.controllerExtensionName = ubleipzigbooking
+}
 
 plugin.tx_3dgcommunity_pi1 {
 	CMD =
@@ -11,8 +16,6 @@ plugin.tx_3dgcommunity_pi1.listView {
 }
   # Example of default set CSS styles (these go into the document header):
 plugin.tx_3dgcommunity_pi1._CSS_DEFAULT_STYLE (
-
-
 
 
 .tx-xpublish-pi1 div.normalMessage {
