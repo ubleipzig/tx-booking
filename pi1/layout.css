@@ -41,64 +41,55 @@
 
 .tx-ubleipzigbooking-pi1 .legendTitle {
   float: left;
-  margin: 0 .5rem 1rem .25rem;
   font-size: .85em;
+  margin: 0 .5rem 1rem .25rem;
+}
+
+.tx-ubleipzigbooking-pi1 .legend .available,
+.tx-ubleipzigbooking-pi1 .legend .someAvailable,
+.tx-ubleipzigbooking-pi1 .legend .someQuarterAvailable,
+.tx-ubleipzigbooking-pi1 .legend .notAvailable,
+.tx-ubleipzigbooking-pi1 .legend .offDutyTime {
+  border: 1px solid black;
+  font-size: .85em;
+  height: 1rem;
+  text-align: center;
+  width: 1rem;
 }
 
 .tx-ubleipzigbooking-pi1 .legend .available {
   background-color: #e7e7e7;
-  border: 1px solid black;
-  font-size: .85em;
-  height: 1rem;
-  text-align: center;
-  width: 1rem;
 }
 
 .tx-ubleipzigbooking-pi1 .legend .someAvailable {
   background-color: #CCFFCC;
-  border: 1px solid black;
-  text-align: center;
-  font-size: .85em;
-  width: 1rem;
-  height: 1rem;
 }
 
 .tx-ubleipzigbooking-pi1 .someQuarterAvailable {
   background-color: #C0F0C0;
-  text-align: center;
 }
 
 .tx-ubleipzigbooking-pi1 .legend .notAvailable {
   background-color: #FFCC00;
-  border: 1px solid black;
-  text-align: center;
-  font-size: .85em;
-  width: 1rem;
-  height: 1rem;
 }
 .tx-ubleipzigbooking-pi1 .legend .offDutyTime {
   background-color: #E04644;
-  border: 1px solid black;
-  text-align: center;
-  font-size: .85em;
-  width: 1rem;
-  height: 1rem;
 }
 
 .tx-ubleipzigbooking-pi1 .calendarWeek {
-  margin-top: 1.5rem;
-  font-weight: bold;
   font-size: 1.0em;
+  font-weight: bold;
+  margin-top: 1.5rem;
 }
 
 .tx-ubleipzigbooking-pi1 .calendarWeek .legend .offDutyHour,
 .tx-ubleipzigbooking-pi1 .calendarWeek .legend .bookedHour,
 .tx-ubleipzigbooking-pi1 .calendarWeek .legend .availableHour {
-  width: 4rem;
-  height: 1rem;
   font-size: .85em;
   font-weight: normal;
+  height: 1rem;
   padding: .25em .5em;
+  width: 4rem;
 }
 
 .tx-ubleipzigbooking-pi1 .calendarWeek .legend .offDutyHour {
@@ -111,12 +102,12 @@
   background-color: #38A276;
 }
 
-
-.tx-ubleipzigbooking-pi1 .calendarWeek .objectName {
-  font-weight: bold;
-  text-align: center;
-  font-size: 1.5em;
+.tx-ubleipzigbooking-pi1 .objectName {
+  background-color: #fff;
+  font-size: 1.25em;
   margin-bottom: .5rem;
+  padding-top: 1rem;
+  text-align: center;
 }
 
 .tx-ubleipzigbooking-pi1 .weekView .today .weekday {
@@ -149,10 +140,6 @@
 .tx-ubleipzigbooking-pi1 .weekViewDay td {
   border-bottom: 1px solid gray;
   border-collapse: collapse;
-}
-
-.tx-ubleipzigbooking-pi1 .weekViewDay .AM, .tx-ubleipzigbooking-pi1 .weekViewDay .PM {
-
 }
 
 .tx-ubleipzigbooking-pi1 .weekViewDay .dutyHours,
@@ -209,21 +196,42 @@
 .tx-ubleipzigbooking-pi1 .listMonth {
   background-color: #e0e0e0;
   float: left;
-  margin: .5rem;
 }
-.tx-ubleipzigbooking-pi1 .listMonth .month {
-  background-color: #e0e0e0;
-  text-align: center;
-  font-size: .85em;
-  color: blue;
-  font-weight: bold;
+
+div.listMonth {
+  width: 49%;
 }
+
+div.listMonth:nth-of-type(even) {
+  margin-left: 1%;
+}
+
+.listMonth.bookingeIDResult {
+  margin-bottom: 1rem;
+}
+
+.week-no,
+td.week {
+  color: grey;
+  border-bottom: 1px solid lightgrey;
+  border-right: 1px solid lightgrey;
+}
+
+td.week {color: #052f96;}
+td.week:focus,td.week:hover {cursor: pointer;}
+
+.tx-ubleipzigbooking-pi1 .listMonth .month,
 .tx-ubleipzigbooking-pi1 .listMonth .dayNames {
   background-color: #e0e0e0;
+  font-weight: bold;
   text-align: center;
-  font-size: .85em;
-  color: blue;
 }
+.tx-ubleipzigbooking-pi1 .listMonth .dayNames {
+  border-bottom: 1px solid lightgrey;
+  border-right: 1px solid lightgrey;
+  border-top: 1px solid lightgrey;
+}
+
 .tx-ubleipzigbooking-pi1 .listMonth .day {
   background-color: #ffffff;
   border: 1px solid black;
@@ -235,15 +243,13 @@
   background-color: #ffffff;
   border: 1px solid black;
   text-align: center;
-  font-size: .85em;
-  width: 1rem;
+  width: 12%;
   cursor: pointer;
 }
 .tx-ubleipzigbooking-pi1 .listMonth .someAvailable {
   background-color: #CCFFCC;
   border: 1px solid black;
   text-align: center;
-  font-size: .85em;
   width: 1rem;
   cursor: pointer;
 }
@@ -252,14 +258,12 @@
   background-color: #FFCC00;
   border: 1px solid black;
   text-align: center;
-  font-size: .85em;
   width: 1rem;
 }
 .tx-ubleipzigbooking-pi1 .listMonth .offDutyTime {
   background-color: #E04644;
   border: 1px solid black;
   text-align: center;
-  font-size: .85em;
   width: 1rem;
   cursor: auto;
 

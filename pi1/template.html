@@ -9,7 +9,7 @@
 <!-- ###MONTHVIEW### begin -->
 <div class="listMonth">
   <div class="objectName">###OBJECTNAME###</div>
-  <table class="listMonth" id="bookingeIDResult">
+  <table class="listMonth bookingeIDResult">
     <tr>
       <td>###PREVMONTH###</td>
       <td colspan="6" class="month">###MONTH###</td>
@@ -35,7 +35,7 @@
   </button>
   <!-- img src="typo3/gfx/button_left.gif" onclick="###PREVIOUSWEEK###"/ !-->
   <span id="bookingeIDWeekWorking">
-    <span class="calendarWeek">###CALENDARWEEK### ###WEEK### - ###YEAR###</span>
+    <span class="calendarWeek">###CALENDARWEEK### ###WEEK###/###YEAR###</span>
   </span>
   <button class="transparent tiny" onclick="###NEXTWEEK###" title="{f:translate(key:'LLL:EXT:ubleipzigbooking/pi1/locallang.xml:nextweek')}" rel="nofollow" style="display: ###HIDDENNEXTWEEK###">
     <i class="fa fa-chevron-right" aria-hidden="true"></i>
@@ -89,7 +89,7 @@
     </button>
   </div>
   <div class="right">
-    <span class="backToWeekView" onclick="###BACKTOWEEKVIEW###">###BACKTOWEEKVIEWTITLE###</span>
+    <span class="button transparent backToWeekView" onclick="###BACKTOWEEKVIEW###">###BACKTOWEEKVIEWTITLE###</span>
     <!-- <span class="backToMonthView" onclick="###BACKTOMONTHVIEW###">###BACKTOMONTHVIEWTITLE###</span> -->
   </div>
   <table class="bookingForm ###TODAY###">

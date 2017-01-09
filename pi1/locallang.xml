@@ -9,7 +9,7 @@
     <data type="array">
         <languageKey index="default" type="array">
             <label index="noFeUser">For this extension a logged in fe user is required!</label>
-
+            <label index="WeekNo">Week</label>
             <label index="Jan">January</label>
             <label index="Feb">February</label>
             <label index="Mar">March</label>
@@ -74,7 +74,7 @@
 
         <languageKey index="de">
             <label index="noFeUser">Für diese Extension ist ein eingeloggter FE User notwendig!</label>
-
+            <label index="WeekNo">Woche</label>
             <label index="Jan">Januar</label>
             <label index="Feb">Februar</label>
             <label index="Mar">März</label>

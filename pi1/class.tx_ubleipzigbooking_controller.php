@@ -3,6 +3,7 @@
 *  Copyright notice
 *
 *  Forked and modified by Fabian Heusel <fheusel@posteo.de>
+*  Modified by Claas Kazzer <kazzer@ub.uni-leipzig.de>
 *
 ***************************************************************/
 /***************************************************************

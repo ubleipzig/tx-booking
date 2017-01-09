@@ -105,7 +105,7 @@
     	      <label>LLL:EXT:ubleipzigbooking/locallang_tca.php:ubleipzigbooking.pi_flexform.mailSubject.label</label>
         		<config>
          		  <type>input</type>
-         		  <default>Bookingsystem Information</default>
+         		  <default>Raumbuchung</default>
 	          	</config>
 	         </TCEforms>
       	  </mailSubject>	
@@ -115,7 +115,7 @@
     	      <label>LLL:EXT:ubleipzigbooking/locallang_tca.php:ubleipzigbooking.pi_flexform.mailFromName.label</label>
         		<config>
          		  <type>input</type>
-         		  <default>TYPO3 Bookingsystem</default>
+         		  <default>TYPO3-Raumbuchung</default>
 	          	</config>
 	         </TCEforms>
       	  </mailFromName>	

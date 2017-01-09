@@ -6,6 +6,9 @@
 			<trans-unit id="noFeUser">
 				<source>For this extension a logged in fe user is required!</source>
 			</trans-unit>
+			<trans-unit id="WeekNo">
+				<source>Week</source>
+			</trans-unit>
 			<trans-unit id="Jan">
 				<source>January</source>
 			</trans-unit>

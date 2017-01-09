@@ -3,6 +3,7 @@
  *  Copyright notice
  *
  *  Forked and modified by Fabian Heusel <fheusel@posteo.de>
+ *  Modified by Claas Kazzer <kazzer@ub.uni-leipzig.de>
  *
  ***************************************************************/
 /***************************************************************
@@ -36,6 +37,7 @@
  *
  * @author Joachim Ruhs <postmaster@joachim-ruhs.de>
  * @author Fabian Heusel <fheusel@posteo.de>
+ * @author Claas Kazzer <kazzer@ub.uni-leipzig.de>
  */
 
 if (!class_exists('tslib_pibase')) require_once(PATH_tslib . 'class.tslib_pibase.php');
@@ -53,6 +55,7 @@ unset($_EXTKEY);
  *
  * @author Joachim Ruhs <postmaster@joachim-ruhs.de>
  * @author Fabian Heusel <fheusel@posteo.de>
+ * @author Claas Kazzer <kazzer@ub.uni-leipzig.de>
  * @package TYPO3
  * @subpackage tx_ubleipzigbooking
  */
@@ -364,7 +367,7 @@ class tx_ubleipzigbooking_eID
         // display the daynames
 
         $this->conf['startOfWeek'] = 'monday';
-        $out = '<tr><td></td>';
+        $out = '<tr><td class="week-no">' . $this->getLL('WeekNo') . '</td>';
         $out .= ($this->conf['startOfWeek'] == 'sunday') ? '<td class="dayNames">' . $this->getLL('Sun') . '</td>' : '';
         $out .= '<td class="dayNames">' . $this->getLL('Mon') . '</td><td class="dayNames">' . $this->getLL('Tue') . '</td><td class="dayNames">' . $this->getLL('Wed') . '</td><td class="dayNames">' . $this->getLL('Thu') . '</td><td class="dayNames">' . $this->getLL('Fri') . '</td><td class="dayNames">' . $this->getLL('Sat');
         $out .= ($this->conf['startOfWeek'] == 'monday') ? '</td><td class="dayNames">' . $this->getLL('Sun') . '</td></tr>' : '</td></tr>';
@@ -572,7 +575,7 @@ class tx_ubleipzigbooking_eID
             $onclick = '';
           }
 
-          $marks['###AM###'] .= '<div class="hoursAM ' . $class . '"' . $title . ' onclick="' . $onclick . '">' . $h . ' - ' . ($h + 1) . '</div>';
+          $marks['###AM###'] .= '<div class="hoursAM ' . $class . '"' . $title . ' onclick="' . $onclick . '">' . $h . ' &ndash; ' . ($h + 1) . '</div>';
         }
 
         for ($h = 12; $h < 24; $h++) {
@@ -619,7 +622,7 @@ class tx_ubleipzigbooking_eID
             $onclick = '';
           }
 
-          $marks['###PM###'] .= '<div class="hoursPM ' . $class . '"' . $title . ' onclick="' . $onclick . '">' . $h . ' - ' . ($h + 1) . '</div>';
+          $marks['###PM###'] .= '<div class="hoursPM ' . $class . '"' . $title . ' onclick="' . $onclick . '">' . $h . ' &ndash; ' . ($h + 1) . '</div>';
         }
 
         $template = $this->cObj->getSubpart($this->template, '###WEEKVIEWDAYDATA###');

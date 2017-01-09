@@ -7,6 +7,10 @@
 				<source>For this extension a logged in fe user is required!</source>
 				<target>Für diese Extension ist ein eingeloggter FE User notwendig!</target>
 			</trans-unit>
+			<trans-unit id="WeekNo" approved="yes">
+				<source>Week</source>
+				<target>Woche</target>
+			</trans-unit>
 			<trans-unit id="Jan" approved="yes">
 				<source>January</source>
 				<target>Januar</target>

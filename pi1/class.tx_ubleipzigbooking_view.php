@@ -3,6 +3,7 @@
 *  Copyright notice
 *
 *  Forked and modified by Fabian Heusel <fheusel@posteo.de>
+*  Modified by Claas Kazzer <kazzer@ub.uni-leipzig.de>
 *
 ***************************************************************/
 /***************************************************************
@@ -32,6 +33,7 @@
  *
  * @author Joachim Ruhs <postmaster@joachim-ruhs.de>
  * @author Fabian Heusel <fheusel@posteo.de>
+ * @author Claas Kazzer <kazzer@ub.uni-leipzig.de>
  */
 
 if (!class_exists('tslib_pibase')) require_once (PATH_tslib . 'class.tslib_pibase.php');
@@ -199,7 +201,7 @@ class tx_ubleipzigbooking_view extends tslib_pibase
 				/*<![CDATA[*/
 
 				function tx_ubleipzigbooking_submit(value, ajaxData, action) {
-					if ($("#ubleipzigbookingeIDResult")) {
+					if ($(".ubleipzigbookingeIDResult")) {
 
 					}
 
@@ -215,7 +217,7 @@ class tx_ubleipzigbooking_view extends tslib_pibase
                         "tx_ubleipzigbooking_pi1[day]": value
 					}
 				}).done(function(msg) {
-						$("#ubleipzigbookingeIDResult").html(msg);
+						$(".ubleipzigbookingeIDResult").html(msg);
 					});
 
 				}
@@ -291,7 +293,7 @@ class tx_ubleipzigbooking_view extends tslib_pibase
 				</script>';
         }
 
-        $out.= '<div id="ubleipzigbookingeIDResult"><img class="working" src="typo3conf/ext/ubleipzigbooking/pi1/res/working.gif"/></div>';
+        $out.= '<div class="ubleipzigbookingeIDResult"><img class="working" src="typo3conf/ext/ubleipzigbooking/pi1/res/working.gif"/></div>';
         return $out;
     }
 

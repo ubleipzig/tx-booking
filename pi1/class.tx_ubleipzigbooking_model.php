@@ -3,6 +3,7 @@
 *  Copyright notice
 *
 *  Forked and modified by Fabian Heusel <fheusel@posteo.de>
+*  Modified by Claas Kazzer <kazzer@ub.uni-leipzig.de>
 *
 ***************************************************************/
 /***************************************************************
@@ -32,6 +33,7 @@
  *
  * @author Joachim Ruhs <postmaster@joachim-ruhs.de>
  * @author Fabian Heusel <fheusel@posteo.de>
+ * @author Claas Kazzer <kazzer@ub.uni-leipzig.de>
  */
 
 if (!class_exists('tslib_pibase')) require_once (PATH_tslib . 'class.tslib_pibase.php');
