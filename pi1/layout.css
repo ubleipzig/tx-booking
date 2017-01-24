@@ -99,7 +99,7 @@
   background-color: #E04644;
 }
 .tx-ubleipzigbooking-pi1 .calendarWeek .legend .availableHour {
-  background-color: #38A276;
+  background-color: #15428b;
 }
 
 .tx-ubleipzigbooking-pi1 .objectName {
@@ -155,7 +155,7 @@
 }
 
 .tx-ubleipzigbooking-pi1 .weekViewDay .dutyHours {
-  background-color: #38A276;
+  background-color: #15428b;
   cursor: pointer;
 }
 
@@ -164,7 +164,7 @@
 }
 
 .tx-ubleipzigbooking-pi1 .weekViewDay .ownbookedHours {
-  background-color: #339999;
+  background-color: #f08a24;
 }
 
 .tx-ubleipzigbooking-pi1 .weekViewDay .offDuty {
@@ -275,14 +275,13 @@ td.week:focus,td.week:hover {cursor: pointer;}
   border: 2px solid #E04644;
 }
 
-
-
 .tx-ubleipzigbooking-pi1 .bookingFormObjectName {
   font-weight: bold;
   text-align: center;
   font-size: 1.5em;
   margin-bottom: .5rem;
 }
+
 .tx-ubleipzigbooking-pi1 .bookingFormDiv .date {
   font-weight: bold;
 }
@@ -392,6 +391,9 @@ button.transparent {
   position: relative;
   z-index: 100;
 }
+
+
+
 
 .L-0 .offDutyTimeHours::after {
   content:'geschlossen';

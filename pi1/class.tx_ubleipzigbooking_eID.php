@@ -741,7 +741,7 @@ class tx_ubleipzigbooking_eID
         $marks['###EVEN###'] = ($i % 2 == 0) ? 'even' : 'odd';
         $hours[$i] = (int)$hours[$i];
         $startdate = strtotime($hours[$i] . ':0:0 ');
-        $marks['###TIMEV###'] = $hours[$i] . ':00 - ' . ($hours[$i] + 1) . ':00';
+        $marks['###TIMEV###'] = $hours[$i] . ':00&ndash;' . ($hours[$i] + 1) . ':00';
         $marks['###FEUSERNAMEV###'] = '';
         $marks['###MEMOV###'] = '';
         $marks['###DELETEV###'] = '';
@@ -802,9 +802,9 @@ class tx_ubleipzigbooking_eID
 //          $marks['###EVEN###'] = ($i % 2 == 0) ? 'class="even"' : 'class="odd"';
           $hours[$i] = (int)$hours[$i];
           $startdate = strtotime($hours[$i] . ':0:0 ');
-          $marks['###TIMEV###'] = $hours[$i] . ':' . $q * 15 . ' - ' . $hours[$i] . ':' . ($q + 1) * 15;
-          if ($q == 0) $marks['###TIMEV###'] = $hours[$i] . ':00' . ' - ' . $hours[$i] . ':' . ($q + 1) * 15;
-          if ($q == 3) $marks['###TIMEV###'] = $hours[$i] . ':' . $q * 15 . ' - ' . ($hours[$i] + 1) . ':00';
+          $marks['###TIMEV###'] = $hours[$i] . ':' . $q * 15 . '&ndash;' . $hours[$i] . ':' . ($q + 1) * 15;
+          if ($q == 0) $marks['###TIMEV###'] = $hours[$i] . ':00' . '&ndash;' . $hours[$i] . ':' . ($q + 1) * 15;
+          if ($q == 3) $marks['###TIMEV###'] = $hours[$i] . ':' . $q * 15 . '&ndash;' . ($hours[$i] + 1) . ':00';
           $marks['###FEUSERNAMEV###'] = '';
           $marks['###MEMOV###'] = '';
           $marks['###DELETEV###'] = '';
