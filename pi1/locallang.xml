@@ -61,7 +61,8 @@
             <label index="offDutyHour">off duty</label>
             <label index="offDutyTime">off-duty time</label>
             <label index="availableHour">available hour</label>
-            <label index="bookedHour">booked hour</label>
+            <label index="bookedHour">foreign booked hour</label>
+            <label index="ownBookedHour">own booked hour</label>
             <label index="backToWeekView">back to weekview</label>
             <label index="backToMonthView">back to monthview</label>
 
@@ -126,7 +127,8 @@
             <label index="offDutyHour">nicht buchbar</label>
             <label index="availableHour">verfügbar</label>
             <label index="offDutyTime">geschlossen</label>
-            <label index="bookedHour">gebucht</label>
+            <label index="bookedHour">fremde Buchung</label>
+            <label index="ownBookedHour">eigene Buchung</label>
             <label index="backToWeekView">zurück zur Wochenansicht</label>
             <label index="backToMonthView">zurück zur Monatsansicht</label>
 

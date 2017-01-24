@@ -84,6 +84,7 @@
 
 .tx-ubleipzigbooking-pi1 .calendarWeek .legend .offDutyHour,
 .tx-ubleipzigbooking-pi1 .calendarWeek .legend .bookedHour,
+.tx-ubleipzigbooking-pi1 .calendarWeek .legend .ownBookedHour,
 .tx-ubleipzigbooking-pi1 .calendarWeek .legend .availableHour {
   font-size: .85em;
   font-weight: normal;
@@ -97,6 +98,9 @@
 }
 .tx-ubleipzigbooking-pi1 .calendarWeek .legend .bookedHour {
   background-color: #E04644;
+}
+.tx-ubleipzigbooking-pi1 .calendarWeek .legend .ownBookedHour {
+  background-color: #339999;
 }
 .tx-ubleipzigbooking-pi1 .calendarWeek .legend .availableHour {
   background-color: #38A276;
@@ -165,6 +169,7 @@
 
 .tx-ubleipzigbooking-pi1 .weekViewDay .ownbookedHours {
   background-color: #339999;
+  cursor: pointer;
 }
 
 .tx-ubleipzigbooking-pi1 .weekViewDay .offDuty {

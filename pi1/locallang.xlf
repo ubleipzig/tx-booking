@@ -151,7 +151,10 @@
 				<source>Available hour</source>
 			</trans-unit>
 			<trans-unit id="bookedHour">
-				<source>Booked hour</source>
+				<source>Foreign booked hour</source>
+			</trans-unit>
+			<trans-unit id="ownBookedHour">
+				<source>Own booked hour</source>
 			</trans-unit>
 			<trans-unit id="backToWeekView">
 				<source>Back to weekview</source>
