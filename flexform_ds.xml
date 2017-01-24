@@ -31,8 +31,8 @@
 				<size>4</size>
 				</config>
 			  </TCEforms>
-	    	</displayMode>		 
-	 	    
+	    	</displayMode>
+
  	      <includejQuery>
 	        <TCEforms>
     	      <label>LLL:EXT:ubleipzigbooking/locallang_tca.php:ubleipzigbooking.pi_flexform.includejQuery.label</label>
@@ -41,7 +41,7 @@
 		          <default>1</default>
 	          	</config>
 	         </TCEforms>
-      	  </includejQuery>	
+      	  </includejQuery>
 
  	      <enableQuarterHourBooking>
 	        <TCEforms>
@@ -51,7 +51,7 @@
 		          <default>0</default>
 	          	</config>
 	         </TCEforms>
-      	  </enableQuarterHourBooking>	
+      	  </enableQuarterHourBooking>
 
 
  	      <maxBookingsPerDay>
@@ -65,7 +65,7 @@
 		          <max>2</max>
 	          	</config>
 	         </TCEforms>
-      	  </maxBookingsPerDay>	
+      	  </maxBookingsPerDay>
 
 
  	      <limitPreviewToDays>
@@ -79,7 +79,7 @@
 		          <max>2</max>
 	          	</config>
 	         </TCEforms>
-      	  </limitPreviewToDays>	
+      	  </limitPreviewToDays>
 
 
  	      <limitBookingToDays>
@@ -89,8 +89,8 @@
          		  <type>input</type>
 	          	</config>
 	         </TCEforms>
-      	  </limitBookingToDays>	
-	
+      	  </limitBookingToDays>
+
  	      <enableFeUserMail>
 	        <TCEforms>
     	      <label>LLL:EXT:ubleipzigbooking/locallang_tca.php:ubleipzigbooking.pi_flexform.enableFeUserMail.label</label>
@@ -98,7 +98,7 @@
          		  <type>check</type>
 	          	</config>
 	         </TCEforms>
-      	  </enableFeUserMail>	
+      	  </enableFeUserMail>
 
  	      <mailSubject>
 	        <TCEforms>
@@ -108,8 +108,8 @@
          		  <default>Raumbuchung</default>
 	          	</config>
 	         </TCEforms>
-      	  </mailSubject>	
-      	  
+      	  </mailSubject>
+
  	      <mailFromName>
 	        <TCEforms>
     	      <label>LLL:EXT:ubleipzigbooking/locallang_tca.php:ubleipzigbooking.pi_flexform.mailFromName.label</label>
@@ -118,7 +118,7 @@
          		  <default>TYPO3-Raumbuchung</default>
 	          	</config>
 	         </TCEforms>
-      	  </mailFromName>	
+      	  </mailFromName>
  	      <mailFrom>
 	        <TCEforms>
     	      <label>LLL:EXT:ubleipzigbooking/locallang_tca.php:ubleipzigbooking.pi_flexform.mailFrom.label</label>
@@ -127,18 +127,18 @@
          		  <default>admin@bookingsystem.de</default>
 	          	</config>
 	         </TCEforms>
-      	  </mailFrom>	
+      	  </mailFrom>
  	      <mailAttachment>
 	        <TCEforms>
     	      <label>LLL:EXT:ubleipzigbooking/locallang_tca.php:ubleipzigbooking.pi_flexform.mailAttachment.label</label>
         		<config>
          		  <type>group</type>
          		  <internal_type>file</internal_type>
-				  <maxitems>1</maxitems>	
+				  <maxitems>1</maxitems>
 				  <size>1</size>
 	          	</config>
 	         </TCEforms>
-      	  </mailAttachment>	
+      	  </mailAttachment>
 
 
  	      <offDutyTimeBegin>
@@ -150,7 +150,7 @@
 		          <size>10</size>
 	          	</config>
 	         </TCEforms>
-      	  </offDutyTimeBegin>	
+      	  </offDutyTimeBegin>
  	      <offDutyTimeEnd>
 	        <TCEforms>
     	      <label>LLL:EXT:ubleipzigbooking/locallang_tca.php:ubleipzigbooking.pi_flexform.offDutyTimeEnd.label</label>
@@ -160,12 +160,12 @@
 		          <size>10</size>
 	          	</config>
 	         </TCEforms>
-      	  </offDutyTimeEnd>	
+      	  </offDutyTimeEnd>
 
         </el>
       </ROOT>
     </sheetDisplayMode>
- 
+
     <sheetTemplateOptions>
        <ROOT>
 	    <TCEforms>
@@ -179,25 +179,25 @@
         		<config>
          		  <type>group</type>
          		  <internal_type>file</internal_type>
-				  <maxitems>1</maxitems>	
+				  <maxitems>1</maxitems>
 				  <size>1</size>
 		          <default>EXT:ubleipzigbooking/pi1/template.html</default>
 	          	</config>
 	         </TCEforms>
-      	  </templateFile>	
-      	  
+      	  </templateFile>
+
    	      <cssFile>
 	        <TCEforms>
     	      <label>LLL:EXT:ubleipzigbooking/locallang_tca.php:ubleipzigbooking.pi_flexform.cssFile.label</label>
         		<config>
          		  <type>group</type>
          		  <internal_type>file</internal_type>
-				  <maxitems>1</maxitems>	
+				  <maxitems>1</maxitems>
 				  <size>1</size>
 		          <default>EXT:ubleipzigbooking/pi1/layout.css</default>
 	          	</config>
 	         </TCEforms>
-      	  </cssFile>	
+      	  </cssFile>
          </el>
       </ROOT>
     </sheetTemplateOptions>
