@@ -91,16 +91,18 @@
   height: 1rem;
   padding: .25em .5em;
   width: 4rem;
+  color: #fff;
 }
 
 .tx-ubleipzigbooking-pi1 .calendarWeek .legend .offDutyHour {
   background-color: #e0e0e0;
+  color: #000;
 }
 .tx-ubleipzigbooking-pi1 .calendarWeek .legend .bookedHour {
   background-color: #E04644;
 }
 .tx-ubleipzigbooking-pi1 .calendarWeek .legend .ownBookedHour {
-  background-color: #339999;
+  background-color: #f08a24;
 }
 .tx-ubleipzigbooking-pi1 .calendarWeek .legend .availableHour {
   background-color: #15428b;
@@ -314,7 +316,7 @@ td.week:focus,td.week:hover {cursor: pointer;}
 }
 
 .tx-ubleipzigbooking-pi1 .bookingForm .ownbooked {
-  background-color: #339999;
+  background-color: #f08a24;
 }
 
 .tx-ubleipzigbooking-pi1 .bookingForm input {

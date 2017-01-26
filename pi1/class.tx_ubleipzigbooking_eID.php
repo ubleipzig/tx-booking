@@ -684,13 +684,13 @@ class tx_ubleipzigbooking_eID
         if (!$this->conf['enableQuarterHourBooking']) {
             for ($i = 0; $i < count($hours); $i++) {
                 $occupied = 0;
-                $marks['###EVEN###'] = ($i % 2 == 0) ? 'even' : 'odd';
                 $hours[$i] = (int)$hours[$i];
                 $startdate = strtotime($hours[$i] . ':0:0 ');
                 $marks['###TIMEV###'] = $hours[$i] . ':00&ndash;' . ($hours[$i] + 1) . ':00';
                 $marks['###FEUSERNAMEV###'] = '';
                 $marks['###MEMOV###'] = '';
                 $marks['###DELETEV###'] = '';
+                $marks['###STATE###'] = '';
                 if ($day + $hours[$i] * 3600 > time()) {
                     $marks['###MEMOV###'] = '<input type="text" id="tx_ubleipzigbooking_pi1_memo' . $i . '" class="memo"';
                     $marks['###MEMOV###'] .= ' value="' . htmlspecialchars($data['memo'][$j]) . '"/>';
@@ -704,10 +704,10 @@ class tx_ubleipzigbooking_eID
                         $marks['###MEMOV###'] = '<input type="text" id="tx_ubleipzigbooking_pi1_memo' . $i . '" class="memo" disabled="disabled"';
                         $marks['###MEMOV###'] .= ' value=""/>';
                         $occupied = 1;
-                        $marks['###EVEN###'] .= ' booked';
+                        $marks['###STATE###'] .= ' booked';
 
                         if ($this->conf['feUserUid'] == $data['feUserUid'][$j] && $day + $hours[$i] * 3600 > time()) {
-                            $marks['###EVEN###'] .= ' ownbooked';
+                            $marks['###STATE###'] .= ' ownbooked';
                             $marks['###MEMOV###'] = '<input type="text" id="tx_ubleipzigbooking_pi1_memo' . $i . '" class="memo" disabled="disabled"';
                             $marks['###MEMOV###'] .= ' value="' . htmlspecialchars($data['memo'][$j]) . '"/>';
                             $this->conf['startdate'] = $data['startdate'][$j];
@@ -745,7 +745,6 @@ class tx_ubleipzigbooking_eID
             for ($i = 0; $i < count($hours); $i++) {
                 for ($q = 0; $q < 4; $q++) {
                     $occupied = 0;
-//          $marks['###EVEN###'] = ($i % 2 == 0) ? 'class="even"' : 'class="odd"';
                     $hours[$i] = (int)$hours[$i];
                     $startdate = strtotime($hours[$i] . ':0:0 ');
                     $marks['###TIMEV###'] = $hours[$i] . ':' . $q * 15 . '&ndash;' . $hours[$i] . ':' . ($q + 1) * 15;
