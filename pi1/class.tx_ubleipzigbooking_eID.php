@@ -525,7 +525,7 @@ class tx_ubleipzigbooking_eID
                 for ($h = 0; $h < 24; $h++) {
                     $startDate = mktime($h, 0, 0, $month, $day, $year);
                     $title = '';
-                    $class =  (array_search($h, $hours) !== false) ? $class = 'dutyHours' : 'offDuty';
+                    $class = (array_search($h, $hours) !== false) ? $class = 'dutyHours' : 'offDuty';
 
                     if (!$this->conf['enableQuarterHourBooking']) {
                         $bookings = array_keys($booking['startdate'], $startDate);
@@ -555,7 +555,7 @@ class tx_ubleipzigbooking_eID
                         $title = ' alt="' . $names . '" title="' . $names . '"';
                     }
 
-                    $onclick = in_array($class, ['dutyHours', 'ownbookedHours', 'someQuarterAvailable']) ?'onclick="tx_ubleipzigbooking_viewBookingForm(' . $this->_GP['year'] . ',' . $month . ',' . $day . ',' . $data['uid'][$o] . ',\'' . $ajaxData . '\');"' : '';
+                    $onclick = in_array($class, ['dutyHours', 'ownbookedHours', 'someQuarterAvailable']) ? 'onclick="tx_ubleipzigbooking_viewBookingForm(' . $this->_GP['year'] . ',' . $month . ',' . $day . ',' . $data['uid'][$o] . ',\'' . $ajaxData . '\');"' : '';
 
                     // offDutyTime
 
@@ -687,7 +687,7 @@ class tx_ubleipzigbooking_eID
                 $marks['###EVEN###'] = ($i % 2 == 0) ? 'even' : 'odd';
                 $hours[$i] = (int)$hours[$i];
                 $startdate = strtotime($hours[$i] . ':0:0 ');
-                $marks['###TIMEV###'] = $hours[$i] . ':00 - ' . ($hours[$i] + 1) . ':00';
+                $marks['###TIMEV###'] = $hours[$i] . ':00&ndash;' . ($hours[$i] + 1) . ':00';
                 $marks['###FEUSERNAMEV###'] = '';
                 $marks['###MEMOV###'] = '';
                 $marks['###DELETEV###'] = '';
@@ -748,9 +748,9 @@ class tx_ubleipzigbooking_eID
 //          $marks['###EVEN###'] = ($i % 2 == 0) ? 'class="even"' : 'class="odd"';
                     $hours[$i] = (int)$hours[$i];
                     $startdate = strtotime($hours[$i] . ':0:0 ');
-                    $marks['###TIMEV###'] = $hours[$i] . ':' . $q * 15 . ' - ' . $hours[$i] . ':' . ($q + 1) * 15;
-                    if ($q == 0) $marks['###TIMEV###'] = $hours[$i] . ':00' . ' - ' . $hours[$i] . ':' . ($q + 1) * 15;
-                    if ($q == 3) $marks['###TIMEV###'] = $hours[$i] . ':' . $q * 15 . ' - ' . ($hours[$i] + 1) . ':00';
+                    $marks['###TIMEV###'] = $hours[$i] . ':' . $q * 15 . '&ndash;' . $hours[$i] . ':' . ($q + 1) * 15;
+                    if ($q == 0) $marks['###TIMEV###'] = $hours[$i] . ':00' . '&ndash;' . $hours[$i] . ':' . ($q + 1) * 15;
+                    if ($q == 3) $marks['###TIMEV###'] = $hours[$i] . ':' . $q * 15 . '&ndash;' . ($hours[$i] + 1) . ':00';
                     $marks['###FEUSERNAMEV###'] = '';
                     $marks['###MEMOV###'] = '';
                     $marks['###DELETEV###'] = '';
@@ -857,7 +857,8 @@ class tx_ubleipzigbooking_eID
         return $marks;
     }
 
-    function bookObject() {
+    function bookObject()
+    {
         $GLOBALS['TYPO3_DB']->debugOutput = false;
 
         list($day, $month, $year) = explode('.', $this->conf['date']);
@@ -894,12 +895,12 @@ class tx_ubleipzigbooking_eID
             // send mail if required
             if ($this->conf['enableFeUserMail']) $this->sendFeUserMail($this->conf['feUserUid'], $this->conf['objectUid'], $this->conf['startdate']);
             return $this->viewBookingForm();
-        // an sql error occured
+            // an sql error occured
         } else {
             // duplicate entry, inform the user
             if (1062 === $GLOBALS['TYPO3_DB']->sql_errno()) {
                 return $this->viewBookingForm($this->getLL('alreadyBooked'));
-            // unknown error, pretend nothing happened
+                // unknown error, pretend nothing happened
             } else {
                 return $this->viewBookingForm();
             }
