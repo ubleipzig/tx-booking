@@ -1,6 +1,6 @@
 plugin.tx_ubleipzigbooking_pi1 {
-/*
-  	templateFile = {$plugin.tx_ubleipzigbooking_pi1.templateFile}
-  	cssFile = {$plugin.tx_ubleipzigbooking_pi1.cssFile}
-*/
+    /*
+    templateFile = {$plugin.tx_ubleipzigbooking_pi1.templateFile}
+    cssFile = {$plugin.tx_ubleipzigbooking_pi1.cssFile}
+    */
 }

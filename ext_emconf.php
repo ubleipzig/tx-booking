@@ -8,16 +8,16 @@
 * writing. "version" and "dependencies" must not be touched!
 ***************************************************************/
 $EM_CONF[$_EXTKEY] = array(
-    'title' => 'ubleipzigbooking',
-    'description' => 'ubleipzigbooking extension for fe users for rooms.',
+    'title' => 'Booking for Rooms',
+    'description' => 'book available rooms',
     'category' => 'plugin',
-    'version' => '0.1.0',
+    'version' => '0.2.0',
     'state' => 'beta',
     'uploadfolder' => false,
     'createDirs' => '',
     'clearcacheonload' => true,
-    'author' => 'Fabian Heusel',
-    'author_email' => 'fheusel@posteo.de',
+    'author' => 'Ulf Seltmann',
+    'author_email' => 'seltmann@ub.uni-leipzig.de',
     'author_company' => 'Universitaet Leipzig',
     'constraints' => array(
         'depends' => array(

@@ -79,7 +79,7 @@ class tx_ubleipzigbooking_model
     function deleteOldBookings()
     {
         $GLOBALS['TYPO3_DB']->debugOutput = TRUE;
-        $where = 'startdate < ' . (time() - 3600 * 24 * 365);
+        $where = 'startdate < ' . (time() - 3600 * 24 * 14);
         $result = $GLOBALS['TYPO3_DB']->exec_DELETEquery('tx_ubleipzigbooking', $where);
     }
 

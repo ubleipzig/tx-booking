@@ -4,7 +4,7 @@ namespace LeipzigUniversityLibrary\ubleipzigbooking\Domain\Model;
 
 use LeipzigUniversityLibrary\ubleipzigbooking\Library\AbstractEntity;
 
-class Day extends AbstractEntity {
+class Hour extends AbstractEntity {
 
 	/**
 	 * not bookable at all
@@ -27,25 +27,25 @@ class Day extends AbstractEntity {
 	const OWNBOOKED = 8;
 
 	/**
-	 * which day is it
+	 * which hour is it
 	 *
-	 * @var \DateTime
+	 * @var integer
 	 */
 	protected $dateTime;
 
 	/**
-	 * the status of the day
+	 * the status of the hour
 	 *
 	 * @var integer
 	 */
 	protected $status;
 
 	/**
-	 * Day constructor. needs a daytime to initialize
+	 * hour constructor. 0-24
 	 *
-	 * @param \DateTime $dateTime
+	 * @param integer hour
 	 */
-	public function __construct(\DateTime $dateTime) {
-		$this->setDateTime($dateTime);
+	public function __construct($hour) {
+		$this->setDateTime($hour);
 	}
 }

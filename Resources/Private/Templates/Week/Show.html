@@ -1,0 +1,32 @@
+<f:layout name="Default"/>
+
+<f:section name="main">
+    <f:debug>{closingDays}</f:debug>
+    <f:debug>{rooms}</f:debug>
+    <f:debug>{bookings}</f:debug>
+</f:section>
+<f:section name="main_">
+<div>
+    <div class="clearer"></div>
+    <div class="calendarWeek">
+        <div class="objectName">{room->name}</div>
+        <div class="legend">
+            <span class="offDutyHour"><f:translate key="offDutyHour">Off duty</f:translate></span>
+            <span class="bookedHour"><f:translate key="bookedHour">Foreign booked hour</f:translate></span>
+            <span class="ownBookedHour"><f:translate key="ownBookedHour">Own booked hour</f:translate></span>
+            <span class="availableHour"><f:translate key="available">Free</f:translate></span>
+        </div>
+        <button class="transparent tiny" onclick="###PREVIOUSWEEK###" title="{f:translate(key:'previousweek')}" rel="nofollow">
+            <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        </button>
+        <!-- img src="typo3/gfx/button_left.gif" onclick="###PREVIOUSWEEK###"/ !-->
+        <span id="bookingeIDWeekWorking">
+    <span class="calendarWeek">###CALENDARWEEK### ###WEEK###/###YEAR###</span>
+  </span>
+        <button class="transparent tiny" onclick="###NEXTWEEK###" title="{f:translate(key:'nextweek')}" rel="nofollow" style="display: ###HIDDENNEXTWEEK###">
+            <i class="fa fa-chevron-right" aria-hidden="true"></i>
+        </button>
+        <!-- img src="typo3/gfx/button_right.gif" onclick="###NEXTWEEK###" style="display: ###HIDDENNEXTWEEK###"/ -->
+    </div>
+</div>
+</f:section>

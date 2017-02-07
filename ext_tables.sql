@@ -16,10 +16,8 @@ CREATE TABLE tx_ubleipzigbooking_object (
 	KEY parent (pid)
 );
 
-
-
 #
-# Table structure for table 'tx_ubleipzigbooking_book'
+# Table structure for table 'tx_ubleipzigbooking_booking'
 #
 CREATE TABLE tx_ubleipzigbooking (
 	uid int(11) NOT NULL auto_increment,
@@ -40,4 +38,22 @@ CREATE TABLE tx_ubleipzigbooking (
 	KEY parent (pid)
 );
 
+#
+# Table structure for table 'tx_ubleipzigbooking_domain_model_closingday'
+#
+CREATE TABLE tx_ubleipzigbooking_domain_model_closingday (
+	uid int(11) NOT NULL auto_increment,
+	pid int(11) DEFAULT '0' NOT NULL,
+	tstamp int(11) DEFAULT '0' NOT NULL,
+	crdate int(11) DEFAULT '0' NOT NULL,
+	name VARCHAR(255) DEFAULT '',
+	description TEXT DEFAULT '',
+	date int(11) not null,
+	cruser_id int(11) DEFAULT '0' NOT NULL,
+	deleted tinyint(4) DEFAULT '0' NOT NULL,
+	hidden tinyint(4) DEFAULT '0' NOT NULL,
 
+	PRIMARY KEY (uid),
+	KEY parent (pid),
+	UNIQUE `unique_date` (`pid`, `date`)
+);

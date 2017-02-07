@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>database</type>
+		<description>Language labels for database tables/fields belonging to extension 'ubleipzigbooking'</description>
+		<labelContext type="array">
+		</labelContext>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="tt_content.list_type_pi1">Booking for fe users</label>
+			<label index="tx_ubleipzigbooking_object">Bookingobject</label>
+			<label index="tx_ubleipzigbooking_object.name">Object name</label>
+			<label index="tx_ubleipzigbooking_object.hours">Duty hours</label>
+
+			<label index="tx_ubleipzigbooking_domain_model_closingday">Closing Day</label>
+			<label index="tx_ubleipzigbooking_domain_model_closingday.name">Name</label>
+			<label index="tx_ubleipzigbooking_domain_model_closingday.description">Description</label>
+			<label index="tx_ubleipzigbooking_domain_model_closingday.date">Date</label>
+
+			<label index="tx_ubleipzigbooking">Bookings</label>
+			<label index="tx_ubleipzigbooking.object">Object</label>
+			<label index="tx_ubleipzigbooking.booking">Booking</label>
+			<label index="tx_ubleipzigbooking.startdate">Startdate</label>
+			<label index="tx_ubleipzigbooking.enddate">Enddate</label>
+			<label index="tx_ubleipzigbooking.feuser">Fe user</label>
+			<label index="tx_ubleipzigbooking.memo">Memo</label>
+		</languageKey>
+
+
+		<languageKey index="de" type="array">
+			<label index="tt_content.list_type_pi1">Frontend-User-Buchung</label>
+			<label index="tx_ubleipzigbooking_object">Buchungsobjekt</label>
+			<label index="tx_ubleipzigbooking_object.name">Objektname</label>
+			<label index="tx_ubleipzigbooking_object.hours">Stunden [10,11 = 10-11, 11-12]</label>
+
+			<label index="tx_ubleipzigbooking_domain_model_closingday">Schließtag</label>
+			<label index="tx_ubleipzigbooking_domain_model_closingday.name">Name</label>
+			<label index="tx_ubleipzigbooking_domain_model_closingday.description">Beschreibung</label>
+			<label index="tx_ubleipzigbooking_domain_model_closingday.date">Datum</label>
+
+			<label index="tx_ubleipzigbooking">Buchungen</label>
+			<label index="tx_ubleipzigbooking.object">Objekt</label>
+			<label index="tx_ubleipzigbooking.booking">Buchung</label>
+			<label index="tx_ubleipzigbooking.startdate">Startzeit</label>
+			<label index="tx_ubleipzigbooking.enddate">Endzeit</label>
+			<label index="tx_ubleipzigbooking.feuser">Fe User</label>
+			<label index="tx_ubleipzigbooking.memo">Kommentar</label>
+		</languageKey>
+	</data>
+</T3locallang>

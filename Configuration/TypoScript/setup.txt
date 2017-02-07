@@ -1,0 +1,13 @@
+plugin.tx_ubleipzigbooking.persistence.classes {
+    LeipzigUniversityLibrary\ubleipzigbooking\Domain\Model\Room {
+        mapping {
+            tableName = tx_ubleipzigbooking_object
+        }
+    }
+
+    LeipzigUniversityLibrary\ubleipzigbooking\Domain\Model\Booking {
+        mapping {
+            tableName = tx_ubleipzigbooking
+        }
+    }
+}
