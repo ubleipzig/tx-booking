@@ -35,7 +35,8 @@ CREATE TABLE tx_ubleipzigbooking (
 	memo varchar(255) DEFAULT '',
 
 	PRIMARY KEY (uid),
-	KEY parent (pid)
+	KEY parent (pid),
+	UNIQUE `unique_index`(`startdate`, `objectuid`)
 );
 
 #

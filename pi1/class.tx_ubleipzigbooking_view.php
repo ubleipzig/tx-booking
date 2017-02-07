@@ -200,21 +200,15 @@ class tx_ubleipzigbooking_view extends tslib_pibase
         $GLOBALS["TSFE"]->additionalHeaderData['tx_ubleipzigbooking_pi1'].= '<script type="text/javascript">
 				/*<![CDATA[*/
 
-				function tx_ubleipzigbooking_submit(value, ajaxData, action) {
-					if ($(".ubleipzigbookingeIDResult")) {
-
-					}
-
-				var mode = value;
-
+				function tx_ubleipzigbooking_submit(ajaxData, action, day, memo) {
 				$.ajax({
 					type: "POST",
 					url: "index.php?eID=tx_ubleipzigbooking_eID",
 					data: {
-                        "ref": value,
                         "data": ajaxData,
                         "tx_ubleipzigbooking_pi1[action]": action,
-                        "tx_ubleipzigbooking_pi1[day]": value
+                        "tx_ubleipzigbooking_pi1[day]": day,
+                        "tx_ubleipzigbooking_pi1[memo]" : memo
 					}
 				}).done(function(msg) {
 						$(".ubleipzigbookingeIDResult").html(msg);
@@ -226,23 +220,24 @@ class tx_ubleipzigbooking_view extends tslib_pibase
 				    if ($("#ubleipzigbookingeIDWeekWorking"))
 						$("#ubleipzigbookingeIDWeekWorking").html(\'<img class="working" src="typo3conf/ext/ubleipzigbooking/pi1/res/working.gif"/>\');
 				    var day = year + "-" + month + "-" + day + ":" + objectUid;
-					tx_ubleipzigbooking_submit(day, ajaxData, \'viewWeek\', 0);
+				    
+					tx_ubleipzigbooking_submit(ajaxData, \'viewWeek\', day);
 				}
 
 				function tx_ubleipzigbooking_viewBookingForm(year, month, day, objectUid, ajaxData) {
 					$("#ubleipzigbookingeIDWorking").html(\'<img class="working" src="typo3conf/ext/ubleipzigbooking/pi1/res/working.gif"/>\');
 				    var day = year + "-" + month + "-" + day + ":" + objectUid;
-					tx_ubleipzigbooking_submit(day, ajaxData, \'viewBookingForm\', 0);
+					tx_ubleipzigbooking_submit(ajaxData, \'viewBookingForm\', day);
 				}
 
 
 				function tx_ubleipzigbooking_book(objectUid, startdate, feUserUid, id, ajaxData) {
 					var memo = $("#tx_ubleipzigbooking_pi1_memo" + id).val();
-					tx_ubleipzigbooking_submit(memo, ajaxData, "bookObject");
+					tx_ubleipzigbooking_submit(ajaxData, "bookObject", null, memo);
 				}
 
 				function tx_ubleipzigbooking_delete(objectUid, startdate, feUserUid, id, ajaxData) {
-					tx_ubleipzigbooking_submit(0, ajaxData, "delete");
+					tx_ubleipzigbooking_submit(ajaxData, "delete");
 				}
 
 				$.fn.center = function () {
@@ -271,7 +266,7 @@ class tx_ubleipzigbooking_view extends tslib_pibase
             $out = '<script type="text/javascript">
 				/*<![CDATA[*/
 				
-					tx_ubleipzigbooking_submit(\'' . $this->_GP['action'] . '\',\'' . $ajaxData . '\', \'viewMonth\', \'feusername\', \'desc\');
+					tx_ubleipzigbooking_submit(\'' . $ajaxData . '\', \'' . $this->_GP['action'] . '\');
 
 
  // zeige();

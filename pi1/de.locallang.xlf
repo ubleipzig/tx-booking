@@ -196,8 +196,12 @@
 				<target>Schliesszeit</target>
 			</trans-unit>
 			<trans-unit id="bookedHour" approved="yes">
-				<source>Booked hour</source>
-				<target>Gebucht</target>
+				<source>Foreign booked hour</source>
+				<target>fremde Buchung</target>
+			</trans-unit>
+			<trans-unit id="ownBookedHour" approved="yes">
+				<source>Own booked hour</source>
+				<target>eigene Buchung</target>
 			</trans-unit>
 			<trans-unit id="backToWeekView" approved="yes">
 				<source>Back to weekview</source>
@@ -210,6 +214,10 @@
 			<trans-unit id="maxBookingsPerDay" approved="yes">
 				<source>Max. bookings per day reached!</source>
 				<target>Max. Anzahl Buchungen für diesen FE User pro Tag erreicht!</target>
+			</trans-unit>
+			<trans-unit id="alreadyBooked" approved="yes">
+				<source>Sorry, but this slot was meanwhile booked by someone else.</source>
+				<target>Es tut uns Leid, aber dieser Zeitraum wurde mittlerweile von einer anderen Person reserviert.</target>
 			</trans-unit>
 			<trans-unit id="close" approved="yes">
 				<source>Close</source>
