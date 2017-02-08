@@ -810,53 +810,25 @@ class tx_ubleipzigbooking_eID {
 	}
 
 	function getBackToWeekViewMarker() {
-		list($day, $month, $year) = explode('.', $this->conf['date']);
+		$week = new \DateTime($this->conf['date'], new \DateTimeZone('Europe/Berlin'));
+		$week->modify('Sunday last week');
+
 		$marks['###BACKTOWEEKVIEWTITLE###'] = $this->getLL('backToWeekView');
-		$wd = date('w', mktime(0, 0, 0, $month, $day, $year));
-		$lengthOfMonth = array(
-			0,
-			31,
-			28,
-			31,
-			30,
-			31,
-			30,
-			31,
-			31,
-			30,
-			31,
-			30,
-			31
-		);
-		$leapYear = date('L', mktime(0, 0, 0, 1, 1, $this->_GP['year']));
-		$date = date('d.m.Y', mktime(0, 0, 0, $month, ($day - $wd), $year));
-		list($day, $month, $year) = explode('.', $date);
 		$this->conf['action'] = 'viewWeek';
 		$ajaxData = urlencode(json_encode($this->conf));
-		$marks['###BACKTOWEEKVIEW###'] = 'tx_ubleipzigbooking_viewWeek(' . $year . ',' . $month . ',' . $day . ',' . 1 . ',\'' . $ajaxData . '\');';
+		$marks['###BACKTOWEEKVIEW###'] = 'tx_ubleipzigbooking_viewWeek(' . $week->format('Y') . ',' . $week->format('m') . ',' . $week->format('d') . ',' . 1 . ',\'' . $ajaxData . '\');';
+
+		return $marks;
+	}
+	#
+	function getBackToMonthViewMarker() {
+		$month = new \DateTime($this->conf['date'], new \DateTimeZone('Europe/Berlin'));
+		$month->modify('first day of month');
+
 		$marks['###BACKTOMONTHVIEWTITLE###'] = $this->getLL('backToMonthView');
-		$wd = date('w', mktime(0, 0, 0, $month, $day, $year));
-		$lengthOfMonth = array(
-			0,
-			31,
-			28,
-			31,
-			30,
-			31,
-			30,
-			31,
-			31,
-			30,
-			31,
-			30,
-			31
-		);
-		$leapYear = date('L', mktime(0, 0, 0, 1, 1, $this->_GP['year']));
-		$date = date('d.m.Y', mktime(0, 0, 0, $month, ($day - $wd), $year));
-		list($day, $month, $year) = explode('.', $date);
 		$this->conf['action'] = 'viewMonth';
-		$this->conf['_GP']['month'] = $month;
-		$this->conf['_GP']['year'] = $year;
+		$this->conf['_GP']['month'] = $month->format('m');
+		$this->conf['_GP']['year'] = $month->format('Y');
 		$ajaxData = urlencode(json_encode($this->conf));
 		$marks['###BACKTOMONTHVIEW###'] = 'tx_ubleipzigbooking_submit(\'' . $this->conf['action'] . '\',\'' . $ajaxData . '\', \'viewMonth\', \'feusername\', \'desc\');';
 		if ($this->conf['enableQuarterHourBooking']) {
