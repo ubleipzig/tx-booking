@@ -212,8 +212,8 @@
 				<target>Zurück zur Monatsansicht</target>
 			</trans-unit>
 			<trans-unit id="maxBookingsPerDay" approved="yes">
-				<source>Max. bookings per day reached!</source>
-				<target>Max. Anzahl Buchungen für diesen FE User pro Tag erreicht!</target>
+				<source>Max. bookings per day reached.</source>
+				<target>Sie haben die maximale Anzahl an Buchungen für diesen Tag erreicht.</target>
 			</trans-unit>
 			<trans-unit id="alreadyBooked" approved="yes">
 				<source>Sorry, but this slot was meanwhile booked by someone else.</source>
