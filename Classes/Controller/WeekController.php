@@ -2,26 +2,10 @@
 namespace LeipzigUniversityLibrary\ubleipzigbooking\Controller;
 
 use \TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
-use \LeipzigUniversityLibrary\ubleipzigbooking\Library\Factory;
-
+use \LeipzigUniversityLibrary\ubleipzigbooking\Library\Week;
 class WeekController extends ActionController {
 
 	/**
-	 * $closingDayRepository
-	 *
-	 * @var \LeipzigUniversityLibrary\ubleipzigbooking\Domain\Repository\ClosingDay
-	 * @inject
-	 */
-	protected $closingDayRepository;
-
-	/**
-	 * $bookingRepository
-	 *
-	 * @var \LeipzigUniversityLibrary\ubleipzigbooking\Domain\Repository\Booking
-	 * @inject
-	 */
-	protected $bookingRepository;
-
 	/**
 	 * $roomRepository
 	 *
@@ -30,16 +14,19 @@ class WeekController extends ActionController {
 	 */
 	protected $roomRepository;
 
-	public function showAction() {
-//		$week = Factory::getWeekByTime(DateTime $datetime);
-//		$rooms = Factory::getRoomsByWeek($week);
+	/**
+	 * @param integer $week
+	 */
+	public function showAction($week = null) {
+		$week = new Week($week);
 
-		$closingDays = $this->closingDayRepository->findAll();
-//		$rooms = $this->roomRepository->findAll();
-//		$bookings = $this->bookingRepository->findAll();
+//		$rooms = $this->roomRepository->findAllBetween($week->format('Monday day this week'), $week->format('Sunday day this week'));
 
-		$this->view->assign('closingDays', $closingDays);
-//		$this->view->assign('rooms', $rooms);
-//		$this->view->assign('bookings', $bookings);
+		$rooms = $this->roomRepository->findAll();
+		$this->view->assign('Week', $week);
+		$this->view->assign('Rooms', $rooms);
+
+		if (true) $this->view->assign('nextWeek', $week->modify('Monday next week')->getTimestamp());
+		if (true) $this->view->assign('previousWeek', $week->modify('Monday last week')->getTimestamp());
 	}
 }

@@ -66,14 +66,6 @@ class tx_ubleipzigbooking_eID {
 	protected $conf;
 
 	/**
-	 * $closingDayRepository
-	 *
-	 * @var \LeipzigUniversityLibrary\ubleipzigbooking\Domain\Repository\ClosingDay
-	 * @inject
-	 */
-	protected $closingDayRepository;
-
-	/**
 	 * @var \TYPO3\CMS\Extbase\Object\ObjectManager
 	 * @inject
 	 */
@@ -89,11 +81,11 @@ class tx_ubleipzigbooking_eID {
 		$GLOBALS['LANG']->init('default');
 		$GLOBALS['TSFE'] = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController', $GLOBALS['TYPO3_CONF_VARS'], 0, 0);
 		$GLOBALS['TSFE']->sys_page = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Frontend\\Page\\PageRepository');
-
 		\TYPO3\CMS\Frontend\Utility\EidUtility::initLanguage();
 		$GLOBALS['TSFE']->fe_user = \TYPO3\CMS\Frontend\Utility\EidUtility::initFeUser();
 		tslib_eidtools::connectDB();
 		if (!$this->objectManager) $this->objectManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('\TYPO3\CMS\ExtBase\Object\ObjectManager');
+
 	}
 
 	/**
@@ -457,11 +449,6 @@ class tx_ubleipzigbooking_eID {
 		$this->cObj = t3lib_div::makeInstance('tslib_cObj');
 		$this->cObj->start('', '');
 
-		$closingDayRepository = $this->objectManager->get('\LeipzigUniversityLibrary\ubleipzigbooking\Domain\Repository\ClosingDay');
-		// the template file
-
-		//$closingDays = $closingDayRepository->findByWeek($date);
-		$closingDays = $closingDayRepository->findAll($date);
 		$this->template = @file_get_contents(PATH_site . $this->getRelativeFileName($this->conf['templateFile']));
 		$this->_GP['objectUid'] = (int)$this->_GP['objectUid'];
 		$data = $this->getObjects();

@@ -2,8 +2,6 @@
 namespace LeipzigUniversityLibrary\ubleipzigbooking\Domain\Model;
 
 use \LeipzigUniversityLibrary\ubleipzigbooking\Library\AbstractEntity;
-use \LeipzigUniversityLibrary\ubleipzigbooking\Domain\Model\Day;
-use \LeipzigUniversityLibrary\ubleipzigbooking\Domain\Model\Hour;
 
 class Room extends AbstractEntity {
 	/**
@@ -17,41 +15,50 @@ class Room extends AbstractEntity {
 	protected $description = '';
 
 	/**
+	 * $closingDayRepository
+	 *
+	 * @var \LeipzigUniversityLibrary\ubleipzigbooking\Domain\Repository\ClosingDay
+	 * @inject
+	 */
+	protected $closingDayRepository;
+
+	/**
+	 * $bookingRepository
+	 *
+	 * @var \LeipzigUniversityLibrary\ubleipzigbooking\Domain\Repository\Booking
+	 * @inject
+	 */
+	protected $bookingRepository;
+
+	/**
 	 * a rooms bookings
 	 *
 	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\LeipzigUniversityLibrary\ubleipzigbooking\Domain\Model\Booking>
+	 * @lazy
+	 * @cascade remove
 	 */
-	protected $bookings = null;
+	protected $bookings;
 
 	/**
 	 * a rooms closing days
 	 *
 	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\LeipzigUniversityLibrary\ubleipzigbooking\Domain\Model\ClosingDay>
+	 * @lazy
 	 */
-	protected $closingDays = null;
+	protected $closingDays;
 
-	public function __construct($name = '') {
-		return parent::initStorageObjects();
+	public function __construct() {
+		echo 'foobar';
 	}
 
 	/**
-	 * return overall day status
-	 *
-	 * @param \DateTime $dateTime
-	 * @return int
+	 * we are initializing the storage objects here since the constructor is not invoked for model when created by
+	 * repositorys, god knows why
 	 */
-	public function getDayStatus(\DateTime $dateTime) {
-		return Day::AVAILABLE;
-	}
-
-	/**
-	 * return hour status
-	 *
-	 * @param \DateTime $dateTime
-	 */
-	public function getHourStatus(\DateTime $dateTime) {
-		return Hour::AVAILABLE;
-
+	public function initializeObject() {
+		$this->bookings = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+		$this->closingDays = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+		return parent::initializeObject();
 	}
 
 	/**
@@ -92,5 +99,15 @@ class Room extends AbstractEntity {
 	 */
 	public function removeClosingDay(\LeipzigUniversityLibrary\ubleipzigbooking\Domain\Model\ClosingDay $closingDay) {
 		$this->closingDays->detach($closingDay);
+	}
+
+	public function getOccupancyBetween($startTime, $endTime) {
+		foreach($this->closingDayRepository->findInBetween($startTime, $endTime) as $closingDay) {
+			$this->addClosingDay($closingDay);
+		}
+
+		foreach($this->bookingRepository->findByRoomAndInBetween($startTime, $endTime, $this) as $booking) {
+			$this->addBooking($booking);
+		}
 	}
 }

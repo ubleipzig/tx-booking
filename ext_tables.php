@@ -67,12 +67,6 @@ $TCA["tx_ubleipzigbooking_domain_model_closingday"] = array(
 	)
 );
 
-
-\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
-	$_EXTKEY,
-	'Bookings',
-	'Bookings for Rooms'
-);
 t3lib_div::loadTCA('tt_content');
 $TCA['tt_content']['types']['list']['subtypes_excludelist'][$_EXTKEY . '_pi1'] = 'layout,select_key';
 
@@ -95,4 +89,9 @@ t3lib_extMgm::addPlugin(Array(
 
 t3lib_extMgm::addStaticFile($_EXTKEY, 'pi1/static/', 'Default CSS-Styles');
 
-\FluidTYPO3\Flux\Core::addStaticTypoScript('EXT:' . $_EXTKEY . '/Configuration/TypoScript/');
+// this is new
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
+	$_EXTKEY,
+	'Bookings',
+	'Bookings for Rooms'
+);

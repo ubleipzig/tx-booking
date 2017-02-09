@@ -8,6 +8,11 @@ plugin.tx_ubleipzigbooking.persistence.classes {
     LeipzigUniversityLibrary\ubleipzigbooking\Domain\Model\Booking {
         mapping {
             tableName = tx_ubleipzigbooking
+            columns {
+                objectuid.mapOnProperty = room
+                feuseruid.mapOnProperty = user
+                startdate.mapOnProperty = timestamp
+            }
         }
     }
 }

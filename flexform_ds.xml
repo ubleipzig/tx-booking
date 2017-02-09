@@ -6,199 +6,199 @@
   <sheets>
     <sheetDisplayMode>
       <ROOT>
-	    <TCEforms>
-	      <sheetTitle>LLL:EXT:ubleipzigbooking/locallang_tca.php:ubleipzigbooking.pi_flexform.sheetDisplayOptions</sheetTitle>
-	    </TCEforms>
-      <type>array</type>
+        <TCEforms>
+          <sheetTitle>LLL:EXT:ubleipzigbooking/locallang_tca.php:ubleipzigbooking.pi_flexform.sheetDisplayOptions</sheetTitle>
+        </TCEforms>
+        <type>array</type>
         <el>
-			<displayMode>
-			  <TCEforms>
+          <displayMode>
+            <TCEforms>
 
-				<label>LLL:EXT:ubleipzigbooking/locallang_tca.php:ubleipzigbooking.pi_flexform.displayMode.label</label>
-				<config>
-					<type>select</type>
-					<items type="array">
-						<numIndex index="0" type="array">
-							<numIndex index="0">LLL:EXT:ubleipzigbooking/locallang_tca.php:ubleipzigbooking.pi_flexform.monthView.label</numIndex>
-							<numIndex index="1">viewMonth</numIndex>
-						</numIndex>
-						<numIndex index="1" type="array">
-							<numIndex index="0">LLL:EXT:ubleipzigbooking/locallang_tca.php:ubleipzigbooking.pi_flexform.weekView.label</numIndex>
-							<numIndex index="1">viewWeek</numIndex>
-						</numIndex>
-				</items>
-				<maxitems>1</maxitems>
-				<size>4</size>
-				</config>
-			  </TCEforms>
-	    	</displayMode>
+              <label>LLL:EXT:ubleipzigbooking/locallang_tca.php:ubleipzigbooking.pi_flexform.displayMode.label</label>
+              <config>
+                <type>select</type>
+                <items type="array">
+                  <numIndex index="0" type="array">
+                    <numIndex index="0">LLL:EXT:ubleipzigbooking/locallang_tca.php:ubleipzigbooking.pi_flexform.monthView.label</numIndex>
+                    <numIndex index="1">viewMonth</numIndex>
+                  </numIndex>
+                  <numIndex index="1" type="array">
+                    <numIndex index="0">LLL:EXT:ubleipzigbooking/locallang_tca.php:ubleipzigbooking.pi_flexform.weekView.label</numIndex>
+                    <numIndex index="1">viewWeek</numIndex>
+                  </numIndex>
+                </items>
+                <maxitems>1</maxitems>
+                <size>4</size>
+              </config>
+            </TCEforms>
+          </displayMode>
 
- 	      <includejQuery>
-	        <TCEforms>
-    	      <label>LLL:EXT:ubleipzigbooking/locallang_tca.php:ubleipzigbooking.pi_flexform.includejQuery.label</label>
-        		<config>
-         		  <type>check</type>
-		          <default>1</default>
-	          	</config>
-	         </TCEforms>
-      	  </includejQuery>
+          <includejQuery>
+            <TCEforms>
+              <label>LLL:EXT:ubleipzigbooking/locallang_tca.php:ubleipzigbooking.pi_flexform.includejQuery.label</label>
+              <config>
+                <type>check</type>
+                <default>1</default>
+              </config>
+            </TCEforms>
+          </includejQuery>
 
- 	      <enableQuarterHourBooking>
-	        <TCEforms>
-    	      <label>LLL:EXT:ubleipzigbooking/locallang_tca.php:ubleipzigbooking.pi_flexform.enableQuarterHourBooking.label</label>
-        		<config>
-         		  <type>check</type>
-		          <default>0</default>
-	          	</config>
-	         </TCEforms>
-      	  </enableQuarterHourBooking>
-
-
- 	      <maxBookingsPerDay>
-	        <TCEforms>
-    	      <label>LLL:EXT:ubleipzigbooking/locallang_tca.php:ubleipzigbooking.pi_flexform.maxBookingsPerDay.label</label>
-        		<config>
-         		  <type>input</type>
-		          <default>5</default>
-		          <eval>int</eval>
-		          <size>2</size>
-		          <max>2</max>
-	          	</config>
-	         </TCEforms>
-      	  </maxBookingsPerDay>
+          <enableQuarterHourBooking>
+            <TCEforms>
+              <label>LLL:EXT:ubleipzigbooking/locallang_tca.php:ubleipzigbooking.pi_flexform.enableQuarterHourBooking.label</label>
+              <config>
+                <type>check</type>
+                <default>0</default>
+              </config>
+            </TCEforms>
+          </enableQuarterHourBooking>
 
 
- 	      <limitPreviewToDays>
-	        <TCEforms>
-    	      <label>LLL:EXT:ubleipzigbooking/locallang_tca.php:ubleipzigbooking.pi_flexform.limitPreviewToDays.label</label>
-        		<config>
-         		  <type>input</type>
-		          <default>14</default>
-		          <eval>int</eval>
-		          <size>2</size>
-		          <max>2</max>
-	          	</config>
-	         </TCEforms>
-      	  </limitPreviewToDays>
+          <maxBookingsPerDay>
+            <TCEforms>
+              <label>LLL:EXT:ubleipzigbooking/locallang_tca.php:ubleipzigbooking.pi_flexform.maxBookingsPerDay.label</label>
+              <config>
+                <type>input</type>
+                <default>5</default>
+                <eval>int</eval>
+                <size>2</size>
+                <max>2</max>
+              </config>
+            </TCEforms>
+          </maxBookingsPerDay>
 
 
- 	      <limitBookingToDays>
-	        <TCEforms>
-    	      <label>LLL:EXT:ubleipzigbooking/locallang_tca.php:ubleipzigbooking.pi_flexform.limitBookingToDays.label</label>
-        		<config>
-         		  <type>input</type>
-	          	</config>
-	         </TCEforms>
-      	  </limitBookingToDays>
-
- 	      <enableFeUserMail>
-	        <TCEforms>
-    	      <label>LLL:EXT:ubleipzigbooking/locallang_tca.php:ubleipzigbooking.pi_flexform.enableFeUserMail.label</label>
-        		<config>
-         		  <type>check</type>
-	          	</config>
-	         </TCEforms>
-      	  </enableFeUserMail>
-
- 	      <mailSubject>
-	        <TCEforms>
-    	      <label>LLL:EXT:ubleipzigbooking/locallang_tca.php:ubleipzigbooking.pi_flexform.mailSubject.label</label>
-        		<config>
-         		  <type>input</type>
-         		  <default>Raumbuchung</default>
-	          	</config>
-	         </TCEforms>
-      	  </mailSubject>
-
- 	      <mailFromName>
-	        <TCEforms>
-    	      <label>LLL:EXT:ubleipzigbooking/locallang_tca.php:ubleipzigbooking.pi_flexform.mailFromName.label</label>
-        		<config>
-         		  <type>input</type>
-         		  <default>TYPO3-Raumbuchung</default>
-	          	</config>
-	         </TCEforms>
-      	  </mailFromName>
- 	      <mailFrom>
-	        <TCEforms>
-    	      <label>LLL:EXT:ubleipzigbooking/locallang_tca.php:ubleipzigbooking.pi_flexform.mailFrom.label</label>
-        		<config>
-         		  <type>input</type>
-         		  <default>admin@bookingsystem.de</default>
-	          	</config>
-	         </TCEforms>
-      	  </mailFrom>
- 	      <mailAttachment>
-	        <TCEforms>
-    	      <label>LLL:EXT:ubleipzigbooking/locallang_tca.php:ubleipzigbooking.pi_flexform.mailAttachment.label</label>
-        		<config>
-         		  <type>group</type>
-         		  <internal_type>file</internal_type>
-				  <maxitems>1</maxitems>
-				  <size>1</size>
-	          	</config>
-	         </TCEforms>
-      	  </mailAttachment>
+          <limitPreviewToDays>
+            <TCEforms>
+              <label>LLL:EXT:ubleipzigbooking/locallang_tca.php:ubleipzigbooking.pi_flexform.limitPreviewToDays.label</label>
+              <config>
+                <type>input</type>
+                <default>14</default>
+                <eval>int</eval>
+                <size>2</size>
+                <max>2</max>
+              </config>
+            </TCEforms>
+          </limitPreviewToDays>
 
 
- 	      <offDutyTimeBegin>
-	        <TCEforms>
-    	      <label>LLL:EXT:ubleipzigbooking/locallang_tca.php:ubleipzigbooking.pi_flexform.offDutyTimeBegin.label</label>
-        		<config>
-         		  <type>input</type>
-		          <eval>date</eval>
-		          <size>10</size>
-	          	</config>
-	         </TCEforms>
-      	  </offDutyTimeBegin>
- 	      <offDutyTimeEnd>
-	        <TCEforms>
-    	      <label>LLL:EXT:ubleipzigbooking/locallang_tca.php:ubleipzigbooking.pi_flexform.offDutyTimeEnd.label</label>
-        		<config>
-         		  <type>input</type>
-		          <eval>date</eval>
-		          <size>10</size>
-	          	</config>
-	         </TCEforms>
-      	  </offDutyTimeEnd>
+          <limitBookingToDays>
+            <TCEforms>
+              <label>LLL:EXT:ubleipzigbooking/locallang_tca.php:ubleipzigbooking.pi_flexform.limitBookingToDays.label</label>
+              <config>
+                <type>input</type>
+              </config>
+            </TCEforms>
+          </limitBookingToDays>
+
+          <enableFeUserMail>
+            <TCEforms>
+              <label>LLL:EXT:ubleipzigbooking/locallang_tca.php:ubleipzigbooking.pi_flexform.enableFeUserMail.label</label>
+              <config>
+                <type>check</type>
+              </config>
+            </TCEforms>
+          </enableFeUserMail>
+
+          <mailSubject>
+            <TCEforms>
+              <label>LLL:EXT:ubleipzigbooking/locallang_tca.php:ubleipzigbooking.pi_flexform.mailSubject.label</label>
+              <config>
+                <type>input</type>
+                <default>Raumbuchung</default>
+              </config>
+            </TCEforms>
+          </mailSubject>
+
+          <mailFromName>
+            <TCEforms>
+              <label>LLL:EXT:ubleipzigbooking/locallang_tca.php:ubleipzigbooking.pi_flexform.mailFromName.label</label>
+              <config>
+                <type>input</type>
+                <default>TYPO3-Raumbuchung</default>
+              </config>
+            </TCEforms>
+          </mailFromName>
+          <mailFrom>
+            <TCEforms>
+              <label>LLL:EXT:ubleipzigbooking/locallang_tca.php:ubleipzigbooking.pi_flexform.mailFrom.label</label>
+              <config>
+                <type>input</type>
+                <default>admin@bookingsystem.de</default>
+              </config>
+            </TCEforms>
+          </mailFrom>
+          <mailAttachment>
+            <TCEforms>
+              <label>LLL:EXT:ubleipzigbooking/locallang_tca.php:ubleipzigbooking.pi_flexform.mailAttachment.label</label>
+              <config>
+                <type>group</type>
+                <internal_type>file</internal_type>
+                <maxitems>1</maxitems>
+                <size>1</size>
+              </config>
+            </TCEforms>
+          </mailAttachment>
+
+
+          <offDutyTimeBegin>
+            <TCEforms>
+              <label>LLL:EXT:ubleipzigbooking/locallang_tca.php:ubleipzigbooking.pi_flexform.offDutyTimeBegin.label</label>
+              <config>
+                <type>input</type>
+                <eval>date</eval>
+                <size>10</size>
+              </config>
+            </TCEforms>
+          </offDutyTimeBegin>
+          <offDutyTimeEnd>
+            <TCEforms>
+              <label>LLL:EXT:ubleipzigbooking/locallang_tca.php:ubleipzigbooking.pi_flexform.offDutyTimeEnd.label</label>
+              <config>
+                <type>input</type>
+                <eval>date</eval>
+                <size>10</size>
+              </config>
+            </TCEforms>
+          </offDutyTimeEnd>
 
         </el>
       </ROOT>
     </sheetDisplayMode>
 
     <sheetTemplateOptions>
-       <ROOT>
-	    <TCEforms>
-	      <sheetTitle>LLL:EXT:ubleipzigbooking/locallang_tca.php:ubleipzigbooking.pi_flexform.sheetTemplateOptions</sheetTitle>
-	    </TCEforms>
-      <type>array</type>
+      <ROOT>
+        <TCEforms>
+          <sheetTitle>LLL:EXT:ubleipzigbooking/locallang_tca.php:ubleipzigbooking.pi_flexform.sheetTemplateOptions</sheetTitle>
+        </TCEforms>
+        <type>array</type>
         <el>
- 	      <templateFile>
-	        <TCEforms>
-    	      <label>LLL:EXT:ubleipzigbooking/locallang_tca.php:ubleipzigbooking.pi_flexform.templateFile.label</label>
-        		<config>
-         		  <type>group</type>
-         		  <internal_type>file</internal_type>
-				  <maxitems>1</maxitems>
-				  <size>1</size>
-		          <default>EXT:ubleipzigbooking/pi1/template.html</default>
-	          	</config>
-	         </TCEforms>
-      	  </templateFile>
+          <templateFile>
+            <TCEforms>
+              <label>LLL:EXT:ubleipzigbooking/locallang_tca.php:ubleipzigbooking.pi_flexform.templateFile.label</label>
+              <config>
+                <type>group</type>
+                <internal_type>file</internal_type>
+                <maxitems>1</maxitems>
+                <size>1</size>
+                <default>EXT:ubleipzigbooking/pi1/template.html</default>
+              </config>
+            </TCEforms>
+          </templateFile>
 
-   	      <cssFile>
-	        <TCEforms>
-    	      <label>LLL:EXT:ubleipzigbooking/locallang_tca.php:ubleipzigbooking.pi_flexform.cssFile.label</label>
-        		<config>
-         		  <type>group</type>
-         		  <internal_type>file</internal_type>
-				  <maxitems>1</maxitems>
-				  <size>1</size>
-		          <default>EXT:ubleipzigbooking/pi1/layout.css</default>
-	          	</config>
-	         </TCEforms>
-      	  </cssFile>
-         </el>
+          <cssFile>
+            <TCEforms>
+              <label>LLL:EXT:ubleipzigbooking/locallang_tca.php:ubleipzigbooking.pi_flexform.cssFile.label</label>
+              <config>
+                <type>group</type>
+                <internal_type>file</internal_type>
+                <maxitems>1</maxitems>
+                <size>1</size>
+                <default>EXT:ubleipzigbooking/pi1/layout.css</default>
+              </config>
+            </TCEforms>
+          </cssFile>
+        </el>
       </ROOT>
     </sheetTemplateOptions>
   </sheets>
