@@ -683,30 +683,27 @@ class tx_ubleipzigbooking_eID {
 				$marks['###STATE###'] = '';
 				if ($day + $hours[$i] * 3600 > time()) {
 					$marks['###MEMOV###'] = '<input type="text" id="tx_ubleipzigbooking_pi1_memo' . $i . '" class="memo"';
-					$marks['###MEMOV###'] .= ' value="' . htmlspecialchars($data['memo'][$j]) . '"/>';
+					$marks['###MEMOV###'] .= ' value=""/>';
 				} else {
 					$marks['###MEMOV###'] = '<input type="text" id="tx_ubleipzigbooking_pi1_memo' . $i . '" class="memo" disabled="disabled"';
-					$marks['###MEMOV###'] .= ' value="' . htmlspecialchars($data['memo'][$j]) . '"/>';
+					$marks['###MEMOV###'] .= ' value=""/>';
 				}
 
 				for ($j = 0; $j < count($data['feUserName']); $j++) {
 					if ($data['startdate'][$j] == $day + $hours[$i] * 3600) {
-						$marks['###MEMOV###'] = '<input type="text" id="tx_ubleipzigbooking_pi1_memo' . $i . '" class="memo" disabled="disabled"';
-						$marks['###MEMOV###'] .= ' value=""/>';
+						$marks['###MEMOV###'] = '<input type="text" id="tx_ubleipzigbooking_pi1_memo' . $i . '" class="memo" disabled="disabled" value="' . htmlspecialchars($data['memo'][$j]) . '" />"';
 						$occupied = 1;
-						$marks['###STATE###'] .= ' booked';
 
-						if ($this->conf['feUserUid'] == $data['feUserUid'][$j] && $day + $hours[$i] * 3600 > time()) {
-							$marks['###STATE###'] .= ' ownbooked';
-							$marks['###MEMOV###'] = '<input type="text" id="tx_ubleipzigbooking_pi1_memo' . $i . '" class="memo" disabled="disabled"';
-							$marks['###MEMOV###'] .= ' value="' . htmlspecialchars($data['memo'][$j]) . '"/>';
-							$this->conf['startdate'] = $data['startdate'][$j];
-							$ajaxData = urlencode(json_encode($this->conf));
-							$startdate = $data['startdate'][$j];
-							$marks['###DELETEV###'] = '<div onclick="tx_ubleipzigbooking_delete(' . $i . ',' . $startdate . ',' . (string)$this->conf['feUserUid'] . ',' . $i . ',\'' . $ajaxData . '\', \'delete\');">';
-							$marks['###DELETEV###'] .= '<i class="fa fa-times" aria-hidden="true"></i></div>';
-							$marks['###MEMOV###'] = '<input type="text" id="tx_ubleipzigbooking_pi1_memo' . $i . '" class="memo" disabled="disabled"';
-							$marks['###MEMOV###'] .= ' value="' . $data['memo'][$j] . '"/>';
+						if ($day + $hours[$i] * 3600 > time()) {
+							if ($this->conf['feUserUid'] == $data['feUserUid'][$j]) {
+								$this->conf['startdate'] = $data['startdate'][$j];
+								$ajaxData = urlencode(json_encode($this->conf));
+								$startdate = $data['startdate'][$j];
+								$marks['###STATE###'] .= ' ownbooked';
+								$marks['###DELETEV###'] = '<div onclick="tx_ubleipzigbooking_delete(' . $i . ',' . $startdate . ',' . (string)$this->conf['feUserUid'] . ',' . $i . ',\'' . $ajaxData . '\', \'delete\');"><i class="fa fa-times" aria-hidden="true"></i></div>';
+							} else {
+								$marks['###STATE###'] .= ' booked';
+							}
 						}
 					}
 				}

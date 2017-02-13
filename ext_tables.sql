@@ -11,7 +11,7 @@ CREATE TABLE tx_ubleipzigbooking_object (
 	deleted tinyint(4) DEFAULT '0' NOT NULL,
 	hidden tinyint(4) DEFAULT '0' NOT NULL,
 	name varchar(255) DEFAULT '' NOT NULL,
-	hours varchar(50) DEFAULT '8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23' NOT NULL,
+	hours varchar(61) DEFAULT '0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23' NOT NULL,
 	PRIMARY KEY (uid),
 	KEY parent (pid)
 );
@@ -38,7 +38,8 @@ CREATE TABLE tx_ubleipzigbooking (
 
 	PRIMARY KEY (uid),
 	KEY parent (pid),
-	UNIQUE `unique_index`(`startdate`, `objectuid`)
+	UNIQUE `unique_slot_per_user` (`startdate`, `feuseruid`),
+	UNIQUE `unique_slot_per_room` (`startdate`, `objectuid`);
 );
 
 
