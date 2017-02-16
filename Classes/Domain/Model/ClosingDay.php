@@ -2,8 +2,8 @@
 
 namespace LeipzigUniversityLibrary\ubleipzigbooking\Domain\Model;
 
-use FluidTYPO3\Flux\Form\Field\DateTime;
-use LeipzigUniversityLibrary\ubleipzigbooking\Library\AbstractEntity;
+use \LeipzigUniversityLibrary\ubleipzigbooking\Library\AbstractEntity;
+use \LeipzigUniversityLibrary\ubleipzigbooking\Library\Day;
 
 class ClosingDay extends AbstractEntity {
 	/**
@@ -21,6 +21,11 @@ class ClosingDay extends AbstractEntity {
 	 **/
 	protected $date;
 
+	/**
+	 * @var \LeipzigUniversityLibrary\ubleipzigbooking\Library\Day
+	 */
+	protected $day;
+
 	public function __construct($name, $description = '', $date) {
 		$this->setName($name);
 		$this->setDescription($description);
@@ -28,14 +33,8 @@ class ClosingDay extends AbstractEntity {
 	}
 
 	public function getDay() {
-		return date('j', $this->date);
-	}
+		if (!$this->day) $this->setDay(new Day($this->date));
 
-	public function getMonth() {
-		return date('n', $this->date);
-	}
-
-	public function getYear() {
-		return date('Y', $this->date);
+		return $this->day;
 	}
 }

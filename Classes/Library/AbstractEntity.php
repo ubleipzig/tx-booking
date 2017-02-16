@@ -27,7 +27,7 @@ abstract class AbstractEntity extends \TYPO3\CMS\Extbase\DomainObject\AbstractEn
 		}
 
 		if ($matches['method'] === 'set') {
-			return $this->_setProperty($arguments[0]);
+			return $this->_setProperty($property, $arguments[0]);
 		} else if ($matches['method'] === 'get') {
 			return $this->_getProperty($property);
 		}

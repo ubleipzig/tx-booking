@@ -1,0 +1,25 @@
+{namespace ubl=LeipzigUniversityLibrary\ubleipzigbooking\ViewHelpers}
+<div class="tableheader">
+    <ubl:date format="D d.m." object="{Day}"/>
+</div>
+<ubl:bookable room="{Room}" day="{Day}">
+    <f:then>
+        <f:link.action name="{Day.title}" title="{Day.title}" action="show" controller="Day"
+                       arguments="{day: Day.timestamp, room: Room}">
+            <f:for each="{Day}" as="Hour">
+                <div class="row {ubl:getHourOccupationClass(room: Room, hour: Hour)}">
+                    <ubl:date format="H" object="{Hour}"/> &ndash;
+                    <ubl:date modify="next hour" format="H" object="{Hour}"/>
+                </div>
+            </f:for>
+        </f:link.action>
+    </f:then>
+    <f:else>
+        <f:for each="{Day}" as="Hour">
+            <div class="row {ubl:getHourOccupationClass(room: Room, hour: Hour)}">
+                <ubl:date format="H" object="{Hour}"/> &ndash;
+                <ubl:date modify="next hour" format="H" object="{Hour}"/>
+            </div>
+        </f:for>
+    </f:else>
+</ubl:bookable>

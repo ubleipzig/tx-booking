@@ -1,37 +1,27 @@
 {namespace ubl=LeipzigUniversityLibrary\ubleipzigbooking\ViewHelpers}
 <f:layout name="Default"/>
-
-<f:section name="main_">
-    <f:debug>{Rooms}</f:debug>
-    <f:link.action action="show" controller="Ajax" arguments="{week: week}">
-        <f:translate key="back_to_all_journals">ajax-controller</f:translate>
-    </f:link.action>
-</f:section>
 <f:section name="main">
-    <div>
-        <f:flashMessages renderMode="div"/>
-        <f:for each="{Rooms}" as="Room">
-            <div class="clearer"></div>
-            <div class="calendarWeek">
-                <div class="objectName">{Room.name}</div>
-                <div class="legend ">
-                    <span class="offDutyHour"><f:translate key="off">Off duty</f:translate></span>
-                    <span class="bookedHour"><f:translate key="foreignbooked">Foreign booked hour</f:translate></span>
-                    <span class="ownBookedHour"><f:translate key="ownbooked">Own booked hour</f:translate></span>
-                    <span class="availableHour"><f:translate key="free">Free</f:translate></span>
-                </div>
+    <f:flashMessages renderMode="div"/>
+    <f:for each="{Rooms}" as="Room">
+        <div class="calendarWeek">
+            <div class="roomDescription">{Room.name} was:objectName => now:roomDescription</div>
+            <div class="legend">
+                <span class="offDutyHour"><f:translate key="off">Off duty</f:translate></span>
+                <span class="bookedHour"><f:translate key="foreignbooked">Foreign booked hour</f:translate></span>
+                <span class="ownBookedHour"><f:translate key="ownbooked">Own booked hour</f:translate></span>
+                <span class="availableHour"><f:translate key="free">Free</f:translate></span>
+            </div>
+
+            <div class="weekNavigation">
                 <f:if condition="{previousWeek}">
                     <f:link.action title="{f:translate(key:'previousweek')}" class="transparent tiny" action="show"
                                    controller="Week" arguments="{week: previousWeek}">
                         <i class="fa fa-chevron-left" aria-hidden="true"></i>
                     </f:link.action>
                 </f:if>
-
-                <span id="bookingeIDWeekWorking">
-                    <span class="calendarWeek">
-                        <f:translate key="calendarweek">Calendarweek</f:translate>
-                        <ubl:date format="W/Y" object="{Week}"/>
-                    </span>
+                <span class="calendarWeek">
+                    <f:translate key="calendarweek">Calendarweek</f:translate>
+                    <ubl:date format="W/Y" object="{Room.week}"/>
                 </span>
                 <f:if condition="{nextWeek}">
                     <f:link.action class="transparent tiny" action="show" controller="Week"
@@ -39,40 +29,26 @@
                         <i class="fa fa-chevron-right" aria-hidden="true"></i>
                     </f:link.action>
                 </f:if>
-                <div class="clearer"></div>
-                <div class="weekView">
-                    <f:for each="{Week}" as="Day">
-                        <ubl:bookableDay room="{Room}" day="{Day}">
-                            <f:then>
-                                <f:link.action class="" title="{Day.title}" action="edit" controller="Day"
-                                               arguments="{Day: Day.timestamp}">
-                                    <div class="weekViewDay today">
-                                        <ubl:date format="D d.m." object="{Day}"/>
-                                        <f:for each="{Day}" as="Hour">
-                                            <div>
-                                                <ubl:date format="H" object="{Hour}"/> &ndash;
-                                                <ubl:date modify="next hour" format="H" object="{Hour}"/>
-                                            </div>
-                                        </f:for>
-                                    </div>
-                                </f:link.action>
-                            </f:then>
-                            <f:else>
-                                <div class="weekViewDay pastDay">
-                                    <ubl:date format="D d.m." object="{Day}"/>
-                                    <f:for each="{Day}" as="Hour">
-                                        <div>
-                                            <ubl:date format="H" object="{Hour}"/> &ndash;
-                                            <ubl:date modify="next hour" format="H" object="{Hour}"/>
-                                        </div>
-                                    </f:for>
-                                </div>
-                            </f:else>
-                        </ubl:bookableDay>
-                </div>
-        </f:for>
-    </div>
-    </div>
+            </div>
+            <div class="weekView ">
+                <f:for each="{Room.week}" as="Day">
+                    <f:if condition="{Day.dateTime.timestamp} == {today.timestamp}">
+                        <div class="weekViewDay small-1 columns today end">
+                            <f:render partial="DayTable" arguments="{Room: Room, Day: Day}"/>
+                        </div>
+                    </f:if>
+                    <f:if condition="{Day.dateTime.timestamp} < {today.timestamp}">
+                        <div class="weekViewDay small-1 columns pastDay end">
+                            <f:render partial="DayTable" arguments="{Room: Room, Day: Day}"/>
+                        </div>
+                    </f:if>
+                    <f:if condition="{Day.dateTime.timestamp} > {today.timestamp}">
+                        <div class="weekViewDay small-1 columns end">
+                            <f:render partial="DayTable" arguments="{Room: Room, Day: Day}"/>
+                        </div>
+                    </f:if>
+                </f:for>
+            </div>
+        </div>
     </f:for>
-    </div>
 </f:section>

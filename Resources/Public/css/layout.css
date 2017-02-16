@@ -1,25 +1,4 @@
-plugin.tx_ubleipzigbooking.persistence.classes {
-    LeipzigUniversityLibrary\ubleipzigbooking\Domain\Model\Room {
-        mapping {
-            tableName = tx_ubleipzigbooking_object
-        }
-    }
 
-    LeipzigUniversityLibrary\ubleipzigbooking\Domain\Model\Booking {
-        mapping {
-            tableName = tx_ubleipzigbooking
-            columns {
-                objectuid.mapOnProperty = room
-                feuseruid.mapOnProperty = user
-                startdate.mapOnProperty = timestamp
-            }
-        }
-    }
-}
-
-plugin.tx_ubleipzigbooking.no_cache = 1
-
-plugin.tx_ubleipzigbooking._CSS_DEFAULT_STYLE (
 /* booking layout styles */
 
 .tx-ubleipzigbooking-pi1 .message {
@@ -183,6 +162,7 @@ plugin.tx_ubleipzigbooking._CSS_DEFAULT_STYLE (
 
 .tx-ubleipzigbooking-pi1 .weekViewDay .dutyHours {
   background-color: #15428b;
+  cursor: pointer;
 }
 
 .tx-ubleipzigbooking-pi1 .weekViewDay .bookedHours {
@@ -191,6 +171,7 @@ plugin.tx_ubleipzigbooking._CSS_DEFAULT_STYLE (
 
 .tx-ubleipzigbooking-pi1 .weekViewDay .ownbookedHours {
   background-color: #f08a24;
+  cursor: pointer;
 }
 
 .tx-ubleipzigbooking-pi1 .weekViewDay .offDuty {
@@ -270,12 +251,14 @@ td.week:focus,td.week:hover {cursor: pointer;}
   border: 1px solid black;
   text-align: center;
   width: 12%;
+  cursor: pointer;
 }
 .tx-ubleipzigbooking-pi1 .listMonth .someAvailable {
   background-color: #CCFFCC;
   border: 1px solid black;
   text-align: center;
   width: 1rem;
+  cursor: pointer;
 }
 
 .tx-ubleipzigbooking-pi1 .listMonth .notAvailable {
@@ -289,6 +272,7 @@ td.week:focus,td.week:hover {cursor: pointer;}
   border: 1px solid black;
   text-align: center;
   width: 1rem;
+  cursor: auto;
 
 }
 
@@ -327,11 +311,11 @@ td.week:focus,td.week:hover {cursor: pointer;}
   background-color: #CCFF99;
 }
 */
-.tx-ubleipzigbooking-pi1 .bookingForm .bookedHours {
+.tx-ubleipzigbooking-pi1 .bookingForm .booked {
   background-color: #E04644;
 }
 
-.tx-ubleipzigbooking-pi1 .bookingForm .ownbookedHours {
+.tx-ubleipzigbooking-pi1 .bookingForm .ownbooked {
   background-color: #f08a24;
 }
 
@@ -340,9 +324,15 @@ td.week:focus,td.week:hover {cursor: pointer;}
   color: black;
 }
 
+.tx-ubleipzigbooking-pi1 button {
+
+}
+/*
+
 .tx-ubleipzigbooking-pi1 .bookingFormDiv .backToWeekView,
 .tx-ubleipzigbooking-pi1 .bookingFormDiv .backToMonthView {
   color: #052f96;
+  cursor: pointer;
   padding: .25rem 0 .25rem 1rem;
 }
 
@@ -352,6 +342,7 @@ td.week:focus,td.week:hover {cursor: pointer;}
 .tx-ubleipzigbooking-pi1 .bookingFormDiv .backToMonthView:focus {
   color: #37425e;
 }
+*/
 
 .tx-ubleipzigbooking-pi1  .errorMessage {
   width: 100%;
@@ -369,6 +360,7 @@ button.transparent {
   border-style: solid;
   border-width: 0;
   color: #333;
+  cursor: pointer;
   display: inline-block;
   font-family: "Helvetica Neue",Helvetica,Roboto,Arial,sans-serif;
   font-weight: normal;
@@ -547,4 +539,3 @@ button.transparent {
   }
 }
 */
-)

@@ -67,6 +67,7 @@ $TCA["tx_ubleipzigbooking_domain_model_closingday"] = array(
 	)
 );
 
+/*
 t3lib_div::loadTCA('tt_content');
 $TCA['tt_content']['types']['list']['subtypes_excludelist'][$_EXTKEY . '_pi1'] = 'layout,select_key';
 
@@ -76,10 +77,10 @@ t3lib_extMgm::addPlugin(array(
 ), 'list_type');
 
 // ab hier flexform
-
 $TCA['tt_content']['types']['list']['subtypes_addlist'][$_EXTKEY . '_pi1'] = 'pi_flexform';
 
 // Wir definieren die Datei, die unser Flexform Schema enthält
+
 
 t3lib_extMgm::addPiFlexFormValue($_EXTKEY . '_pi1', 'FILE:EXT:' . $_EXTKEY . '/flexform_ds.xml');
 t3lib_extMgm::addPlugin(Array(
@@ -88,10 +89,13 @@ t3lib_extMgm::addPlugin(Array(
 ), 'list_type');
 
 t3lib_extMgm::addStaticFile($_EXTKEY, 'pi1/static/', 'Default CSS-Styles');
-
+*/
 // this is new
+t3lib_extMgm::addPiFlexFormValue($_EXTKEY, 'FILE:EXT:' . $_EXTKEY . '/flexform_ds.xml');
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
 	$_EXTKEY,
 	'Bookings',
 	'Bookings for Rooms'
 );
+
+t3lib_extMgm::addStaticFile($_EXTKEY, 'Resources/Public/css/', 'Default CSS-Styles');

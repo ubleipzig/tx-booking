@@ -2,7 +2,8 @@
 namespace LeipzigUniversityLibrary\ubleipzigbooking\Controller;
 
 use \TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
-use \LeipzigUniversityLibrary\ubleipzigbooking\Library\Week;
+use \LeipzigUniversityLibrary\ubleipzigbooking\Library\Day;
+
 class WeekController extends ActionController {
 
 	/**
@@ -18,15 +19,13 @@ class WeekController extends ActionController {
 	 * @param integer $week
 	 */
 	public function showAction($week = null) {
-		$week = new Week($week);
+		$today = new Day();
 
-//		$rooms = $this->roomRepository->findAllBetween($week->format('Monday day this week'), $week->format('Sunday day this week'));
+		$rooms = $this->roomRepository->findAllWithOccupationForWeek($week);
 
-		$rooms = $this->roomRepository->findAll();
-		$this->view->assign('Week', $week);
 		$this->view->assign('Rooms', $rooms);
-
-		if (true) $this->view->assign('nextWeek', $week->modify('Monday next week')->getTimestamp());
-		if (true) $this->view->assign('previousWeek', $week->modify('Monday last week')->getTimestamp());
+		$this->view->assign('today', $today);
+		if (true) $this->view->assign('nextWeek', $rooms[0]->getWeek()->modify('Monday next week')->getTimestamp());
+		if (true) $this->view->assign('previousWeek', $rooms[0]->getWeek()->modify('Monday last week')->getTimestamp());
 	}
 }

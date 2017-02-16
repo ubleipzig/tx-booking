@@ -11,7 +11,7 @@ class DateViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper
 	 */
 	public function render($format, $object, $modify = null) {
 		if ($modify) {
-			$object->modify($modify);
+			$object = $object->modify($modify);
 		}
 		return $object->format($format);
 	}
