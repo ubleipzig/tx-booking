@@ -1,7 +1,6 @@
 {namespace ubl=LeipzigUniversityLibrary\ubleipzigbooking\ViewHelpers}
 <f:layout name="Default"/>
 <f:section name="main">
-    <f:flashMessages renderMode="div"/>
     <f:for each="{Rooms}" as="Room">
         <div class="calendarWeek">
             <div class="roomDescription">{Room.name} was:objectName => now:roomDescription</div>
@@ -30,23 +29,34 @@
                     </f:link.action>
                 </f:if>
             </div>
-            <div class="weekView ">
-                <f:for each="{Room.week}" as="Day">
-                    <f:if condition="{Day.dateTime.timestamp} == {today.timestamp}">
-                        <div class="weekViewDay small-1 columns today end">
-                            <f:render partial="DayTable" arguments="{Room: Room, Day: Day}"/>
+            <div class="weekView">
+                <f:for each="{Room.week}" as="Day" iteration="iterator">
+                    <div class="weekViewDay small-1 columns {f:if(condition:iterator.isLast, then: 'end')}">
+                        <div class="tableheader{f:if(condition:'{Day.dateTime} < {Today.dateTime}', then:' past')}">
+                            <ubl:date format="D d.m." object="{Day}"/>
                         </div>
-                    </f:if>
-                    <f:if condition="{Day.dateTime.timestamp} < {today.timestamp}">
-                        <div class="weekViewDay small-1 columns pastDay end">
-                            <f:render partial="DayTable" arguments="{Room: Room, Day: Day}"/>
-                        </div>
-                    </f:if>
-                    <f:if condition="{Day.dateTime.timestamp} > {today.timestamp}">
-                        <div class="weekViewDay small-1 columns end">
-                            <f:render partial="DayTable" arguments="{Room: Room, Day: Day}"/>
-                        </div>
-                    </f:if>
+                        <ubl:bookable room="{Room}" day="{Day}">
+                            <f:then>
+                                <f:link.action name="{Day.title}" title="{Day.title}" action="show" controller="Day"
+                                               arguments="{day: Day.timestamp, room: Room}">
+                                    <f:for each="{Day}" as="Hour">
+                                        <div class="row {ubl:getHourOccupationClass(room: Room, hour: Hour)}{f:if(condition:'{Hour.dateTime} < {Now}', then:' past')}">
+                                            <ubl:date format="H" object="{Hour}"/> &ndash;
+                                            <ubl:date modify="next hour" format="H" object="{Hour}"/>
+                                        </div>
+                                    </f:for>
+                                </f:link.action>
+                            </f:then>
+                            <f:else>
+                                <f:for each="{Day}" as="Hour">
+                                    <div class="row {ubl:getHourOccupationClass(room: Room, hour: Hour)}{f:if(condition:'{Hour.dateTime} < {Now}', then:' past')}">
+                                        <ubl:date format="H" object="{Hour}"/> &ndash;
+                                        <ubl:date modify="next hour" format="H" object="{Hour}"/>
+                                    </div>
+                                </f:for>
+                            </f:else>
+                        </ubl:bookable>
+                    </div>
                 </f:for>
             </div>
         </div>

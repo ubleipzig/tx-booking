@@ -2,7 +2,7 @@
 
 namespace LeipzigUniversityLibrary\ubleipzigbooking\Library;
 
-class Day extends DateIterator implements \Iterator {
+class Day extends DateIterator implements \Iterator, \Countable {
 
 	/**
 	 * original time
@@ -36,8 +36,8 @@ class Day extends DateIterator implements \Iterator {
 		parent::__construct($timestamp);
 
 		if ($start > $end) throw new \Exception('start must not be greater than end');
-		$this->start = $start;
-		$this->end = $end;
+		$this->setStart($start);
+		$this->setEnd($end);
 
 		$this->origin = $this->origin->modify('midnight');
 		$this->current = $this->origin;
@@ -69,11 +69,23 @@ class Day extends DateIterator implements \Iterator {
 		return $this->origin->format('d.m.Y');
 	}
 
+	public function setStart($value) {
+		$this->start = (int)$value;
+	}
+
+	public function setEnd($value) {
+		$this->end = (int)$value;
+	}
+
 	public function getStart() {
 		return $this->origin->add(new \DateInterval("PT{$this->start}H"));
 	}
 
 	public function getEnd() {
 		return $this->origin->add(new \DateInterval("PT{$this->end}H"));
+	}
+
+	public function count() {
+		return $this->end - $this->start;
 	}
 }

@@ -11,10 +11,8 @@ class GetHourOccupationClassViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\
 	 * @param \LeipzigUniversityLibrary\ubleipzigbooking\Library\Hour $hour
 	 * @return string
 	 */
-	public function render(Room $room, $hour) {
+	public function render(Room $room, Hour $hour) {
 		switch ($room->getHourOccupation($hour)) {
-			case Room::PAST:
-				return 'pastHours';
 			case Room::OFFDUTY:
 				return 'offDutyTimeHours';
 			case Room::AVAILABLE:

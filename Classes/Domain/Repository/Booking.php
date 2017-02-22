@@ -33,6 +33,7 @@ class Booking extends Repository {
 
 	public function findByUserAndRoomAndTime($user, Room $room, \DateTimeInterface $startTime) {
 		$query = $this->createQuery();
+
 		$where = $query->logicalAnd([
 			// be aware that the property mapping only works for model arguments (room), not for integer values (startdate)
 			$query->equals('startdate', $startTime->getTimestamp()),
@@ -54,5 +55,9 @@ class Booking extends Repository {
 		$query->matching($where);
 
 		return $query->execute();
+	}
+
+	public function add($booking) {
+		parent::add($booking);
 	}
 }

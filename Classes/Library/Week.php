@@ -2,7 +2,7 @@
 
 namespace LeipzigUniversityLibrary\ubleipzigbooking\Library;
 
-class Week extends DateIterator implements \Iterator {
+class Week extends DateIterator implements \Iterator, \Countable {
 
 	/**
 	 * when the average day starts
@@ -32,7 +32,7 @@ class Week extends DateIterator implements \Iterator {
 	}
 
 	public function key() {
-		return $this->current->format('N') - 1;
+		return $this->current->format('N');
 	}
 
 	public function next() {
@@ -49,5 +49,9 @@ class Week extends DateIterator implements \Iterator {
 
 	public function getEnd() {
 		return $this->origin->modify('Sunday this week');
+	}
+
+	public function count() {
+		return 7;
 	}
 }

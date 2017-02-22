@@ -5,7 +5,7 @@ namespace LeipzigUniversityLibrary\ubleipzigbooking\Domain\Model;
 use \LeipzigUniversityLibrary\ubleipzigbooking\Library\AbstractEntity;
 use \LeipzigUniversityLibrary\ubleipzigbooking\Library\Day;
 
-class ClosingDay extends AbstractEntity {
+class DutyHours extends AbstractEntity {
 
 	/**
 	 * day of week
@@ -17,12 +17,12 @@ class ClosingDay extends AbstractEntity {
 	/**
 	 * list of hours
 	 *
-	 * @var array
+	 * @var string
 	 */
-	protected $dutyHours;
+	protected $hours;
 
 	public function __construct($datetime, array $dutyHours = []) {
 		$this->weekDay = (int)$this->current->format('H');
-		$this->dutyHours = $dutyHours;
+		$this->hours = $dutyHours;
 	}
 }

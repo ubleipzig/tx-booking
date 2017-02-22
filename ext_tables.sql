@@ -10,8 +10,11 @@ CREATE TABLE tx_ubleipzigbooking_object (
 	sorting int(10) DEFAULT '0' NOT NULL,
 	deleted tinyint(4) DEFAULT '0' NOT NULL,
 	hidden tinyint(4) DEFAULT '0' NOT NULL,
+
 	name varchar(255) DEFAULT '' NOT NULL,
-	hours varchar(61) DEFAULT '8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23' NOT NULL,
+	opening_times_storage varchar(255),
+	booking_storage int(11),
+
 	PRIMARY KEY (uid),
 	KEY parent (pid)
 );
@@ -46,12 +49,13 @@ CREATE TABLE tx_ubleipzigbooking_domain_model_closingday (
 	pid int(11) DEFAULT '0' NOT NULL,
 	tstamp int(11) DEFAULT '0' NOT NULL,
 	crdate int(11) DEFAULT '0' NOT NULL,
-	name VARCHAR(255) DEFAULT '',
-	description TEXT DEFAULT '',
-	date int(11) not null,
 	cruser_id int(11) DEFAULT '0' NOT NULL,
 	deleted tinyint(4) DEFAULT '0' NOT NULL,
 	hidden tinyint(4) DEFAULT '0' NOT NULL,
+
+	name VARCHAR(255) DEFAULT '',
+	date int(11) not null,
+	description TEXT DEFAULT '',
 
 	PRIMARY KEY (uid),
 	KEY parent (pid)
@@ -73,5 +77,6 @@ CREATE TABLE tx_ubleipzigbooking_domain_model_dutyhours (
 	week_day tinyint(4) not null,
 
 	PRIMARY KEY (uid),
-	KEY parent (pid)
+	KEY parent (pid),
+	UNIQUE weekday (pid, week_day)
 );

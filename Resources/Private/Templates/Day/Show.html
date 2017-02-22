@@ -35,7 +35,7 @@
             </tr>
             </thead>
             <tbody>
-            <f:for each="{Room.day}" as="Hour">
+            <f:for each="{Room.day}" as="Hour" iteration="iterator">
                 <tr class="{ubl:getHourOccupationClass(room: Room, hour: Hour)}">
                     <td>
                         <ubl:date format="H:i" object="{Hour}"/> &ndash;
@@ -48,7 +48,7 @@
                                     <f:form action="addBooking" controller="Day"
                                             arguments="{timestamp: Hour.timestamp, room: Room}">
                                         <td><f:form.textfield name="comment" class="memo"></f:form.textfield></td>
-                                        <td><f:form.button type="submit"><i class="fa fa-check" aria-hidden="true"></i></f:form.button>
+                                        <td><button type="submit"><i class="fa fa-check" aria-hidden="true"></i></button>
                                         </td>
                                     </f:form>
                                     <td></td>
@@ -68,7 +68,7 @@
                                 <ubl:bookable room="{Room}" hour="{Hour}">
                                     <f:link.action title="{ubl:date(format:'H:i', object: Hour)}" action="removeBooking"
                                                    controller="Day" arguments="{timestamp: Hour.timestamp, room: Room}"><i
-                                            class="fa fa-check" aria-hidden="true"></i></f:link.action>
+                                            class="fa fa-times" aria-hidden="true"></i></f:link.action>
                                 </ubl:bookable>
                             </td>
                         </f:case>

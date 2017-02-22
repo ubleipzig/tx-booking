@@ -18,6 +18,10 @@
 			<label index="tx_ubleipzigbooking_domain_model_closingday.description">Description</label>
 			<label index="tx_ubleipzigbooking_domain_model_closingday.date">Date</label>
 
+			<label index="tx_ubleipzigbooking_domain_model_dutyhours">Duty Hours</label>
+			<label index="tx_ubleipzigbooking_domain_model_dutyhours.week_day">Weekday</label>
+			<label index="tx_ubleipzigbooking_domain_model_dutyhours.hours">Hours</label>
+
 			<label index="tx_ubleipzigbooking">Bookings</label>
 			<label index="tx_ubleipzigbooking.object">Object</label>
 			<label index="tx_ubleipzigbooking.booking">Booking</label>
@@ -38,6 +42,10 @@
 			<label index="tx_ubleipzigbooking_domain_model_closingday.name">Name</label>
 			<label index="tx_ubleipzigbooking_domain_model_closingday.description">Beschreibung</label>
 			<label index="tx_ubleipzigbooking_domain_model_closingday.date">Datum</label>
+
+			<label index="tx_ubleipzigbooking_domain_model_dutyhours">Öffnungszeiten</label>
+			<label index="tx_ubleipzigbooking_domain_model_dutyhours.week_day">Wochentag</label>
+			<label index="tx_ubleipzigbooking_domain_model_dutyhours.hours">Stunden</label>
 
 			<label index="tx_ubleipzigbooking">Buchungen</label>
 			<label index="tx_ubleipzigbooking.object">Objekt</label>

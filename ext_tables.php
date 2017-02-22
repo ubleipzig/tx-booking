@@ -16,8 +16,8 @@ $TCA["tx_ubleipzigbooking_object"] = array(
 			'disabled' => 'hidden',
 		),
 		'foreign_table_loadIcon' => '1',
-		'dynamicConfigFile' => t3lib_extMgm::extPath($_EXTKEY) . 'tca.php',
-		'iconfile' => t3lib_extMgm::extRelPath($_EXTKEY) . 'icon_tx_ubleipzigbooking_object.gif',
+		'dynamicConfigFile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Configuration/TCA/tca.php',
+		'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY) . 'icon_tx_ubleipzigbooking_object.gif',
 	),
 	"feInterface" => array(
 		"fe_admin_fieldList" => "hidden, name, hours",
@@ -67,35 +67,37 @@ $TCA["tx_ubleipzigbooking_domain_model_closingday"] = array(
 	)
 );
 
-/*
-t3lib_div::loadTCA('tt_content');
-$TCA['tt_content']['types']['list']['subtypes_excludelist'][$_EXTKEY . '_pi1'] = 'layout,select_key';
+$TCA["tx_ubleipzigbooking_domain_model_dutyhours"] = array(
+	'ctrl' => array(
+		'title' => 'LLL:EXT:' . $_EXTKEY . '/Resources/Private/Language/locallang_db.xml:tx_ubleipzigbooking_domain_model_dutyhours',
+		'label' => 'week_day',
+		'label_userFunc' => '\LeipzigUniversityLibrary\ubleipzigbooking\Library\Tca->getDayTitle',
+		'tstamp' => 'tstamp',
+		'crdate' => 'crdate',
+		'cruser_id' => 'cruser_id',
+		'delete'        => 'deleted',
+		'enablecolumns' => array(
+			'disabled' => 'hidden'
+		),
+		'week_day' => 'weekDay',
+		'closing_days' => 'closingDays',
+		'opening_hours' => 'openingHours',
+		'dynamicConfigFile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Configuration/TCA/tca.php',
+		'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY) . 'Resources/Public/Icons/ext_icon.gif'
+	)
+);
 
-t3lib_extMgm::addPlugin(array(
-	'LLL:EXT:ubleipzigbooking/locallang_db.xml:tt_content.list_type_pi1',
-	$_EXTKEY . '_pi1'
-), 'list_type');
-
-// ab hier flexform
-$TCA['tt_content']['types']['list']['subtypes_addlist'][$_EXTKEY . '_pi1'] = 'pi_flexform';
-
-// Wir definieren die Datei, die unser Flexform Schema enthält
+$pluginSignature = $_EXTKEY . '_bookings';
+$TCA['tt_content']['types']['list']['subtypes_addlist'][$pluginSignature] = 'pi_flexform';
 
 
-t3lib_extMgm::addPiFlexFormValue($_EXTKEY . '_pi1', 'FILE:EXT:' . $_EXTKEY . '/flexform_ds.xml');
-t3lib_extMgm::addPlugin(Array(
-	'LLL:EXT:ubleipzigbooking/locallang_db.php:tt_content.list_type_pi1',
-	$_EXTKEY . '_pi1'
-), 'list_type');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue(
+	$pluginSignature,
+	'FILE:EXT:' . $_EXTKEY . '/Configuration/FlexForms/Bookings.xml'
+);
 
-t3lib_extMgm::addStaticFile($_EXTKEY, 'pi1/static/', 'Default CSS-Styles');
-*/
-// this is new
-t3lib_extMgm::addPiFlexFormValue($_EXTKEY, 'FILE:EXT:' . $_EXTKEY . '/flexform_ds.xml');
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
 	$_EXTKEY,
 	'Bookings',
 	'Bookings for Rooms'
 );
-
-t3lib_extMgm::addStaticFile($_EXTKEY, 'Resources/Public/css/', 'Default CSS-Styles');

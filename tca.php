@@ -1,55 +1,6 @@
 <?php
 
 if (!defined('TYPO3_MODE')) die('Access denied.');
-$TCA["tx_ubleipzigbooking_object"] = Array(
-    "ctrl" => $TCA["tx_ubleipzigbooking_object"]["ctrl"],
-    "interface" => Array(
-        "showRecordFieldList" => "hidden,name,hours"
-    ) ,
-    "feInterface" => $TCA["tx_ubleipzigbooking_flat"]["feInterface"],
-    "columns" => Array(
-        "hidden" => Array(
-            "exclude" => 1,
-            "label" => "LLL:EXT:lang/locallang_general.xml:LGL.hidden",
-            "config" => Array(
-                "type" => "check",
-                "default" => "0"
-            )
-        ) ,
-        "name" => Array(
-            "exclude" => 1,
-            "label" => "LLL:EXT:ubleipzigbooking/locallang_db.xml:tx_ubleipzigbooking_object.name",
-            "config" => Array(
-                "type" => "input",
-                "size" => "30",
-                "eval" => "required,trim",
-            )
-        ) ,
-        "hours" => Array(
-            "exclude" => 1,
-            "label" => "LLL:EXT:ubleipzigbooking/locallang_db.xml:tx_ubleipzigbooking_object.hours",
-            "config" => Array(
-                "type" => "input",
-                "size" => "40",
-                "default" => "8,9,10,11,12,13,14,15,16,17,18,19,20,21,22",
-                "eval" => "required,trim",
-            )
-        ) ,
-    ) ,
-
-    // 1-1-1 = style pointer which defines color, style and border
-
-    "types" => Array(
-        "0" => Array(
-            "showitem" => "hidden;;1;;1-1-1, name,hours"
-        )
-    ) ,
-    "palettes" => Array(
-        "1" => Array(
-            "showitem" => ""
-        )
-    )
-);
 $TCA["tx_ubleipzigbooking"] = Array(
     "ctrl" => $TCA["tx_ubleipzigbooking"]["ctrl"],
     "interface" => Array(

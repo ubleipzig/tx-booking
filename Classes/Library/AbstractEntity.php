@@ -3,6 +3,14 @@
 namespace LeipzigUniversityLibrary\ubleipzigbooking\Library;
 
 abstract class AbstractEntity extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
+
+	/**
+	 * plugin settings set by controller
+	 *
+	 * @var array
+	 */
+	protected $settings;
+
 	/**
 	 * magic method covers all setters and getters
 	 *

@@ -45,6 +45,10 @@ class Booking extends AbstractEntity {
 		$this->setRoom($room);
 		$this->setComment($comment);
 		$this->setUser($GLOBALS['TSFE']->fe_user->user['uid']);
+
+		if ($room->getBookingStorage()) {
+			$this->setPid($room->getBookingStorage());
+		}
 	}
 
 	public function initializeObject() {

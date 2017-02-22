@@ -1,13 +1,11 @@
 <?php
 namespace LeipzigUniversityLibrary\ubleipzigbooking\Controller;
 
-use TYPO3\CMS\Core\Utility\GeneralUtility;
-use \TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use \LeipzigUniversityLibrary\ubleipzigbooking\Library\Day;
 use \LeipzigUniversityLibrary\ubleipzigbooking\Library\Hour;
 use \LeipzigUniversityLibrary\ubleipzigbooking\Domain\Model\Booking;
 
-class DayController extends ActionController {
+class DayController extends AbstractController {
 
 	/**
 	 * $roomRepository
@@ -28,6 +26,7 @@ class DayController extends ActionController {
 	 * @inject
 	 */
 	protected $persistenceManager;
+
 	/**
 	 * @param integer $day
 	 * @param \LeipzigUniversityLibrary\ubleipzigbooking\Domain\Model\Room $room
@@ -36,8 +35,8 @@ class DayController extends ActionController {
 		$today = new Day();
 
 		$room->fetchDayOccupation($day);
+		$room->setSettings($this->settings);
 		$this->view->assign('Room', $room);
-		$this->view->assign('today', $today);
 		if (true) $this->view->assign('nextDay', $room->getDay()->modify('next day')->getTimestamp());
 		if (true) $this->view->assign('previousDay', $room->getDay()->modify('previous day')->getTimestamp());
 	}
@@ -55,22 +54,15 @@ class DayController extends ActionController {
 		$room->fetchDayOccupation($timestamp);
 
 		if (!$room->isHourBookable($hour)) {
-			throw new \Exception('already booked by another user');
-			// flashMessage();
+			$this->addFlashMessage('already booked by another user', \TYPO3\CMS\Core\Messaging\FlashMessage::ERROR);
+		} else if (count($this->bookingRepository->findByUserAndTime($GLOBALS['TSFE']->fe_user->user['uid'], $hour->getDateTime())) > 0) {
+			$this->addFlashMessage('already booked in another room', \TYPO3\CMS\Core\Messaging\FlashMessage::ERROR);
+		} else if (count($this->bookingRepository->findByUserAndBetween($GLOBALS['TSFE']->fe_user->user['uid'], $day->getStart(), $day->getEnd())) >= 2) {
+			$this->addFlashMessage('max slots booked', \TYPO3\CMS\Core\Messaging\FlashMessage::ERROR);
+		} else {
+			$this->bookingRepository->add(new Booking($timestamp, $room, $comment));
+			$this->addFlashMessage('slot successfully booked', \TYPO3\CMS\Core\Messaging\FlashMessage::OK);
 		}
-
-		if (count($this->bookingRepository->findByUserAndTime($GLOBALS['TSFE']->fe_user->user['uid'], $hour->getDateTime())) > 0) {
-			throw new \Exception('already booked in another room');
-			// flashMessage();
-		}
-
-		//
-		if (count($this->bookingRepository->findByUserAndBetween($GLOBALS['TSFE']->fe_user->user['uid'], $day->getStart(), $day->getEnd())) >= 2) {
-			throw new \Exception('max slots booked');
-			// flashMessage();
-		}
-
-		$this->bookingRepository->add(new Booking($timestamp, $room, $comment));
 
 		$this->redirect('show', 'Day', null, ['day' => $timestamp, 'room' => $room]);
 	}
@@ -88,18 +80,13 @@ class DayController extends ActionController {
 
 		// booking in the past, do not allow to remove
 		if ($now->getDateTime() > $hour->getDateTime()) {
-			throw new \Exception('already booked by another user');
-			// flashMessage();
+			$this->addFlashMessage('bookings in the past cannot be removed', \TYPO3\CMS\Core\Messaging\FlashMessage::ERROR);
+		} else if ($booking = $this->bookingRepository->findByUserAndRoomAndTime($GLOBALS['TSFE']->fe_user->user['uid'], $room, $hour->getDateTime())->getFirst()) {
+			$this->addFlashMessage('booking successfully removed');
+			$this->bookingRepository->remove($booking);
+		} else {
+			$this->addFlashMessage('no booking to remove', \TYPO3\CMS\Core\Messaging\FlashMessage::ERROR);
 		}
-
-		$booking = $this->bookingRepository->findByUserAndRoomAndTime($GLOBALS['TSFE']->fe_user->user['uid'], $room, $hour->getDateTime())->getFirst();
-
-		if (!$booking) {
-			throw new \Exception('no booking to remoe');
-			// flashMessage();
-		}
-
-		$this->bookingRepository->remove($booking);
 
 		$this->redirect('show', 'Day', null, ['day' => $timestamp, 'room' => $room]);
 	}
