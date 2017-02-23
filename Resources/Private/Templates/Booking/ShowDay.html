@@ -6,32 +6,33 @@
         <div class="date left">
             <!-- previous day -->
             <f:if condition="{previousDay}">
-                <f:link.action controller="Day" action="show" arguments="{day: previousDay, room: Room}"><i
+                <f:link.action action="showDay" arguments="{day: previousDay, room: Room}"><i
                         class="fa fa-chevron-left"
                         aria-hidden="true"></i>
                 </f:link.action>
             </f:if>
-            <span id="bookingeIDWorking"><ubl:date format="l, d.m.Y" object="{Room.day}"/></span>
+            <span id="bookingeIDWorking">
+                <f:translate key="{ubl:date(format:'l',object:Room.day)}">[weekDays]</f:translate>, <ubl:date format="d.m.Y" object="{Room.day}"/></span>
             <!-- next day -->
             <f:if condition="{nextDay}">
-                <f:link.action controller="Day" action="show" arguments="{day: nextDay, room: Room}"
+                <f:link.action action="showDay" arguments="{day: nextDay, room: Room}"
                                class="display: inline"><i
                         class="fa fa-chevron-right" aria-hidden="true"></i></f:link.action>
             </f:if>
         </div>
         <!-- week view -->
         <div class="right">
-            <f:link.action class="button transparent backToWeekView" controller="Week" action="show"
-                           arguments="{week: Room.day.timestamp}">Zurück zur Wochenansicht
+            <f:link.action class="button transparent backToWeekView" action="showWeek"
+                           arguments="{week: Room.day.timestamp}"><f:translate key="backToWeekView">[backToWeekView]</f:translate>
             </f:link.action>
         </div>
         <table class="bookingForm ">
             <thead>
             <tr class="titles">
-                <td>Uhrzeit</td>
-                <td>Kommentar</td>
-                <td>Buchen</td>
-                <td>Löschen</td>
+                <td><f:translate key="time">[time]</f:translate></td>
+                <td><f:translate key="comment">[comment]</f:translate></td>
+                <td><f:translate key="reserve">[reserve]</f:translate></td>
+                <td><f:translate key="remove">[remove]</f:translate></td>
             </tr>
             </thead>
             <tbody>
@@ -45,8 +46,7 @@
                         <f:case value="available">
                             <ubl:bookable room="{Room}" hour="{Hour}">
                                 <f:then>
-                                    <f:form action="addBooking" controller="Day"
-                                            arguments="{timestamp: Hour.timestamp, room: Room}">
+                                    <f:form action="add" arguments="{timestamp: Hour.timestamp, room: Room}">
                                         <td><f:form.textfield name="comment" class="memo"></f:form.textfield></td>
                                         <td><button type="submit"><i class="fa fa-check" aria-hidden="true"></i></button>
                                         </td>
@@ -66,8 +66,7 @@
                             <td></td>
                             <td>
                                 <ubl:bookable room="{Room}" hour="{Hour}">
-                                    <f:link.action title="{ubl:date(format:'H:i', object: Hour)}" action="removeBooking"
-                                                   controller="Day" arguments="{timestamp: Hour.timestamp, room: Room}"><i
+                                    <f:link.action title="{ubl:date(format:'H:i', object: Hour)}" action="remove" arguments="{timestamp: Hour.timestamp, room: Room}"><i
                                             class="fa fa-times" aria-hidden="true"></i></f:link.action>
                                 </ubl:bookable>
                             </td>
@@ -92,8 +91,7 @@
             </tbody>
         </table>
         <div class="right">
-            <f:link.action class="button transparent backToWeekView" controller="Week" action="show"
-                           arguments="{week: Room.day.timestamp}">Zurück zur Wochenansicht
+            <f:link.action class="button transparent backToWeekView" action="showWeek" arguments="{week: Room.day.timestamp}">Zurück zur Wochenansicht
             </f:link.action>
         </div>
     </div>

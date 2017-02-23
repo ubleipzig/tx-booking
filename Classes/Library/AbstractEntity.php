@@ -9,7 +9,7 @@ abstract class AbstractEntity extends \TYPO3\CMS\Extbase\DomainObject\AbstractEn
 	 *
 	 * @var array
 	 */
-	protected $settings;
+	protected $settingsHelper;
 
 	/**
 	 * magic method covers all setters and getters

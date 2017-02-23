@@ -3,179 +3,169 @@
   <file source-language="en" datatype="plaintext" original="messages" date="2013-12-16T14:54:51Z" product-name="ubleipzigbooking">
     <header/>
     <body>
-      <trans-unit id="noFeUser">
-        <source>For this extension a logged in fe user is required!</source>
-      </trans-unit>
-      <trans-unit id="WeekNo">
-        <source>Week</source>
-      </trans-unit>
-      <trans-unit id="Jan">
-        <source>January</source>
-      </trans-unit>
-      <trans-unit id="Feb">
-        <source>February</source>
-      </trans-unit>
-      <trans-unit id="Mar">
-        <source>March</source>
-      </trans-unit>
-      <trans-unit id="Apr">
-        <source>April</source>
-      </trans-unit>
-      <trans-unit id="May">
-        <source>May</source>
-      </trans-unit>
-      <trans-unit id="Jun">
-        <source>June</source>
-      </trans-unit>
-      <trans-unit id="Jul">
-        <source>July</source>
-      </trans-unit>
-      <trans-unit id="Aug">
-        <source>August</source>
-      </trans-unit>
-      <trans-unit id="Sep">
-        <source>September</source>
-      </trans-unit>
-      <trans-unit id="Oct">
-        <source>October</source>
-      </trans-unit>
-      <trans-unit id="Nov">
-        <source>November</source>
-      </trans-unit>
-      <trans-unit id="Dec">
-        <source>December</source>
-      </trans-unit>
-      <trans-unit id="Sat">
-        <source>S</source>
-      </trans-unit>
-      <trans-unit id="Sun">
-        <source>S</source>
-      </trans-unit>
-      <trans-unit id="Mon">
-        <source>M</source>
-      </trans-unit>
-      <trans-unit id="Tue">
-        <source>T</source>
-      </trans-unit>
-      <trans-unit id="Wed">
-        <source>W</source>
-      </trans-unit>
-      <trans-unit id="Thu">
-        <source>T</source>
-      </trans-unit>
-      <trans-unit id="Fri">
-        <source>F</source>
-      </trans-unit>
-      <trans-unit id="Sat2">
-        <source>Sa</source>
-      </trans-unit>
-      <trans-unit id="Sun2">
-        <source>Su</source>
-      </trans-unit>
-      <trans-unit id="Mon2">
-        <source>Mo</source>
-      </trans-unit>
-      <trans-unit id="Tue2">
-        <source>Tu</source>
-      </trans-unit>
-      <trans-unit id="Wed2">
-        <source>We</source>
-      </trans-unit>
-      <trans-unit id="Thu2">
-        <source>Th</source>
-      </trans-unit>
-      <trans-unit id="Fri2">
-        <source>Fr</source>
-      </trans-unit>
-      <trans-unit id="Saturday">
-        <source>Saturday</source>
-      </trans-unit>
-      <trans-unit id="Sunday">
-        <source>Sunday</source>
-      </trans-unit>
-      <trans-unit id="Monday">
-        <source>Monday</source>
-      </trans-unit>
-      <trans-unit id="Tuesday">
-        <source>Tuesday</source>
-      </trans-unit>
-      <trans-unit id="Wednesday">
-        <source>Wednesday</source>
-      </trans-unit>
-      <trans-unit id="Thursday">
-        <source>Thursday</source>
-      </trans-unit>
-      <trans-unit id="Friday">
-        <source>Friday</source>
-      </trans-unit>
-      <trans-unit id="time">
-        <source>Time</source>
-      </trans-unit>
-      <trans-unit id="feUserName">
-        <source>Name</source>
-      </trans-unit>
-      <trans-unit id="partnerWanted">
-        <source>Want partner</source>
-      </trans-unit>
-      <trans-unit id="notAvailable">
-        <source>No free hours</source>
-      </trans-unit>
-      <trans-unit id="someAvailable">
-        <source>Some free hours</source>
-      </trans-unit>
-      <trans-unit id="available">
-        <source>Free</source>
-      </trans-unit>
-      <trans-unit id="memo">
-        <source>Memo</source>
-      </trans-unit>
-      <trans-unit id="book">
-        <source>Book</source>
-      </trans-unit>
-      <trans-unit id="delete">
-        <source>Delete</source>
-      </trans-unit>
-      <trans-unit id="dutyHours" approved="yes">
-        <source>bookable</source>
-      </trans-unit>
-      <trans-unit id="calendarWeek">
-        <source>Calendar week</source>
-      </trans-unit>
-      <trans-unit id="offDutyHour">
+      <trans-unit id="off" approved="yes">
         <source>Off duty</source>
       </trans-unit>
-      <trans-unit id="offDutyTime">
-        <source>Off duty time</source>
+      <trans-unit id="foreignBooked" approved="yes">
+        <source>Foreign booked</source>
       </trans-unit>
-      <trans-unit id="availableHour">
-        <source>Available hour</source>
+      <trans-unit id="ownBooked" approved="yes">
+        <source>Own booked</source>
       </trans-unit>
-      <trans-unit id="bookedHour">
-        <source>Foreign booked hour</source>
+      <trans-unit id="free" approved="yes">
+        <source>Available</source>
       </trans-unit>
-      <trans-unit id="ownBookedHour">
-        <source>Own booked hour</source>
-      </trans-unit>
-      <trans-unit id="backToWeekView">
-        <source>Back to weekview</source>
-      </trans-unit>
-      <trans-unit id="backToMonthView">
-        <source>Back to monthview</source>
-      </trans-unit>
-      <trans-unit id="maxBookingsPerDay">
-        <source>Max. bookings per day reached!</source>
-      </trans-unit>
-      <trans-unit id="close">
-        <source>Close</source>
-      </trans-unit>
-      <trans-unit id="nextweek" approved="yes">
+
+      <trans-unit id="nextWeek" approved="yes">
         <source>next week</source>
       </trans-unit>
-      <trans-unit id="previousweek" approved="yes">
+      <trans-unit id="previousWeek" approved="yes">
         <source>previous week</source>
       </trans-unit>
-      <trans-unit id="previousweek" approved="yes">
-        <source>previous week</source>
+
+      <trans-unit id="Mon" approved="yes">
+        <source>Mo</source>
+      </trans-unit>
+      <trans-unit id="Tue" approved="yes">
+        <source>Tu</source>
+      </trans-unit>
+      <trans-unit id="Wed" approved="yes">
+        <source>We</source>
+      </trans-unit>
+      <trans-unit id="Thu" approved="yes">
+        <source>Th</source>
+      </trans-unit>
+      <trans-unit id="Fri" approved="yes">
+        <source>Fr</source>
+      </trans-unit>
+      <trans-unit id="Sat" approved="yes">
+        <source>Sa</source>
+      </trans-unit>
+      <trans-unit id="Sun" approved="yes">
+        <source>Su</source>
+      </trans-unit>
+      <trans-unit id="Monday" approved="yes">
+        <source>Monday</source>
+      </trans-unit>
+      <trans-unit id="Tuesday" approved="yes">
+        <source>Tuesday</source>
+      </trans-unit>
+      <trans-unit id="Wednesday" approved="yes">
+        <source>Wednesday</source>
+      </trans-unit>
+      <trans-unit id="Thursday" approved="yes">
+        <source>Thursday</source>
+      </trans-unit>
+      <trans-unit id="Friday" approved="yes">
+        <source>Friday</source>
+      </trans-unit>
+      <trans-unit id="Saturday" approved="yes">
+        <source>Saturday</source>
+      </trans-unit>
+      <trans-unit id="Sunday" approved="yes">
+        <source>Sunday</source>
+      </trans-unit>
+
+      <trans-unit id="flashmessage.Booking.successfullyBooked.title" approved="yes">
+        <source>OK</source>
+      </trans-unit>
+
+      <trans-unit id="flashmessage.Booking.successfullyBooked" approved="yes">
+        <source>Booking successfully reserved</source>
+      </trans-unit>
+
+      <trans-unit id="flashmessage.Booking.bookingSuccessfullyRemoved.title" approved="yes">
+        <source>OK</source>
+      </trans-unit>
+
+      <trans-unit id="flashmessage.Booking.bookingSuccessfullyRemoved" approved="yes">
+        <source>Booking successfully removed</source>
+      </trans-unit>
+
+      <trans-unit id="flashmessage.Booking.noBookingToRemove.title" approved="yes">
+        <source>Error</source>
+      </trans-unit>
+
+      <trans-unit id="flashmessage.Booking.noBookingToRemove" approved="yes">
+        <source>Booking to remove not found</source>
+      </trans-unit>
+
+      <trans-unit id="flashmessage.Booking.alreadyBookedInOtherRoom.title" approved="yes">
+        <source>Error</source>
+      </trans-unit>
+
+      <trans-unit id="flashmessage.Booking.alreadyBookedInOtherRoom" approved="yes">
+        <source>this time i already booked by you</source>
+      </trans-unit>
+
+      <trans-unit id="flashmessage.Booking.maxBookingsReached.title" approved="yes">
+        <source>Error</source>
+      </trans-unit>
+
+      <trans-unit id="flashmessage.Booking.maxBookingsReached" approved="yes">
+        <source>you reached the max Bookings for the day</source>
+      </trans-unit>
+
+      <trans-unit id="Jan" approved="yes">
+        <source>January</source>
+      </trans-unit>
+      <trans-unit id="Feb" approved="yes">
+        <source>February</source>
+      </trans-unit>
+      <trans-unit id="Mar" approved="yes">
+        <source>March</source>
+      </trans-unit>
+      <trans-unit id="Apr" approved="yes">
+        <source>April</source>
+      </trans-unit>
+      <trans-unit id="May" approved="yes">
+        <source>May</source>
+      </trans-unit>
+      <trans-unit id="Jun" approved="yes">
+        <source>June</source>
+      </trans-unit>
+      <trans-unit id="Jul" approved="yes">
+        <source>July</source>
+      </trans-unit>
+      <trans-unit id="Aug" approved="yes">
+        <source>August</source>
+      </trans-unit>
+      <trans-unit id="Sep" approved="yes">
+        <source>September</source>
+      </trans-unit>
+      <trans-unit id="Oct" approved="yes">
+        <source>October</source>
+      </trans-unit>
+      <trans-unit id="Nov" approved="yes">
+        <source>November</source>
+      </trans-unit>
+      <trans-unit id="Dec" approved="yes">
+        <source>December</source>
+      </trans-unit>
+
+      <trans-unit id="backToWeekView" approved="yes">
+        <source>Back to weekview</source>
+      </trans-unit>
+
+      <trans-unit id="time" approved="yes">
+        <source>Time</source>
+      </trans-unit>
+      <trans-unit id="comment" approved="yes">
+        <source>Comment</source>
+      </trans-unit>
+      <trans-unit id="reserve" approved="yes">
+        <source>Book</source>
+      </trans-unit>
+      <trans-unit id="remove" approved="yes">
+        <source>Remove</source>
+      </trans-unit>
+
+      <trans-unit id="calendarWeek" approved="yes">
+        <source>Calendar week</source>
+      </trans-unit>
+
+      <trans-unit id="tx_ubleipzigbooking_domain_model_closingday.title">
+        <source></source>
       </trans-unit>
     </body>
   </file>

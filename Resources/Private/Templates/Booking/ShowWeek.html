@@ -3,28 +3,26 @@
 <f:section name="main">
     <f:for each="{Rooms}" as="Room">
         <div class="calendarWeek">
-            <div class="roomDescription">{Room.name} was:objectName => now:roomDescription</div>
+            <div class="roomDescription">{Room.name}</div>
             <div class="legend">
-                <span class="offDutyHour"><f:translate key="off">Off duty</f:translate></span>
-                <span class="bookedHour"><f:translate key="foreignbooked">Foreign booked hour</f:translate></span>
-                <span class="ownBookedHour"><f:translate key="ownbooked">Own booked hour</f:translate></span>
-                <span class="availableHour"><f:translate key="free">Free</f:translate></span>
+                <span class="offDutyHour"><f:translate key="off">[off]</f:translate></span>
+                <span class="bookedHour"><f:translate key="foreignBooked">[foreignbooked]</f:translate></span>
+                <span class="ownBookedHour"><f:translate key="ownBooked">[ownBooked]</f:translate></span>
+                <span class="availableHour"><f:translate key="free">[free]</f:translate></span>
             </div>
 
             <div class="weekNavigation">
                 <f:if condition="{previousWeek}">
-                    <f:link.action title="{f:translate(key:'previousweek')}" class="transparent tiny" action="show"
-                                   controller="Week" arguments="{week: previousWeek}">
+                    <f:link.action title="{f:translate(key:'previousWeek')}" class="transparent tiny" action="showWeek" arguments="{week: previousWeek}">
                         <i class="fa fa-chevron-left" aria-hidden="true"></i>
                     </f:link.action>
                 </f:if>
                 <span class="calendarWeek">
-                    <f:translate key="calendarweek">Calendarweek</f:translate>
+                    <f:translate key="calendarWeek">[calendarWeek]</f:translate>
                     <ubl:date format="W/Y" object="{Room.week}"/>
                 </span>
                 <f:if condition="{nextWeek}">
-                    <f:link.action class="transparent tiny" action="show" controller="Week"
-                                   arguments="{week: nextWeek}">
+                    <f:link.action title="{f:translate(key:'nextWeek')}" class="transparent tiny" action="showWeek" arguments="{week: nextWeek}">
                         <i class="fa fa-chevron-right" aria-hidden="true"></i>
                     </f:link.action>
                 </f:if>
@@ -33,12 +31,11 @@
                 <f:for each="{Room.week}" as="Day" iteration="iterator">
                     <div class="weekViewDay small-1 columns {f:if(condition:iterator.isLast, then: 'end')}">
                         <div class="tableheader{f:if(condition:'{Day.dateTime} < {Today.dateTime}', then:' past')}">
-                            <ubl:date format="D d.m." object="{Day}"/>
+                            <f:translate key="{ubl:date(format:'D',object:Day)}">[WeekDay]</f:translate> <ubl:date format="d.m." object="{Day}"/>
                         </div>
                         <ubl:bookable room="{Room}" day="{Day}">
                             <f:then>
-                                <f:link.action name="{Day.title}" title="{Day.title}" action="show" controller="Day"
-                                               arguments="{day: Day.timestamp, room: Room}">
+                                <f:link.action name="{Day.title}" title="{Day.title}" action="showDay" arguments="{day: Day.timestamp, room: Room}">
                                     <f:for each="{Day}" as="Hour">
                                         <div class="row {ubl:getHourOccupationClass(room: Room, hour: Hour)}{f:if(condition:'{Hour.dateTime} < {Now}', then:' past')}">
                                             <ubl:date format="H" object="{Hour}"/> &ndash;

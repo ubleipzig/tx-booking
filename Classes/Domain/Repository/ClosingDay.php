@@ -19,9 +19,7 @@ class ClosingDay extends Repository {
 		]);
 		$query->matching($where);
 
-		$result = $query->execute();
-
-		return $this->reduceResult($result, $query->getQuerySettings()->getStoragePageIds())[0];
+		return $query->execute();
 	}
 
 	public function findByRoomAndDay(Room $room, \DateTimeInterface $day) {
@@ -33,22 +31,6 @@ class ClosingDay extends Repository {
 
 		$query->matching($query->equals('date', $day->getTimestamp()));
 
-		$result = $query->execute();
-
-		return $this->reduceResult($result, $query->getQuerySettings()->getStoragePageIds())[0];
-	}
-
-	protected function reduceResult($result, $storagePids) {
-		$dutyHours = [];
-
-		foreach ($storagePids as $pid) {
-			foreach ($result as $dset) {
-				$weekDay = $dset->getWeekDay();
-				if ($dset->getPid() !== $pid || $dutyHours[$weekDay]) continue;
-				$dutyHours[$weekDay] = $dset;
-			}
-		}
-
-		return $dutyHours;
+		return $query->execute()->getFirst();
 	}
 }

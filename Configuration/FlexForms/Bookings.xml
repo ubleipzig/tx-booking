@@ -23,26 +23,22 @@
               </config>
             </TCEforms>
           </settings.maxBookingsPerDay>
-          <setings.limitPreviewToDays>
+          <settings.limitBookingToWeeks>
             <TCEforms>
-              <label>LLL:EXT:ubleipzigbooking/locallang_tca.php:ubleipzigbooking.pi_flexform.limitPreviewToDays.label</label>
-              <config>
-                <type>input</type>
-                <default>14</default>
-                <eval>int</eval>
-                <size>2</size>
-                <max>2</max>
-              </config>
-            </TCEforms>
-          </setings.limitPreviewToDays>
-          <settings.limitBookingToDays>
-            <TCEforms>
-              <label>LLL:EXT:ubleipzigbooking/locallang_tca.php:ubleipzigbooking.pi_flexform.limitBookingToDays.label</label>
+              <label>LLL:EXT:ubleipzigbooking/locallang_tca.php:ubleipzigbooking.pi_flexform.limitBookingToWeeks.label</label>
               <config>
                 <type>input</type>
               </config>
             </TCEforms>
-          </settings.limitBookingToDays>
+          </settings.limitBookingToWeeks>
+          <settings.limitBacklogToWeeks>
+            <TCEforms>
+              <label>LLL:EXT:ubleipzigbooking/locallang_tca.php:ubleipzigbooking.pi_flexform.limitBacklogToWeeks.label</label>
+              <config>
+                <type>input</type>
+              </config>
+            </TCEforms>
+          </settings.limitBacklogToWeeks>
           <settings.admins>
             <TCEforms>
               <label>LLL:EXT:ubleipzigbooking/locallang_tca.php:ubleipzigbooking.pi_flexform.admins.label</label>

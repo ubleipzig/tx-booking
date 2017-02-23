@@ -218,15 +218,11 @@ class Room extends AbstractEntity {
 
 		if ($booking = $this->findBooking($hour)) {
 			if ($booking->getUser() === $GLOBALS['TSFE']->fe_user->user['uid']) return self::OWNBOOKED;
-			if ($this->isAdmin($booking->getUser())) return self::OFFDUTY;
+			if ($this->settingsHelper->isAdmin($booking->getUser())) return self::OFFDUTY;
 			return self::FOREIGNBOOKED;
 		};
 
 		return self::AVAILABLE;
-	}
-
-	public function isAdmin($userId) {
-		return isset($this->settings['admins']) ? in_array($userId, explode(',', $this->settings['admins'])) : false;
 	}
 
 	public function findBooking(Hour $hour) {

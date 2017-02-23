@@ -21,8 +21,8 @@ $GLOBALS['TYPO3_CONF_VARS']['FE']['eID_include']['tx_ubleipzigbooking_eID'] = 'E
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
 	'LeipzigUniversityLibrary.' . $_EXTKEY,
 	'Bookings',
-	array('Week' => 'show', 'Day' => 'show, addBooking, removeBooking'),
-	array('Week' => 'show', 'Day' => 'show, addBooking, removeBooking')
+	array('Booking' => 'showWeek, showDay, add, remove'),
+	array('Booking' => 'showWeek, showDay, add, remove')
 );
 
 // always load TypoScript configuration

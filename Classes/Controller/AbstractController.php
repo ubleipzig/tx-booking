@@ -24,11 +24,17 @@ namespace LeipzigUniversityLibrary\ubleipzigbooking\Controller;
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
+use LeipzigUniversityLibrary\ubleipzigbooking\Library\SettingsHelper;
 
 /**
  * Abstract base controller for the ExtbaseTeam\BlogExample extension
  */
 abstract class AbstractController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
+
+	/**
+	 * @var \LeipzigUniversityLibrary\ubleipzigbooking\Library\SetingsHelper
+	 */
+	protected $settingsHelper;
 
 	/**
 	 * Override getErrorFlashMessage to present
@@ -65,10 +71,14 @@ abstract class AbstractController extends \TYPO3\CMS\Extbase\Mvc\Controller\Acti
 	 * @return string
 	 */
 	protected function translate($key, $defaultMessage = '') {
-		$message = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate($key, 'BlogExample');
+		$message = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate($key, 'ubleipzigbooking');
 		if ($message === NULL) {
 			$message = $defaultMessage;
 		}
 		return $message;
+	}
+
+	public function initializeAction() {
+		$this->settingsHelper = new SettingsHelper($this->settings);
 	}
 }

@@ -49,7 +49,7 @@ $TCA["tx_ubleipzigbooking"] = array(
 
 $TCA["tx_ubleipzigbooking_domain_model_closingday"] = array(
 	'ctrl' => array(
-		'title'         => 'LLL:EXT:' . $_EXTKEY . '/Resources/Private/Language/locallang_db.xml:tx_ubleipzigbooking_domain_model_closingday',
+		'title'         => 'LLL:EXT:' . $_EXTKEY . '/Resources/Private/Language/locallang.xlf:tx_ubleipzigbooking_domain_model_closingday.title',
 		'label'         => 'name',
 		'tstamp' => 'tstamp',
 		'crdate' => 'crdate',
@@ -94,6 +94,11 @@ $TCA['tt_content']['types']['list']['subtypes_addlist'][$pluginSignature] = 'pi_
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue(
 	$pluginSignature,
 	'FILE:EXT:' . $_EXTKEY . '/Configuration/FlexForms/Bookings.xml'
+);
+
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr(
+	'tt_content.pi_flexform.' . $pluginSignature . '.list',
+	'EXT:' . $_EXTKEY . '/Resources/Private/Language/locallang_csh_flexform.xlf'
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
