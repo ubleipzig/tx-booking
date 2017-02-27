@@ -4,7 +4,7 @@ if (!defined('TYPO3_MODE')) die('Access denied.');
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToInsertRecords('tx_ublbooking_domain_model_room');
 $TCA["tx_ublbooking_domain_model_room"] = array(
 	"ctrl" => array(
-		'title' => 'LLL:EXT:ublbooking/Resources/Private/Language/locallang.xlf:tca.tx_ublbooking_domain_model_room',
+		'title' => 'LLL:EXT:ubl_booking/Resources/Private/Language/locallang.xlf:tca.tx_ublbooking_domain_model_room',
 		'label' => 'name',
 		'tstamp' => 'tstamp',
 		'crdate' => 'crdate',
@@ -25,7 +25,7 @@ $TCA["tx_ublbooking_domain_model_room"] = array(
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToInsertRecords('tx_ublbooking_domain_model_booking');
 $TCA["tx_ublbooking_domain_model_booking"] = array(
 	"ctrl" => array(
-		'title' => 'LLL:EXT:ublbooking/Resources/Private/Language/locallang.xlf:tca.tx_ublbooking_domain_model_booking',
+		'title' => 'LLL:EXT:ubl_booking/Resources/Private/Language/locallang.xlf:tca.tx_ublbooking_domain_model_booking',
 		'label' => 'time',
 		'label_alt' => 'fe_user',
 		'label_alt_force' => 'true',
@@ -48,7 +48,7 @@ $TCA["tx_ublbooking_domain_model_booking"] = array(
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToInsertRecords('tx_ublbooking_domain_model_closingday');
 $TCA["tx_ublbooking_domain_model_closingday"] = array(
 	'ctrl' => array(
-		'title' => 'LLL:EXT:ublbooking/Resources/Private/Language/locallang.xlf:tca.tx_ublbooking_domain_model_closingday',
+		'title' => 'LLL:EXT:ubl_booking/Resources/Private/Language/locallang.xlf:tca.tx_ublbooking_domain_model_closingday',
 		'label' => 'name',
 		'tstamp' => 'tstamp',
 		'crdate' => 'crdate',
@@ -69,9 +69,9 @@ $TCA["tx_ublbooking_domain_model_closingday"] = array(
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToInsertRecords('tx_ublbooking_domain_model_openinghours');
 $TCA["tx_ublbooking_domain_model_openinghours"] = array(
 	'ctrl' => array(
-		'title' => 'LLL:EXT:ublbooking/Resources/Private/Language/locallang.xlf:tca.tx_ublbooking_domain_model_openinghours',
+		'title' => 'LLL:EXT:ubl_booking/Resources/Private/Language/locallang.xlf:tca.tx_ublbooking_domain_model_openinghours',
 		'label' => 'week_day',
-		'label_userFunc' => '\LeipzigUniversityLibrary\Ublbooking\Library\Tca->getDayTitle',
+		'label_userFunc' => '\LeipzigUniversityLibrary\UblBooking\Library\Tca->getDayTitle',
 		'tstamp' => 'tstamp',
 		'crdate' => 'crdate',
 		'cruser_id' => 'cruser_id',

@@ -1,5 +1,5 @@
 <?php
-namespace LeipzigUniversityLibrary\Ublbooking\Domain\Repository;
+namespace LeipzigUniversityLibrary\UblBooking\Domain\Repository;
 
 use \TYPO3\CMS\Extbase\Persistence\Repository;
 

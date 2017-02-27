@@ -1,11 +1,11 @@
 <?php
 
-namespace LeipzigUniversityLibrary\Ublbooking\Library;
+namespace LeipzigUniversityLibrary\UblBooking\Library;
 
 class Tca {
 
 	/**
-	 * @var \LeipzigUniversityLibrary\Ublbooking\Domain\Repository\OpeningHours
+	 * @var \LeipzigUniversityLibrary\UblBooking\Domain\Repository\OpeningHours
 	 * @inject
 	 */
 	protected $openingHoursRepository;
@@ -13,7 +13,7 @@ class Tca {
 	public function getDays($config) {
 		$objectManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('\TYPO3\CMS\Extbase\Object\ObjectManager');
 		$querySettings = $objectManager->get('TYPO3\\CMS\\Extbase\\Persistence\\Generic\\Typo3QuerySettings');
-		$openingHoursRepository = $objectManager->get('\LeipzigUniversityLibrary\Ublbooking\Domain\Repository\OpeningHours');
+		$openingHoursRepository = $objectManager->get('\LeipzigUniversityLibrary\UblBooking\Domain\Repository\OpeningHours');
 
 		// workaround, see https://forge.typo3.org/issues/50551
 		$pageUid = $this->normalizePageUid($config['row']['pid']);

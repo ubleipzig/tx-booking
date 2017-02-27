@@ -1,8 +1,8 @@
 <?php
-namespace LeipzigUniversityLibrary\Ublbooking\Domain\Repository;
+namespace LeipzigUniversityLibrary\UblBooking\Domain\Repository;
 
 use \TYPO3\CMS\Extbase\Persistence\Repository;
-use LeipzigUniversityLibrary\Ublbooking\Domain\Model\Room;
+use LeipzigUniversityLibrary\UblBooking\Domain\Model\Room;
 
 class ClosingDay extends Repository {
 

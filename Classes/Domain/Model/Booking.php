@@ -1,8 +1,8 @@
 <?php
 
-namespace LeipzigUniversityLibrary\Ublbooking\Domain\Model;
+namespace LeipzigUniversityLibrary\UblBooking\Domain\Model;
 
-use \LeipzigUniversityLibrary\Ublbooking\Library\AbstractEntity;
+use \LeipzigUniversityLibrary\UblBooking\Library\AbstractEntity;
 
 class Booking extends AbstractEntity {
 
@@ -15,7 +15,7 @@ class Booking extends AbstractEntity {
 
 	/**
 	 *
-	 * @var \LeipzigUniversityLibrary\Ublbooking\Domain\Model\Room
+	 * @var \LeipzigUniversityLibrary\UblBooking\Domain\Model\Room
 	 */
 	protected $room;
 

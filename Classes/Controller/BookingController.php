@@ -1,23 +1,23 @@
 <?php
-namespace LeipzigUniversityLibrary\Ublbooking\Controller;
+namespace LeipzigUniversityLibrary\UblBooking\Controller;
 
-use \LeipzigUniversityLibrary\Ublbooking\Library\Week;
-use \LeipzigUniversityLibrary\Ublbooking\Library\Day;
-use \LeipzigUniversityLibrary\Ublbooking\Library\Hour;
-use \LeipzigUniversityLibrary\Ublbooking\Domain\Model\Booking;
+use \LeipzigUniversityLibrary\UblBooking\Library\Week;
+use \LeipzigUniversityLibrary\UblBooking\Library\Day;
+use \LeipzigUniversityLibrary\UblBooking\Library\Hour;
+use \LeipzigUniversityLibrary\UblBooking\Domain\Model\Booking;
 
 class BookingController extends AbstractController {
 
 	/**
 	 * $roomRepository
 	 *
-	 * @var \LeipzigUniversityLibrary\Ublbooking\Domain\Repository\Booking
+	 * @var \LeipzigUniversityLibrary\UblBooking\Domain\Repository\Booking
 	 * @inject
 	 */
 	protected $bookingRepository;
 
 	/**
-	 * @var \LeipzigUniversityLibrary\Ublbooking\Domain\Repository\Room
+	 * @var \LeipzigUniversityLibrary\UblBooking\Domain\Repository\Room
 	 * @inject
 	 */
 	protected $roomRepository;
@@ -30,7 +30,7 @@ class BookingController extends AbstractController {
 
 	/**
 	 * @param integer $timestamp
-	 * @param \LeipzigUniversityLibrary\Ublbooking\Domain\Model\Room $room
+	 * @param \LeipzigUniversityLibrary\UblBooking\Domain\Model\Room $room
 	 */
 	public function showDayAction($timestamp, $room) {
 		$today = new Day();
@@ -73,7 +73,7 @@ class BookingController extends AbstractController {
 	/**
 	 * adds a booking
 	 *
-	 * @param \LeipzigUniversityLibrary\Ublbooking\Domain\Model\Room $room
+	 * @param \LeipzigUniversityLibrary\UblBooking\Domain\Model\Room $room
 	 * @param integer $timestamp
 	 * @param string $comment
 	 */
@@ -104,7 +104,7 @@ class BookingController extends AbstractController {
 	/**
 	 * removes a booking
 	 *
-	 * @param \LeipzigUniversityLibrary\Ublbooking\Domain\Model\Room $room
+	 * @param \LeipzigUniversityLibrary\UblBooking\Domain\Model\Room $room
 	 * @param integer $timestamp
 	 */
 	public function removeAction($room, $timestamp) {

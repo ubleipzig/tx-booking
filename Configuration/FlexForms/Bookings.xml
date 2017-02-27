@@ -7,13 +7,13 @@
     <sheetDisplayMode>
       <ROOT>
         <TCEforms>
-          <sheetTitle>LLL:EXT:ublbooking/Resources/Private/Language/locallang.xlf:flexforms.sheetDisplayOptions</sheetTitle>
+          <sheetTitle>LLL:EXT:ubl_booking/Resources/Private/Language/locallang.xlf:flexforms.sheetDisplayOptions</sheetTitle>
         </TCEforms>
         <type>array</type>
         <el>
           <settings.maxBookingsPerDay>
             <TCEforms>
-              <label>LLL:EXT:ublbooking/Resources/Private/Language/locallang.xlf:flexforms.maxBookingsPerDay</label>
+              <label>LLL:EXT:ubl_booking/Resources/Private/Language/locallang.xlf:flexforms.maxBookingsPerDay</label>
               <config>
                 <type>input</type>
                 <default>5</default>
@@ -25,7 +25,7 @@
           </settings.maxBookingsPerDay>
           <settings.limitBookingToWeeks>
             <TCEforms>
-              <label>LLL:EXT:ublbooking/Resources/Private/Language/locallang.xlf:flexforms.limitBookingToWeeks</label>
+              <label>LLL:EXT:ubl_booking/Resources/Private/Language/locallang.xlf:flexforms.limitBookingToWeeks</label>
               <config>
                 <type>input</type>
               </config>
@@ -33,7 +33,7 @@
           </settings.limitBookingToWeeks>
           <settings.limitBacklogToWeeks>
             <TCEforms>
-              <label>LLL:EXT:ublbooking/Resources/Private/Language/locallang.xlf:flexforms.limitBacklogToWeeks</label>
+              <label>LLL:EXT:ubl_booking/Resources/Private/Language/locallang.xlf:flexforms.limitBacklogToWeeks</label>
               <config>
                 <type>input</type>
               </config>
@@ -41,7 +41,7 @@
           </settings.limitBacklogToWeeks>
           <settings.admins>
             <TCEforms>
-              <label>LLL:EXT:ublbooking/Resources/Private/Language/locallang.xlf:flexforms.admins</label>
+              <label>LLL:EXT:ubl_booking/Resources/Private/Language/locallang.xlf:flexforms.admins</label>
               <config>
                 <type>group</type>
                 <size>3</size>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-  <file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2013-12-16T14:54:51Z" product-name="ublbooking">
+  <file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2013-12-16T14:54:51Z" product-name="ubl_booking">
     <header/>
     <body>
       <trans-unit id="off" approved="yes">

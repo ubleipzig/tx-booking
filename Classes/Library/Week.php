@@ -1,6 +1,6 @@
 <?php
 
-namespace LeipzigUniversityLibrary\Ublbooking\Library;
+namespace LeipzigUniversityLibrary\UblBooking\Library;
 
 class Week extends DateIterator implements \Iterator, \Countable {
 

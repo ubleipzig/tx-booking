@@ -1,13 +1,13 @@
 <?php
-namespace LeipzigUniversityLibrary\Ublbooking\ViewHelpers;
+namespace LeipzigUniversityLibrary\UblBooking\ViewHelpers;
 
-use \LeipzigUniversityLibrary\Ublbooking\Domain\Model\Room;
-use \LeipzigUniversityLibrary\Ublbooking\Library\Hour;
+use \LeipzigUniversityLibrary\UblBooking\Domain\Model\Room;
+use \LeipzigUniversityLibrary\UblBooking\Library\Hour;
 
 class GetBookingCommentViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractConditionViewHelper {
 
 	/**
-	 * @param \LeipzigUniversityLibrary\Ublbooking\Domain\Model\Room $room
+	 * @param \LeipzigUniversityLibrary\UblBooking\Domain\Model\Room $room
 	 * @param \DateTimeInterface $timestamp
 	 * @return string
 	 */

@@ -1,6 +1,6 @@
 <?php
 
-namespace LeipzigUniversityLibrary\Ublbooking\Library;
+namespace LeipzigUniversityLibrary\UblBooking\Library;
 
 abstract class AbstractEntity extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 

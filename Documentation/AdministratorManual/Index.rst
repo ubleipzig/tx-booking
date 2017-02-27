@@ -57,7 +57,7 @@ templateFile
          Define the template file
 
    Default
-         typo3conf/ext/ublbooking/pi1/template.html
+         typo3conf/ext/ubl_booking/pi1/template.html
 
 
 .. _cssFile:
@@ -77,7 +77,7 @@ cssFile
          Define the css file
 
    Default
-         typo3conf/ext/ublbooking/pi1/layout.css
+         typo3conf/ext/ubl_booking/pi1/layout.css
 
 .. _enableQuarterHourBooking:
 
@@ -129,9 +129,9 @@ BookingFormHeaderHook and bookingFormDataHook.
 These hooks can be called from your extension like this:
 in your localconf.php
 // hook for booking
-$GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['ublbooking']['ublbookingFormHeaderHook'][] = 'EXT:ublbookinghooks/pi1/class.tx_ublbookinghooks_pi1.php:tx_ublbookinghooks_pi1';
+$GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['ubl_booking']['ublbookingFormHeaderHook'][] = 'EXT:ublbookinghooks/pi1/class.tx_ublbookinghooks_pi1.php:tx_ublbookinghooks_pi1';
 
-$GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['ublbooking']['ublbookingFormDataHook'][] = 'EXT:ublbookinghooks/pi1/class.tx_ublbookinghooks_pi1.php:tx_ublbookinghooks_pi1';
+$GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['ubl_booking']['ublbookingFormDataHook'][] = 'EXT:ublbookinghooks/pi1/class.tx_ublbookinghooks_pi1.php:tx_ublbookinghooks_pi1';
 And the functions
 function bookingFormDataHook(&$marks, $row, $conf, $obj) {
 ...

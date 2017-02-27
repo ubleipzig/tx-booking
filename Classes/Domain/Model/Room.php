@@ -1,26 +1,26 @@
 <?php
 
-namespace LeipzigUniversityLibrary\Ublbooking\Domain\Model;
+namespace LeipzigUniversityLibrary\UblBooking\Domain\Model;
 
-use LeipzigUniversityLibrary\Ublbooking\Domain\Repository\OpeningHours;
-use \LeipzigUniversityLibrary\Ublbooking\Library\AbstractEntity;
-use \LeipzigUniversityLibrary\Ublbooking\Library\Week;
-use \LeipzigUniversityLibrary\Ublbooking\Library\Day;
-use \LeipzigUniversityLibrary\Ublbooking\Library\Hour;
+use LeipzigUniversityLibrary\UblBooking\Domain\Repository\OpeningHours;
+use \LeipzigUniversityLibrary\UblBooking\Library\AbstractEntity;
+use \LeipzigUniversityLibrary\UblBooking\Library\Week;
+use \LeipzigUniversityLibrary\UblBooking\Library\Day;
+use \LeipzigUniversityLibrary\UblBooking\Library\Hour;
 
 class Room extends AbstractEntity {
 
 	/**
 	 * the week representation of the room
 	 *
-	 * @var \LeipzigUniversityLibrary\Ublbooking\Library\Week
+	 * @var \LeipzigUniversityLibrary\UblBooking\Library\Week
 	 */
 	protected $week;
 
 	/**
 	 * the day representation of the room
 	 *
-	 * @var \LeipzigUniversityLibrary\Ublbooking\Library\Day
+	 * @var \LeipzigUniversityLibrary\UblBooking\Library\Day
 	 */
 	protected $day;
 
@@ -83,7 +83,7 @@ class Room extends AbstractEntity {
 	/**
 	 * $closingDayRepository
 	 *
-	 * @var \LeipzigUniversityLibrary\Ublbooking\Domain\Repository\ClosingDay
+	 * @var \LeipzigUniversityLibrary\UblBooking\Domain\Repository\ClosingDay
 	 * @inject
 	 */
 	protected $closingDayRepository;
@@ -91,7 +91,7 @@ class Room extends AbstractEntity {
 	/**
 	 * $bookingRepository
 	 *
-	 * @var \LeipzigUniversityLibrary\Ublbooking\Domain\Repository\Booking
+	 * @var \LeipzigUniversityLibrary\UblBooking\Domain\Repository\Booking
 	 * @inject
 	 */
 	protected $bookingRepository;
@@ -99,7 +99,7 @@ class Room extends AbstractEntity {
 	/**
 	 * $openingHoursRepository
 	 *
-	 * @var \LeipzigUniversityLibrary\Ublbooking\Domain\Repository\OpeningHours
+	 * @var \LeipzigUniversityLibrary\UblBooking\Domain\Repository\OpeningHours
 	 * @inject
 	 */
 	protected $openingHoursRepository;
@@ -107,7 +107,7 @@ class Room extends AbstractEntity {
 	/**
 	 * a rooms bookings
 	 *
-	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\LeipzigUniversityLibrary\Ublbooking\Domain\Model\Booking>
+	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\LeipzigUniversityLibrary\UblBooking\Domain\Model\Booking>
 	 * @lazy
 	 * @cascade remove
 	 */
@@ -116,7 +116,7 @@ class Room extends AbstractEntity {
 	/**
 	 * a rooms closing days
 	 *
-	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\LeipzigUniversityLibrary\Ublbooking\Domain\Model\ClosingDay>
+	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\LeipzigUniversityLibrary\UblBooking\Domain\Model\ClosingDay>
 	 * @lazy
 	 */
 	protected $closingDays;
@@ -138,7 +138,7 @@ class Room extends AbstractEntity {
 	/**
 	 * Adds a booking
 	 *
-	 * @param \LeipzigUniversityLibrary\Ublbooking\Domain\Model\Booking $booking
+	 * @param \LeipzigUniversityLibrary\UblBooking\Domain\Model\Booking $booking
 	 * @return void
 	 */
 	public function addBooking(Booking $booking) {
@@ -148,7 +148,7 @@ class Room extends AbstractEntity {
 	/**
 	 * Removes a booking
 	 *
-	 * @param \LeipzigUniversityLibrary\Ublbooking\Domain\Model\Booking $booking
+	 * @param \LeipzigUniversityLibrary\UblBooking\Domain\Model\Booking $booking
 	 * @return void
 	 */
 	public function removeBooking(Booking $booking) {
@@ -158,7 +158,7 @@ class Room extends AbstractEntity {
 	/**
 	 * Adds a closing day
 	 *
-	 * @param \LeipzigUniversityLibrary\Ublbooking\Domain\Model\ClosingDay $closingDay
+	 * @param \LeipzigUniversityLibrary\UblBooking\Domain\Model\ClosingDay $closingDay
 	 * @return void
 	 */
 	public function addClosingDay(ClosingDay $closingDay) {
@@ -168,7 +168,7 @@ class Room extends AbstractEntity {
 	/**
 	 * Removes a closing day
 	 *
-	 * @param \LeipzigUniversityLibrary\Ublbooking\Domain\Model\ClosingDay $closingDay
+	 * @param \LeipzigUniversityLibrary\UblBooking\Domain\Model\ClosingDay $closingDay
 	 * @return void
 	 */
 	public function removeClosingDay(ClosingDay $closingDay) {
@@ -257,7 +257,7 @@ class Room extends AbstractEntity {
 	}
 
 	/**
-	 * @param \LeipzigUniversityLibrary\Ublbooking\Library\Hour $hour
+	 * @param \LeipzigUniversityLibrary\UblBooking\Library\Hour $hour
 	 * @return bool
 	 */
 	public function isHourBookable(Hour $hour) {
