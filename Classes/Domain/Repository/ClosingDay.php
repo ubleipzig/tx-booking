@@ -2,11 +2,11 @@
 namespace LeipzigUniversityLibrary\UblBooking\Domain\Repository;
 
 use \TYPO3\CMS\Extbase\Persistence\Repository;
-use LeipzigUniversityLibrary\UblBooking\Domain\Model\Room;
+use \LeipzigUniversityLibrary\UblBooking\Domain\Model\Room as RoomModel;
 
 class ClosingDay extends Repository {
 
-	public function findByRoomAndBetween(Room $room, \DateTimeInterface $startTime, \DateTimeInterface $endTime) {
+	public function findByRoomAndBetween(RoomModel $room, \DateTimeInterface $startTime, \DateTimeInterface $endTime) {
 		$query = $this->createQuery();
 
 		if (count($room->getOpeningTimesStorage()) > 0) {
@@ -22,7 +22,7 @@ class ClosingDay extends Repository {
 		return $query->execute();
 	}
 
-	public function findByRoomAndDay(Room $room, \DateTimeInterface $day) {
+	public function findByRoomAndDay(RoomModel $room, \DateTimeInterface $day) {
 		$query = $this->createQuery();
 
 		if (count($room->getOpeningTimesStorage()) > 0) {

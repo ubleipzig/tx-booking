@@ -9,7 +9,7 @@ use \LeipzigUniversityLibrary\UblBooking\Domain\Model\Booking;
 class BookingController extends AbstractController {
 
 	/**
-	 * $roomRepository
+	 * $bookingRepository
 	 *
 	 * @var \LeipzigUniversityLibrary\UblBooking\Domain\Repository\Booking
 	 * @inject

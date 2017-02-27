@@ -2,7 +2,7 @@
 namespace LeipzigUniversityLibrary\UblBooking\Domain\Repository;
 
 use \TYPO3\CMS\Extbase\Persistence\Repository;
-use LeipzigUniversityLibrary\UblBooking\Domain\Model\Room;
+use \LeipzigUniversityLibrary\UblBooking\Domain\Model\Room as RoomModel;
 
 class OpeningHours extends Repository {
 
@@ -11,7 +11,7 @@ class OpeningHours extends Repository {
 		'hours' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_DESCENDING
 	];
 
-	public function findByRoomAndDay(Room $room, \DateTimeInterface $day) {
+	public function findByRoomAndDay(RoomModel $room, \DateTimeInterface $day) {
 		$query = $this->createQuery();
 
 		if (count($room->getOpeningTimesStorage()) > 0) {
@@ -23,7 +23,7 @@ class OpeningHours extends Repository {
 		return $this->reduceResult($query->execute(), $query->getQuerySettings()->getStoragePageIds());
 	}
 
-	public function findAllByRoom(Room $room) {
+	public function findAllByRoom(RoomModel $room) {
 		$query = $this->createQuery();
 
 		if (count($room->getOpeningTimesStorage()) > 0) {

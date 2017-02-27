@@ -2,7 +2,7 @@
 
 namespace LeipzigUniversityLibrary\UblBooking\Domain\Model;
 
-use LeipzigUniversityLibrary\UblBooking\Domain\Repository\OpeningHours;
+use \LeipzigUniversityLibrary\UblBooking\Domain\Repository\OpeningHours;
 use \LeipzigUniversityLibrary\UblBooking\Library\AbstractEntity;
 use \LeipzigUniversityLibrary\UblBooking\Library\Week;
 use \LeipzigUniversityLibrary\UblBooking\Library\Day;
