@@ -7,13 +7,13 @@
     <sheetDisplayMode>
       <ROOT>
         <TCEforms>
-          <sheetTitle>LLL:EXT:ubleipzigbooking/locallang_tca.php:ubleipzigbooking.pi_flexform.sheetDisplayOptions</sheetTitle>
+          <sheetTitle>LLL:EXT:ublbooking/Resources/Private/Language/locallang.xlf:flexforms.sheetDisplayOptions</sheetTitle>
         </TCEforms>
         <type>array</type>
         <el>
           <settings.maxBookingsPerDay>
             <TCEforms>
-              <label>LLL:EXT:ubleipzigbooking/locallang_tca.php:ubleipzigbooking.pi_flexform.maxBookingsPerDay.label</label>
+              <label>LLL:EXT:ublbooking/Resources/Private/Language/locallang.xlf:flexforms.maxBookingsPerDay</label>
               <config>
                 <type>input</type>
                 <default>5</default>
@@ -25,7 +25,7 @@
           </settings.maxBookingsPerDay>
           <settings.limitBookingToWeeks>
             <TCEforms>
-              <label>LLL:EXT:ubleipzigbooking/locallang_tca.php:ubleipzigbooking.pi_flexform.limitBookingToWeeks.label</label>
+              <label>LLL:EXT:ublbooking/Resources/Private/Language/locallang.xlf:flexforms.limitBookingToWeeks</label>
               <config>
                 <type>input</type>
               </config>
@@ -33,7 +33,7 @@
           </settings.limitBookingToWeeks>
           <settings.limitBacklogToWeeks>
             <TCEforms>
-              <label>LLL:EXT:ubleipzigbooking/locallang_tca.php:ubleipzigbooking.pi_flexform.limitBacklogToWeeks.label</label>
+              <label>LLL:EXT:ublbooking/Resources/Private/Language/locallang.xlf:flexforms.limitBacklogToWeeks</label>
               <config>
                 <type>input</type>
               </config>
@@ -41,7 +41,7 @@
           </settings.limitBacklogToWeeks>
           <settings.admins>
             <TCEforms>
-              <label>LLL:EXT:ubleipzigbooking/locallang_tca.php:ubleipzigbooking.pi_flexform.admins.label</label>
+              <label>LLL:EXT:ublbooking/Resources/Private/Language/locallang.xlf:flexforms.admins</label>
               <config>
                 <type>group</type>
                 <size>3</size>

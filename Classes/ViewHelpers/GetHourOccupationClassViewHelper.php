@@ -1,14 +1,14 @@
 <?php
-namespace LeipzigUniversityLibrary\ubleipzigbooking\ViewHelpers;
+namespace LeipzigUniversityLibrary\Ublbooking\ViewHelpers;
 
-use \LeipzigUniversityLibrary\ubleipzigbooking\Domain\Model\Room;
-use \LeipzigUniversityLibrary\ubleipzigbooking\Library\Hour;
+use \LeipzigUniversityLibrary\Ublbooking\Domain\Model\Room;
+use \LeipzigUniversityLibrary\Ublbooking\Library\Hour;
 
 class GetHourOccupationClassViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractConditionViewHelper {
 
 	/**
-	 * @param \LeipzigUniversityLibrary\ubleipzigbooking\Domain\Model\Room $room
-	 * @param \LeipzigUniversityLibrary\ubleipzigbooking\Library\Hour $hour
+	 * @param \LeipzigUniversityLibrary\Ublbooking\Domain\Model\Room $room
+	 * @param \LeipzigUniversityLibrary\Ublbooking\Library\Hour $hour
 	 * @return string
 	 */
 	public function render(Room $room, Hour $hour) {
@@ -16,7 +16,7 @@ class GetHourOccupationClassViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\
 			case Room::OFFDUTY:
 				return 'offDutyTimeHours';
 			case Room::AVAILABLE:
-				return 'dutyHours';
+				return 'openingHours';
 			case Room::FOREIGNBOOKED:
 				return 'bookedHours';
 			case Room::OWNBOOKED:

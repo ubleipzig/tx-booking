@@ -1,4 +1,4 @@
-{namespace ubl=LeipzigUniversityLibrary\ubleipzigbooking\ViewHelpers}
+{namespace ubl=LeipzigUniversityLibrary\Ublbooking\ViewHelpers}
 <f:layout name="Default"/>
 <f:section name="main">
     <f:for each="{Rooms}" as="Room">
@@ -13,7 +13,7 @@
 
             <div class="weekNavigation">
                 <f:if condition="{previousWeek}">
-                    <f:link.action title="{f:translate(key:'previousWeek')}" class="transparent tiny" action="showWeek" arguments="{week: previousWeek}">
+                    <f:link.action title="{f:translate(key:'previousWeek')}" class="transparent tiny" action="showWeek" arguments="{timestamp: previousWeek}">
                         <i class="fa fa-chevron-left" aria-hidden="true"></i>
                     </f:link.action>
                 </f:if>
@@ -22,7 +22,7 @@
                     <ubl:date format="W/Y" object="{Room.week}"/>
                 </span>
                 <f:if condition="{nextWeek}">
-                    <f:link.action title="{f:translate(key:'nextWeek')}" class="transparent tiny" action="showWeek" arguments="{week: nextWeek}">
+                    <f:link.action title="{f:translate(key:'nextWeek')}" class="transparent tiny" action="showWeek" arguments="{timestamp: nextWeek}">
                         <i class="fa fa-chevron-right" aria-hidden="true"></i>
                     </f:link.action>
                 </f:if>
@@ -35,7 +35,7 @@
                         </div>
                         <ubl:bookable room="{Room}" day="{Day}">
                             <f:then>
-                                <f:link.action name="{Day.title}" title="{Day.title}" action="showDay" arguments="{day: Day.timestamp, room: Room}">
+                                <f:link.action name="{Day.title}" title="{Day.title}" action="showDay" arguments="{timestamp: Day.timestamp, room: Room}">
                                     <f:for each="{Day}" as="Hour">
                                         <div class="row {ubl:getHourOccupationClass(room: Room, hour: Hour)}{f:if(condition:'{Hour.dateTime} < {Now}', then:' past')}">
                                             <ubl:date format="H" object="{Hour}"/> &ndash;

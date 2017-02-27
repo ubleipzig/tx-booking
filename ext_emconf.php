@@ -1,6 +1,6 @@
 <?php
 /***************************************************************
-* Extension Manager/Repository config file for ext "ubleipzigbooking".
+* Extension Manager/Repository config file for ext "ublbooking".
 *
 *
 * Manual updates:

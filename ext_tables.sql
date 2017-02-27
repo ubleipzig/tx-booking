@@ -1,7 +1,7 @@
 #
-# Table structure for table 'tx_ubleipzigbooking'
+# Table structure for table 'tx_ublbooking_domain_model_room'
 #
-CREATE TABLE tx_ubleipzigbooking_object (
+CREATE TABLE tx_ublbooking_domain_model_room (
 	uid int(11) NOT NULL auto_increment,
 	pid int(11) DEFAULT '0' NOT NULL,
 	tstamp int(11) DEFAULT '0' NOT NULL,
@@ -20,9 +20,9 @@ CREATE TABLE tx_ubleipzigbooking_object (
 );
 
 #
-# Table structure for table 'tx_ubleipzigbooking_booking'
+# Table structure for table 'tx_ublbooking_domain_model_booking'
 #
-CREATE TABLE tx_ubleipzigbooking (
+CREATE TABLE tx_ublbooking_domain_model_booking (
 	uid int(11) NOT NULL auto_increment,
 	pid int(11) DEFAULT '0' NOT NULL,
 	tstamp int(11) DEFAULT '0' NOT NULL,
@@ -31,20 +31,20 @@ CREATE TABLE tx_ubleipzigbooking (
 	sorting int(10) DEFAULT '0' NOT NULL,
 	deleted tinyint(4) DEFAULT '0' NOT NULL,
 	hidden tinyint(4) DEFAULT '0' NOT NULL,
-	objectuid int(11) DEFAULT '0' NOT NULL,
-	startdate int(11) DEFAULT '0' NOT NULL,
-	enddate int(11) DEFAULT '0' NOT NULL,
-	feuseruid int(11) DEFAULT '0' NOT NULL,
-	memo varchar(255) DEFAULT '',
+
+	room int(11) DEFAULT '0' NOT NULL,
+	time int(11) DEFAULT '0' NOT NULL,
+	fe_user int(11) DEFAULT '0' NOT NULL,
+	comment varchar(255) DEFAULT '',
 
 	PRIMARY KEY (uid),
 	KEY parent (pid)
 );
 
 #
-# Table structure for table 'tx_ubleipzigbooking_domain_model_closingday'
+# Table structure for table 'tx_ublbooking_domain_model_closingday'
 #
-CREATE TABLE tx_ubleipzigbooking_domain_model_closingday (
+CREATE TABLE tx_ublbooking_domain_model_closingday (
 	uid int(11) NOT NULL auto_increment,
 	pid int(11) DEFAULT '0' NOT NULL,
 	tstamp int(11) DEFAULT '0' NOT NULL,
@@ -62,9 +62,9 @@ CREATE TABLE tx_ubleipzigbooking_domain_model_closingday (
 );
 
 #
-# Table structure for table 'tx_ubleipzigbooking_domain_model_dutyhours'
+# Table structure for table 'tx_ublbooking_domain_model_openinghours'
 #
-CREATE TABLE tx_ubleipzigbooking_domain_model_dutyhours (
+CREATE TABLE tx_ublbooking_domain_model_openinghours (
 	uid int(11) NOT NULL auto_increment,
 	pid int(11) DEFAULT '0' NOT NULL,
 	tstamp int(11) DEFAULT '0' NOT NULL,

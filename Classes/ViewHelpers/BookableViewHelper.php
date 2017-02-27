@@ -1,16 +1,16 @@
 <?php
-namespace LeipzigUniversityLibrary\ubleipzigbooking\ViewHelpers;
+namespace LeipzigUniversityLibrary\Ublbooking\ViewHelpers;
 
-use \LeipzigUniversityLibrary\ubleipzigbooking\Domain\Model\Room;
-use \LeipzigUniversityLibrary\ubleipzigbooking\Library\Day;
-use \LeipzigUniversityLibrary\ubleipzigbooking\Library\Hour;
+use \LeipzigUniversityLibrary\Ublbooking\Domain\Model\Room;
+use \LeipzigUniversityLibrary\Ublbooking\Library\Day;
+use \LeipzigUniversityLibrary\Ublbooking\Library\Hour;
 
 class BookableViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractConditionViewHelper {
 
 	/**
-	 * @param \LeipzigUniversityLibrary\ubleipzigbooking\Domain\Model\Room $room
-	 * @param optional \LeipzigUniversityLibrary\ubleipzigbooking\Library\Day $day
-	 * @param optional \LeipzigUniversityLibrary\ubleipzigbooking\Library\Hour $hour
+	 * @param \LeipzigUniversityLibrary\Ublbooking\Domain\Model\Room $room
+	 * @param optional \LeipzigUniversityLibrary\Ublbooking\Library\Day $day
+	 * @param optional \LeipzigUniversityLibrary\Ublbooking\Library\Hour $hour
 	 * @return string
 	 */
 	public function render(Room $room, Day $day = null, Hour $hour = null) {

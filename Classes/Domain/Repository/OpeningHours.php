@@ -1,10 +1,10 @@
 <?php
-namespace LeipzigUniversityLibrary\ubleipzigbooking\Domain\Repository;
+namespace LeipzigUniversityLibrary\Ublbooking\Domain\Repository;
 
 use \TYPO3\CMS\Extbase\Persistence\Repository;
-use LeipzigUniversityLibrary\ubleipzigbooking\Domain\Model\Room;
+use LeipzigUniversityLibrary\Ublbooking\Domain\Model\Room;
 
-class DutyHours extends Repository {
+class OpeningHours extends Repository {
 
 	protected $defaultOrderings = [
 		'week_day' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_DESCENDING,
@@ -40,17 +40,17 @@ class DutyHours extends Repository {
 	}
 
 	protected function reduceResult($result, $storagePids) {
-		$dutyHours = [];
+		$openingHours = [];
 
 		foreach ($storagePids as $pid) {
 			foreach ($result as $dset) {
 				$weekDay = $dset->getWeekDay();
-				if ($dset->getPid() !== $pid || $dutyHours[$weekDay]) continue;
-				$dutyHours[$weekDay] = $dset;
+				if ($dset->getPid() !== $pid || $openingHours[$weekDay]) continue;
+				$openingHours[$weekDay] = $dset;
 			}
 		}
 
-		sort($dutyHours);
-		return $dutyHours;
+		sort($openingHours);
+		return $openingHours;
 	}
 }

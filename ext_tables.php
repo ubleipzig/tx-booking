@@ -1,11 +1,10 @@
 <?php
-
 if (!defined('TYPO3_MODE')) die('Access denied.');
-t3lib_extMgm::allowTableOnStandardPages('tx_ubleipzigbooking_object');
-t3lib_extMgm::addToInsertRecords('tx_ubleipzigbooking_object');
-$TCA["tx_ubleipzigbooking_object"] = array(
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_ublbooking_domain_model_room');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToInsertRecords('tx_ublbooking_domain_model_room');
+$TCA["tx_ublbooking_domain_model_room"] = array(
 	"ctrl" => array(
-		'title' => 'LLL:EXT:ubleipzigbooking/locallang_db.xml:tx_ubleipzigbooking_object',
+		'title' => 'LLL:EXT:ublbooking/Resources/Private/Language/locallang.xlf:tca.tx_ublbooking_domain_model_room',
 		'label' => 'name',
 		'tstamp' => 'tstamp',
 		'crdate' => 'crdate',
@@ -17,19 +16,18 @@ $TCA["tx_ubleipzigbooking_object"] = array(
 		),
 		'foreign_table_loadIcon' => '1',
 		'dynamicConfigFile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Configuration/TCA/tca.php',
-		'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY) . 'icon_tx_ubleipzigbooking_object.gif',
 	),
 	"feInterface" => array(
 		"fe_admin_fieldList" => "hidden, name, hours",
 	)
 );
-t3lib_extMgm::allowTableOnStandardPages('tx_ubleipzigbooking');
-t3lib_extMgm::addToInsertRecords('tx_ubleipzigbooking');
-$TCA["tx_ubleipzigbooking"] = array(
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_ublbooking_domain_model_booking');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToInsertRecords('tx_ublbooking_domain_model_booking');
+$TCA["tx_ublbooking_domain_model_booking"] = array(
 	"ctrl" => array(
-		'title' => 'LLL:EXT:ubleipzigbooking/locallang_db.xml:tx_ubleipzigbooking',
-		'label' => 'startdate',
-		'label_alt' => 'feuseruid',
+		'title' => 'LLL:EXT:ublbooking/Resources/Private/Language/locallang.xlf:tca.tx_ublbooking_domain_model_booking',
+		'label' => 'time',
+		'label_alt' => 'fe_user',
 		'label_alt_force' => 'true',
 		'tstamp' => 'tstamp',
 		'crdate' => 'crdate',
@@ -39,18 +37,19 @@ $TCA["tx_ubleipzigbooking"] = array(
 		'enablecolumns' => array(
 			'disabled' => 'hidden',
 		),
-		'dynamicConfigFile' => t3lib_extMgm::extPath($_EXTKEY) . 'tca.php',
-		'iconfile' => t3lib_extMgm::extRelPath($_EXTKEY) . 'icon_tx_ubleipzigbooking.gif',
+		'dynamicConfigFile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Configuration/TCA/tca.php',
 	),
 	"feInterface" => array(
-		"fe_admin_fieldList" => "hidden, feuseruid",
+		"fe_admin_fieldList" => "hidden, fe_user",
 	)
 );
 
-$TCA["tx_ubleipzigbooking_domain_model_closingday"] = array(
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_ublbooking_domain_model_closingday');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToInsertRecords('tx_ublbooking_domain_model_closingday');
+$TCA["tx_ublbooking_domain_model_closingday"] = array(
 	'ctrl' => array(
-		'title'         => 'LLL:EXT:' . $_EXTKEY . '/Resources/Private/Language/locallang.xlf:tx_ubleipzigbooking_domain_model_closingday.title',
-		'label'         => 'name',
+		'title' => 'LLL:EXT:ublbooking/Resources/Private/Language/locallang.xlf:tca.tx_ublbooking_domain_model_closingday',
+		'label' => 'name',
 		'tstamp' => 'tstamp',
 		'crdate' => 'crdate',
 		'cruser_id' => 'cruser_id',
@@ -63,19 +62,20 @@ $TCA["tx_ubleipzigbooking_domain_model_closingday"] = array(
 			'disabled'      => 'hidden'
 		),
 		'dynamicConfigFile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Configuration/TCA/tca.php',
-		'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY) . 'Resources/Public/Icons/ext_icon.gif'
 	)
 );
 
-$TCA["tx_ubleipzigbooking_domain_model_dutyhours"] = array(
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_ublbooking_domain_model_openinghours');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToInsertRecords('tx_ublbooking_domain_model_openinghours');
+$TCA["tx_ublbooking_domain_model_openinghours"] = array(
 	'ctrl' => array(
-		'title' => 'LLL:EXT:' . $_EXTKEY . '/Resources/Private/Language/locallang_db.xml:tx_ubleipzigbooking_domain_model_dutyhours',
+		'title' => 'LLL:EXT:ublbooking/Resources/Private/Language/locallang.xlf:tca.tx_ublbooking_domain_model_openinghours',
 		'label' => 'week_day',
-		'label_userFunc' => '\LeipzigUniversityLibrary\ubleipzigbooking\Library\Tca->getDayTitle',
+		'label_userFunc' => '\LeipzigUniversityLibrary\Ublbooking\Library\Tca->getDayTitle',
 		'tstamp' => 'tstamp',
 		'crdate' => 'crdate',
 		'cruser_id' => 'cruser_id',
-		'delete'        => 'deleted',
+		'delete' => 'deleted',
 		'enablecolumns' => array(
 			'disabled' => 'hidden'
 		),
@@ -83,11 +83,10 @@ $TCA["tx_ubleipzigbooking_domain_model_dutyhours"] = array(
 		'closing_days' => 'closingDays',
 		'opening_hours' => 'openingHours',
 		'dynamicConfigFile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Configuration/TCA/tca.php',
-		'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY) . 'Resources/Public/Icons/ext_icon.gif'
 	)
 );
 
-$pluginSignature = $_EXTKEY . '_bookings';
+$pluginSignature = 'ublbooking_bookings';
 $TCA['tt_content']['types']['list']['subtypes_addlist'][$pluginSignature] = 'pi_flexform';
 
 
@@ -96,10 +95,11 @@ $TCA['tt_content']['types']['list']['subtypes_addlist'][$pluginSignature] = 'pi_
 	'FILE:EXT:' . $_EXTKEY . '/Configuration/FlexForms/Bookings.xml'
 );
 
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr(
-	'tt_content.pi_flexform.' . $pluginSignature . '.list',
-	'EXT:' . $_EXTKEY . '/Resources/Private/Language/locallang_csh_flexform.xlf'
-);
+// todo: mouseover hints for flexforms
+// \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr(
+// 	'tt_content.pi_flexform.' . $pluginSignature . '.list',
+// 	'EXT:' . $_EXTKEY . '/Resources/Private/Language/locallang_csh_flexform.xlf'
+// );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
 	$_EXTKEY,

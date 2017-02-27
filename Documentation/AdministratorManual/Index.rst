@@ -18,7 +18,7 @@ Target group: **Administrators**
 
 Installation
 ^^^^^^^^^^^^
-1. Install the extension just like any other extension from the TYPO3 extension repository. 
+1. Install the extension just like any other extension from the TYPO3 extension repository.
 2. Create a page where you want to view the calendars of the booking objects
 3. Insert the plugin to the page  and set the startingpoint to the page/folder were you want to store the data.
 4. Now, create some booking objects with the list modul of TYPO3 in your record storing page.
@@ -26,7 +26,7 @@ Installation
 6. That's all, you can view the page for booking now.
 7. A click on a date will lead you to the booking form where a frontend user can book the object.
 
-.. figure:: ../Images/AdministratorManual/ubleipzigbookingObject.png
+.. figure:: ../Images/AdministratorManual/ublbookingObject.png
 	:width: 600px
 	:alt: Booking object
 
@@ -57,7 +57,7 @@ templateFile
          Define the template file
 
    Default
-         typo3conf/ext/ubleipzigbooking/pi1/template.html
+         typo3conf/ext/ublbooking/pi1/template.html
 
 
 .. _cssFile:
@@ -77,7 +77,7 @@ cssFile
          Define the css file
 
    Default
-         typo3conf/ext/ubleipzigbooking/pi1/layout.css
+         typo3conf/ext/ublbooking/pi1/layout.css
 
 .. _enableQuarterHourBooking:
 
@@ -96,7 +96,7 @@ enableQuarterHourBooking
          If set, quarter hour booking is enabled
 
    Default
-         
+
 
 .. _limitPreviewToDays:
 
@@ -109,7 +109,7 @@ limitPreviewToDays
          limitPreviewToDays
 
    Data int
-         
+
 
    Description
          If set, limit the preview to n days
@@ -129,14 +129,14 @@ BookingFormHeaderHook and bookingFormDataHook.
 These hooks can be called from your extension like this:
 in your localconf.php
 // hook for booking
-$GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['ubleipzigbooking']['ubleipzigbookingFormHeaderHook'][] = 'EXT:ubleipzigbookinghooks/pi1/class.tx_ubleipzigbookinghooks_pi1.php:tx_ubleipzigbookinghooks_pi1';
+$GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['ublbooking']['ublbookingFormHeaderHook'][] = 'EXT:ublbookinghooks/pi1/class.tx_ublbookinghooks_pi1.php:tx_ublbookinghooks_pi1';
 
-$GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['ubleipzigbooking']['ubleipzigbookingFormDataHook'][] = 'EXT:ubleipzigbookinghooks/pi1/class.tx_ubleipzigbookinghooks_pi1.php:tx_ubleipzigbookinghooks_pi1';
+$GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['ublbooking']['ublbookingFormDataHook'][] = 'EXT:ublbookinghooks/pi1/class.tx_ublbookinghooks_pi1.php:tx_ublbookinghooks_pi1';
 And the functions
 function bookingFormDataHook(&$marks, $row, $conf, $obj) {
 ...
 }
-And 
+And
 function bookingFormHeaderHook(&$marks, $row, $conf, $obj) {
 	$marks['###DELETE###']= 'xxx';
 }

@@ -1,26 +1,26 @@
 <?php
 
-namespace LeipzigUniversityLibrary\ubleipzigbooking\Domain\Model;
+namespace LeipzigUniversityLibrary\Ublbooking\Domain\Model;
 
-use LeipzigUniversityLibrary\ubleipzigbooking\Domain\Repository\DutyHours;
-use \LeipzigUniversityLibrary\ubleipzigbooking\Library\AbstractEntity;
-use \LeipzigUniversityLibrary\ubleipzigbooking\Library\Week;
-use \LeipzigUniversityLibrary\ubleipzigbooking\Library\Day;
-use \LeipzigUniversityLibrary\ubleipzigbooking\Library\Hour;
+use LeipzigUniversityLibrary\Ublbooking\Domain\Repository\OpeningHours;
+use \LeipzigUniversityLibrary\Ublbooking\Library\AbstractEntity;
+use \LeipzigUniversityLibrary\Ublbooking\Library\Week;
+use \LeipzigUniversityLibrary\Ublbooking\Library\Day;
+use \LeipzigUniversityLibrary\Ublbooking\Library\Hour;
 
 class Room extends AbstractEntity {
 
 	/**
 	 * the week representation of the room
 	 *
-	 * @var \LeipzigUniversityLibrary\ubleipzigbooking\Library\Week
+	 * @var \LeipzigUniversityLibrary\Ublbooking\Library\Week
 	 */
 	protected $week;
 
 	/**
 	 * the day representation of the room
 	 *
-	 * @var \LeipzigUniversityLibrary\ubleipzigbooking\Library\Day
+	 * @var \LeipzigUniversityLibrary\Ublbooking\Library\Day
 	 */
 	protected $day;
 
@@ -29,7 +29,7 @@ class Room extends AbstractEntity {
 	 *
 	 * @var array
 	 */
-	protected $dutyHours = [];
+	protected $openingHours = [];
 
 	/**
 	 * in the past
@@ -83,7 +83,7 @@ class Room extends AbstractEntity {
 	/**
 	 * $closingDayRepository
 	 *
-	 * @var \LeipzigUniversityLibrary\ubleipzigbooking\Domain\Repository\ClosingDay
+	 * @var \LeipzigUniversityLibrary\Ublbooking\Domain\Repository\ClosingDay
 	 * @inject
 	 */
 	protected $closingDayRepository;
@@ -91,23 +91,23 @@ class Room extends AbstractEntity {
 	/**
 	 * $bookingRepository
 	 *
-	 * @var \LeipzigUniversityLibrary\ubleipzigbooking\Domain\Repository\Booking
+	 * @var \LeipzigUniversityLibrary\Ublbooking\Domain\Repository\Booking
 	 * @inject
 	 */
 	protected $bookingRepository;
 
 	/**
-	 * $dutyHoursRepository
+	 * $openingHoursRepository
 	 *
-	 * @var \LeipzigUniversityLibrary\ubleipzigbooking\Domain\Repository\DutyHours
+	 * @var \LeipzigUniversityLibrary\Ublbooking\Domain\Repository\OpeningHours
 	 * @inject
 	 */
-	protected $dutyHoursRepository;
+	protected $openingHoursRepository;
 
 	/**
 	 * a rooms bookings
 	 *
-	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\LeipzigUniversityLibrary\ubleipzigbooking\Domain\Model\Booking>
+	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\LeipzigUniversityLibrary\Ublbooking\Domain\Model\Booking>
 	 * @lazy
 	 * @cascade remove
 	 */
@@ -116,7 +116,7 @@ class Room extends AbstractEntity {
 	/**
 	 * a rooms closing days
 	 *
-	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\LeipzigUniversityLibrary\ubleipzigbooking\Domain\Model\ClosingDay>
+	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\LeipzigUniversityLibrary\Ublbooking\Domain\Model\ClosingDay>
 	 * @lazy
 	 */
 	protected $closingDays;
@@ -138,7 +138,7 @@ class Room extends AbstractEntity {
 	/**
 	 * Adds a booking
 	 *
-	 * @param \LeipzigUniversityLibrary\ubleipzigbooking\Domain\Model\Booking $booking
+	 * @param \LeipzigUniversityLibrary\Ublbooking\Domain\Model\Booking $booking
 	 * @return void
 	 */
 	public function addBooking(Booking $booking) {
@@ -148,7 +148,7 @@ class Room extends AbstractEntity {
 	/**
 	 * Removes a booking
 	 *
-	 * @param \LeipzigUniversityLibrary\ubleipzigbooking\Domain\Model\Booking $booking
+	 * @param \LeipzigUniversityLibrary\Ublbooking\Domain\Model\Booking $booking
 	 * @return void
 	 */
 	public function removeBooking(Booking $booking) {
@@ -158,7 +158,7 @@ class Room extends AbstractEntity {
 	/**
 	 * Adds a closing day
 	 *
-	 * @param \LeipzigUniversityLibrary\ubleipzigbooking\Domain\Model\ClosingDay $closingDay
+	 * @param \LeipzigUniversityLibrary\Ublbooking\Domain\Model\ClosingDay $closingDay
 	 * @return void
 	 */
 	public function addClosingDay(ClosingDay $closingDay) {
@@ -168,18 +168,20 @@ class Room extends AbstractEntity {
 	/**
 	 * Removes a closing day
 	 *
-	 * @param \LeipzigUniversityLibrary\ubleipzigbooking\Domain\Model\ClosingDay $closingDay
+	 * @param \LeipzigUniversityLibrary\Ublbooking\Domain\Model\ClosingDay $closingDay
 	 * @return void
 	 */
 	public function removeClosingDay(ClosingDay $closingDay) {
 		$this->closingDays->detach($closingDay);
 	}
 
-	public function fetchWeekOccupation($timestamp) {
-		$this->setDutyHours($this->dutyHoursRepository->findAllByRoom($this));
+	public function fetchWeekOccupation($week) {
+		$this->setOpeningHours($this->openingHoursRepository->findAllByRoom($this));
 
-		list($dayStart, $dayEnd) = $this->getMinMaxDutyHours();
-		$this->week = new Week($timestamp, $dayStart, $dayEnd);
+		list($dayStart, $dayEnd) = $this->getMinMaxOpeningHours();
+		$this->week = $week;
+		$this->week->setStart($dayStart);
+		$this->week->setEnd($dayEnd);
 
 		foreach ($this->closingDayRepository->findByRoomAndBetween($this, $this->week->getStart(), $this->week->getEnd()) as $closingDay) {
 			$this->addClosingDay($closingDay);
@@ -190,12 +192,12 @@ class Room extends AbstractEntity {
 		}
 	}
 
-	public function fetchDayOccupation($timestamp) {
-		$this->day = new Day($timestamp);
+	public function fetchDayOccupation($day) {
+		$this->day = $day;
 
-		$this->setDutyHours($this->dutyHoursRepository->findByRoomAndDay($this, $this->day->getDateTime()));
+		$this->setOpeningHours($this->openingHoursRepository->findByRoomAndDay($this, $this->day->getDateTime()));
 
-		list($dayStart, $dayEnd) = $this->getMinMaxDutyHours($this->day);
+		list($dayStart, $dayEnd) = $this->getMinMaxOpeningHours($this->day);
 
 		$this->day->setStart($dayStart);
 		$this->day->setEnd($dayEnd);
@@ -217,8 +219,8 @@ class Room extends AbstractEntity {
 		}
 
 		if ($booking = $this->findBooking($hour)) {
-			if ($booking->getUser() === $GLOBALS['TSFE']->fe_user->user['uid']) return self::OWNBOOKED;
-			if ($this->settingsHelper->isAdmin($booking->getUser())) return self::OFFDUTY;
+			if ($booking->getFeUser() === $GLOBALS['TSFE']->fe_user->user['uid']) return self::OWNBOOKED;
+			if ($this->settingsHelper->isAdmin($booking->getFeUser())) return self::OFFDUTY;
 			return self::FOREIGNBOOKED;
 		};
 
@@ -255,7 +257,7 @@ class Room extends AbstractEntity {
 	}
 
 	/**
-	 * @param \LeipzigUniversityLibrary\ubleipzigbooking\Library\Hour $hour
+	 * @param \LeipzigUniversityLibrary\Ublbooking\Library\Hour $hour
 	 * @return bool
 	 */
 	public function isHourBookable(Hour $hour) {
@@ -273,20 +275,20 @@ class Room extends AbstractEntity {
 		return true;
 	}
 
-	public function setDutyHours($queryResponse) {
-		foreach($queryResponse as $dutyHours) {
-			$this->dutyHours[$dutyHours->getWeekDay()] = explode(',', $dutyHours->getHours());
+	public function setOpeningHours($queryResponse) {
+		foreach($queryResponse as $openingHours) {
+			$this->openingHours[$openingHours->getWeekDay()] = explode(',', $openingHours->getHours());
 		}
 	}
 
-	public function getMinMaxDutyHours(Day $day = null) {
+	public function getMinMaxOpeningHours(Day $day = null) {
 		// not all days defined? at least one day has 24h opening times
-		if (!$day && count($this->dutyHours) < 7) return [0,23];
+		if (!$day && count($this->openingHours) < 7) return [0,23];
 
-		foreach($this->dutyHours as $dayOfWeek => $dutyHours) {
+		foreach($this->openingHours as $dayOfWeek => $openingHours) {
 			if ($day && ($day->format('N') !== $dayOfWeek)) continue;
-			$min = min($dutyHours);
-			$max = max($dutyHours);
+			$min = min($openingHours);
+			$max = max($openingHours);
 			if (!isset($start) || $min < $start) $start = $min;
 			if (!isset($end) || $max > $end) $end = $max;
 		}
@@ -301,7 +303,7 @@ class Room extends AbstractEntity {
 
 	public function isDutyHour(Hour $hour) {
 		$day = $hour->format('N');
-		return isset($this->dutyHours[$day]) ? in_array($hour->format('H'), $this->dutyHours[$day]) : true;
+		return isset($this->openingHours[$day]) ? in_array($hour->format('H'), $this->openingHours[$day]) : true;
 	}
 
 	public function getBooking($timestamp) {

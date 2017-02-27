@@ -1,6 +1,6 @@
 <?php
 
-namespace LeipzigUniversityLibrary\ubleipzigbooking\Library;
+namespace LeipzigUniversityLibrary\Ublbooking\Library;
 
 class DateIterator extends DateHelper {
 

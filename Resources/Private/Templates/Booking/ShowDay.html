@@ -1,4 +1,4 @@
-{namespace ubl=LeipzigUniversityLibrary\ubleipzigbooking\ViewHelpers}
+{namespace ubl=LeipzigUniversityLibrary\Ublbooking\ViewHelpers}
 <f:layout name="Default"/>
 <f:section name="main">
     <div class="bookingFormDiv">
@@ -6,7 +6,7 @@
         <div class="date left">
             <!-- previous day -->
             <f:if condition="{previousDay}">
-                <f:link.action action="showDay" arguments="{day: previousDay, room: Room}"><i
+                <f:link.action action="showDay" arguments="{timestamp: previousDay, room: Room}"><i
                         class="fa fa-chevron-left"
                         aria-hidden="true"></i>
                 </f:link.action>
@@ -15,7 +15,7 @@
                 <f:translate key="{ubl:date(format:'l',object:Room.day)}">[weekDays]</f:translate>, <ubl:date format="d.m.Y" object="{Room.day}"/></span>
             <!-- next day -->
             <f:if condition="{nextDay}">
-                <f:link.action action="showDay" arguments="{day: nextDay, room: Room}"
+                <f:link.action action="showDay" arguments="{timestamp: nextDay, room: Room}"
                                class="display: inline"><i
                         class="fa fa-chevron-right" aria-hidden="true"></i></f:link.action>
             </f:if>
@@ -23,7 +23,7 @@
         <!-- week view -->
         <div class="right">
             <f:link.action class="button transparent backToWeekView" action="showWeek"
-                           arguments="{week: Room.day.timestamp}"><f:translate key="backToWeekView">[backToWeekView]</f:translate>
+                           arguments="{timestamp: Room.day.timestamp}"><f:translate key="backToWeekView">[backToWeekView]</f:translate>
             </f:link.action>
         </div>
         <table class="bookingForm ">
@@ -47,21 +47,21 @@
                             <ubl:bookable room="{Room}" hour="{Hour}">
                                 <f:then>
                                     <f:form action="add" arguments="{timestamp: Hour.timestamp, room: Room}">
-                                        <td><f:form.textfield name="comment" class="memo"></f:form.textfield></td>
+                                        <td><f:form.textfield name="comment" class="comment"></f:form.textfield></td>
                                         <td><button type="submit"><i class="fa fa-check" aria-hidden="true"></i></button>
                                         </td>
                                     </f:form>
                                     <td></td>
                                 </f:then>
                                 <f:else>
-                                    <td><input type="text" class="memo" value="" disabled="disabled"></td>
+                                    <td><input type="text" class="comment" value="" disabled="disabled"></td>
                                     <td></td>
                                     <td></td>
                                 </f:else>
                             </ubl:bookable>
                         </f:case>
                         <f:case value="ownBooked">
-                            <td><input type="text" class="memo"
+                            <td><input type="text" class="comment"
                                        value="{ubl:getBookingComment(room: Room, timestamp: Hour.datetime)}" disabled="disabled"></td>
                             <td></td>
                             <td>
@@ -72,14 +72,14 @@
                             </td>
                         </f:case>
                         <f:case value="foreignBooked">
-                            <td><input type="text" class="memo"
+                            <td><input type="text" class="comment"
                                        value="{ubl:getBookingComment(room: Room, timestamp: Hour.datetime)}"
                                        disabled="disabled"></td>
                             <td></td>
                             <td></td>
                         </f:case>
                         <f:case value="offDuty">
-                            <td><input type="text" class="memo"
+                            <td><input type="text" class="comment"
                                        value=""
                                        disabled="disabled"></td>
                             <td></td>
@@ -91,7 +91,7 @@
             </tbody>
         </table>
         <div class="right">
-            <f:link.action class="button transparent backToWeekView" action="showWeek" arguments="{week: Room.day.timestamp}">Zurück zur Wochenansicht
+            <f:link.action class="button transparent backToWeekView" action="showWeek" arguments="{timestamp: Room.day.timestamp}">Zurück zur Wochenansicht
             </f:link.action>
         </div>
     </div>

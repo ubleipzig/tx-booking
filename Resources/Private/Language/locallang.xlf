@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-  <file source-language="en" datatype="plaintext" original="messages" date="2013-12-16T14:54:51Z" product-name="ubleipzigbooking">
+  <file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2013-12-16T14:54:51Z" product-name="ublbooking">
     <header/>
     <body>
       <trans-unit id="off" approved="yes">
@@ -164,9 +164,86 @@
         <source>Calendar week</source>
       </trans-unit>
 
-      <trans-unit id="tx_ubleipzigbooking_domain_model_closingday.title">
-        <source></source>
+      <trans-unit id="flexforms.sheetDisplayOptions">
+        <source>Display options</source>
       </trans-unit>
+
+      <trans-unit id="flexforms.maxBookingsPerDay">
+        <source>Maximum bookings per day and user</source>
+      </trans-unit>
+
+      <trans-unit id="flexforms.limitBookingToWeeks">
+        <source>Count of weeks available for booking in advance</source>
+      </trans-unit>
+
+      <trans-unit id="flexforms.limitBacklogToWeeks">
+        <source>Count of weeks available for looking back</source>
+      </trans-unit>
+
+      <trans-unit id="flexforms.admins">
+        <source>Administrative accounts</source>
+      </trans-unit>
+
+      <trans-unit id="tca.tx_ublbooking_domain_model_room">
+        <source>Rooms</source>
+      </trans-unit>
+
+      <trans-unit id="tca.tx_ublbooking_domain_model_room.name">
+        <source>Room name</source>
+      </trans-unit>
+
+      <trans-unit id="tca.tx_ublbooking_domain_model_room.opening_times_storage">
+        <source>Opening times storage pages</source>
+      </trans-unit>
+
+      <trans-unit id="tca.tx_ublbooking_domain_model_room.booking_storage">
+        <source>Booking storage page</source>
+      </trans-unit>
+
+      <trans-unit id="tca.tx_ublbooking_domain_model_closingday">
+        <source>Closing days</source>
+      </trans-unit>
+
+      <trans-unit id="tca.tx_ublbooking_domain_model_closingday.name">
+        <source>Closing day name</source>
+      </trans-unit>
+
+      <trans-unit id="tca.tx_ublbooking_domain_model_closingday.date">
+        <source>Date</source>
+      </trans-unit>
+
+      <trans-unit id="tca.tx_ublbooking_domain_model_closingday.description">
+        <source>Description</source>
+      </trans-unit>
+
+      <trans-unit id="tca.tx_ublbooking_domain_model_openinghours">
+        <source>Duty hours</source>
+      </trans-unit>
+
+      <trans-unit id="tca.tx_ublbooking_domain_model_openinghours.week_day">
+        <source>Week day</source>
+      </trans-unit>
+
+      <trans-unit id="tca.tx_ublbooking_domain_model_openinghours.hours">
+        <source>Hours</source>
+      </trans-unit>
+
+      <trans-unit id="tca.tx_ublbooking_domain_model_booking">
+        <source>Bookings</source>
+      </trans-unit>
+
+      <trans-unit id="tca.tx_ublbooking_domain_model_booking.hour">
+        <source>Hour</source>
+      </trans-unit>
+
+      <trans-unit id="tca.tx_ublbooking_domain_model_booking.feuser">
+        <source>User</source>
+      </trans-unit>
+
+      <trans-unit id="tca.tx_ublbooking_domain_model_booking.comment">
+        <source>Comment</source>
+      </trans-unit>
+
     </body>
   </file>
 </xliff>

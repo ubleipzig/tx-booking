@@ -1,6 +1,6 @@
 <?php
 
-use \LeipzigUniversityLibrary\ubleipzigbooking\Domain\Model\Room;
+use \LeipzigUniversityLibrary\Ublbooking\Domain\Model\Room;
 
 class RoomTest extends \TYPO3\CMS\Core\Tests\BaseTestCase {
 	/**

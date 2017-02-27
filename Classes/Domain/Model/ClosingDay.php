@@ -1,9 +1,9 @@
 <?php
 
-namespace LeipzigUniversityLibrary\ubleipzigbooking\Domain\Model;
+namespace LeipzigUniversityLibrary\Ublbooking\Domain\Model;
 
-use \LeipzigUniversityLibrary\ubleipzigbooking\Library\AbstractEntity;
-use \LeipzigUniversityLibrary\ubleipzigbooking\Library\Day;
+use \LeipzigUniversityLibrary\Ublbooking\Library\AbstractEntity;
+use \LeipzigUniversityLibrary\Ublbooking\Library\Day;
 
 class ClosingDay extends AbstractEntity {
 	/**
@@ -22,7 +22,7 @@ class ClosingDay extends AbstractEntity {
 	protected $date;
 
 	/**
-	 * @var \LeipzigUniversityLibrary\ubleipzigbooking\Library\Day
+	 * @var \LeipzigUniversityLibrary\Ublbooking\Library\Day
 	 */
 	protected $day;
 

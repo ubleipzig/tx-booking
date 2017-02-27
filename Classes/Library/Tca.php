@@ -1,33 +1,33 @@
 <?php
 
-namespace LeipzigUniversityLibrary\ubleipzigbooking\Library;
+namespace LeipzigUniversityLibrary\Ublbooking\Library;
 
 class Tca {
 
 	/**
-	 * @var \LeipzigUniversityLibrary\ubleipzigbooking\Domain\Repository\DutyHours
+	 * @var \LeipzigUniversityLibrary\Ublbooking\Domain\Repository\OpeningHours
 	 * @inject
 	 */
-	protected $dutyHoursRepository;
+	protected $openingHoursRepository;
 
 	public function getDays($config) {
 		$objectManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('\TYPO3\CMS\Extbase\Object\ObjectManager');
 		$querySettings = $objectManager->get('TYPO3\\CMS\\Extbase\\Persistence\\Generic\\Typo3QuerySettings');
-		$dutyHoursRepository = $objectManager->get('\LeipzigUniversityLibrary\ubleipzigbooking\Domain\Repository\DutyHours');
+		$openingHoursRepository = $objectManager->get('\LeipzigUniversityLibrary\Ublbooking\Domain\Repository\OpeningHours');
 
 		// workaround, see https://forge.typo3.org/issues/50551
 		$pageUid = $this->normalizePageUid($config['row']['pid']);
 
 		$querySettings->setStoragePageIds(array($pageUid));
-		$dutyHoursRepository->setDefaultQuerySettings($querySettings);
-		$dutyHours = [];
+		$openingHoursRepository->setDefaultQuerySettings($querySettings);
+		$openingHours = [];
 		$week = new Week();
 
-		foreach($dutyHoursRepository->findAll() as $weekday) {
-			$dutyHours[] = $weekday->getWeekDay();
+		foreach($openingHoursRepository->findAll() as $weekday) {
+			$openingHours[] = $weekday->getWeekDay();
 		}
 		foreach ($week as $key => $day) {
-			if (!in_array($key, $dutyHours) || (string)$key === $config['row']['week_day']) $config['items'][] = [$day->format('l'),$key];
+			if (!in_array($key, $openingHours) || (string)$key === $config['row']['week_day']) $config['items'][] = [$day->format('l'),$key];
 		}
 
 		if (count($config['items']) === 0) throw new \Exception('no week days left');
@@ -58,7 +58,7 @@ class Tca {
 	protected function normalizePageUid($id) {
 		if ($id < 0) {
 			$parentRec = \TYPO3\CMS\Backend\Utility\BackendUtility::getRecord(
-				'tx_ubleipzigbooking_domain_model_dutyhours',
+				'tx_ublbooking_domain_model_openinghours',
 				abs($id),
 				'pid'
 			);

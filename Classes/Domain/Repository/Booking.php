@@ -1,17 +1,17 @@
 <?php
-namespace LeipzigUniversityLibrary\ubleipzigbooking\Domain\Repository;
+namespace LeipzigUniversityLibrary\Ublbooking\Domain\Repository;
 
 use \TYPO3\CMS\Extbase\Persistence\Repository;
-use \LeipzigUniversityLibrary\ubleipzigbooking\Domain\Model\Room;
+use \LeipzigUniversityLibrary\Ublbooking\Domain\Model\Room;
 
 class Booking extends Repository {
 
 	public function findByRoomAndBetween(Room $room, \DateTimeInterface $startTime, \DateTimeInterface $endTime) {
 		$query = $this->createQuery();
 		$where = $query->logicalAnd([
-			// be aware that the property mapping only works for model arguments (room), not for integer values (startdate)
-			$query->greaterThanOrEqual('startdate', $startTime->getTimestamp()),
-			$query->lessThanOrEqual('startdate', $endTime->getTimestamp()),
+			// be aware that the property mapping only works for model arguments (room), not for integer values (time)
+			$query->greaterThanOrEqual('time', $startTime->getTimestamp()),
+			$query->lessThanOrEqual('time', $endTime->getTimestamp()),
 			$query->equals('room', $room)
 		]);
 		$query->matching($where);
@@ -22,9 +22,9 @@ class Booking extends Repository {
 	public function findByUserAndTime($user, \DateTimeInterface $startTime) {
 		$query = $this->createQuery();
 		$where = $query->logicalAnd([
-			// be aware that the property mapping only works for model arguments (room), not for integer values (startdate)
-			$query->equals('startdate', $startTime->getTimestamp()),
-			$query->equals('user', $user)
+			// be aware that the property mapping only works for model arguments (room), not for integer values (time)
+			$query->equals('time', $startTime->getTimestamp()),
+			$query->equals('fe_user', $user)
 		]);
 		$query->matching($where);
 
@@ -35,10 +35,10 @@ class Booking extends Repository {
 		$query = $this->createQuery();
 
 		$where = $query->logicalAnd([
-			// be aware that the property mapping only works for model arguments (room), not for integer values (startdate)
-			$query->equals('startdate', $startTime->getTimestamp()),
+			// be aware that the property mapping only works for model arguments (room), not for integer values (time)
+			$query->equals('time', $startTime->getTimestamp()),
 			$query->equals('room', $room),
-			$query->equals('user', $user)
+			$query->equals('fe_user', $user)
 		]);
 		$query->matching($where);
 
@@ -48,9 +48,9 @@ class Booking extends Repository {
 	public function findByUserAndBetween($user, \DateTimeInterface $startTime, \DateTimeInterface $endTime) {
 		$query = $this->createQuery();
 		$where = $query->logicalAnd([
-			$query->greaterThanOrEqual('startdate', $startTime->getTimestamp()),
-			$query->lessThanOrEqual('startdate', $endTime->getTimestamp()),
-			$query->equals('user', $user)
+			$query->greaterThanOrEqual('time', $startTime->getTimestamp()),
+			$query->lessThanOrEqual('time', $endTime->getTimestamp()),
+			$query->equals('fe_user', $user)
 		]);
 		$query->matching($where);
 

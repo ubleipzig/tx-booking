@@ -1,6 +1,6 @@
 <?php
 
-namespace LeipzigUniversityLibrary\ubleipzigbooking\Library;
+namespace LeipzigUniversityLibrary\Ublbooking\Library;
 
 class SettingsHelper {
 
@@ -17,20 +17,19 @@ class SettingsHelper {
 		if (empty($this->settings['limitBookingToWeeks'])) return true;
 		$today = new Week();
 		$limit = $today->add(new \DateInterval("P{$this->settings['limitBookingToWeeks']}W"));
-		return $week < $limit->getTimestamp();
+		return $week->getDateTime() < $limit;
 	}
 
 	public function showPreviousWeek($week) {
 		if (empty($this->settings['limitBacklogToWeeks'])) return true;
 		$today = new Week();
 		$limit = $today->sub(new \DateInterval("P{$this->settings['limitBacklogToWeeks']}W"));
-		return $week > $limit->getTimestamp();
+		return $week->getDateTime() > $limit;
 	}
 
 	public function showNextDay($day) {
 		if (empty($this->settings['limitBookingToWeeks'])) return true;
 		$today = new Week();
-		$day = new Day($day);
 		$nextDay = $day->modify('next day');
 		$nextDaysWeek = new Week($nextDay->getTimestamp());
 		$limit = $today->add(new \DateInterval("P{$this->settings['limitBookingToWeeks']}W"));
@@ -40,7 +39,6 @@ class SettingsHelper {
 	public function showPreviousDay($day) {
 		if (empty($this->settings['limitBacklogToWeeks'])) return true;
 		$today = new Week();
-		$day = new Day($day);
 		$previousDay = $day->modify('previous day');
 		$previousDaysWeek = new Week($previousDay->getTimestamp());
 		$limit = $today->sub(new \DateInterval("P{$this->settings['limitBacklogToWeeks']}W"));

@@ -1,17 +1,17 @@
 <?php
-namespace LeipzigUniversityLibrary\ubleipzigbooking\ViewHelpers;
+namespace LeipzigUniversityLibrary\Ublbooking\ViewHelpers;
 
-use \LeipzigUniversityLibrary\ubleipzigbooking\Domain\Model\Room;
-use \LeipzigUniversityLibrary\ubleipzigbooking\Library\Hour;
+use \LeipzigUniversityLibrary\Ublbooking\Domain\Model\Room;
+use \LeipzigUniversityLibrary\Ublbooking\Library\Hour;
 
 class OccupationSwitchViewHelper extends \TYPO3\CMS\Fluid\ViewHelpers\SwitchViewHelper {
 
 	/**
-	 * @param \LeipzigUniversityLibrary\ubleipzigbooking\Domain\Model\Room $room
-	 * @param \LeipzigUniversityLibrary\ubleipzigbooking\Library\Hour $hour
+	 * @param \LeipzigUniversityLibrary\Ublbooking\Domain\Model\Room $room
+	 * @param \LeipzigUniversityLibrary\Ublbooking\Library\Hour $hour
 	 * @return string
 	 */
-	public function render(Room $room, \LeipzigUniversityLibrary\ubleipzigbooking\Library\Hour $hour) {
+	public function render(Room $room, \LeipzigUniversityLibrary\Ublbooking\Library\Hour $hour) {
 		switch ($room->getHourOccupation($hour)) {
 			case Room::OFFDUTY:
 				return parent::render('offDuty');

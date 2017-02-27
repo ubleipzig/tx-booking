@@ -1,22 +1,23 @@
 <?php
-namespace LeipzigUniversityLibrary\ubleipzigbooking\Controller;
+namespace LeipzigUniversityLibrary\Ublbooking\Controller;
 
-use \LeipzigUniversityLibrary\ubleipzigbooking\Library\Day;
-use \LeipzigUniversityLibrary\ubleipzigbooking\Library\Hour;
-use \LeipzigUniversityLibrary\ubleipzigbooking\Domain\Model\Booking;
+use \LeipzigUniversityLibrary\Ublbooking\Library\Week;
+use \LeipzigUniversityLibrary\Ublbooking\Library\Day;
+use \LeipzigUniversityLibrary\Ublbooking\Library\Hour;
+use \LeipzigUniversityLibrary\Ublbooking\Domain\Model\Booking;
 
 class BookingController extends AbstractController {
 
 	/**
 	 * $roomRepository
 	 *
-	 * @var \LeipzigUniversityLibrary\ubleipzigbooking\Domain\Repository\Booking
+	 * @var \LeipzigUniversityLibrary\Ublbooking\Domain\Repository\Booking
 	 * @inject
 	 */
 	protected $bookingRepository;
 
 	/**
-	 * @var \LeipzigUniversityLibrary\ubleipzigbooking\Domain\Repository\Room
+	 * @var \LeipzigUniversityLibrary\Ublbooking\Domain\Repository\Room
 	 * @inject
 	 */
 	protected $roomRepository;
@@ -28,12 +29,12 @@ class BookingController extends AbstractController {
 	protected $persistenceManager;
 
 	/**
-	 * @param integer $day
-	 * @param \LeipzigUniversityLibrary\ubleipzigbooking\Domain\Model\Room $room
+	 * @param integer $timestamp
+	 * @param \LeipzigUniversityLibrary\Ublbooking\Domain\Model\Room $room
 	 */
-	public function showDayAction($day, $room) {
+	public function showDayAction($timestamp, $room) {
 		$today = new Day();
-
+		$day = new Day($timestamp);
 		$room->fetchDayOccupation($day);
 		$room->setSettingsHelper($this->settingsHelper);
 		$this->view->assign('Room', $room);
@@ -48,19 +49,22 @@ class BookingController extends AbstractController {
 	}
 
 	/**
-	 * @param integer $week
+	 * @param integer $timestamp
 	 */
-	public function showWeekAction($week = null) {
+	public function showWeekAction($timestamp = null) {
+		$week = new Week($timestamp);
+
 		$rooms = $this->roomRepository->findAllWithOccupationForWeek($week, $this->settingsHelper);
 		$today = new Day();
 		$now = new \DateTimeImmutable('now', new \DateTimeZone('Europe/Berlin'));
 
+
 		if ($this->settingsHelper->isAdmin() || $this->settingsHelper->showNextWeek($week)) {
-			$this->view->assign('nextWeek', $rooms[0]->getWeek()->modify('Monday next week')->getTimestamp());
+			$this->view->assign('nextWeek', $week->modify('Monday next week')->getTimestamp());
 		}
 
 		if ($this->settingsHelper->isAdmin() || $this->settingsHelper->showPreviousWeek($week)) {
-			$this->view->assign('previousWeek', $rooms[0]->getWeek()->modify('Monday last week')->getTimestamp());
+			$this->view->assign('previousWeek', $week->modify('Monday last week')->getTimestamp());
 		}
 		$this->view->assign('Today', $today);
 		$this->view->assign('Now', $now);
@@ -69,17 +73,17 @@ class BookingController extends AbstractController {
 	/**
 	 * adds a booking
 	 *
-	 * @param \LeipzigUniversityLibrary\ubleipzigbooking\Domain\Model\Room $room
+	 * @param \LeipzigUniversityLibrary\Ublbooking\Domain\Model\Room $room
 	 * @param integer $timestamp
 	 * @param string $comment
 	 */
 	public function addAction($room, $timestamp, $comment) {
 		$hour = new Hour($timestamp);
 		$day = new Day($timestamp);
-		$now = new Day();
-		$room->fetchDayOccupation($timestamp);
+		$today = new Day();
+		$room->fetchDayOccupation($day);
 
-		if ($day->getDateTime() < $now->getDateTime()) {
+		if ($day->getDateTime() < $today->getDateTime()) {
 			$this->addFlashMessage('bookingInPast', \TYPO3\CMS\Core\Messaging\FlashMessage::ERROR);
 		} else if (!$this->settingsHelper->isAdmin() && $this->settingsHelper->exceededBookingLimit($timestamp)) {
 			$this->addFlashMessage('bookingInFuture', \TYPO3\CMS\Core\Messaging\FlashMessage::ERROR);
@@ -94,18 +98,19 @@ class BookingController extends AbstractController {
 			$this->addFlashMessage('successfullyBooked', \TYPO3\CMS\Core\Messaging\FlashMessage::OK);
 		}
 
-		$this->redirect('showDay', 'Booking', null, ['day' => $timestamp, 'room' => $room]);
+		$this->redirect('showDay', 'Booking', null, ['timestamp' => $timestamp, 'room' => $room]);
 	}
 
 	/**
 	 * removes a booking
 	 *
-	 * @param \LeipzigUniversityLibrary\ubleipzigbooking\Domain\Model\Room $room
+	 * @param \LeipzigUniversityLibrary\Ublbooking\Domain\Model\Room $room
 	 * @param integer $timestamp
 	 */
 	public function removeAction($room, $timestamp) {
 		$hour = new Hour($timestamp);
-		$room->fetchDayOccupation($timestamp);
+		$day = new Day($timestamp);
+		$room->fetchDayOccupation($day);
 		$now = new Hour();
 
 		// booking in the past, do not allow to remove
@@ -118,6 +123,6 @@ class BookingController extends AbstractController {
 			$this->addFlashMessage('noBookingToRemove', \TYPO3\CMS\Core\Messaging\FlashMessage::ERROR);
 		}
 
-		$this->redirect('showDay', 'Booking', null, ['day' => $timestamp, 'room' => $room]);
+		$this->redirect('showDay', 'Booking', null, ['timestamp' => $timestamp, 'room' => $room]);
 	}
 }

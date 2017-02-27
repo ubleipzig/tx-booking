@@ -1,5 +1,5 @@
 <?php
-namespace LeipzigUniversityLibrary\ubleipzigbooking\Controller;
+namespace LeipzigUniversityLibrary\Ublbooking\Controller;
 
 /***************************************************************
  *  Copyright notice
@@ -24,7 +24,7 @@ namespace LeipzigUniversityLibrary\ubleipzigbooking\Controller;
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
-use LeipzigUniversityLibrary\ubleipzigbooking\Library\SettingsHelper;
+use LeipzigUniversityLibrary\Ublbooking\Library\SettingsHelper;
 
 /**
  * Abstract base controller for the ExtbaseTeam\BlogExample extension
@@ -32,7 +32,7 @@ use LeipzigUniversityLibrary\ubleipzigbooking\Library\SettingsHelper;
 abstract class AbstractController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 
 	/**
-	 * @var \LeipzigUniversityLibrary\ubleipzigbooking\Library\SetingsHelper
+	 * @var \LeipzigUniversityLibrary\Ublbooking\Library\SetingsHelper
 	 */
 	protected $settingsHelper;
 
@@ -71,7 +71,7 @@ abstract class AbstractController extends \TYPO3\CMS\Extbase\Mvc\Controller\Acti
 	 * @return string
 	 */
 	protected function translate($key, $defaultMessage = '') {
-		$message = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate($key, 'ubleipzigbooking');
+		$message = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate($key, 'ublbooking');
 		if ($message === NULL) {
 			$message = $defaultMessage;
 		}

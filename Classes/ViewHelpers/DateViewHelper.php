@@ -1,5 +1,5 @@
 <?php
-namespace LeipzigUniversityLibrary\ubleipzigbooking\ViewHelpers;
+namespace LeipzigUniversityLibrary\Ublbooking\ViewHelpers;
 
 class DateViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper {
 

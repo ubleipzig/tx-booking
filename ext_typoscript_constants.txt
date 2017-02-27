@@ -1,9 +1,0 @@
-plugin.tx_ubleipzigbooking_pi1 {
-/*
-	# cat=plugin.tx_ubleipzigbooking/file/10; type=String; label= Template file: Defines which template file to be used in the extension.
-  	templateFile = EXT:ubleipzigbooking/pi1/template.html
-  	# cat=plugin.tx_ubleipzigbooking/file/11; type=String; label= CSS file: Define the location of the CSS file to be used.
-  	cssFile = EXT:ubleipzigbooking/pi1/layout.css
-*/
-}
-
