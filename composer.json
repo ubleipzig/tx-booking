@@ -4,14 +4,14 @@
   "type": "typo3-cms-extension",
   "keywords": ["TYPO3 CMS", "booking"],
   "license": ["GPL-2.0+"],
-  "version": "0.1.0-beta",
+  "version": "0.3.0",
   "require": {
     "typo3/cms": ">=4.5,<6.3"
   },
   "authors": [
     {
-      "name": "Fabian Heusel",
-      "email": "fheusel@posteo.de",
+      "name": "Ulf Seltmann",
+      "email": "seltmann@ub.uni-leipzig.de",
       "role": "Developer"
     }
   ]
