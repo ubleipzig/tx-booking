@@ -180,8 +180,8 @@ class Room extends AbstractEntity {
 
 		list($dayStart, $dayEnd) = $this->getMinMaxOpeningHours();
 		$this->week = $week;
-		$this->week->setStart($dayStart);
-		$this->week->setEnd($dayEnd);
+		$this->week->setDayStart($dayStart);
+		$this->week->setDayEnd($dayEnd);
 
 		foreach ($this->closingDayRepository->findByRoomAndBetween($this, $this->week->getStart(), $this->week->getEnd()) as $closingDay) {
 			$this->addClosingDay($closingDay);
@@ -286,7 +286,7 @@ class Room extends AbstractEntity {
 		if (!$day && count($this->openingHours) < 7) return [0,23];
 
 		foreach($this->openingHours as $dayOfWeek => $openingHours) {
-			if ($day && ($day->format('N') !== $dayOfWeek)) continue;
+			if ($day && ((int)$day->format('N') !== $dayOfWeek)) continue;
 			$min = min($openingHours);
 			$max = max($openingHours);
 			if (!isset($start) || $min < $start) $start = $min;

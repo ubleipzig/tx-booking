@@ -39,46 +39,8 @@ plugin.tx_ublbooking._CSS_DEFAULT_STYLE (
   float: left;
 }
 
-.tx_ublbooking .legendTitle {
-  float: left;
-  font-size: .85em;
-  margin: 0 .5rem 1rem .25rem;
-}
-
-.tx_ublbooking .legend .available,
-.tx_ublbooking .legend .someAvailable,
-.tx_ublbooking .legend .someQuarterAvailable,
-.tx_ublbooking .legend .notAvailable,
-.tx_ublbooking .legend .offDutyTime {
-  border: 1px solid black;
-  font-size: .85em;
-  height: 1rem;
-  text-align: center;
-  width: 1rem;
-}
-
-.tx_ublbooking .legend .available {
-  background-color: #e7e7e7;
-}
-
-.tx_ublbooking .legend .someAvailable {
-  background-color: #CCFFCC;
-}
-
-.tx_ublbooking .someQuarterAvailable {
-  background-color: #C0F0C0;
-}
-
-.tx_ublbooking .legend .notAvailable {
-  background-color: #FFCC00;
-}
-.tx_ublbooking .legend .offDutyTime {
-  background-color: #E04644;
-}
-
 .tx_ublbooking .calendarWeek {
   font-size: 1.0em;
-  font-weight: bold;
   margin-top: 1.5rem;
 }
 
@@ -108,32 +70,20 @@ plugin.tx_ublbooking._CSS_DEFAULT_STYLE (
   background-color: #15428b;
 }
 
-.tx_ublbooking .objectName {
+.tx_ublbooking .roomDescription {
   background-color: #fff;
   font-size: 1.25em;
   margin-bottom: .5rem;
   padding-top: 1rem;
-  text-align: center;
 }
 
-.tx_ublbooking .weekView .today .weekday {
-  font-weight: bold;
-}
-.tx_ublbooking .weekView .pastDay {
-  color: #c0c0c0;
-  /*visibility: hidden;*/
+.tx_ublbooking .weekView .past {
   pointer-events: none;
-  /* for "disabled" effect */
   opacity: 0.5;
-  background: #CCC;
+  background: #FFF;
 }
 
-
-.tx_ublbooking .weekView td {
-  /*border: 1px solid gray;*/
-  border-collapse: collapse;
-}
-.tx_ublbooking .weekView td.weekday {
+.tx_ublbooking .weekViewDay .tableheader {
   text-align: center;
 }
 
@@ -143,7 +93,7 @@ plugin.tx_ublbooking._CSS_DEFAULT_STYLE (
   width: 14%;
 }
 
-.tx_ublbooking .weekViewDay td {
+.tx_ublbooking .weekViewDay .row {
   border-bottom: 1px solid gray;
   border-collapse: collapse;
 }
@@ -190,122 +140,28 @@ plugin.tx_ublbooking._CSS_DEFAULT_STYLE (
   cursor: auto;
 }
 
-
-
-.tx_ublbooking .clearer {
-  clear: both;
-}
-
-
-
-.tx_ublbooking .listMonth {
-  background-color: #e0e0e0;
-  float: left;
-}
-
-div.listMonth {
-  width: 49%;
-}
-
-div.listMonth:nth-of-type(even) {
-  margin-left: 1%;
-}
-
-.listMonth.bookingeIDResult {
-  margin-bottom: 1rem;
-}
-
-.week-no,
-td.week {
-  color: grey;
-  border-bottom: 1px solid lightgrey;
-  border-right: 1px solid lightgrey;
-}
-
-td.week {color: #052f96;}
-td.week:focus,td.week:hover {cursor: pointer;}
-
-.tx_ublbooking .listMonth .month,
-.tx_ublbooking .listMonth .dayNames {
-  background-color: #e0e0e0;
-  font-weight: bold;
-  text-align: center;
-}
-.tx_ublbooking .listMonth .dayNames {
-  border-bottom: 1px solid lightgrey;
-  border-right: 1px solid lightgrey;
-  border-top: 1px solid lightgrey;
-}
-
-.tx_ublbooking .listMonth .day {
-  background-color: #ffffff;
-  border: 1px solid black;
-  text-align: center;
-  font-size: .85em;
-  width: 1rem;
-}
-.tx_ublbooking .listMonth .available {
-  background-color: #ffffff;
-  border: 1px solid black;
-  text-align: center;
-  width: 12%;
-}
-.tx_ublbooking .listMonth .someAvailable {
-  background-color: #CCFFCC;
-  border: 1px solid black;
-  text-align: center;
-  width: 1rem;
-}
-
-.tx_ublbooking .listMonth .notAvailable {
-  background-color: #FFCC00;
-  border: 1px solid black;
-  text-align: center;
-  width: 1rem;
-}
-.tx_ublbooking .listMonth .offDutyTime {
-  background-color: #E04644;
-  border: 1px solid black;
-  text-align: center;
-  width: 1rem;
-
-}
-
-
-
-.tx_ublbooking .listMonth .today {
-  border: 2px solid #E04644;
-}
-
 .tx_ublbooking .bookingFormObjectName {
   font-weight: bold;
-  text-align: center;
   font-size: 1.5em;
   margin-bottom: .5rem;
 }
 
-.tx_ublbooking .bookingFormDiv .date {
+.tx_ublbooking .bookingForm .date {
   font-weight: bold;
-}
-
-.tx_ublbooking .bookingFormDiv .pastDay {
-  color: #c0c0c0;
 }
 
 .tx_ublbooking .bookingForm {
   background-color: #e0e0e0;
 }
-.tx_ublbooking .bookingForm .titles {
+
+.tx_ublbooking .bookingForm td {
+  text-align: center;
+}
+
+.tx_ublbooking .bookingForm .titles td {
   font-weight: bold;
 }
-/*
-.tx_ublbooking .bookingForm .even {
-  background-color: #ffffff;
-}
-.tx_ublbooking .bookingForm .odd {
-  background-color: #CCFF99;
-}
-*/
+
 .tx_ublbooking .bookingForm .bookedHours {
   background-color: #E04644;
 }
@@ -319,17 +175,9 @@ td.week:focus,td.week:hover {cursor: pointer;}
   color: black;
 }
 
-.tx_ublbooking .bookingFormDiv .backToWeekView,
-.tx_ublbooking .bookingFormDiv .backToMonthView {
-  color: #052f96;
+.tx_ublbooking .backToWeekView,
+.tx_ublbooking .backToMonthView {
   padding: .25rem 0 .25rem 1rem;
-}
-
-.tx_ublbooking .bookingFormDiv .backToWeekView:hover,
-.tx_ublbooking .bookingFormDiv .backToWeekView:focus,
-.tx_ublbooking .bookingFormDiv .backToMonthView:hover,
-.tx_ublbooking .bookingFormDiv .backToMonthView:focus {
-  color: #37425e;
 }
 
 .tx_ublbooking  .errorMessage {
@@ -338,27 +186,6 @@ td.week:focus,td.week:hover {cursor: pointer;}
   border: 2px solid #E04644;
   font-weight: bold;
   padding: .5rem;
-}
-
-
-.button.transparent,
-button.transparent {
-  background: transparent;
-  border-radius: 0;
-  border-style: solid;
-  border-width: 0;
-  color: #333;
-  display: inline-block;
-  font-family: "Helvetica Neue",Helvetica,Roboto,Arial,sans-serif;
-  font-weight: normal;
-  font-size: 1rem;
-  line-height: 1.5;
-  margin: 0;
-  padding: .25rem .5rem;
-  position: relative;
-  text-align: center;
-  text-decoration: none;
-  transition: background-color 300ms ease-out;
 }
 
 .tx_ublbooking input[type="text"] {
@@ -485,45 +312,46 @@ button.transparent {
   width: auto;
 }
 
-.tx_ublbooking table tr td {
-  text-align: center;
+.tx_ublbooking button {
+     background:none!important;
+     padding:0!important;
+     margin: 0!important;
+     color: #052f96;
 }
 
-
-
-
 @media screen and (max-width: 500px) {
- .tx_ublbooking table tr td {
+ .tx_ublbooking {
     font-size: .85rem;
     padding: 0;
   }
 }
 
-
-
-
-/*
-@media screen and (max-width: 360px){
-  .tx_ublbooking table thead {display: none;}
-  .tx_ublbooking table tr {
-    margin-bottom: .25rem;
-    display: block;
-    border-bottom: 2px solid #ddd;
-  }
-  .tx_ublbooking table td {    display: block;
-    text-align: right;
-    font-size: .85rem;
-    border-bottom: 1px dotted #ccc;
-  }
-  .tx_ublbooking table td:last-child {
-    border-bottom: 0;
-  }
-  .tx_ublbooking table td:before {
-    content: attr(data-title);
-    float: left;
-    text-transform: uppercase;
-    font-weight: bold;
-  }
+.typo3-messages .message-body {
+  border-style: solid;
+  border-width: 1px;
+  display: block;
+  font-size: 1rem;
+  font-weight: normal;
+  margin-bottom: 1.25rem;
+  padding: .875rem 1.5rem .875rem .875rem;
+  position: relative;
+  transition: opacity 300ms ease-out;
 }
-*/
+
+.typo3-messages .message-header {
+  display:none;
+}
+
+.typo3-messages .message-error {
+    background-color: #f08a24;
+    border-color: #de770f;
+    color: #fff;
+}
+
+.typo3-messages .message-ok {
+    background-color: #a0d3e8;
+    border-color: #74bfdd;
+    color: #4f4f4f;
+}
+
 )

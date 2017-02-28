@@ -43,6 +43,14 @@ class Week extends DateIterator implements \Iterator, \Countable {
 		return ($this->current->format('W') === $this->origin->format('W'));
 	}
 
+	public function setDayStart($value) {
+		$this->dayStart = (int)$value;
+	}
+
+	public function setDayEnd($value) {
+		$this->dayEnd = (int)$value;
+	}
+
 	public function getStart() {
 		return $this->origin->modify('Monday this week');
 	}
