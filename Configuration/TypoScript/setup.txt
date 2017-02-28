@@ -131,6 +131,7 @@ plugin.tx_ublbooking._CSS_DEFAULT_STYLE (
 .tx_ublbooking .weekViewDay .offDutyTimeHours {
   background-color: #e0e0e0;
   cursor: auto;
+  display: none;
 }
 
 .tx_ublbooking .offDutyTime {
