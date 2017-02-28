@@ -38,7 +38,10 @@ CREATE TABLE tx_ublbooking_domain_model_booking (
 	comment varchar(255) DEFAULT '',
 
 	PRIMARY KEY (uid),
-	KEY parent (pid)
+	KEY parent (pid),
+	KEY room (room),
+	KEY time (time),
+	KEY fe_user (fe_user),
 );
 
 #
@@ -58,7 +61,8 @@ CREATE TABLE tx_ublbooking_domain_model_closingday (
 	description TEXT DEFAULT '',
 
 	PRIMARY KEY (uid),
-	KEY parent (pid)
+	KEY parent (pid),
+	KEY date (date),
 );
 
 #
