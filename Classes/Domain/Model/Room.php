@@ -277,7 +277,7 @@ class Room extends AbstractEntity {
 
 	public function setOpeningHours($queryResponse) {
 		foreach($queryResponse as $openingHours) {
-			$this->openingHours[$openingHours->getWeekDay()] = explode(',', $openingHours->getHours());
+			$this->openingHours[$openingHours->getWeekDay()] = empty($openingHours->getHours()) ? [] : explode(',', $openingHours->getHours());
 		}
 	}
 
@@ -287,6 +287,7 @@ class Room extends AbstractEntity {
 
 		foreach($this->openingHours as $dayOfWeek => $openingHours) {
 			if ($day && ((int)$day->format('N') !== $dayOfWeek)) continue;
+			if (count($openingHours) === 0) continue;
 			$min = min($openingHours);
 			$max = max($openingHours);
 			if (!isset($start) || $min < $start) $start = $min;
