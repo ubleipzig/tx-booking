@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-  <file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2013-12-16T14:54:51Z" product-name="ubl_booking">
+  <file source-language="en" target-language="de" datatype="plaintext" original="messages" product-name="ubl_booking">
     <header/>
     <body>
       <trans-unit id="off" approved="yes">
@@ -263,8 +263,8 @@
       </trans-unit>
 
       <trans-unit id="tca.tx_ublbooking_domain_model_closingday.name">
-        <source>Closing day name</source>
-        <target>Ruhetag Bezeichnung</target>
+        <source>Title</source>
+        <target>Bezeichnung</target>
       </trans-unit>
 
       <trans-unit id="tca.tx_ublbooking_domain_model_closingday.date">
@@ -278,7 +278,7 @@
       </trans-unit>
 
       <trans-unit id="tca.tx_ublbooking_domain_model_openinghours">
-        <source>Duty hours</source>
+        <source>Opening times</source>
         <target>Öffnungszeiten</target>
       </trans-unit>
 

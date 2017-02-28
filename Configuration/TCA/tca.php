@@ -60,9 +60,8 @@ $TCA["tx_ublbooking_domain_model_room"] = Array(
 		)
 	),
 
-// 1-1-1 = style pointer which defines color, style and border
-
-"types" => Array(
+	// 1-1-1 = style pointer which defines color, style and border
+	"types" => Array(
 		"0" => Array(
 			"showitem" => "hidden;;1;;1-1-1, name,opening_times_storage,booking_storage"
 		)
@@ -134,7 +133,7 @@ $TCA['tx_ublbooking_domain_model_openinghours'] = array(
 				'renderType' => 'selectSingleBox',
 				'size' => 10,
 				'itemsProcFunc' => '\LeipzigUniversityLibrary\UblBooking\Library\Tca->getHours',
-				'minitems' => 1,
+				'minitems' => 0,
 				'maxitems' => 9999,
 			)
 		),
