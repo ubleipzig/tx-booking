@@ -33,7 +33,6 @@ $TCA["tx_ublbooking_domain_model_booking"] = array(
 		'crdate' => 'crdate',
 		'cruser_id' => 'cruser_id',
 		'sortby' => 'sorting',
-		'delete' => 'deleted',
 		'enablecolumns' => array(
 			'disabled' => 'hidden',
 		),
@@ -59,7 +58,6 @@ $TCA["tx_ublbooking_domain_model_closingday"] = array(
 		'description' => 'description',
 		'date' => 'date',
 		'closingday' => 'closingday',
-		'delete'        => 'deleted',
 		'enablecolumns' => array(
 			'disabled'      => 'hidden'
 		),
@@ -77,7 +75,6 @@ $TCA["tx_ublbooking_domain_model_openinghours"] = array(
 		'tstamp' => 'tstamp',
 		'crdate' => 'crdate',
 		'cruser_id' => 'cruser_id',
-		'delete' => 'deleted',
 		'enablecolumns' => array(
 			'disabled' => 'hidden'
 		),
