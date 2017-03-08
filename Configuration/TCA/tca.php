@@ -168,7 +168,7 @@ $TCA["tx_ublbooking_domain_model_booking"] = Array(
                     ) ,
                 ) ,
                 "foreign_table" => "tx_ublbooking_domain_model_room",
-                "foreign_table_where" => "and tx_ublbooking_domain_model_room.pid=###CURRENT_PID### order by tx_ublbooking_domain_model_room.name",
+				"foreign_table_where" => "and (tx_ublbooking_domain_model_room.pid=###CURRENT_PID### OR tx_ublbooking_domain_model_room.booking_storage=###CURRENT_PID###) order by tx_ublbooking_domain_model_room.name",
                 "size" => "1",
                 "minitems" => 1,
                 "maxitems" => 1,

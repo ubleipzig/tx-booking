@@ -12,3 +12,4 @@ if (!defined('TYPO3_MODE')) die('Access denied.');
 // always load TypoScript configuration
 \FluidTYPO3\Flux\Core::addStaticTypoScript('EXT:'. $_EXTKEY . '/Configuration/TypoScript/');
 
+$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['extbase']['commandControllers'][$_EXTKEY] = \LeipzigUniversityLibrary\UblBooking\Command\CleanupCommandController::class;

@@ -244,6 +244,17 @@
         <source>Comment</source>
       </trans-unit>
 
+      <trans-unit id="tca.tx_ublbooking_domain_model_booking.comment">
+        <source>Comment</source>
+      </trans-unit>
+
+      <trans-unit id="task.cleanupBookings.name">
+        <source>Cleanup bookings</source>
+      </trans-unit>
+
+      <trans-unit id="task.cleanupBookings.description">
+        <source>removes bookings from the past</source>
+      </trans-unit>
     </body>
   </file>
 </xliff>
