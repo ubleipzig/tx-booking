@@ -1,4 +1,25 @@
 <?php
+/**
+ * Class BookingController
+ *
+ * Copyright (C) Leipzig University Library 2017 <info@ub.uni-leipzig.de>
+ *
+ * @author  Ulf Seltmann <seltmann@ub.uni-leipzig.de>
+ * @license http://opensource.org/licenses/gpl-2.0.php GNU General Public License
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2,
+ * as published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ */
+
 namespace LeipzigUniversityLibrary\UblBooking\Controller;
 
 use \LeipzigUniversityLibrary\UblBooking\Library\Week;
@@ -6,10 +27,17 @@ use \LeipzigUniversityLibrary\UblBooking\Library\Day;
 use \LeipzigUniversityLibrary\UblBooking\Library\Hour;
 use \LeipzigUniversityLibrary\UblBooking\Domain\Model\Booking;
 
+/**
+ * Class BookingController
+ *
+ * The main controller, holding all action methods
+ *
+ * @package LeipzigUniversityLibrary\UblBooking\Controller
+ */
 class BookingController extends AbstractController {
 
 	/**
-	 * $bookingRepository
+	 * The repository of bookings
 	 *
 	 * @var \LeipzigUniversityLibrary\UblBooking\Domain\Repository\Booking
 	 * @inject
@@ -17,19 +45,17 @@ class BookingController extends AbstractController {
 	protected $bookingRepository;
 
 	/**
+	 * the repository of rooms
+	 *
 	 * @var \LeipzigUniversityLibrary\UblBooking\Domain\Repository\Room
 	 * @inject
 	 */
 	protected $roomRepository;
 
 	/**
-	 * @var \TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager
-	 * @inject
-	 */
-	protected $persistenceManager;
-
-	/**
-	 * @param integer $timestamp
+	 * Shows the overview of a day for a room
+	 *
+	 * @param integer                                                $timestamp
 	 * @param \LeipzigUniversityLibrary\UblBooking\Domain\Model\Room $room
 	 */
 	public function showDayAction($timestamp, $room) {
@@ -49,7 +75,10 @@ class BookingController extends AbstractController {
 	}
 
 	/**
-	 * @param integer $timestamp
+	 * shows the overview of a week for a room
+	 *
+	 * @param integer $timestamp [optional] the timestamp of the week. if omitted the current week is taken.
+	 *                           the timestamp is always converted to 00:00 on the first day of the week.
 	 */
 	public function showWeekAction($timestamp = null) {
 		$week = new Week($timestamp);
@@ -70,12 +99,13 @@ class BookingController extends AbstractController {
 		$this->view->assign('Now', $now);
 		$this->view->assign('Rooms', $rooms);
 	}
+
 	/**
-	 * adds a booking
+	 * adds a booking to a room for a user
 	 *
-	 * @param \LeipzigUniversityLibrary\UblBooking\Domain\Model\Room $room
-	 * @param integer $timestamp
-	 * @param string $comment
+	 * @param \LeipzigUniversityLibrary\UblBooking\Domain\Model\Room $room      the room to add the booking for
+	 * @param integer                                                $timestamp the timestamp of the hour
+	 * @param string                                                 $comment   the comment of the booking
 	 */
 	public function addAction($room, $timestamp, $comment) {
 		$hour = new Hour($timestamp);
@@ -103,10 +133,10 @@ class BookingController extends AbstractController {
 	}
 
 	/**
-	 * removes a booking
+	 * removes a booking from a room for a user
 	 *
-	 * @param \LeipzigUniversityLibrary\UblBooking\Domain\Model\Room $room
-	 * @param integer $timestamp
+	 * @param \LeipzigUniversityLibrary\UblBooking\Domain\Model\Room $room      the room to remove the booking for
+	 * @param integer                                                $timestamp the timestamp of the hour to remove
 	 */
 	public function removeAction($room, $timestamp) {
 		$hour = new Hour($timestamp);

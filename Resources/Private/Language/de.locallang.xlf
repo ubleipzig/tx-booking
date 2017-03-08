@@ -312,15 +312,6 @@
         <target>Kommentar</target>
       </trans-unit>
 
-      <trans-unit id="task.cleanupBookings.name">
-        <source>Cleanup bookings</source>
-        <target>Buchungen bereinigen</target>
-      </trans-unit>
-
-      <trans-unit id="task.cleanupBookings.description">
-        <source>removes bookings from the past</source>
-        <target>entfernt Buchungen aus der Vergangenheit</target>
-      </trans-unit>
     </body>
   </file>
 </xliff>

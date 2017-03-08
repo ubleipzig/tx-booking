@@ -1,12 +1,41 @@
 <?php
+/**
+ * Class CleanupCommandController
+ *
+ * Copyright (C) Leipzig University Library 2017 <info@ub.uni-leipzig.de>
+ *
+ * @author  Ulf Seltmann <seltmann@ub.uni-leipzig.de>
+ * @license http://opensource.org/licenses/gpl-2.0.php GNU General Public License
+
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2,
+ * as published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ */
+
 namespace LeipzigUniversityLibrary\UblBooking\Command;
 
 use LeipzigUniversityLibrary\UblBooking\Library\Week;
 
+/**
+ * Class CleanupCommandController
+ *
+ * Provides commandline interface to cleanup past bookings
+ *
+ * @package LeipzigUniversityLibrary\UblBooking\Command
+ */
 class CleanupCommandController extends \TYPO3\CMS\Extbase\Mvc\Controller\CommandController {
 
 	/**
-	 * the Repository for bookings
+	 * The repository of bookings
 	 *
 	 * @var \LeipzigUniversityLibrary\UblBooking\Domain\Repository\Booking
 	 * @inject
@@ -14,7 +43,7 @@ class CleanupCommandController extends \TYPO3\CMS\Extbase\Mvc\Controller\Command
 	protected $bookingRepository;
 
 	/**
-	 * removes old bookings
+	 * Removes old bookings
 	 *
 	 * @param int $weeks How many weeks to keep. If empty all bookings from previous week are removed
 	 */
@@ -23,7 +52,7 @@ class CleanupCommandController extends \TYPO3\CMS\Extbase\Mvc\Controller\Command
 		$time = $today->sub(new \DateInterval("P{$weeks}W"));
 
 		$bookings = $this->bookingRepository->findBeforeTime($time);
-		foreach($bookings as $booking) {
+		foreach ($bookings as $booking) {
 			$this->bookingRepository->remove($booking);
 		}
 

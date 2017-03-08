@@ -1,33 +1,36 @@
 <?php
+/**
+ * Class AbstractController
+ *
+ * Copyright (C) Leipzig University Library 2017 <info@ub.uni-leipzig.de>
+ *
+ * @author  Ulf Seltmann <seltmann@ub.uni-leipzig.de>
+ * @license http://opensource.org/licenses/gpl-2.0.php GNU General Public License
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2,
+ * as published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ */
+
 namespace LeipzigUniversityLibrary\UblBooking\Controller;
 
-/***************************************************************
- *  Copyright notice
- *
- *  (c) 2009 Jochen Rau <jochen.rau@typoplanet.de>
- *  (c) 2011 Bastian Waidelich <bastian@typo3.org>
- *  All rights reserved
- *
- *  This script is part of the TYPO3 project. The TYPO3 project is
- *  free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
- *
- *  The GNU General Public License can be found at
- *  http://www.gnu.org/copyleft/gpl.html.
- *
- *  This script is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  This copyright notice MUST APPEAR in all copies of the script!
- ***************************************************************/
 use LeipzigUniversityLibrary\UblBooking\Library\SettingsHelper;
 
 /**
- * Abstract base controller for the ExtbaseTeam\BlogExample extension
+ * Class AbstractController
+ *
+ * Provides common methods to use in all controllers
+ *
+ * @package LeipzigUniversityLibrary\UblBooking\Controller
  */
 abstract class AbstractController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 
@@ -51,7 +54,7 @@ abstract class AbstractController extends \TYPO3\CMS\Extbase\Mvc\Controller\Acti
 	/**
 	 * helper function to render localized flashmessages
 	 *
-	 * @param string $action
+	 * @param string  $action
 	 * @param integer $severity optional severity code. One of the t3lib_FlashMessage constants
 	 * @return void
 	 */
@@ -64,9 +67,9 @@ abstract class AbstractController extends \TYPO3\CMS\Extbase\Mvc\Controller\Acti
 	}
 
 	/**
-	 * helper function to use localized strings in ExtbaseTeam\BlogExample controllers
+	 * helper function to use localized strings in controllers
 	 *
-	 * @param string $key locallang key
+	 * @param string $key            locallang key
 	 * @param string $defaultMessage the default message to show if key was not found
 	 * @return string
 	 */
@@ -78,6 +81,11 @@ abstract class AbstractController extends \TYPO3\CMS\Extbase\Mvc\Controller\Acti
 		return $message;
 	}
 
+	/**
+	 * Initialization method invoked before action method is invoked
+	 *
+	 * @return void
+	 */
 	public function initializeAction() {
 		$this->settingsHelper = new SettingsHelper($this->settings);
 	}

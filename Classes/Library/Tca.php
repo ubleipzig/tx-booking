@@ -1,15 +1,51 @@
 <?php
+/**
+ * Class Tca
+ *
+ * Copyright (C) Leipzig University Library 2017 <info@ub.uni-leipzig.de>
+ *
+ * @author  Ulf Seltmann <seltmann@ub.uni-leipzig.de>
+ * @license http://opensource.org/licenses/gpl-2.0.php GNU General Public License
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2,
+ * as published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ */
 
 namespace LeipzigUniversityLibrary\UblBooking\Library;
 
+/**
+ * Class Tca
+ *
+ * backend helper methods
+ *
+ * @package LeipzigUniversityLibrary\UblBooking\Library
+ */
 class Tca {
 
 	/**
+	 * The opening hours repository
+	 *
 	 * @var \LeipzigUniversityLibrary\UblBooking\Domain\Repository\OpeningHours
 	 * @inject
 	 */
 	protected $openingHoursRepository;
 
+	/**
+	 * Sets the week days as select items for backend form
+	 *
+	 * @param $config
+	 * @return mixed
+	 * @throws \Exception
+	 */
 	public function getDays($config) {
 		$objectManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('\TYPO3\CMS\Extbase\Object\ObjectManager');
 		$querySettings = $objectManager->get('TYPO3\\CMS\\Extbase\\Persistence\\Generic\\Typo3QuerySettings');
@@ -35,6 +71,12 @@ class Tca {
 		return $config;
 	}
 
+	/**
+	 * Sets the title parameter for listing in backend view
+	 *
+	 * @param $parameters
+	 * @param $parentObject
+	 */
 	public function getDayTitle(&$parameters, $parentObject) {
 		$record = \TYPO3\CMS\Backend\Utility\BackendUtility::getRecord($parameters['table'], $parameters['row']['uid']);
 		$week = new Week();
@@ -45,6 +87,12 @@ class Tca {
 		$parameters['title'] = $week->add(new \DateInterval("P{$i}D"))->format('l') . ' (' . implode(',', $hours) . ')';
 	}
 
+	/**
+	 * sets the choosable opening hours as select items in backend form
+	 *
+	 * @param $config
+	 * @return mixed
+	 */
 	public function getHours($config) {
 		$day = new Day();
 
@@ -55,6 +103,12 @@ class Tca {
 		return $config;
 	}
 
+	/**
+	 * finds the correct pid after "save+new"
+	 *
+	 * @param $id
+	 * @return mixed
+	 */
 	protected function normalizePageUid($id) {
 		if ($id < 0) {
 			$parentRec = \TYPO3\CMS\Backend\Utility\BackendUtility::getRecord(
