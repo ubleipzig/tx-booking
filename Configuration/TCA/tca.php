@@ -161,18 +161,11 @@ $TCA["tx_ublbooking_domain_model_booking"] = Array(
             "label" => "LLL:EXT:ubl_booking/Resources/Private/Language/locallang.xlf:tca.tx_ublbooking_domain_model_room.name",
             "config" => Array(
                 "type" => "select",
-                "items" => Array(
-                    Array(
-                        '',
-                        0
-                    ) ,
-                ) ,
                 "foreign_table" => "tx_ublbooking_domain_model_room",
 				"foreign_table_where" => "and (tx_ublbooking_domain_model_room.pid=###CURRENT_PID### OR tx_ublbooking_domain_model_room.booking_storage=###CURRENT_PID###) order by tx_ublbooking_domain_model_room.name",
                 "size" => "1",
                 "minitems" => 1,
                 "maxitems" => 1,
-                "eval" => "trim",
             )
         ) ,
         "time" => Array(
@@ -182,7 +175,7 @@ $TCA["tx_ublbooking_domain_model_booking"] = Array(
                 "type" => "input",
                 "size" => "8",
                 "max" => "20",
-                "eval" => "datetime",
+                "eval" => "datetime, required",
                 "checkbox" => "0",
                 "default" => "0"
             )
@@ -200,6 +193,9 @@ $TCA["tx_ublbooking_domain_model_booking"] = Array(
                 ) ,
                 "foreign_table" => "fe_users",
                 "foreign_table_where" => " order by fe_users.name",
+				"size" => "1",
+				"minitems" => 0,
+				"maxitems" => 1,
             )
         ) ,
         'comment' => Array(

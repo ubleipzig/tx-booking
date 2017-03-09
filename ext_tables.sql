@@ -42,7 +42,7 @@ CREATE TABLE tx_ublbooking_domain_model_booking (
 	KEY room (room),
 	KEY time (time),
 	KEY fe_user (fe_user),
-	UNIQUE booking (room, time),
+	UNIQUE one_booking_per_room_and_time (room, time),
 );
 
 #
