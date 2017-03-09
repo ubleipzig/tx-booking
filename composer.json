@@ -1,6 +1,6 @@
 {
   "name": "ubl/ubl_booking",
-  "description": "Supports booking of rooms for fe users",
+  "description": "Manage bookings of rooms for fe users",
   "type": "typo3-cms-extension",
   "keywords": ["TYPO3 CMS", "booking"],
   "license": ["GPL-2.0+"],

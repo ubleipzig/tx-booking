@@ -42,7 +42,7 @@ class DateHelper {
 	 * @param int $timestamp [optional] the unix timestamp to create the object from
 	 */
 	public function __construct($timestamp = null) {
-		$this->origin = new \DateTimeImmutable('now', new \DateTimeZone('Europe/Berlin'));
+		$this->origin = new \DateTimeImmutable('now', new \DateTimeZone(date_default_timezone_get()));
 
 		if ($timestamp) $this->origin = $this->origin->setTimestamp($timestamp);
 	}

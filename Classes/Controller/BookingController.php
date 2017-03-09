@@ -85,7 +85,7 @@ class BookingController extends AbstractController {
 
 		$rooms = $this->roomRepository->findAllWithOccupationForWeek($week, $this->settingsHelper);
 		$today = new Day();
-		$now = new \DateTimeImmutable('now', new \DateTimeZone('Europe/Berlin'));
+		$now = new \DateTimeImmutable('now', new \DateTimeZone(date_default_timezone_get()));
 
 
 		if ($this->settingsHelper->isAdmin() || $this->settingsHelper->showNextWeek($week)) {

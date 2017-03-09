@@ -310,7 +310,7 @@ class Room extends AbstractEntity {
 	 */
 	public function isHourBookable(Hour $hour) {
 		if (!$this->isDayBookable(new Day($hour->getTimestamp()))) return false;
-		$now = new \DateTimeImmutable('now', new \DateTimeZone('Europe/Berlin'));
+		$now = new \DateTimeImmutable('now', new \DateTimeZone(date_default_timezone_get()));
 		if ($hour->getDateTime() < $now) {
 			return false;
 		}

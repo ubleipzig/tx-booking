@@ -91,7 +91,7 @@ class Booking extends AbstractEntity {
 	 * initializes the model after creation with constructor or via DI (which is creating te object without invoking the constructor)
 	 */
 	public function initializeObject() {
-		$this->dateTime = new \DateTimeImmutable('now', new \DateTimeZone('Europe/Berlin'));
+		$this->dateTime = new \DateTimeImmutable('now', new \DateTimeZone(date_default_timezone_get()));
 
 		parent::initializeObject();
 	}
