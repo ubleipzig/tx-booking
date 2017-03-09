@@ -217,7 +217,7 @@
       </trans-unit>
 
       <trans-unit id="tca.tx_ublbooking_domain_model_openinghours">
-        <source>Duty hours</source>
+        <source>Opening hours</source>
       </trans-unit>
 
       <trans-unit id="tca.tx_ublbooking_domain_model_openinghours.week_day">

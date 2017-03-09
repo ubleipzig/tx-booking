@@ -50,7 +50,7 @@ class Room extends AbstractEntity {
 	protected $day;
 
 	/**
-	 * The duty hours resolved as array
+	 * The opening hours resolved as array
 	 *
 	 * @var array
 	 */

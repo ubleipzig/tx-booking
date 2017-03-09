@@ -90,7 +90,8 @@ $TCA['tx_ublbooking_domain_model_closingday'] = array(
 			'config' => array(
 				'type' => 'input',
 				'size' => 20,
-				'max' => 256
+				'max' => 256,
+				'eval' => 'required'
 			)
 		),
 		'date' => array(
@@ -98,7 +99,7 @@ $TCA['tx_ublbooking_domain_model_closingday'] = array(
 			'config' => array(
 				'type' => 'input',
 				'size' => 5,
-				'eval' => 'date',
+				'eval' => 'date,required',
 			)
 		),
 		'description' => array(

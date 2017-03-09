@@ -28,6 +28,10 @@
               <label>LLL:EXT:ubl_booking/Resources/Private/Language/locallang.xlf:flexforms.limitBookingToWeeks</label>
               <config>
                 <type>input</type>
+                <default>2</default>
+                <eval>int</eval>
+                <size>2</size>
+                <max>2</max>
               </config>
             </TCEforms>
           </settings.limitBookingToWeeks>
@@ -36,6 +40,10 @@
               <label>LLL:EXT:ubl_booking/Resources/Private/Language/locallang.xlf:flexforms.limitBacklogToWeeks</label>
               <config>
                 <type>input</type>
+                <default>1</default>
+                <eval>int</eval>
+                <size>2</size>
+                <max>2</max>
               </config>
             </TCEforms>
           </settings.limitBacklogToWeeks>
