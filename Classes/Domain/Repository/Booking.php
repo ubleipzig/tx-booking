@@ -85,7 +85,6 @@ class Booking extends Repository {
 			$query->equals('fe_user', $user)
 		]);
 		$query->matching($where);
-
 		return $query->execute();
 	}
 

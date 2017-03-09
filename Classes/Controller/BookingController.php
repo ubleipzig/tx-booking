@@ -122,7 +122,7 @@ class BookingController extends AbstractController {
 			$this->addFlashMessage('alreadyBookedByForeignUser', \TYPO3\CMS\Core\Messaging\FlashMessage::ERROR);
 		} else if (count($this->bookingRepository->findByUserAndTime($GLOBALS['TSFE']->fe_user->user['uid'], $hour->getDateTime())) > 0) {
 			$this->addFlashMessage('alreadyBookedInOtherRoom', \TYPO3\CMS\Core\Messaging\FlashMessage::ERROR);
-		} else if ($this->settingsHelper->getMaxBookings() && count($this->bookingRepository->findByUserAndRoomsAndBetween($GLOBALS['TSFE']->fe_user->user['uid'], $rooms, $day->getStart(), $day->getEnd())) === $this->settingsHelper->getMaxBookings()) {
+		} else if ($this->settingsHelper->getMaxBookings() && count($this->bookingRepository->findByUserAndRoomsAndBetween($GLOBALS['TSFE']->fe_user->user['uid'], $rooms, $day->getStart(), $day->getEnd())) >= $this->settingsHelper->getMaxBookings()) {
 			$this->addFlashMessage('maxBookingsReached', \TYPO3\CMS\Core\Messaging\FlashMessage::ERROR);
 		} else {
 			$this->bookingRepository->add(new Booking($timestamp, $room, $comment));
