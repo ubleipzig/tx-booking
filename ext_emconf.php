@@ -22,7 +22,7 @@
 
 $EM_CONF[$_EXTKEY] = array(
 	'title' => 'Booking for Rooms',
-	'description' => 'Manage bookings of rooms for fe users',
+	'description' => 'Manage bookings of rooms for frontend users',
 	'category' => 'plugin',
 	'version' => '1.0.1',
 	'state' => 'stable',
