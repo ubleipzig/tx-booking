@@ -136,7 +136,7 @@ class Week extends DateHelper implements \Iterator, \Countable {
 	 * @return \DateTimeImmutable
 	 */
 	public function getEnd() {
-		return $this->origin->modify('Sunday this week');
+		return $this->origin->modify('Monday next week -1 second');
 	}
 
 	/**

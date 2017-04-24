@@ -4,7 +4,7 @@
   "type": "typo3-cms-extension",
   "keywords": ["TYPO3 CMS", "booking"],
   "license": ["GPL-2.0+"],
-  "version": "1.0.1",
+  "version": "1.0.2",
   "support": {
     "issues": "https://github.com/ubleipzig/ubl_booking/issues"
   },
