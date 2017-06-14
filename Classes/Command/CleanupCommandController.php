@@ -21,23 +21,23 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-namespace LeipzigUniversityLibrary\UblBooking\Command;
+namespace Ubl\Booking\Command;
 
-use LeipzigUniversityLibrary\UblBooking\Library\Week;
+use Ubl\Booking\Library\Week;
 
 /**
  * Class CleanupCommandController
  *
  * Provides commandline interface to cleanup past bookings
  *
- * @package LeipzigUniversityLibrary\UblBooking\Command
+ * @package Ubl\Booking\Command
  */
 class CleanupCommandController extends \TYPO3\CMS\Extbase\Mvc\Controller\CommandController {
 
 	/**
 	 * The repository of bookings
 	 *
-	 * @var \LeipzigUniversityLibrary\UblBooking\Domain\Repository\Booking
+	 * @var \Ubl\Booking\Domain\Repository\Booking
 	 * @inject
 	 */
 	protected $bookingRepository;

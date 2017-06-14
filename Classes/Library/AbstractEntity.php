@@ -20,12 +20,12 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-namespace LeipzigUniversityLibrary\UblBooking\Library;
+namespace Ubl\Booking\Library;
 
 /**
  * Class AbstractEntity
  *
- * @package LeipzigUniversityLibrary\UblBooking\Library
+ * @package Ubl\Booking\Library
  */
 abstract class AbstractEntity extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 

@@ -21,11 +21,11 @@
  */
 
 if (!defined('TYPO3_MODE')) die('Access denied.');
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_ublbooking_domain_model_room');
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToInsertRecords('tx_ublbooking_domain_model_room');
-$TCA["tx_ublbooking_domain_model_room"] = array(
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_booking_domain_model_room');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToInsertRecords('tx_booking_domain_model_room');
+$TCA["tx_booking_domain_model_room"] = array(
 	"ctrl" => array(
-		'title' => 'LLL:EXT:ubl_booking/Resources/Private/Language/locallang.xlf:tca.tx_ublbooking_domain_model_room',
+		'title' => 'LLL:EXT:booking/Resources/Private/Language/locallang.xlf:tca.tx_booking_domain_model_room',
 		'label' => 'name',
 		'tstamp' => 'tstamp',
 		'crdate' => 'crdate',
@@ -42,11 +42,11 @@ $TCA["tx_ublbooking_domain_model_room"] = array(
 		"fe_admin_fieldList" => "hidden, name, hours",
 	)
 );
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_ublbooking_domain_model_booking');
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToInsertRecords('tx_ublbooking_domain_model_booking');
-$TCA["tx_ublbooking_domain_model_booking"] = array(
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_booking_domain_model_booking');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToInsertRecords('tx_booking_domain_model_booking');
+$TCA["tx_booking_domain_model_booking"] = array(
 	"ctrl" => array(
-		'title' => 'LLL:EXT:ubl_booking/Resources/Private/Language/locallang.xlf:tca.tx_ublbooking_domain_model_booking',
+		'title' => 'LLL:EXT:booking/Resources/Private/Language/locallang.xlf:tca.tx_booking_domain_model_booking',
 		'label' => 'time',
 		'label_alt' => 'fe_user',
 		'label_alt_force' => 'true',
@@ -64,11 +64,11 @@ $TCA["tx_ublbooking_domain_model_booking"] = array(
 	)
 );
 
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_ublbooking_domain_model_closingday');
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToInsertRecords('tx_ublbooking_domain_model_closingday');
-$TCA["tx_ublbooking_domain_model_closingday"] = array(
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_booking_domain_model_closingday');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToInsertRecords('tx_booking_domain_model_closingday');
+$TCA["tx_booking_domain_model_closingday"] = array(
 	'ctrl' => array(
-		'title' => 'LLL:EXT:ubl_booking/Resources/Private/Language/locallang.xlf:tca.tx_ublbooking_domain_model_closingday',
+		'title' => 'LLL:EXT:booking/Resources/Private/Language/locallang.xlf:tca.tx_booking_domain_model_closingday',
 		'label' => 'name',
 		'label_alt' => 'date',
 		'label_alt_force' => 'true',
@@ -86,13 +86,13 @@ $TCA["tx_ublbooking_domain_model_closingday"] = array(
 	)
 );
 
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_ublbooking_domain_model_openinghours');
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToInsertRecords('tx_ublbooking_domain_model_openinghours');
-$TCA["tx_ublbooking_domain_model_openinghours"] = array(
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_booking_domain_model_openinghours');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToInsertRecords('tx_booking_domain_model_openinghours');
+$TCA["tx_booking_domain_model_openinghours"] = array(
 	'ctrl' => array(
-		'title' => 'LLL:EXT:ubl_booking/Resources/Private/Language/locallang.xlf:tca.tx_ublbooking_domain_model_openinghours',
+		'title' => 'LLL:EXT:booking/Resources/Private/Language/locallang.xlf:tca.tx_booking_domain_model_openinghours',
 		'label' => 'week_day',
-		'label_userFunc' => '\LeipzigUniversityLibrary\UblBooking\Library\Tca->getDayTitle',
+		'label_userFunc' => 'Ubl\Booking\Library\Tca->getDayTitle',
 		'tstamp' => 'tstamp',
 		'crdate' => 'crdate',
 		'cruser_id' => 'cruser_id',
@@ -106,7 +106,7 @@ $TCA["tx_ublbooking_domain_model_openinghours"] = array(
 	)
 );
 
-$pluginSignature = 'ublbooking_bookings';
+$pluginSignature = 'booking_bookings';
 $TCA['tt_content']['types']['list']['subtypes_addlist'][$pluginSignature] = 'pi_flexform';
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue(
@@ -119,3 +119,5 @@ $TCA['tt_content']['types']['list']['subtypes_addlist'][$pluginSignature] = 'pi_
 	'Bookings',
 	'Bookings for Rooms'
 );
+
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile($_EXTKEY, 'Configuration/TypoScript/', 'Booking CSS Styles');

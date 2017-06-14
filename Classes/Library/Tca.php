@@ -20,21 +20,21 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-namespace LeipzigUniversityLibrary\UblBooking\Library;
+namespace Ubl\Booking\Library;
 
 /**
  * Class Tca
  *
  * backend helper methods
  *
- * @package LeipzigUniversityLibrary\UblBooking\Library
+ * @package Ubl\Booking\Library
  */
 class Tca {
 
 	/**
 	 * The opening hours repository
 	 *
-	 * @var \LeipzigUniversityLibrary\UblBooking\Domain\Repository\OpeningHours
+	 * @var \Ubl\Booking\Domain\Repository\OpeningHours
 	 * @inject
 	 */
 	protected $openingHoursRepository;
@@ -47,9 +47,9 @@ class Tca {
 	 * @throws \Exception
 	 */
 	public function getDays($config) {
-		$objectManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('\TYPO3\CMS\Extbase\Object\ObjectManager');
-		$querySettings = $objectManager->get('TYPO3\\CMS\\Extbase\\Persistence\\Generic\\Typo3QuerySettings');
-		$openingHoursRepository = $objectManager->get('\LeipzigUniversityLibrary\UblBooking\Domain\Repository\OpeningHours');
+		$objectManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\CMS\Extbase\Object\ObjectManager');
+		$querySettings = $objectManager->get('TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings');
+		$openingHoursRepository = $objectManager->get('Ubl\Booking\Domain\Repository\OpeningHours');
 
 		// workaround, see https://forge.typo3.org/issues/50551
 		$pageUid = $this->normalizePageUid($config['row']['pid']);
@@ -112,7 +112,7 @@ class Tca {
 	protected function normalizePageUid($id) {
 		if ($id < 0) {
 			$parentRec = \TYPO3\CMS\Backend\Utility\BackendUtility::getRecord(
-				'tx_ublbooking_domain_model_openinghours',
+				'tx_booking_domain_model_openinghours',
 				abs($id),
 				'pid'
 			);

@@ -20,25 +20,25 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-namespace LeipzigUniversityLibrary\UblBooking\Domain\Repository;
+namespace Ubl\Booking\Domain\Repository;
 
 use \TYPO3\CMS\Extbase\Persistence\Repository;
 
 /**
  * Class Room
  *
- * @package LeipzigUniversityLibrary\UblBooking\Domain\Repository
+ * @package Ubl\Booking\Domain\Repository
  */
 class Room extends Repository {
 
 	/**
 	 * Finds all rooms and fetch their occupation for specified week
 	 *
-	 * @param \LeipzigUniversityLibrary\UblBooking\Library\Week           $week           the week
-	 * @param \LeipzigUniversityLibrary\UblBooking\Library\SettingsHelper $settingsHelper the settings helper
+	 * @param \Ubl\Booking\Library\Week           $week           the week
+	 * @param \Ubl\Booking\Library\SettingsHelper $settingsHelper the settings helper
 	 * @return \TYPO3\CMS\Extbase\Persistence\QueryResultInterface the result
 	 */
-	public function findAllWithOccupationForWeek(\LeipzigUniversityLibrary\UblBooking\Library\Week $week, \LeipzigUniversityLibrary\UblBooking\Library\SettingsHelper $settingsHelper) {
+	public function findAllWithOccupationForWeek(\Ubl\Booking\Library\Week $week, \Ubl\Booking\Library\SettingsHelper $settingsHelper) {
 		$result = $this->findAll();
 		foreach ($result as $room) {
 			$room->fetchWeekOccupation($week);

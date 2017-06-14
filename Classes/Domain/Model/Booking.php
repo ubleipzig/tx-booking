@@ -20,14 +20,14 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-namespace LeipzigUniversityLibrary\UblBooking\Domain\Model;
+namespace Ubl\Booking\Domain\Model;
 
-use \LeipzigUniversityLibrary\UblBooking\Library\AbstractEntity;
+use \Ubl\Booking\Library\AbstractEntity;
 
 /**
  * Class Booking
  *
- * @package LeipzigUniversityLibrary\UblBooking\Domain\Model
+ * @package Ubl\Booking\Domain\Model
  */
 class Booking extends AbstractEntity {
 
@@ -41,7 +41,7 @@ class Booking extends AbstractEntity {
 	/**
 	 * The Room of this booking
 	 *
-	 * @var \LeipzigUniversityLibrary\UblBooking\Domain\Model\Room
+	 * @var \Ubl\Booking\Domain\Model\Room
 	 */
 	protected $room;
 
@@ -92,8 +92,6 @@ class Booking extends AbstractEntity {
 	 */
 	public function initializeObject() {
 		$this->dateTime = new \DateTimeImmutable('now', new \DateTimeZone(date_default_timezone_get()));
-
-		parent::initializeObject();
 	}
 
 	/**

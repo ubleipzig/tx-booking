@@ -20,15 +20,15 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-namespace LeipzigUniversityLibrary\UblBooking\Domain\Model;
+namespace Ubl\Booking\Domain\Model;
 
-use \LeipzigUniversityLibrary\UblBooking\Library\AbstractEntity;
-use \LeipzigUniversityLibrary\UblBooking\Library\Day;
+use \Ubl\Booking\Library\AbstractEntity;
+use \Ubl\Booking\Library\Day;
 
 /**
  * Class OpeningHours
  *
- * @package LeipzigUniversityLibrary\UblBooking\Domain\Model
+ * @package Ubl\Booking\Domain\Model
  */
 class OpeningHours extends AbstractEntity {
 

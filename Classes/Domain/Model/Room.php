@@ -20,32 +20,32 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-namespace LeipzigUniversityLibrary\UblBooking\Domain\Model;
+namespace Ubl\Booking\Domain\Model;
 
-use \LeipzigUniversityLibrary\UblBooking\Domain\Repository\OpeningHours;
-use \LeipzigUniversityLibrary\UblBooking\Library\AbstractEntity;
-use \LeipzigUniversityLibrary\UblBooking\Library\Week;
-use \LeipzigUniversityLibrary\UblBooking\Library\Day;
-use \LeipzigUniversityLibrary\UblBooking\Library\Hour;
+use \Ubl\Booking\Domain\Repository\OpeningHours;
+use \Ubl\Booking\Library\AbstractEntity;
+use \Ubl\Booking\Library\Week;
+use \Ubl\Booking\Library\Day;
+use \Ubl\Booking\Library\Hour;
 
 /**
  * Class Room
  *
- * @package LeipzigUniversityLibrary\UblBooking\Domain\Model
+ * @package Ubl\Booking\Domain\Model
  */
 class Room extends AbstractEntity {
 
 	/**
 	 * The week representation of the room
 	 *
-	 * @var \LeipzigUniversityLibrary\UblBooking\Library\Week
+	 * @var \Ubl\Booking\Library\Week
 	 */
 	protected $week;
 
 	/**
 	 * The day representation of the room
 	 *
-	 * @var \LeipzigUniversityLibrary\UblBooking\Library\Day
+	 * @var \Ubl\Booking\Library\Day
 	 */
 	protected $day;
 
@@ -113,7 +113,7 @@ class Room extends AbstractEntity {
 	/**
 	 * The repository of the closing days
 	 *
-	 * @var \LeipzigUniversityLibrary\UblBooking\Domain\Repository\ClosingDay
+	 * @var \Ubl\Booking\Domain\Repository\ClosingDay
 	 * @inject
 	 */
 	protected $closingDayRepository;
@@ -121,7 +121,7 @@ class Room extends AbstractEntity {
 	/**
 	 * The repository of the Bookings
 	 *
-	 * @var \LeipzigUniversityLibrary\UblBooking\Domain\Repository\Booking
+	 * @var \Ubl\Booking\Domain\Repository\Booking
 	 * @inject
 	 */
 	protected $bookingRepository;
@@ -129,7 +129,7 @@ class Room extends AbstractEntity {
 	/**
 	 * The repository of the opening ours
 	 *
-	 * @var \LeipzigUniversityLibrary\UblBooking\Domain\Repository\OpeningHours
+	 * @var \Ubl\Booking\Domain\Repository\OpeningHours
 	 * @inject
 	 */
 	protected $openingHoursRepository;
@@ -137,7 +137,7 @@ class Room extends AbstractEntity {
 	/**
 	 * The room's bookings
 	 *
-	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\LeipzigUniversityLibrary\UblBooking\Domain\Model\Booking>
+	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Ubl\Booking\Domain\Model\Booking>
 	 * @lazy
 	 * @cascade remove
 	 */
@@ -146,7 +146,7 @@ class Room extends AbstractEntity {
 	/**
 	 * The room's closing days
 	 *
-	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\LeipzigUniversityLibrary\UblBooking\Domain\Model\ClosingDay>
+	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Ubl\Booking\Domain\Model\ClosingDay>
 	 * @lazy
 	 */
 	protected $closingDays;
@@ -158,13 +158,12 @@ class Room extends AbstractEntity {
 	public function initializeObject() {
 		$this->bookings = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
 		$this->closingDays = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-		return parent::initializeObject();
 	}
 
 	/**
 	 * Adds a booking to the storage container
 	 *
-	 * @param \LeipzigUniversityLibrary\UblBooking\Domain\Model\Booking $booking
+	 * @param \Ubl\Booking\Domain\Model\Booking $booking
 	 * @return void
 	 */
 	public function addBooking(Booking $booking) {
@@ -174,7 +173,7 @@ class Room extends AbstractEntity {
 	/**
 	 * Removes a booking from the storage container
 	 *
-	 * @param \LeipzigUniversityLibrary\UblBooking\Domain\Model\Booking $booking
+	 * @param \Ubl\Booking\Domain\Model\Booking $booking
 	 * @return void
 	 */
 	public function removeBooking(Booking $booking) {
@@ -184,7 +183,7 @@ class Room extends AbstractEntity {
 	/**
 	 * Adds a closing day to the storage container
 	 *
-	 * @param \LeipzigUniversityLibrary\UblBooking\Domain\Model\ClosingDay $closingDay
+	 * @param \Ubl\Booking\Domain\Model\ClosingDay $closingDay
 	 * @return void
 	 */
 	public function addClosingDay(ClosingDay $closingDay) {
@@ -194,7 +193,7 @@ class Room extends AbstractEntity {
 	/**
 	 * Removes a closing day from the storage container
 	 *
-	 * @param \LeipzigUniversityLibrary\UblBooking\Domain\Model\ClosingDay $closingDay
+	 * @param \Ubl\Booking\Domain\Model\ClosingDay $closingDay
 	 * @return void
 	 */
 	public function removeClosingDay(ClosingDay $closingDay) {
@@ -204,7 +203,7 @@ class Room extends AbstractEntity {
 	/**
 	 * Fetches the Bookings of the room for a specified week
 	 *
-	 * @param \LeipzigUniversityLibrary\UblBooking\Library\Week $week the week to fetch bookings for
+	 * @param \Ubl\Booking\Library\Week $week the week to fetch bookings for
 	 */
 	public function fetchWeekOccupation(Week $week) {
 		$this->setOpeningHours($this->openingHoursRepository->findAllByRoom($this));
@@ -226,7 +225,7 @@ class Room extends AbstractEntity {
 	/**
 	 * Fetches all bookings of the room for a specified day
 	 *
-	 * @param \LeipzigUniversityLibrary\UblBooking\Library\Day $day the day to fetch bookings for
+	 * @param \Ubl\Booking\Library\Day $day the day to fetch bookings for
 	 */
 	public function fetchDayOccupation(Day $day) {
 		$this->day = $day;
@@ -248,7 +247,7 @@ class Room extends AbstractEntity {
 	/**
 	 * return the kind of occupation of the room for a specified hour
 	 *
-	 * @param \LeipzigUniversityLibrary\UblBooking\Library\Hour $hour the hour to get the occupation for
+	 * @param \Ubl\Booking\Library\Hour $hour the hour to get the occupation for
 	 * @return int the occupation as constant
 	 */
 	public function getHourOccupation(Hour $hour) {
@@ -261,7 +260,7 @@ class Room extends AbstractEntity {
 		}
 
 		if ($booking = $this->getBooking($hour->getDateTime())) {
-			if ($booking->getFeUser() === $GLOBALS['TSFE']->fe_user->user['uid']) return self::OWNBOOKED;
+			if ($booking->getFeUser() === (int)$GLOBALS['TSFE']->fe_user->user['uid']) return self::OWNBOOKED;
 			if ($this->settingsHelper->isAdmin($booking->getFeUser())) return self::OFFDUTY;
 			return self::FOREIGNBOOKED;
 		};
@@ -272,7 +271,7 @@ class Room extends AbstractEntity {
 	/**
 	 * Returns overall occupation of a room for a day
 	 *
-	 * @param \LeipzigUniversityLibrary\UblBooking\Library\Day $day the day to get the occupaton for
+	 * @param \Ubl\Booking\Library\Day $day the day to get the occupaton for
 	 * @return int the occupation as constant
 	 */
 	public function getDayOccupation(Day $day) {
@@ -286,7 +285,7 @@ class Room extends AbstractEntity {
 	/**
 	 * Whether the day is bookable.
 	 *
-	 * @param \LeipzigUniversityLibrary\UblBooking\Library\Day $day the day to test bookability for
+	 * @param \Ubl\Booking\Library\Day $day the day to test bookability for
 	 * @return bool true if bookable
 	 */
 	public function isDayBookable(Day $day) {
@@ -305,7 +304,7 @@ class Room extends AbstractEntity {
 	/**
 	 * Whether the hour is bookable
 	 *
-	 * @param \LeipzigUniversityLibrary\UblBooking\Library\Hour $hour the hour to test bookability for
+	 * @param \Ubl\Booking\Library\Hour $hour the hour to test bookability for
 	 * @return bool true if bookable
 	 */
 	public function isHourBookable(Hour $hour) {
@@ -337,7 +336,7 @@ class Room extends AbstractEntity {
 	/**
 	 * calculates the minimum and maximum opening hour
 	 *
-	 * @param \LeipzigUniversityLibrary\UblBooking\Library\Day $day [optional] if provided only get the values for the provided day.
+	 * @param \Ubl\Booking\Library\Day $day [optional] if provided only get the values for the provided day.
 	 *                                                              if not provided aggregated for the entire week
 	 * @return array start and end
 	 */
@@ -365,7 +364,7 @@ class Room extends AbstractEntity {
 	/**
 	 * Whether the provided hour of the room is a duty hour
 	 *
-	 * @param \LeipzigUniversityLibrary\UblBooking\Library\Hour $hour the hour to test dutyness for
+	 * @param \Ubl\Booking\Library\Hour $hour the hour to test dutyness for
 	 * @return bool true if duty hour
 	 */
 	public function isDutyHour(Hour $hour) {
@@ -377,7 +376,7 @@ class Room extends AbstractEntity {
 	 * Returns the booking for a timestamp
 	 *
 	 * @param \DateTimeInterface $timestamp the time to get the booking for
-	 * @return \LeipzigUniversityLibrary\UblBooking\Domain\Model\Booking the booking if found
+	 * @return \Ubl\Booking\Domain\Model\Booking the booking if found
 	 */
 	public function getBooking(\DateTimeInterface $timestamp) {
 		foreach ($this->bookings as $booking) {

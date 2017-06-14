@@ -1,21 +1,71 @@
 {
-  "name": "ubl/ubl_booking",
-  "description": "Manage bookings of rooms for frontend users",
+  "name": "ubl/booking",
   "type": "typo3-cms-extension",
-  "keywords": ["TYPO3 CMS", "booking"],
-  "license": ["GPL-2.0+"],
-  "version": "1.0.2",
+  "description": "Manage bookings of rooms for fe users",
+  "keywords": [
+    "TYPO3",
+    "CMS",
+    "extension",
+    "booking"
+  ],
+  "homepage": "https://github.com/ubleipzig/tx-booking",
+  "license": "GPL-2.0+",
+  "version": "2.0.0",
   "support": {
-    "issues": "https://github.com/ubleipzig/ubl_booking/issues"
+    "issues": "https://github.com/ubleipzig/tx-booking/issues"
   },
+  "authors": [{
+    "name": "Ulf Seltmann",
+    "email": "seltmann@ub.uni-leipzig.de",
+    "role": "Developer"
+  }],
+  "repositories": [{
+    "type": "composer",
+    "url": "https://composer.typo3.org/"
+  }],
   "require": {
-    "typo3/cms": ">=4.5,<6.3"
+    "typo3/cms": "^7.6.0",
+    "typo3-ter/iconfont": "^0.9.0"
   },
-  "authors": [
-    {
-      "name": "Ulf Seltmann",
-      "email": "seltmann@ub.uni-leipzig.de",
-      "role": "Developer"
+  "require-dev": {
+    "namelesscoder/typo3-repository-client": "^1.2",
+    "nimut/testing-framework": "^1.0",
+    "mikey179/vfsStream": "^1.4",
+    "phpunit/phpunit": "^4.7 || ^5.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Ubl\\Booking\\": "Classes"
     }
-  ]
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Ubl\\Booking\\Tests\\": "Tests",
+      "TYPO3\\CMS\\Core\\Tests\\": ".Build/vendor/typo3/cms/typo3/sysext/core/Tests/",
+      "TYPO3\\CMS\\Fluid\\Tests\\": ".Build/vendor/typo3/cms/typo3/sysext/fluid/Tests/"
+    }
+  },
+  "replace": {
+    "ubl_booking": "self.version",
+    "typo3-ter/ubl-booking": "self.version"
+  },
+  "config": {
+    "vendor-dir": ".Build/vendor",
+    "bin-dir": ".Build/bin"
+  },
+  "scripts": {
+    "post-autoload-dump": [
+      "mkdir -p .Build/Web/typo3conf/ext/",
+      "[ -L .Build/Web/typo3conf/ext/booking ] || ln -snvf ../../../../. .Build/Web/typo3conf/ext/booking"
+    ]
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.0.x-dev"
+    },
+    "typo3/cms": {
+      "cms-package-dir": "{$vendor-dir}/typo3/cms",
+      "web-dir": ".Build/Web"
+    }
+  }
 }

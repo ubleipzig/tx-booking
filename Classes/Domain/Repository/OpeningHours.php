@@ -20,15 +20,15 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-namespace LeipzigUniversityLibrary\UblBooking\Domain\Repository;
+namespace Ubl\Booking\Domain\Repository;
 
 use \TYPO3\CMS\Extbase\Persistence\Repository;
-use \LeipzigUniversityLibrary\UblBooking\Domain\Model\Room as RoomModel;
+use \Ubl\Booking\Domain\Model\Room as RoomModel;
 
 /**
  * Class OpeningHours
  *
- * @package LeipzigUniversityLibrary\UblBooking\Domain\Repository
+ * @package Ubl\Booking\Domain\Repository
  */
 class OpeningHours extends Repository {
 
@@ -45,7 +45,7 @@ class OpeningHours extends Repository {
 	/**
 	 * Finds the opening hours for specified room and day
 	 *
-	 * @param \LeipzigUniversityLibrary\UblBooking\Domain\Model\Room $room the room
+	 * @param \Ubl\Booking\Domain\Model\Room $room the room
 	 * @param \DateTimeInterface                                     $day the day
 	 * @return array the result
 	 */
@@ -64,7 +64,7 @@ class OpeningHours extends Repository {
 	/**
 	 * Finds all opening hours for specified room
 	 *
-	 * @param \LeipzigUniversityLibrary\UblBooking\Domain\Model\Room $room the room
+	 * @param \Ubl\Booking\Domain\Model\Room $room the room
 	 * @return array the result
 	 */
 	public function findAllByRoom(RoomModel $room) {

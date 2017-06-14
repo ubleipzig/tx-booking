@@ -1,357 +1,372 @@
-plugin.tx_ublbooking._CSS_DEFAULT_STYLE (
-/* booking layout styles */
+plugin.tx_booking {
+	_CSS_DEFAULT_STYLE (
+	/* booking layout styles */
 
-.tx_ublbooking .message {
-  background-color: #f08a24;
-  border: 2px solid #E04644;
-  padding: .25rem;
+	.tx_booking .message {
+		background-color: #f08a24;
+		border: 2px solid #E04644;
+		padding: .25rem;
+	}
+
+	.tx_booking #messageBoxOverlay {
+		background: #000000;
+		display: none;
+		filter: alpha(opacity=50);
+		height: 100%;
+		left: 0;
+		-moz-opacity: 0.5;
+		opacity: .50;
+		position: fixed;
+		top: 0;
+		width: 100%;
+		z-index: 1000;
+	}
+
+	.tx_booking #messageBox {
+		background-color: white;
+		border: 2px solid #E04644;
+		display: none;
+		font-weight: bold;
+		padding: 1.5rem;
+		position: fixed;
+		z-index: 1001;
+	}
+
+	.tx_booking #messageBox .closeButton {
+		margin-top: 1.5rem;
+		text-align: center;
+	}
+
+	.tx_booking .legend div {
+		float: left;
+	}
+
+	.tx_booking .calendarWeek {
+		font-size: 1.0em;
+		margin-top: 1.5rem;
+	}
+
+	.tx_booking .calendarWeek .legend .offDutyHour,
+	.tx_booking .calendarWeek .legend .bookedHour,
+	.tx_booking .calendarWeek .legend .ownBookedHour,
+	.tx_booking .calendarWeek .legend .availableHour {
+		font-size: .85em;
+		font-weight: normal;
+		height: 1rem;
+		padding: .25em .5em;
+		width: 4rem;
+		color: #fff;
+	}
+
+	.tx_booking .calendarWeek .legend .offDutyHour {
+		background-color: #e0e0e0;
+		color: #000;
+	}
+
+	.tx_booking .calendarWeek .legend .bookedHour {
+		background-color: #E04644;
+	}
+
+	.tx_booking .calendarWeek .legend .ownBookedHour {
+		background-color: #f08a24;
+	}
+
+	.tx_booking .calendarWeek .legend .availableHour {
+		background-color: #15428b;
+	}
+
+	.tx_booking .roomDescription {
+		background-color: #fff;
+		font-size: 1.25em;
+		margin-bottom: .5rem;
+		padding-top: 1rem;
+	}
+
+	.tx_booking .weekView .past {
+		pointer-events: none;
+		opacity: 0.5;
+		background: #FFF;
+	}
+
+	.tx_booking .weekViewDay .tableheader {
+		text-align: center;
+	}
+
+	.tx_booking .weekViewDay {
+		float: left;
+		border-collapse: collapse;
+		width: 14%;
+	}
+
+	.tx_booking .weekViewDay .row {
+		border-bottom: 1px solid gray;
+		border-collapse: collapse;
+	}
+
+	.tx_booking .weekViewDay .openingHours,
+	.tx_booking .weekViewDay .bookedHours,
+	.tx_booking .weekViewDay .ownbookedHours,
+	.tx_booking .weekViewDay .offDuty,
+	.tx_booking .weekViewDay .offDutyTimeHours,
+	.tx_booking .offDutyTime {
+		border-bottom: 1px solid gray;
+		color: #fff;
+		padding: .25em 0;
+		text-align: center;
+	}
+
+	.tx_booking .weekViewDay .openingHours {
+		background-color: #15428b;
+	}
+
+	.tx_booking .weekViewDay .bookedHours {
+		background-color: #E04644;
+	}
+
+	.tx_booking .weekViewDay .ownbookedHours {
+		background-color: #f08a24;
+	}
+
+	.tx_booking .weekViewDay .offDuty {
+		background-color: #e0e0e0;
+		display: none;
+		visibility: collapse;
+	}
+
+	.tx_booking .weekViewDay .offDutyTimeHours {
+		background-color: #e0e0e0;
+		cursor: auto;
+	}
+
+	.tx_booking .offDutyTime {
+		background-color: #E04644;
+		font-weight: normal;
+		font-size: .85em;
+		cursor: auto;
+	}
+
+	.tx_booking .bookingFormObjectName {
+		font-weight: bold;
+		font-size: 1.5em;
+		margin-bottom: .5rem;
+	}
+
+	.tx_booking .bookingForm .date {
+		font-weight: bold;
+	}
+
+	.tx_booking .bookingForm {
+		background-color: #e0e0e0;
+	}
+
+	.tx_booking .bookingForm td {
+		text-align: center;
+	}
+
+	.tx_booking .bookingForm .titles td {
+		font-weight: bold;
+	}
+
+	.tx_booking .bookingForm .bookedHours {
+		background-color: #E04644;
+	}
+
+	.tx_booking .bookingForm .ownbookedHours {
+		background-color: #f08a24;
+	}
+
+	.tx_booking .bookingForm input {
+		font-weight: bold;
+		color: black;
+	}
+
+	.tx_booking .backToWeekView,
+	.tx_booking .backToMonthView {
+		padding: .25rem 0 .25rem 1rem;
+	}
+
+	.tx_booking .errorMessage {
+		width: 100%;
+		background-color: #FFFF66;
+		border: 2px solid #E04644;
+		font-weight: bold;
+		padding: .5rem;
+	}
+
+	.tx_booking input[type="text"] {
+		margin-bottom: 0;
+	}
+
+	.tx_booking .fa-check:hover,
+	.tx_booking .fa-check:focus {
+		color: #339999;
+		cursor: pointer;
+	}
+
+	.tx_booking .fa-times:hover,
+	.tx_booking .fa-times:focus {
+		color: #E04644;
+		cursor: pointer;
+	}
+
+	.offDutyTimeHours::after,
+	.openingHours::after,
+	.offDuty::after,
+	.offDutyTimeHours::after,
+	.bookedHours::after,
+	.tx_booking .fa-check:hover::after,
+	.tx_booking .fa-check:focus::after,
+	.tx_booking .fa-times:hover::after,
+	.tx_booking .fa-times:focus::after {
+		display: none;
+		font-size: .85rem;
+		padding-left: .25rem;
+		position: relative;
+		z-index: 100;
+	}
+
+	.L-0 .offDutyTimeHours::after {
+		content: 'geschlossen';
+	}
+
+	.L-1 .offDutyTimeHours::after {
+		content: 'closed';
+	}
+
+	.L-0 .openingHours::after {
+		content: 'buchbar';
+	}
+
+	.L-1 .openingHours::after {
+		content: 'bookable';
+	}
+
+	.L-0 .openingHours.offDutyTimeHours::after {
+		color: #E04644;
+		content: 'geschlossen';
+	}
+
+	.L-1 .openingHours.offDutyTimeHours::after {
+		content: 'closed';
+	}
+
+	.L-0 .offDuty::after {
+		content: 'nicht buchbar';
+	}
+
+	.L-1 .offDuty::after {
+		content: 'not bookable';
+	}
+
+	.L-0 .bookedHours::after {
+		content: 'nicht buchbar';
+	}
+
+	.L-1 .bookedHours::after {
+		content: 'not bookable';
+	}
+
+	.L-0 .tx_booking .fa-check:hover::after,
+	.L-0 .tx_booking .fa-check:focus::after {
+		content: 'buchen';
+		display: block;
+	}
+
+	.L-1 .tx_booking .fa-check:hover::after,
+	.L-1 .tx_booking .fa-check:focus::after {
+		content: 'book this';
+		display: block;
+	}
+
+	.L-0 .tx_booking .fa-times:hover::after,
+	.L-0 .tx_booking .fa-times:focus::after {
+		color: #fff;
+		content: 'löschen';
+	}
+
+	.L-1 .tx_booking .fa-times:hover::after,
+	.L-1 .tx_booking .fa-times:focus::after {
+		color: #fff;
+		content: 'delete';
+	}
+
+	.L-0 .tx_booking tr.ownbooked td:nth-last-of-type(2)::after {
+		color: #fff;
+		content: 'gebucht';
+	}
+
+	.L-1 .tx_booking tr.ownbooked td:nth-last-of-type(2)::after {
+		color: #fff;
+		content: 'booked';
+	}
+
+	.offDutyTimeHours:hover::after,
+	.openingHours:hover::after,
+	.offDuty:hover::after,
+	.offDutyTimeHours:hover::after,
+	.bookedHours:hover::after,
+	.tx_booking .fa-check:hover::after,
+	.tx_booking .fa-check:focus::after,
+	.tx_booking .fa-times:hover::after,
+	.tx_booking .fa-times:focus::after {
+		display: block;
+	}
+
+	.tx_booking table tr th,
+	.tx_booking table tr td {
+		padding: .5rem;
+		vertical-align: middle;
+		width: auto;
+	}
+
+	.tx_booking button {
+		background: none!important;
+		padding: 0!important;
+		margin: 0!important;
+		color: #052f96;
+	}
+
+	@media screen and (max-width: 500px) {
+		.tx_booking {
+			font-size: .85rem;
+			padding: 0;
+		}
+	}
+
+	.typo3-messages .message-body {
+		border-style: solid;
+		border-width: 1px;
+		display: block;
+		font-size: 1rem;
+		font-weight: normal;
+		margin-bottom: 1.25rem;
+		padding: .875rem 1.5rem .875rem .875rem;
+		position: relative;
+		transition: opacity 300ms ease-out;
+	}
+
+	.typo3-messages .message-header {
+		display: none;
+	}
+
+	.typo3-messages .message-error {
+		background-color: #f08a24;
+		border-color: #de770f;
+		color: #fff;
+	}
+
+	.typo3-messages .message-ok {
+		background-color: #a0d3e8;
+		border-color: #74bfdd;
+		color: #4f4f4f;
+	}
+	)
 }
 
-.tx_ublbooking #messageBoxOverlay {
-  background: #000000;
-  display: none;
-  filter: alpha(opacity=50);
-  height: 100%;
-  left: 0;
-  -moz-opacity: 0.5;
-  opacity:.50;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 1000;
+# add icon font as fontawesome-provider
+page {
+	includeCSS {
+		iconfont = {$plugin.tx_iconfont.cssFile}
+		iconfont.excludeFromConcatenation = 1
+	}
 }
-.tx_ublbooking #messageBox {
-  background-color: white;
-  border: 2px solid #E04644;
-  display: none;
-  font-weight: bold;
-  padding: 1.5rem;
-  position: fixed;
-  z-index: 1001;
-}
-
-.tx_ublbooking #messageBox .closeButton {
-  margin-top: 1.5rem;
-  text-align: center;
-}
-
-.tx_ublbooking .legend div {
-  float: left;
-}
-
-.tx_ublbooking .calendarWeek {
-  font-size: 1.0em;
-  margin-top: 1.5rem;
-}
-
-.tx_ublbooking .calendarWeek .legend .offDutyHour,
-.tx_ublbooking .calendarWeek .legend .bookedHour,
-.tx_ublbooking .calendarWeek .legend .ownBookedHour,
-.tx_ublbooking .calendarWeek .legend .availableHour {
-  font-size: .85em;
-  font-weight: normal;
-  height: 1rem;
-  padding: .25em .5em;
-  width: 4rem;
-  color: #fff;
-}
-
-.tx_ublbooking .calendarWeek .legend .offDutyHour {
-  background-color: #e0e0e0;
-  color: #000;
-}
-.tx_ublbooking .calendarWeek .legend .bookedHour {
-  background-color: #E04644;
-}
-.tx_ublbooking .calendarWeek .legend .ownBookedHour {
-  background-color: #f08a24;
-}
-.tx_ublbooking .calendarWeek .legend .availableHour {
-  background-color: #15428b;
-}
-
-.tx_ublbooking .roomDescription {
-  background-color: #fff;
-  font-size: 1.25em;
-  margin-bottom: .5rem;
-  padding-top: 1rem;
-}
-
-.tx_ublbooking .weekView .past {
-  pointer-events: none;
-  opacity: 0.5;
-  background: #FFF;
-}
-
-.tx_ublbooking .weekViewDay .tableheader {
-  text-align: center;
-}
-
-.tx_ublbooking .weekViewDay {
-  float: left;
-  border-collapse: collapse;
-  width: 14%;
-}
-
-.tx_ublbooking .weekViewDay .row {
-  border-bottom: 1px solid gray;
-  border-collapse: collapse;
-}
-
-.tx_ublbooking .weekViewDay .openingHours,
-.tx_ublbooking .weekViewDay .bookedHours,
-.tx_ublbooking .weekViewDay .ownbookedHours,
-.tx_ublbooking .weekViewDay .offDuty,
-.tx_ublbooking .weekViewDay .offDutyTimeHours,
-.tx_ublbooking .offDutyTime {
-  border-bottom: 1px solid gray;
-  color: #fff;
-  padding: .25em 0;
-  text-align: center;
-}
-
-.tx_ublbooking .weekViewDay .openingHours {
-  background-color: #15428b;
-}
-
-.tx_ublbooking .weekViewDay .bookedHours {
-  background-color: #E04644;
-}
-
-.tx_ublbooking .weekViewDay .ownbookedHours {
-  background-color: #f08a24;
-}
-
-.tx_ublbooking .weekViewDay .offDuty {
-  background-color: #e0e0e0;
-  display: none;
-  visibility: collapse;
-}
-
-.tx_ublbooking .weekViewDay .offDutyTimeHours {
-  background-color: #e0e0e0;
-  cursor: auto;
-}
-
-.tx_ublbooking .offDutyTime {
-  background-color: #E04644;
-  font-weight: normal;
-  font-size: .85em;
-  cursor: auto;
-}
-
-.tx_ublbooking .bookingFormObjectName {
-  font-weight: bold;
-  font-size: 1.5em;
-  margin-bottom: .5rem;
-}
-
-.tx_ublbooking .bookingForm .date {
-  font-weight: bold;
-}
-
-.tx_ublbooking .bookingForm {
-  background-color: #e0e0e0;
-}
-
-.tx_ublbooking .bookingForm td {
-  text-align: center;
-}
-
-.tx_ublbooking .bookingForm .titles td {
-  font-weight: bold;
-}
-
-.tx_ublbooking .bookingForm .bookedHours {
-  background-color: #E04644;
-}
-
-.tx_ublbooking .bookingForm .ownbookedHours {
-  background-color: #f08a24;
-}
-
-.tx_ublbooking .bookingForm input {
-  font-weight: bold;
-  color: black;
-}
-
-.tx_ublbooking .backToWeekView,
-.tx_ublbooking .backToMonthView {
-  padding: .25rem 0 .25rem 1rem;
-}
-
-.tx_ublbooking  .errorMessage {
-  width: 100%;
-  background-color: #FFFF66;
-  border: 2px solid #E04644;
-  font-weight: bold;
-  padding: .5rem;
-}
-
-.tx_ublbooking input[type="text"] {
-  margin-bottom: 0;
-}
-
-.tx_ublbooking .fa-check:hover,
-.tx_ublbooking .fa-check:focus {
-  color: #339999;
-  cursor: pointer;
-}
-.tx_ublbooking .fa-times:hover,
-.tx_ublbooking .fa-times:focus {
-  color: #E04644;
-  cursor: pointer;
-}
-
-.offDutyTimeHours::after,
-.openingHours::after,
-.offDuty::after,
-.offDutyTimeHours::after,
-.bookedHours::after,
-.tx_ublbooking .fa-check:hover::after,
-.tx_ublbooking .fa-check:focus::after,
-.tx_ublbooking .fa-times:hover::after,
-.tx_ublbooking .fa-times:focus::after {
-  display: none;
-  font-size: .85rem;
-  padding-left: .25rem;
-  position: relative;
-  z-index: 100;
-}
-
-
-
-
-.L-0 .offDutyTimeHours::after {
-  content:'geschlossen';
-}
-
-.L-1 .offDutyTimeHours::after {
-  content:'closed';
-}
-.L-0 .openingHours::after {
-  content:'buchbar';
-}
-
-.L-1 .openingHours::after {
-  content:'bookable';
-}
-
-.L-0 .openingHours.offDutyTimeHours::after {
-  color: #E04644;
-  content:'geschlossen';
-}
-.L-1 .openingHours.offDutyTimeHours::after {
-  content:'closed';
-}
-
-.L-0 .offDuty::after {
-  content:'nicht buchbar';
-}
-.L-1 .offDuty::after {
-  content:'not bookable';
-}
-
-.L-0 .bookedHours::after {
-  content:'nicht buchbar';
-}
-.L-1 .bookedHours::after {
-  content:'not bookable';
-}
-
-.L-0 .tx_ublbooking .fa-check:hover::after,
-.L-0 .tx_ublbooking .fa-check:focus::after {
-  content: 'buchen';
-  display: block;
-}
-
-.L-1 .tx_ublbooking .fa-check:hover::after,
-.L-1 .tx_ublbooking .fa-check:focus::after {
-  content: 'book this';
-  display: block;
-}
-
-.L-0 .tx_ublbooking .fa-times:hover::after,
-.L-0 .tx_ublbooking .fa-times:focus::after {
-  color: #fff;
-  content: 'löschen';
-}
-
-.L-1 .tx_ublbooking .fa-times:hover::after,
-.L-1 .tx_ublbooking .fa-times:focus::after {
-  color: #fff;
-  content: 'delete';
-}
-
-.L-0 .tx_ublbooking tr.ownbooked td:nth-last-of-type(2)::after {
-  color: #fff;
-  content: 'gebucht';
-}
-
-.L-1 .tx_ublbooking tr.ownbooked td:nth-last-of-type(2)::after {
-  color: #fff;
-  content: 'booked';
-}
-
-.offDutyTimeHours:hover::after,
-.openingHours:hover::after,
-.offDuty:hover::after,
-.offDutyTimeHours:hover::after,
-.bookedHours:hover::after,
-.tx_ublbooking .fa-check:hover::after,
-.tx_ublbooking .fa-check:focus::after,
-.tx_ublbooking .fa-times:hover::after,
-.tx_ublbooking .fa-times:focus::after {
- display: block;
-}
-
-.tx_ublbooking table tr th,
-.tx_ublbooking table tr td {
-  padding: .5rem;
-  vertical-align: middle;
-  width: auto;
-}
-
-.tx_ublbooking button {
-     background:none!important;
-     padding:0!important;
-     margin: 0!important;
-     color: #052f96;
-}
-
-@media screen and (max-width: 500px) {
- .tx_ublbooking {
-    font-size: .85rem;
-    padding: 0;
-  }
-}
-
-.typo3-messages .message-body {
-  border-style: solid;
-  border-width: 1px;
-  display: block;
-  font-size: 1rem;
-  font-weight: normal;
-  margin-bottom: 1.25rem;
-  padding: .875rem 1.5rem .875rem .875rem;
-  position: relative;
-  transition: opacity 300ms ease-out;
-}
-
-.typo3-messages .message-header {
-  display:none;
-}
-
-.typo3-messages .message-error {
-    background-color: #f08a24;
-    border-color: #de770f;
-    color: #fff;
-}
-
-.typo3-messages .message-ok {
-    background-color: #a0d3e8;
-    border-color: #74bfdd;
-    color: #4f4f4f;
-}
-
-)

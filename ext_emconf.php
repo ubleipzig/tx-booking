@@ -24,7 +24,7 @@ $EM_CONF[$_EXTKEY] = array(
 	'title' => 'Booking for Rooms',
 	'description' => 'Manage bookings of rooms for frontend users',
 	'category' => 'plugin',
-	'version' => '1.0.2',
+	'version' => '2.0.0',
 	'state' => 'stable',
 	'uploadfolder' => false,
 	'createDirs' => '',
@@ -34,9 +34,24 @@ $EM_CONF[$_EXTKEY] = array(
 	'author_company' => 'Leipzig University Library',
 	'constraints' => array(
 		'depends' => array(
-			'typo3' => '4.5.0-6.2.99'
+			'typo3' => '6.2-7.99.99',
+			'iconfont' => '>=0.9.0',
 		),
 		'conflicts' => array(),
 		'suggests' => array(),
 	),
+	'autoload' =>
+  array(
+    'psr-4' =>
+    array(
+      'Ubl\\Booking\\' => 'Classes',
+    ),
+  ),
+  'autoload-dev' =>
+  array(
+    'psr-4' =>
+    array(
+      'Ubl\\Booking\\Tests' => 'Tests',
+    ),
+  ),
 );

@@ -20,26 +20,26 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-namespace LeipzigUniversityLibrary\UblBooking\Controller;
+namespace Ubl\Booking\Controller;
 
-use \LeipzigUniversityLibrary\UblBooking\Library\Week;
-use \LeipzigUniversityLibrary\UblBooking\Library\Day;
-use \LeipzigUniversityLibrary\UblBooking\Library\Hour;
-use \LeipzigUniversityLibrary\UblBooking\Domain\Model\Booking;
+use \Ubl\Booking\Library\Week;
+use \Ubl\Booking\Library\Day;
+use \Ubl\Booking\Library\Hour;
+use \Ubl\Booking\Domain\Model\Booking;
 
 /**
  * Class BookingController
  *
  * The main controller, holding all action methods
  *
- * @package LeipzigUniversityLibrary\UblBooking\Controller
+ * @package Ubl\Booking\Controller
  */
 class BookingController extends AbstractController {
 
 	/**
 	 * The repository of bookings
 	 *
-	 * @var \LeipzigUniversityLibrary\UblBooking\Domain\Repository\Booking
+	 * @var \Ubl\Booking\Domain\Repository\Booking
 	 * @inject
 	 */
 	protected $bookingRepository;
@@ -47,7 +47,7 @@ class BookingController extends AbstractController {
 	/**
 	 * the repository of rooms
 	 *
-	 * @var \LeipzigUniversityLibrary\UblBooking\Domain\Repository\Room
+	 * @var \Ubl\Booking\Domain\Repository\Room
 	 * @inject
 	 */
 	protected $roomRepository;
@@ -56,7 +56,7 @@ class BookingController extends AbstractController {
 	 * Shows the overview of a day for a room
 	 *
 	 * @param integer                                                $timestamp
-	 * @param \LeipzigUniversityLibrary\UblBooking\Domain\Model\Room $room
+	 * @param \Ubl\Booking\Domain\Model\Room $room
 	 */
 	public function showDayAction($timestamp, $room) {
 		$today = new Day();
@@ -103,7 +103,7 @@ class BookingController extends AbstractController {
 	/**
 	 * adds a booking to a room for a user
 	 *
-	 * @param \LeipzigUniversityLibrary\UblBooking\Domain\Model\Room $room      the room to add the booking for
+	 * @param \Ubl\Booking\Domain\Model\Room $room      the room to add the booking for
 	 * @param integer                                                $timestamp the timestamp of the hour
 	 * @param string                                                 $comment   the comment of the booking
 	 */
@@ -135,7 +135,7 @@ class BookingController extends AbstractController {
 	/**
 	 * removes a booking from a room for a user
 	 *
-	 * @param \LeipzigUniversityLibrary\UblBooking\Domain\Model\Room $room      the room to remove the booking for
+	 * @param \Ubl\Booking\Domain\Model\Room $room      the room to remove the booking for
 	 * @param integer                                                $timestamp the timestamp of the hour to remove
 	 */
 	public function removeAction($room, $timestamp) {

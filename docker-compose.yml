@@ -1,0 +1,16 @@
+version: '2'
+services:
+  lamp:
+    image: docker.io/useltmann/dev-dotdeb:php56
+    ports:
+      - '127.0.0.1:80:80'
+      - '127.0.0.1:443:443'
+      - '127.0.0.1:3306:3306'
+    volumes:
+      - ./:/app:z
+      - db-socket:/var/run/mysqld:z
+      - db-data:/var/lib/mysql:z
+      - ${SSH_AUTH_SOCK}:/ssh-agent:z
+volumes:
+  db-socket: {}
+  db-data: {}

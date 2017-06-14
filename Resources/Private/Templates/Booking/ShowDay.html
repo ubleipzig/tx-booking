@@ -1,4 +1,4 @@
-{namespace ubl=LeipzigUniversityLibrary\UblBooking\ViewHelpers}
+{namespace ubl=Ubl\Booking\ViewHelpers}
 <f:layout name="Default"/>
 <f:section name="main">
     <div class="bookingFormDiv">
@@ -91,7 +91,7 @@
             </tbody>
         </table>
         <div class="right">
-            <f:link.action class="backToWeekView" action="showWeek" arguments="{timestamp: Room.day.timestamp}">Zurück zur Wochenansicht
+            <f:link.action class="backToWeekView" action="showWeek" arguments="{timestamp: Room.day.timestamp}"><f:translate key="backToWeekView">[backToWeekView]</f:translate>
             </f:link.action>
         </div>
     </div>
