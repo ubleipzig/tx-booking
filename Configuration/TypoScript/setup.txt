@@ -317,6 +317,7 @@ plugin.tx_ublbooking._CSS_DEFAULT_STYLE (
      padding:0!important;
      margin: 0!important;
      color: #052f96;
+     border-width:0;
 }
 
 @media screen and (max-width: 500px) {
