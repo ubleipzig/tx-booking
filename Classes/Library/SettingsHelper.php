@@ -107,11 +107,13 @@ class SettingsHelper {
 	 * @param  $user [optional] if empty try the currently logged in user
 	 * @return bool
 	 */
-	public function isAdmin($user = null) {
-		if (!$user) $user = $GLOBALS['TSFE']->fe_user;
+	public function isAdmin($user_id = null) {
+		if ($user_id === null && $GLOBALS['TSFE']->fe_user->user['uid']) {
+			$user_id = $GLOBALS['TSFE']->fe_user->user['uid'];
+		}
 
-		return isset($this->settings['admins']) && isset($user->user['uid'])
-			? in_array($user->user['uid'], explode(',', $this->settings['admins']))
+		return isset($this->settings['admins']) && isset($user_id)
+			? in_array($user_id, explode(',', $this->settings['admins']))
 			: false;
 	}
 
