@@ -20,15 +20,15 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-namespace LeipzigUniversityLibrary\UblBooking\Domain\Repository;
+namespace Ubl\Booking\Domain\Repository;
 
 use \TYPO3\CMS\Extbase\Persistence\Repository;
-use \LeipzigUniversityLibrary\UblBooking\Domain\Model\Room as RoomModel;
+use \Ubl\Booking\Domain\Model\Room as RoomModel;
 
 /**
  * Class Booking
  *
- * @package LeipzigUniversityLibrary\UblBooking\Domain\Repository
+ * @package Ubl\Booking\Domain\Repository
  */
 class Booking extends Repository {
 
@@ -46,7 +46,7 @@ class Booking extends Repository {
 	 * initializes the repository object by removing the pid contraint from default query settings
 	 */
 	public function initializeObject() {
-		$querySettings = $this->objectManager->get('\TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings');
+		$querySettings = $this->objectManager->get('TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings');
 		$querySettings->setRespectStoragePage(false);
 		$this->setDefaultQuerySettings($querySettings);
 	}
@@ -54,7 +54,7 @@ class Booking extends Repository {
 	/**
 	 * Finds all Bookings by specified room and between specified start- and end-time
 	 *
-	 * @param \LeipzigUniversityLibrary\UblBooking\Domain\Model\Room $room
+	 * @param \Ubl\Booking\Domain\Model\Room $room
 	 * @param \DateTimeInterface                                     $startTime
 	 * @param \DateTimeInterface                                     $endTime
 	 * @return \TYPO3\CMS\Extbase\Persistence\QueryResultInterface the result
@@ -92,7 +92,7 @@ class Booking extends Repository {
 	 * Finds a booking for specified user, room and time. should return 0 or 1
 	 *
 	 * @param                                                        $user      the user
-	 * @param \LeipzigUniversityLibrary\UblBooking\Domain\Model\Room $room      the room
+	 * @param \Ubl\Booking\Domain\Model\Room $room      the room
 	 * @param \DateTimeInterface                                     $startTime the time
 	 * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface the result
 	 */

@@ -1,7 +1,7 @@
 #
-# Table structure for table 'tx_ublbooking_domain_model_room'
+# Table structure for table 'tx_booking_domain_model_room'
 #
-CREATE TABLE tx_ublbooking_domain_model_room (
+CREATE TABLE tx_booking_domain_model_room (
 	uid int(11) NOT NULL auto_increment,
 	pid int(11) DEFAULT '0' NOT NULL,
 	tstamp int(11) DEFAULT '0' NOT NULL,
@@ -20,9 +20,9 @@ CREATE TABLE tx_ublbooking_domain_model_room (
 );
 
 #
-# Table structure for table 'tx_ublbooking_domain_model_booking'
+# Table structure for table 'tx_booking_domain_model_booking'
 #
-CREATE TABLE tx_ublbooking_domain_model_booking (
+CREATE TABLE tx_booking_domain_model_booking (
 	uid int(11) NOT NULL auto_increment,
 	pid int(11) DEFAULT '0' NOT NULL,
 	tstamp int(11) DEFAULT '0' NOT NULL,
@@ -46,9 +46,9 @@ CREATE TABLE tx_ublbooking_domain_model_booking (
 );
 
 #
-# Table structure for table 'tx_ublbooking_domain_model_closingday'
+# Table structure for table 'tx_booking_domain_model_closingday'
 #
-CREATE TABLE tx_ublbooking_domain_model_closingday (
+CREATE TABLE tx_booking_domain_model_closingday (
 	uid int(11) NOT NULL auto_increment,
 	pid int(11) DEFAULT '0' NOT NULL,
 	tstamp int(11) DEFAULT '0' NOT NULL,
@@ -67,9 +67,9 @@ CREATE TABLE tx_ublbooking_domain_model_closingday (
 );
 
 #
-# Table structure for table 'tx_ublbooking_domain_model_openinghours'
+# Table structure for table 'tx_booking_domain_model_openinghours'
 #
-CREATE TABLE tx_ublbooking_domain_model_openinghours (
+CREATE TABLE tx_booking_domain_model_openinghours (
 	uid int(11) NOT NULL auto_increment,
 	pid int(11) DEFAULT '0' NOT NULL,
 	tstamp int(11) DEFAULT '0' NOT NULL,

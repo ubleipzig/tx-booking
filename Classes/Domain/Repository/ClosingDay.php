@@ -20,22 +20,22 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-namespace LeipzigUniversityLibrary\UblBooking\Domain\Repository;
+namespace Ubl\Booking\Domain\Repository;
 
 use \TYPO3\CMS\Extbase\Persistence\Repository;
-use \LeipzigUniversityLibrary\UblBooking\Domain\Model\Room as RoomModel;
+use \Ubl\Booking\Domain\Model\Room as RoomModel;
 
 /**
  * Class ClosingDay
  *
- * @package LeipzigUniversityLibrary\UblBooking\Domain\Repository
+ * @package Ubl\Booking\Domain\Repository
  */
 class ClosingDay extends Repository {
 
 	/**
 	 * Finds all closing days for specified room within specified time period
 	 *
-	 * @param \LeipzigUniversityLibrary\UblBooking\Domain\Model\Room $room      the room
+	 * @param \Ubl\Booking\Domain\Model\Room $room      the room
 	 * @param \DateTimeInterface                                     $startTime the start time
 	 * @param \DateTimeInterface                                     $endTime   the end time
 	 * @return \TYPO3\CMS\Extbase\Persistence\QueryResultInterface the result
@@ -59,9 +59,9 @@ class ClosingDay extends Repository {
 	/**
 	 * Finds all closing days for specified room and day
 	 *
-	 * @param \LeipzigUniversityLibrary\UblBooking\Domain\Model\Room $room the room
+	 * @param \Ubl\Booking\Domain\Model\Room $room the room
 	 * @param \DateTimeInterface                                     $day  the day
-	 * @return \LeipzigUniversityLibrary\UblBooking\Domain\Model\ClosingDay the result
+	 * @return \Ubl\Booking\Domain\Model\ClosingDay the result
 	 */
 	public function findByRoomAndDay(RoomModel $room, \DateTimeInterface $day) {
 		$query = $this->createQuery();

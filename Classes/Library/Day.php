@@ -19,12 +19,12 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
-namespace LeipzigUniversityLibrary\UblBooking\Library;
+namespace Ubl\Booking\Library;
 
 /**
  * Class Day
  *
- * @package LeipzigUniversityLibrary\UblBooking\Library
+ * @package Ubl\Booking\Library
  */
 class Day extends DateHelper implements \Iterator, \Countable {
 
@@ -71,7 +71,7 @@ class Day extends DateHelper implements \Iterator, \Countable {
 	/**
 	 * Returns the current iteration value
 	 *
-	 * @return \LeipzigUniversityLibrary\UblBooking\Library\Hour
+	 * @return \Ubl\Booking\Library\Hour
 	 */
 	public function current() {
 		return new Hour($this->current->getTimestamp());

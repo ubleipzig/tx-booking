@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-  <file source-language="en" target-language="de" datatype="plaintext" original="messages" product-name="ubl_booking">
+  <file source-language="en" target-language="de" datatype="plaintext" original="messages" product-name="booking">
     <header/>
     <body>
       <trans-unit id="off" approved="yes">
@@ -237,77 +237,77 @@
         <target>Administrative Konten</target>
       </trans-unit>
 
-      <trans-unit id="tca.tx_ublbooking_domain_model_room">
+      <trans-unit id="tca.tx_booking_domain_model_room">
         <source>Rooms</source>
         <target>Räume</target>
       </trans-unit>
 
-      <trans-unit id="tca.tx_ublbooking_domain_model_room.name">
+      <trans-unit id="tca.tx_booking_domain_model_room.name">
         <source>Room name</source>
         <target>Raum Bezeichnung</target>
       </trans-unit>
 
-      <trans-unit id="tca.tx_ublbooking_domain_model_room.opening_times_storage">
+      <trans-unit id="tca.tx_booking_domain_model_room.opening_times_storage">
         <source>Opening times storage pages</source>
         <target>Öffnungszeiten Ordner</target>
       </trans-unit>
 
-      <trans-unit id="tca.tx_ublbooking_domain_model_room.booking_storage">
+      <trans-unit id="tca.tx_booking_domain_model_room.booking_storage">
         <source>Booking storage page</source>
         <target>Buchungsspeicher-Ordner</target>
       </trans-unit>
 
-      <trans-unit id="tca.tx_ublbooking_domain_model_closingday">
+      <trans-unit id="tca.tx_booking_domain_model_closingday">
         <source>Closing days</source>
         <target>Ruhetage</target>
       </trans-unit>
 
-      <trans-unit id="tca.tx_ublbooking_domain_model_closingday.name">
+      <trans-unit id="tca.tx_booking_domain_model_closingday.name">
         <source>Title</source>
         <target>Bezeichnung</target>
       </trans-unit>
 
-      <trans-unit id="tca.tx_ublbooking_domain_model_closingday.date">
+      <trans-unit id="tca.tx_booking_domain_model_closingday.date">
         <source>Date</source>
         <target>Datum</target>
       </trans-unit>
 
-      <trans-unit id="tca.tx_ublbooking_domain_model_closingday.description">
+      <trans-unit id="tca.tx_booking_domain_model_closingday.description">
         <source>Description</source>
         <target>Beschreibung</target>
       </trans-unit>
 
-      <trans-unit id="tca.tx_ublbooking_domain_model_openinghours">
+      <trans-unit id="tca.tx_booking_domain_model_openinghours">
         <source>Opening times</source>
         <target>Öffnungszeiten</target>
       </trans-unit>
 
-      <trans-unit id="tca.tx_ublbooking_domain_model_openinghours.week_day">
+      <trans-unit id="tca.tx_booking_domain_model_openinghours.week_day">
         <source>Week day</source>
         <target>Wochentag</target>
       </trans-unit>
 
-      <trans-unit id="tca.tx_ublbooking_domain_model_openinghours.hours">
+      <trans-unit id="tca.tx_booking_domain_model_openinghours.hours">
         <source>Hours</source>
         <target>Stunden</target>
       </trans-unit>
 
-      <trans-unit id="tca.tx_ublbooking_domain_model_booking">
+      <trans-unit id="tca.tx_booking_domain_model_booking">
         <source>Bookings</source>
         <target>Buchungen</target>
       </trans-unit>
 
-      <trans-unit id="tca.tx_ublbooking_domain_model_booking.hour">
+      <trans-unit id="tca.tx_booking_domain_model_booking.hour">
         <source>Hour</source>
         <target>Stunde</target>
       </trans-unit>
 
-      <trans-unit id="tca.tx_ublbooking_domain_model_booking.feuser">
+      <trans-unit id="tca.tx_booking_domain_model_booking.feuser">
         <source>User</source>
         <target>Benutzer</target>
       </trans-unit>
 
-      <trans-unit id="tca.tx_ublbooking_domain_model_booking.comment">
+      <trans-unit id="tca.tx_booking_domain_model_booking.comment">
         <source>Comment</source>
         <target>Kommentar</target>
       </trans-unit>

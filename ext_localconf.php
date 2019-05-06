@@ -23,13 +23,10 @@
 if (!defined('TYPO3_MODE')) die('Access denied.');
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-	'LeipzigUniversityLibrary.' . $_EXTKEY,
+	'Ubl.' . $_EXTKEY,
 	'Bookings',
 	array('Booking' => 'showWeek, showDay, add, remove'),
 	array('Booking' => 'showWeek, showDay, add, remove')
 );
 
-// always load TypoScript configuration
-\FluidTYPO3\Flux\Core::addStaticTypoScript('EXT:'. $_EXTKEY . '/Configuration/TypoScript/');
-
-$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['extbase']['commandControllers'][$_EXTKEY] = \LeipzigUniversityLibrary\UblBooking\Command\CleanupCommandController::class;
+$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['extbase']['commandControllers'][$_EXTKEY] = \Ubl\Booking\Command\CleanupCommandController::class;

@@ -20,12 +20,12 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-namespace LeipzigUniversityLibrary\UblBooking\Library;
+namespace Ubl\Booking\Library;
 
 /**
  * Class SettingsHelper
  *
- * @package LeipzigUniversityLibrary\UblBooking\Library
+ * @package Ubl\Booking\Library
  */
 class SettingsHelper {
 
@@ -48,7 +48,7 @@ class SettingsHelper {
 	/**
 	 * Whether to show next week according to the settings
 	 *
-	 * @param \LeipzigUniversityLibrary\UblBooking\Library\Week $week the actual week
+	 * @param \Ubl\Booking\Library\Week $week the actual week
 	 * @return bool
 	 */
 	public function showNextWeek(Week $week) {
@@ -61,7 +61,7 @@ class SettingsHelper {
 	/**
 	 * Whether to show previous week according to the settings
 	 *
-	 * @param \LeipzigUniversityLibrary\UblBooking\Library\Week $week the actual week
+	 * @param \Ubl\Booking\Library\Week $week the actual week
 	 * @return bool
 	 */
 	public function showPreviousWeek(Week $week) {
@@ -74,7 +74,7 @@ class SettingsHelper {
 	/**
 	 * Whether to show the next day according to the settings
 	 *
-	 * @param \LeipzigUniversityLibrary\UblBooking\Library\Day $day the actual day
+	 * @param \Ubl\Booking\Library\Day $day the actual day
 	 * @return bool
 	 */
 	public function showNextDay(Day $day) {
@@ -89,7 +89,7 @@ class SettingsHelper {
 	/**
 	 * whether to show the previous day according to the settings
 	 *
-	 * @param \LeipzigUniversityLibrary\UblBooking\Library\Day $day the actual day
+	 * @param \Ubl\Booking\Library\Day $day the actual day
 	 * @return bool
 	 */
 	public function showPreviousDay(Day $day) {
@@ -107,11 +107,13 @@ class SettingsHelper {
 	 * @param  $user [optional] if empty try the currently logged in user
 	 * @return bool
 	 */
-	public function isAdmin($user = null) {
-		if (!$user) $user = $GLOBALS['TSFE']->fe_user;
+	public function isAdmin($user_id = null) {
+		if ($user_id === null && $GLOBALS['TSFE']->fe_user->user['uid']) {
+			$user_id = $GLOBALS['TSFE']->fe_user->user['uid'];
+		}
 
-		return isset($this->settings['admins']) && isset($user->user['uid'])
-			? in_array($user->user['uid'], explode(',', $this->settings['admins']))
+		return isset($this->settings['admins']) && isset($user_id)
+			? in_array($user_id, explode(',', $this->settings['admins']))
 			: false;
 	}
 

@@ -24,7 +24,7 @@ $EM_CONF[$_EXTKEY] = array(
 	'title' => 'Booking for Rooms',
 	'description' => 'Manage bookings of rooms for frontend users',
 	'category' => 'plugin',
-	'version' => '1.0.2',
+	'version' => '1.1.0',
 	'state' => 'stable',
 	'uploadfolder' => false,
 	'createDirs' => '',
@@ -39,4 +39,18 @@ $EM_CONF[$_EXTKEY] = array(
 		'conflicts' => array(),
 		'suggests' => array(),
 	),
+	'autoload' =>
+  array(
+    'psr-4' =>
+    array(
+      'Ubl\\Booking\\' => 'Classes',
+    ),
+  ),
+  'autoload-dev' =>
+  array(
+    'psr-4' =>
+    array(
+      'Ubl\\Booking\\Tests' => 'Tests',
+    ),
+  ),
 );

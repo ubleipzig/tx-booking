@@ -21,21 +21,21 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-namespace LeipzigUniversityLibrary\UblBooking\Controller;
+namespace Ubl\Booking\Controller;
 
-use LeipzigUniversityLibrary\UblBooking\Library\SettingsHelper;
+use Ubl\Booking\Library\SettingsHelper;
 
 /**
  * Class AbstractController
  *
  * Provides common methods to use in all controllers
  *
- * @package LeipzigUniversityLibrary\UblBooking\Controller
+ * @package Ubl\Booking\Controller
  */
 abstract class AbstractController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 
 	/**
-	 * @var \LeipzigUniversityLibrary\UblBooking\Library\SetingsHelper
+	 * @var Ubl\Booking\Library\SettingsHelper
 	 */
 	protected $settingsHelper;
 
@@ -63,7 +63,7 @@ abstract class AbstractController extends \TYPO3\CMS\Extbase\Mvc\Controller\Acti
 		$localizedMessage = $this->translate($messageLocallangKey, '[' . $messageLocallangKey . ']');
 		$titleLocallangKey = sprintf('%s.title', $messageLocallangKey);
 		$localizedTitle = $this->translate($titleLocallangKey, '[' . $titleLocallangKey . ']');
-		$this->flashMessageContainer->add($localizedMessage, $localizedTitle, $severity);
+		parent::addFlashMessage($localizedMessage, $localizedTitle, $severity);
 	}
 
 	/**
@@ -74,7 +74,7 @@ abstract class AbstractController extends \TYPO3\CMS\Extbase\Mvc\Controller\Acti
 	 * @return string
 	 */
 	protected function translate($key, $defaultMessage = '') {
-		$message = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate($key, 'ubl_booking');
+		$message = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate($key, 'booking');
 		if ($message === NULL) {
 			$message = $defaultMessage;
 		}

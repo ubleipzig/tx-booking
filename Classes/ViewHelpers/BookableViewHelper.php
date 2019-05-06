@@ -1,5 +1,5 @@
 <?php
-namespace LeipzigUniversityLibrary\UblBooking\ViewHelpers;
+namespace Ubl\Booking\ViewHelpers;
 /**
  * Class BookableViewHelper
  *
@@ -21,14 +21,14 @@ namespace LeipzigUniversityLibrary\UblBooking\ViewHelpers;
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-use \LeipzigUniversityLibrary\UblBooking\Domain\Model\Room;
-use \LeipzigUniversityLibrary\UblBooking\Library\Day;
-use \LeipzigUniversityLibrary\UblBooking\Library\Hour;
+use \Ubl\Booking\Domain\Model\Room;
+use \Ubl\Booking\Library\Day;
+use \Ubl\Booking\Library\Hour;
 
 /**
  * Class BookableViewHelper
  *
- * @package LeipzigUniversityLibrary\UblBooking\ViewHelpers
+ * @package Ubl\Booking\ViewHelpers
  */
 class BookableViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractConditionViewHelper {
 
@@ -36,9 +36,9 @@ class BookableViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractCondit
 	 * Whether the room im bookable for either the specified day or hour
 	 * be aware that you do not need to specify the day when you specified the hour
 	 *
-	 * @param \LeipzigUniversityLibrary\UblBooking\Domain\Model\Room $room
-	 * @param optional \LeipzigUniversityLibrary\UblBooking\Library\Day $day
-	 * @param optional \LeipzigUniversityLibrary\UblBooking\Library\Hour $hour
+	 * @param \Ubl\Booking\Domain\Model\Room $room
+	 * @param optional \Ubl\Booking\Library\Day $day
+	 * @param optional \Ubl\Booking\Library\Hour $hour
 	 * @return string
 	 */
 	public function render(Room $room, Day $day = null, Hour $hour = null) {

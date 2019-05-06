@@ -1,29 +1,29 @@
 <?php
-$TCA["tx_ublbooking_domain_model_room"] = Array(
-	"ctrl" => $TCA["tx_ublbooking_domain_model_room"]["ctrl"],
-	"interface" => Array(
+$TCA["tx_booking_domain_model_room"] = array(
+	"ctrl" => $TCA["tx_booking_domain_model_room"]["ctrl"],
+	"interface" => array(
 		"showRecordFieldList" => "hidden,name,opening_hours,closing_days"
 	),
-	"feInterface" => $TCA["tx_ublbooking_flat"]["feInterface"],
-	"columns" => Array(
-		"hidden" => Array(
+	"feInterface" => $TCA["tx_booking_flat"]["feInterface"],
+	"columns" => array(
+		"hidden" => array(
 			"exclude" => 1,
 			"label" => "LLL:EXT:lang/locallang_general.xml:LGL.hidden",
-			"config" => Array(
+			"config" => array(
 				"type" => "check",
 				"default" => "0"
 			)
 		),
-		"name" => Array(
-			"label" => "LLL:EXT:ubl_booking/Resources/Private/Language/locallang.xlf:tca.tx_ublbooking_domain_model_room.name",
-			"config" => Array(
+		"name" => array(
+			"label" => "LLL:EXT:booking/Resources/Private/Language/locallang.xlf:tca.tx_booking_domain_model_room.name",
+			"config" => array(
 				"type" => "input",
 				"size" => "30",
 				"eval" => "required,trim",
 			)
 		),
 		"opening_times_storage" => array(
-			"label" => "LLL:EXT:ubl_booking/Resources/Private/Language/locallang.xlf:tca.tx_ublbooking_domain_model_room.opening_times_storage",
+			"label" => "LLL:EXT:booking/Resources/Private/Language/locallang.xlf:tca.tx_booking_domain_model_room.opening_times_storage",
 			"config" => array(
 				'type' => 'group',
 				'size' => '3',
@@ -41,7 +41,7 @@ $TCA["tx_ublbooking_domain_model_room"] = Array(
 			),
 		),
 		"booking_storage" => array(
-			"label" => "LLL:EXT:ubl_booking/Resources/Private/Language/locallang.xlf:tca.tx_ublbooking_domain_model_room.booking_storage",
+			"label" => "LLL:EXT:booking/Resources/Private/Language/locallang.xlf:tca.tx_booking_domain_model_room.booking_storage",
 			"config" => array(
 				'type' => 'group',
 				'size' => '1',
@@ -61,20 +61,20 @@ $TCA["tx_ublbooking_domain_model_room"] = Array(
 	),
 
 	// 1-1-1 = style pointer which defines color, style and border
-	"types" => Array(
-		"0" => Array(
+	"types" => array(
+		"0" => array(
 			"showitem" => "hidden;;1;;1-1-1, name,opening_times_storage,booking_storage"
 		)
 	),
-	"palettes" => Array(
-		"1" => Array(
+	"palettes" => array(
+		"1" => array(
 			"showitem" => ""
 		)
 	)
 );
 
-$TCA['tx_ublbooking_domain_model_closingday'] = array(
-	'ctrl' => $TCA['tx_ublbooking_domain_model_closingday']['ctrl'],
+$TCA['tx_booking_domain_model_closingday'] = array(
+	'ctrl' => $TCA['tx_booking_domain_model_closingday']['ctrl'],
 	'interface' => array(
 		'showRecordFieldList' => 'name,date,description'
 	),
@@ -86,7 +86,7 @@ $TCA['tx_ublbooking_domain_model_closingday'] = array(
 	),
 	'columns' => array(
 		'name' => array(
-			'label' => 'LLL:EXT:ubl_booking/Resources/Private/Language/locallang.xlf:tca.tx_ublbooking_domain_model_closingday.name',
+			'label' => 'LLL:EXT:booking/Resources/Private/Language/locallang.xlf:tca.tx_booking_domain_model_closingday.name',
 			'config' => array(
 				'type' => 'input',
 				'size' => 20,
@@ -95,7 +95,7 @@ $TCA['tx_ublbooking_domain_model_closingday'] = array(
 			)
 		),
 		'date' => array(
-			'label' => 'LLL:EXT:ubl_booking/Resources/Private/Language/locallang.xlf:tca.tx_ublbooking_domain_model_closingday.date',
+			'label' => 'LLL:EXT:booking/Resources/Private/Language/locallang.xlf:tca.tx_booking_domain_model_closingday.date',
 			'config' => array(
 				'type' => 'input',
 				'size' => 5,
@@ -103,7 +103,7 @@ $TCA['tx_ublbooking_domain_model_closingday'] = array(
 			)
 		),
 		'description' => array(
-			'label' => 'LLL:EXT:ubl_booking/Resources/Private/Language/locallang.xlf:tca.tx_ublbooking_domain_model_closingday.description',
+			'label' => 'LLL:EXT:booking/Resources/Private/Language/locallang.xlf:tca.tx_booking_domain_model_closingday.description',
 			'config' => array(
 				'type' => 'text',
 				'cols' => 20,
@@ -113,27 +113,28 @@ $TCA['tx_ublbooking_domain_model_closingday'] = array(
 	)
 );
 
-$TCA['tx_ublbooking_domain_model_openinghours'] = array(
-	'ctrl' => $TCA['tx_ublbooking_domain_model_openinghours']['ctrl'],
+$TCA['tx_booking_domain_model_openinghours'] = array(
+	'ctrl' => $TCA['tx_booking_domain_model_openinghours']['ctrl'],
 	'types' => array(
 		'1' => array('showitem' => 'week_day,hours')
 	),
 	'columns' => array(
 		'week_day' => array(
-			'label' => 'LLL:EXT:ubl_booking/Resources/Private/Language/locallang.xlf:tca.tx_ublbooking_domain_model_openinghours.week_day',
+			'label' => 'LLL:EXT:booking/Resources/Private/Language/locallang.xlf:tca.tx_booking_domain_model_openinghours.week_day',
 			'config' => array(
 				'type' => 'select',
+				'renderType' => 'selectSingle',
 				'size' => 1,
-				'itemsProcFunc' => '\LeipzigUniversityLibrary\UblBooking\Library\Tca->getDays',
+				'itemsProcFunc' => 'Ubl\Booking\Library\Tca->getDays',
 			)
 		),
 		'hours' => array(
-			'label' => 'LLL:EXT:ubl_booking/Resources/Private/Language/locallang.xlf:tca.tx_ublbooking_domain_model_openinghours.hours',
+			'label' => 'LLL:EXT:booking/Resources/Private/Language/locallang.xlf:tca.tx_booking_domain_model_openinghours.hours',
 			'config' => array(
 				'type' => 'select',
 				'renderType' => 'selectSingleBox',
 				'size' => 10,
-				'itemsProcFunc' => '\LeipzigUniversityLibrary\UblBooking\Library\Tca->getHours',
+				'itemsProcFunc' => 'Ubl\Booking\Library\Tca->getHours',
 				'minitems' => 0,
 				'maxitems' => 9999,
 			)
@@ -141,38 +142,38 @@ $TCA['tx_ublbooking_domain_model_openinghours'] = array(
 	)
 );
 
-$TCA["tx_ublbooking_domain_model_booking"] = Array(
-    "ctrl" => $TCA["tx_ublbooking_domain_model_booking"]["ctrl"],
-	"interface" => Array(
+$TCA["tx_booking_domain_model_booking"] = array(
+    "ctrl" => $TCA["tx_booking_domain_model_booking"]["ctrl"],
+	"interface" => array(
         "showRecordFieldList" => "hidden,room,time,fe_user, Comment"
     ) ,
-    "feInterface" => $TCA["tx_ublbooking_book"]["feInterface"],
-    "columns" => Array(
-        "hidden" => Array(
+    "feInterface" => $TCA["tx_booking_book"]["feInterface"],
+    "columns" => array(
+        "hidden" => array(
             "exclude" => 1,
             "label" => "LLL:EXT:lang/locallang_general.xml:LGL.hidden",
-            "config" => Array(
+            "config" => array(
                 "type" => "check",
                 "default" => "0"
             )
         ) ,
-        "room" => Array(
+        "room" => array(
             'suppress_icons' => '1',
             "exclude" => 1,
-            "label" => "LLL:EXT:ubl_booking/Resources/Private/Language/locallang.xlf:tca.tx_ublbooking_domain_model_room.name",
-            "config" => Array(
+            "label" => "LLL:EXT:booking/Resources/Private/Language/locallang.xlf:tca.tx_booking_domain_model_room.name",
+            "config" => array(
                 "type" => "select",
-                "foreign_table" => "tx_ublbooking_domain_model_room",
-				"foreign_table_where" => "and (tx_ublbooking_domain_model_room.pid=###CURRENT_PID### OR tx_ublbooking_domain_model_room.booking_storage=###CURRENT_PID###) order by tx_ublbooking_domain_model_room.name",
+                "foreign_table" => "tx_booking_domain_model_room",
+				"foreign_table_where" => "and (tx_booking_domain_model_room.pid=###CURRENT_PID### OR tx_booking_domain_model_room.booking_storage=###CURRENT_PID###) order by tx_booking_domain_model_room.name",
                 "size" => "1",
                 "minitems" => 1,
                 "maxitems" => 1,
             )
         ) ,
-        "time" => Array(
+        "time" => array(
             "exclude" => 1,
-            "label" => "LLL:EXT:ubl_booking/Resources/Private/Language/locallang.xlf:tca.tx_ublbooking_domain_model_booking.hour",
-            "config" => Array(
+            "label" => "LLL:EXT:booking/Resources/Private/Language/locallang.xlf:tca.tx_booking_domain_model_booking.hour",
+            "config" => array(
                 "type" => "input",
                 "size" => "8",
                 "max" => "20",
@@ -181,13 +182,13 @@ $TCA["tx_ublbooking_domain_model_booking"] = Array(
                 "default" => "0"
             )
         ),
-        "fe_user" => Array(
+        "fe_user" => array(
             "exclude" => 1,
-            "label" => "LLL:EXT:ubl_booking/Resources/Private/Language/locallang.xlf:tca.tx_ublbooking_domain_model_booking.feuser",
-            "config" => Array(
+            "label" => "LLL:EXT:booking/Resources/Private/Language/locallang.xlf:tca.tx_booking_domain_model_booking.feuser",
+            "config" => array(
                 "type" => "select",
-                "items" => Array(
-                    Array(
+                "items" => array(
+                    array(
                         '',
                         0
                     ) ,
@@ -199,10 +200,10 @@ $TCA["tx_ublbooking_domain_model_booking"] = Array(
 				"maxitems" => 1,
             )
         ) ,
-        'comment' => Array(
+        'comment' => array(
             'exclude' => 1,
-            "label" => 'LLL:EXT:ubl_booking/Resources/Private/Language/locallang.xlf:tca.tx_ublbooking_domain_model_booking.comment',
-            'config' => Array(
+            "label" => 'LLL:EXT:booking/Resources/Private/Language/locallang.xlf:tca.tx_booking_domain_model_booking.comment',
+            'config' => array(
                 'type' => 'text',
                 'cols' => '40',
                 'rows' => '6',
@@ -210,13 +211,13 @@ $TCA["tx_ublbooking_domain_model_booking"] = Array(
             )
         ) ,
     ) ,
-    "types" => Array(
-        "0" => Array(
+    "types" => array(
+        "0" => array(
             "showitem" => "hidden;;1;;1-1-1, room, time, fe_user, comment"
         ) ,
     ) ,
-    "palettes" => Array(
-        "1" => Array(
+    "palettes" => array(
+        "1" => array(
             "showitem" => ""
         )
     )

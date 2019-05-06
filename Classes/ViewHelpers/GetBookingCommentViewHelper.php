@@ -20,22 +20,22 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-namespace LeipzigUniversityLibrary\UblBooking\ViewHelpers;
+namespace Ubl\Booking\ViewHelpers;
 
-use \LeipzigUniversityLibrary\UblBooking\Domain\Model\Room;
-use \LeipzigUniversityLibrary\UblBooking\Library\Hour;
+use \Ubl\Booking\Domain\Model\Room;
+use \Ubl\Booking\Library\Hour;
 
 /**
  * Class GetBookingCommentViewHelper
  *
- * @package LeipzigUniversityLibrary\UblBooking\ViewHelpers
+ * @package Ubl\Booking\ViewHelpers
  */
 class GetBookingCommentViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractConditionViewHelper {
 
 	/**
 	 * Returns the comment of a booking
 	 *
-	 * @param \LeipzigUniversityLibrary\UblBooking\Domain\Model\Room $room
+	 * @param \Ubl\Booking\Domain\Model\Room $room
 	 * @param \DateTimeInterface $timestamp
 	 * @return string
 	 */

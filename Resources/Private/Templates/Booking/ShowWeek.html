@@ -1,7 +1,7 @@
-{namespace ubl=LeipzigUniversityLibrary\UblBooking\ViewHelpers}
+{namespace ubl=Ubl\Booking\ViewHelpers}
 <f:layout name="Default" />
 <f:section name="main">
-    <div class="columns">
+    <div class="container-fluid">
         <f:for each="{Rooms}" as="Room">
             <div class="calendarWeek row">
                 <div class="roomDescription">{Room.name}</div>
@@ -30,7 +30,7 @@
                 </div>
                 <div class="weekView">
                     <f:for each="{Room.week}" as="Day" iteration="iterator">
-                        <div class="weekViewDay small-1 columns {f:if(condition:iterator.isLast, then: 'end')}">
+                        <div class="weekViewDay small-1 container-fluid {f:if(condition:iterator.isLast, then: 'end')}">
                             <div class="tableheader{f:if(condition:'{Day.dateTime} < {Today.dateTime}', then:' past')}">
                                 <f:translate key="{ubl:date(format:'D',object:Day)}">[WeekDay]</f:translate>
                                 <ubl:date format="d.m." object="{Day}" />

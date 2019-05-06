@@ -20,15 +20,15 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-namespace LeipzigUniversityLibrary\UblBooking\Domain\Model;
+namespace Ubl\Booking\Domain\Model;
 
-use \LeipzigUniversityLibrary\UblBooking\Library\AbstractEntity;
-use \LeipzigUniversityLibrary\UblBooking\Library\Day;
+use \Ubl\Booking\Library\AbstractEntity;
+use \Ubl\Booking\Library\Day;
 
 /**
  * Class ClosingDay
  *
- * @package LeipzigUniversityLibrary\UblBooking\Domain\Model
+ * @package Ubl\Booking\Domain\Model
  */
 class ClosingDay extends AbstractEntity {
 
@@ -56,7 +56,7 @@ class ClosingDay extends AbstractEntity {
 	/**
 	 * the Day representation of the closing day
 	 *
-	 * @var \LeipzigUniversityLibrary\UblBooking\Library\Day
+	 * @var \Ubl\Booking\Library\Day
 	 */
 	protected $day;
 
@@ -76,7 +76,7 @@ class ClosingDay extends AbstractEntity {
 	/**
 	 * returns the Day representation of the closing day
 	 *
-	 * @return \LeipzigUniversityLibrary\UblBooking\Library\Day
+	 * @return \Ubl\Booking\Library\Day
 	 */
 	public function getDay() {
 		if (!$this->day) $this->setDay(new Day($this->date));

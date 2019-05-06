@@ -20,12 +20,12 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-namespace LeipzigUniversityLibrary\UblBooking\Library;
+namespace Ubl\Booking\Library;
 
 /**
  * Class Week
  *
- * @package LeipzigUniversityLibrary\UblBooking\Library
+ * @package Ubl\Booking\Library
  */
 class Week extends DateHelper implements \Iterator, \Countable {
 
@@ -65,7 +65,7 @@ class Week extends DateHelper implements \Iterator, \Countable {
 	/**
 	 * Returns the current iteration value
 	 *
-	 * @return \LeipzigUniversityLibrary\UblBooking\Library\Day
+	 * @return \Ubl\Booking\Library\Day
 	 */
 	public function current() {
 		return new Day($this->current->getTimestamp(), $this->dayStart, $this->dayEnd);
