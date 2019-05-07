@@ -115,3 +115,17 @@ Go to *Scheduler->Add Task*
 * specify the count of weeks to keep in the *weeks* argument field. 0 (zero) or empty
  means that all bookings prior to the current week are removed
 
+## Upgrade to 1.1.0
+In version 1.1.0 the Naming changed from `ubl_booking` to `booking`, class namespace changed from
+`LeipzigUniversityLibrary\UblBooking` to `Ubl\Booking`, composer-name changed from `ubl/ubl_booking` to `ubl/booking`
+
+In order to keep Your data follow these steps to convert them to the new names:
+
+0. set Webpage in maintenance mode
+1. install the new version as next to the old one, so you have `booking` and `ubl_booking` installed and activated.
+2. deactivate `ubl_booking`
+3. under *actions* run *Execute update script* for `bookings`
+4. replace plugin in each page
+5. enable stylesheets according to *Enable Stylesheets* above
+6. remove extension `ubl_booking`
+5. disable maintenance mode

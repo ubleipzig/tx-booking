@@ -260,7 +260,7 @@ class Room extends AbstractEntity {
 		}
 
 		if ($booking = $this->getBooking($hour->getDateTime())) {
-			if ($booking->getFeUser() === (int)$GLOBALS['TSFE']->fe_user->user['uid']) return self::OWNBOOKED;
+			if ($booking->getFeUser() === $GLOBALS['TSFE']->fe_user->user['uid']) return self::OWNBOOKED;
 			if ($this->settingsHelper->isAdmin($booking->getFeUser()) || $booking->getFeUser() === 0) return self::OFFDUTY;
 			return self::FOREIGNBOOKED;
 		};
