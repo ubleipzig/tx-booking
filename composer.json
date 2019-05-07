@@ -44,10 +44,6 @@
       "TYPO3\\CMS\\Fluid\\Tests\\": ".Build/vendor/typo3/cms/typo3/sysext/fluid/Tests/"
     }
   },
-  "replace": {
-    "ubl_booking": "self.version",
-    "typo3-ter/ubl-booking": "self.version"
-  },
   "config": {
     "vendor-dir": ".Build/vendor",
     "bin-dir": ".Build/bin"
