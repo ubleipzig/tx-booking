@@ -128,4 +128,4 @@ In order to keep Your data follow these steps to convert them to the new names:
 4. replace plugin in each page
 5. enable stylesheets according to *Enable Stylesheets* above
 6. remove extension `ubl_booking`
-5. disable maintenance mode
+7. disable maintenance mode

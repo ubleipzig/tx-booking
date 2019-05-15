@@ -10,7 +10,7 @@
   ],
   "homepage": "https://git.sc.uni-leipzig.de/ubl/bdd_dev/webmasterei/tx-booking",
   "license": "GPL-2.0+",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "support": {
     "issues": "https://git.sc.uni-leipzig.de/ubl/bdd_dev/webmasterei/tx-booking/issues"
   },
@@ -24,8 +24,7 @@
     "url": "https://composer.typo3.org/"
   }],
   "require": {
-    "typo3/cms": "^7.6.0",
-    "typo3-ter/iconfont": "^0.9.0"
+    "typo3/cms": "^7.6.0"
   },
   "require-dev": {
     "namelesscoder/typo3-repository-client": "^1.2",

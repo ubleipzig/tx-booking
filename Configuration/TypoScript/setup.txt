@@ -363,11 +363,3 @@ plugin.tx_booking {
 	}
 	)
 }
-
-# add icon font as fontawesome-provider
-page {
-	includeCSS {
-		iconfont = {$plugin.tx_iconfont.cssFile}
-		iconfont.excludeFromConcatenation = 1
-	}
-}
