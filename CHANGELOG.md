@@ -1,8 +1,8 @@
 # Change Log
 
-## [v2.0.2](https://github.com/ubleipzig/tx-booking/tree/v2.0.2)
+## [v2.0.2](https://github.com/ubleipzig/tx-booking/tree/2.0.2)
 
-[Full Changelog](ttps://github.com/ubleipzig/tx-booking/compare/v2.0.1...v2.0.2)
+[Full Changelog](https://github.com/ubleipzig/tx-booking/compare/2.0.1...2.0.2)
 
 **Minor enhancements**
 
