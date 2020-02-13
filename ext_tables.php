@@ -21,103 +21,25 @@
  */
 
 if (!defined('TYPO3_MODE')) die('Access denied.');
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_booking_domain_model_room');
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToInsertRecords('tx_booking_domain_model_room');
-$TCA["tx_booking_domain_model_room"] = array(
-	"ctrl" => array(
-		'title' => 'LLL:EXT:booking/Resources/Private/Language/locallang.xlf:tca.tx_booking_domain_model_room',
-		'label' => 'name',
-		'tstamp' => 'tstamp',
-		'crdate' => 'crdate',
-		'cruser_id' => 'cruser_id',
-		'sortby' => 'sorting',
-		'delete' => 'deleted',
-		'enablecolumns' => array(
-			'disabled' => 'hidden',
-		),
-		'foreign_table_loadIcon' => '1',
-		'dynamicConfigFile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Configuration/TCA/tca.php',
-	),
-	"feInterface" => array(
-		"fe_admin_fieldList" => "hidden, name, hours",
-	)
-);
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_booking_domain_model_booking');
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToInsertRecords('tx_booking_domain_model_booking');
-$TCA["tx_booking_domain_model_booking"] = array(
-	"ctrl" => array(
-		'title' => 'LLL:EXT:booking/Resources/Private/Language/locallang.xlf:tca.tx_booking_domain_model_booking',
-		'label' => 'time',
-		'label_alt' => 'fe_user',
-		'label_alt_force' => 'true',
-		'tstamp' => 'tstamp',
-		'crdate' => 'crdate',
-		'cruser_id' => 'cruser_id',
-		'sortby' => 'sorting',
-		'enablecolumns' => array(
-			'disabled' => 'hidden',
-		),
-		'dynamicConfigFile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Configuration/TCA/tca.php',
-	),
-	"feInterface" => array(
-		"fe_admin_fieldList" => "hidden, fe_user",
-	)
-);
 
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_booking_domain_model_closingday');
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToInsertRecords('tx_booking_domain_model_closingday');
-$TCA["tx_booking_domain_model_closingday"] = array(
-	'ctrl' => array(
-		'title' => 'LLL:EXT:booking/Resources/Private/Language/locallang.xlf:tca.tx_booking_domain_model_closingday',
-		'label' => 'name',
-		'label_alt' => 'date',
-		'label_alt_force' => 'true',
-		'tstamp' => 'tstamp',
-		'crdate' => 'crdate',
-		'cruser_id' => 'cruser_id',
-		'name' => 'name',
-		'description' => 'description',
-		'date' => 'date',
-		'closingday' => 'closingday',
-		'enablecolumns' => array(
-			'disabled'      => 'hidden'
-		),
-		'dynamicConfigFile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Configuration/TCA/tca.php',
-	)
-);
+foreach (['room', 'booking', 'closingday', 'openinghours'] as $table) {
+    \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_booking_domain_model_' . $table);
+    \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToInsertRecords('tx_booking_domain_model_' . $table);
 
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_booking_domain_model_openinghours');
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToInsertRecords('tx_booking_domain_model_openinghours');
-$TCA["tx_booking_domain_model_openinghours"] = array(
-	'ctrl' => array(
-		'title' => 'LLL:EXT:booking/Resources/Private/Language/locallang.xlf:tca.tx_booking_domain_model_openinghours',
-		'label' => 'week_day',
-		'label_userFunc' => 'Ubl\Booking\Library\Tca->getDayTitle',
-		'tstamp' => 'tstamp',
-		'crdate' => 'crdate',
-		'cruser_id' => 'cruser_id',
-		'enablecolumns' => array(
-			'disabled' => 'hidden'
-		),
-		'week_day' => 'weekDay',
-		'closing_days' => 'closingDays',
-		'opening_hours' => 'openingHours',
-		'dynamicConfigFile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Configuration/TCA/tca.php',
-	)
-);
+}
 
 $pluginSignature = 'booking_bookings';
 $TCA['tt_content']['types']['list']['subtypes_addlist'][$pluginSignature] = 'pi_flexform';
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue(
-	$pluginSignature,
-	'FILE:EXT:' . $_EXTKEY . '/Configuration/FlexForms/Bookings.xml'
+    $pluginSignature,
+    'FILE:EXT:' . $_EXTKEY . '/Configuration/FlexForms/Bookings.xml'
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
-	$_EXTKEY,
-	'Bookings',
-	'Bookings for Rooms'
+    $_EXTKEY,
+    'Bookings',
+    'Bookings for Rooms'
 );
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile($_EXTKEY, 'Configuration/TypoScript/', 'Booking CSS Styles');
