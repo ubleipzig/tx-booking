@@ -25,7 +25,7 @@ return array(
     ),*/
     "types" => array(
         "0" => array(
-            "showitem" => "hidden;;1;;1-1-1, room, time, fe_user, comment"
+            "showitem" => "hidden;;1, room, time, fe_user, comment"
         ) ,
     ) ,
     "palettes" => array(

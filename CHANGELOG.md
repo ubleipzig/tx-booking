@@ -1,5 +1,13 @@
 # Change Log
 
+## [v2.0.4](https://github.com/ubleipzig/tx-booking/tree/2.0.4)
+
+[Full Changelog](https://github.com/ubleipzig/tx-booking/compare/2.0.3...2.0.4)
+
+**Fixes**
+
+* fixes order of options at /Configuration/TCA/tx_booking_domain_model_booking.php at types showitems
+
 ## [v2.0.3](https://github.com/ubleipzig/tx-booking/tree/2.0.3)
 
 [Full Changelog](https://github.com/ubleipzig/tx-booking/compare/2.0.2...2.0.3)
