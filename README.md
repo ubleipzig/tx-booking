@@ -11,8 +11,8 @@ Logged in users additionally can book timeslots of rooms according to the define
 maximum of bookings per day and location.
 
 ## Requirements
-* Typo3 > 6.2 < 7.6.99
-* PHP >= 5.4
+* Typo3 > 7.6 < 8.7.99
+* PHP >= 7.0
 * Icon font >= 0.9.0
 
 We have not tested it with higher versions but the codebase should be sufficient.
