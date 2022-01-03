@@ -44,6 +44,7 @@ return array(
             'config' => array(
                 'type' => 'input',
                 'size' => 5,
+                'renderType' => 'inputDateTime',
                 'eval' => 'date,required',
             )
         ),

@@ -61,12 +61,7 @@ return array(
                 'minitems' => '0',
                 'internal_type' => 'db',
                 'allowed' => 'pages',
-                'show_thumbs' => '1',
-                'wizards' => array(
-                    'suggest' => array(
-                        'type' => 'suggest',
-                    )
-                )
+                'wizards' => array()
             ),
         ),
         "booking_storage" => array(
@@ -79,12 +74,7 @@ return array(
                 'minitems' => '0',
                 'internal_type' => 'db',
                 'allowed' => 'pages',
-                'show_thumbs' => '1',
-                'wizards' => array(
-                    'suggest' => array(
-                        'type' => 'suggest',
-                    )
-                )
+                'wizards' => array()
             )
         )
     )

@@ -1,5 +1,13 @@
 # Change Log
 
+## [v2.1.0](https://github.com/ubleipzig/tx-booking/tree/2.1.0)
+
+[Full Changelog](https://github.com/ubleipzig/tx-booking/compare/2.0.4...2.1.0)
+
+**Fixes**
+
+* removes or adjusts deprecated parameters at /Configuration/TCA models
+
 ## [v2.0.4](https://github.com/ubleipzig/tx-booking/tree/2.0.4)
 
 [Full Changelog](https://github.com/ubleipzig/tx-booking/compare/2.0.3...2.0.4)

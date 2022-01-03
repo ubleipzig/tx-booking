@@ -25,7 +25,7 @@ return array(
     ),*/
     "types" => array(
         "0" => array(
-            "showitem" => "hidden;;1, room, time, fe_user, comment"
+            "showitem" => "hidden, --palette--;;1, room, time, fe_user, comment"
         ) ,
     ) ,
     "palettes" => array(
@@ -48,6 +48,7 @@ return array(
             "label" => $ll . "tca.tx_booking_domain_model_room.name",
             "config" => array(
                 "type" => "select",
+                'renderType' => 'selectSingle',
                 "foreign_table" => "tx_booking_domain_model_room",
                 "foreign_table_where" => "and (tx_booking_domain_model_room.pid=###CURRENT_PID### OR tx_booking_domain_model_room.booking_storage=###CURRENT_PID###) order by tx_booking_domain_model_room.name",
                 "size" => "1",
@@ -61,7 +62,7 @@ return array(
             "config" => array(
                 "type" => "input",
                 "size" => "8",
-                "max" => "20",
+                "renderType" => "inputDateTime",
                 "eval" => "datetime, required",
                 "checkbox" => "0",
                 "default" => "0"
@@ -72,6 +73,7 @@ return array(
             "label" => $ll . "tca.tx_booking_domain_model_booking.feuser",
             "config" => array(
                 "type" => "select",
+                "renderType" => "selectSingle",
                 "items" => array(
                     array(
                         '',
