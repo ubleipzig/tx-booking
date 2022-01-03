@@ -31,11 +31,13 @@ class DateViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper
 
 	/**
 	 * @param string $format the output format
-	 * @param object \DateTimeInterface $object the date
+	 * @param DateTimeInterface $object the date
 	 * @param string $modify [optional] modification to the object made before formatting
-	 * @return string
+	 *
+     * @return string
 	 */
-	public function render($format, $object, $modify = null) {
+	public function render($format, $object, $modify = null)
+    {
 		if ($modify) {
 			$object = $object->modify($modify);
 		}

@@ -37,8 +37,8 @@ class BookableViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractCondit
 	 * be aware that you do not need to specify the day when you specified the hour
 	 *
 	 * @param \Ubl\Booking\Domain\Model\Room $room
-	 * @param optional \Ubl\Booking\Library\Day $day
-	 * @param optional \Ubl\Booking\Library\Hour $hour
+	 * @param \Ubl\Booking\Library\Day $day Optional.
+	 * @param \Ubl\Booking\Library\Hour $hour Optional.
 	 * @return string
 	 */
 	public function render(Room $room, Day $day = null, Hour $hour = null) {

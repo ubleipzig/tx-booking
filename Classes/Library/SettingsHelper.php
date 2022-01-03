@@ -52,7 +52,9 @@ class SettingsHelper {
 	 * @return bool
 	 */
 	public function showNextWeek(Week $week) {
-		if (empty($this->settings['limitBookingToWeeks'])) return true;
+		if (empty($this->settings['limitBookingToWeeks'])) {
+            return true;
+        }
 		$today = new Week();
 		$limit = $today->add(new \DateInterval("P{$this->settings['limitBookingToWeeks']}W"));
 		return $week->getDateTime() < $limit;
@@ -65,7 +67,9 @@ class SettingsHelper {
 	 * @return bool
 	 */
 	public function showPreviousWeek(Week $week) {
-		if (empty($this->settings['limitBacklogToWeeks'])) return true;
+		if (empty($this->settings['limitBacklogToWeeks'])) {
+            return true;
+        }
 		$today = new Week();
 		$limit = $today->sub(new \DateInterval("P{$this->settings['limitBacklogToWeeks']}W"));
 		return $week->getDateTime() > $limit;
@@ -78,7 +82,9 @@ class SettingsHelper {
 	 * @return bool
 	 */
 	public function showNextDay(Day $day) {
-		if (empty($this->settings['limitBookingToWeeks'])) return true;
+		if (empty($this->settings['limitBookingToWeeks'])) {
+            return true;
+        }
 		$today = new Week();
 		$nextDay = $day->modify('next day');
 		$nextDaysWeek = new Week($nextDay->getTimestamp());
@@ -93,7 +99,9 @@ class SettingsHelper {
 	 * @return bool
 	 */
 	public function showPreviousDay(Day $day) {
-		if (empty($this->settings['limitBacklogToWeeks'])) return true;
+		if (empty($this->settings['limitBacklogToWeeks'])) {
+            return true;
+        }
 		$today = new Week();
 		$previousDay = $day->modify('previous day');
 		$previousDaysWeek = new Week($previousDay->getTimestamp());
@@ -104,7 +112,7 @@ class SettingsHelper {
 	/**
 	 * Whether the provided user is admin
 	 *
-	 * @param  $user [optional] if empty try the currently logged in user
+	 * @param  $user_id [optional] if empty try the currently logged in user
 	 * @return bool
 	 */
 	public function isAdmin($user_id = null) {
@@ -124,7 +132,9 @@ class SettingsHelper {
 	 * @return bool
 	 */
 	public function exceededBookingLimit($timestamp) {
-		if (empty($this->settings['limitBookingToWeeks'])) return true;
+		if (empty($this->settings['limitBookingToWeeks'])) {
+            return true;
+        }
 		$today = new Week();
 		$week = new Week($timestamp);
 		$limit = $today->add(new \DateInterval("P{$this->settings['limitBookingToWeeks']}W"));

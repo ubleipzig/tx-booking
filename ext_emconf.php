@@ -20,11 +20,11 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-$EM_CONF[$_EXTKEY] = array(
+$EM_CONF[$_EXTKEY] = [
 	'title' => 'Booking for Rooms',
 	'description' => 'Manage bookings of rooms for frontend users',
 	'category' => 'plugin',
-	'version' => '2.0.3',
+	'version' => '2.1.0',
 	'state' => 'stable',
 	'uploadfolder' => false,
 	'createDirs' => '',
@@ -32,26 +32,26 @@ $EM_CONF[$_EXTKEY] = array(
 	'author' => 'Ulf Seltmann',
 	'author_email' => 'seltmann@ub.uni-leipzig.de',
 	'author_company' => 'Leipzig University Library',
-	'constraints' => array(
-		'depends' => array(
-			'typo3' => '6.2-7.99.99',
+	'constraints' => [
+		'depends' => [
+			'typo3' => '7.0.0 - 8.7.99',
 			'iconfont' => '>=0.9.0',
-		),
-		'conflicts' => array(),
-		'suggests' => array(),
-	),
+		],
+		'conflicts' => [],
+		'suggests' => [],
+	],
 	'autoload' =>
-  array(
+  [
     'psr-4' =>
-    array(
+    [
       'Ubl\\Booking\\' => 'Classes',
-    ),
-  ),
+    ],
+  ],
   'autoload-dev' =>
-  array(
+  [
     'psr-4' =>
-    array(
+    [
       'Ubl\\Booking\\Tests' => 'Tests',
-    ),
-  ),
-);
+    ],
+  ],
+];

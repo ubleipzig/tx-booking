@@ -25,8 +25,8 @@ if (!defined('TYPO3_MODE')) die('Access denied.');
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
 	'Ubl.' . $_EXTKEY,
 	'Bookings',
-	array('Booking' => 'showWeek, showDay, add, remove'),
-	array('Booking' => 'showWeek, showDay, add, remove')
+	['Booking' => 'showWeek, showDay, add, remove'],
+	['Booking' => 'showWeek, showDay, add, remove']
 );
 
 $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['extbase']['commandControllers'][$_EXTKEY] = \Ubl\Booking\Command\CleanupCommandController::class;

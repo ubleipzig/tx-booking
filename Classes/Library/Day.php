@@ -60,7 +60,9 @@ class Day extends DateHelper implements \Iterator, \Countable {
 	public function __construct($timestamp = null, $start = 0, $end = 23) {
 		parent::__construct($timestamp);
 
-		if ($start > $end) throw new \Exception('start must not be greater than end');
+		if ($start > $end) {
+            throw new \Exception('start must not be greater than end');
+        }
 		$this->setStart($start);
 		$this->setEnd($end);
 
@@ -98,7 +100,9 @@ class Day extends DateHelper implements \Iterator, \Countable {
 	 */
 	public function rewind() {
 		$this->current = $this->origin;
-		if ($this->start > 0) $this->current = $this->current->add(new \DateInterval("PT{$this->start}H"));
+		if ($this->start > 0) {
+            $this->current = $this->current->add(new \DateInterval("PT{$this->start}H"));
+        }
 	}
 
 	/**

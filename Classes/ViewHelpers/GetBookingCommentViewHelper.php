@@ -39,7 +39,8 @@ class GetBookingCommentViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\Abstr
 	 * @param \DateTimeInterface $timestamp
 	 * @return string
 	 */
-	public function render(Room $room, \DateTimeInterface $timestamp) {
+	public function render(Room $room, \DateTimeInterface $timestamp)
+    {
 		return $room->getBooking($timestamp)->getComment();
 	}
 }

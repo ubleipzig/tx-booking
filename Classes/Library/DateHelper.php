@@ -44,7 +44,9 @@ class DateHelper {
 	public function __construct($timestamp = null) {
 		$this->origin = new \DateTimeImmutable('now', new \DateTimeZone(date_default_timezone_get()));
 
-		if ($timestamp) $this->origin = $this->origin->setTimestamp($timestamp);
+		if ($timestamp) {
+            $this->origin = $this->origin->setTimestamp($timestamp);
+        }
 	}
 
 	/**

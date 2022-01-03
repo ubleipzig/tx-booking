@@ -3,8 +3,8 @@ defined('TYPO3_MODE') or die();
 
 $ll = 'LLL:EXT:booking/Resources/Private/Language/locallang.xlf:';
 
-return array(
-    'ctrl' => array(
+return [
+    'ctrl' => [
         'title' => 'LLL:EXT:booking/Resources/Private/Language/locallang.xlf:tca.tx_booking_domain_model_closingday',
         'label' => 'name',
         'label_alt' => 'date',
@@ -16,45 +16,45 @@ return array(
         'description' => 'description',
         'date' => 'date',
         'closingday' => 'closingday',
-        'enablecolumns' => array(
+        'enablecolumns' => [
             'disabled'      => 'hidden'
-        )
-    ),
-    'interface' => array(
+        ]
+    ],
+    'interface' => [
         'showRecordFieldList' => 'name,date,description'
-    ),
-    'types' => array(
-        '1' => array('showitem' => 'name,date,description')
-    ),
-    'palettes' => array(
-        '1' => array('showitem' => 'name,date,description')
-    ),
-    'columns' => array(
-        'name' => array(
+    ],
+    'types' => [
+        '1' => ['showitem' => 'name,date,description')
+    ],
+    'palettes' => [
+        '1' => ['showitem' => 'name,date,description')
+    ],
+    'columns' => [
+        'name' => [
             'label' => $ll .'tca.tx_booking_domain_model_closingday.name',
-            'config' => array(
+            'config' => [
                 'type' => 'input',
                 'size' => 20,
                 'max' => 256,
                 'eval' => 'required'
-            )
-        ),
-        'date' => array(
+            ]
+        ],
+        'date' => [
             'label' => $ll . 'tca.tx_booking_domain_model_closingday.date',
-            'config' => array(
+            'config' => [
                 'type' => 'input',
                 'size' => 5,
                 'renderType' => 'inputDateTime',
                 'eval' => 'date,required',
-            )
-        ),
-        'description' => array(
+            ]
+        ],
+        'description' => [
             'label' => $ll . 'tca.tx_booking_domain_model_closingday.description',
-            'config' => array(
+            'config' => [
                 'type' => 'text',
                 'cols' => 20,
                 'rows' => 2
-            )
-        ),
-    )
-);
+            ]
+        ],
+    ]
+];

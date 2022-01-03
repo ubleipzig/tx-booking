@@ -54,7 +54,7 @@ class Tca {
 		// workaround, see https://forge.typo3.org/issues/50551
 		$pageUid = $this->normalizePageUid($config['row']['pid']);
 
-		$querySettings->setStoragePageIds(array($pageUid));
+		$querySettings->setStoragePageIds([$pageUid]);
 		$openingHoursRepository->setDefaultQuerySettings($querySettings);
 		$openingHours = [];
 		$week = new Week();
