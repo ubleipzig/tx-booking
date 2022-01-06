@@ -1,5 +1,13 @@
 # Change Log
 
+## [v2.1.1](https://github.com/ubleipzig/tx-booking/tree/2.1.1)
+
+[Full Changelog](https://github.com/ubleipzig/tx-booking/compare/2.1.0...2.1.1)
+
+**Fixes**
+
+* fixes brackets of array syntax adjustment at _tx_booking_domain_closingday.php_  
+
 ## [v2.1.0](https://github.com/ubleipzig/tx-booking/tree/2.1.0)
 
 [Full Changelog](https://github.com/ubleipzig/tx-booking/compare/2.0.4...2.1.0)

@@ -10,7 +10,7 @@
   ],
   "homepage": "https://git.sc.uni-leipzig.de/ubl/bdd_dev/webmasterei/tx-booking",
   "license": "GPL-2.0+",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "support": {
     "issues": "https://git.sc.uni-leipzig.de/ubl/bdd_dev/webmasterei/tx-booking/issues"
   },
@@ -44,6 +44,10 @@
       "TYPO3\\CMS\\Fluid\\Tests\\": ".Build/vendor/typo3/cms/typo3/sysext/fluid/Tests/"
     }
   },
+  "replace": {
+    "booking": "self.version",
+    "typo3-ter/booking": "self.version"
+  },
   "config": {
     "vendor-dir": ".Build/vendor",
     "bin-dir": ".Build/bin"
@@ -56,7 +60,7 @@
   },
   "extra": {
     "branch-alias": {
-      "dev-master": "1.0.x-dev"
+      "dev-master": "t3v8"
     },
     "typo3/cms": {
       "cms-package-dir": "{$vendor-dir}/typo3/cms",

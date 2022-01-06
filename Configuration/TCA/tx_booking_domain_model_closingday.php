@@ -24,10 +24,10 @@ return [
         'showRecordFieldList' => 'name,date,description'
     ],
     'types' => [
-        '1' => ['showitem' => 'name,date,description')
+        '1' => ['showitem' => 'name,date,description']
     ],
     'palettes' => [
-        '1' => ['showitem' => 'name,date,description')
+        '1' => ['showitem' => 'name,date,description']
     ],
     'columns' => [
         'name' => [
