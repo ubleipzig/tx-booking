@@ -26,8 +26,8 @@ namespace Ubl\Booking\Library;
  *
  * @package Ubl\Booking\Library
  */
-class Day extends DateHelper implements \Iterator, \Countable {
-
+class Day extends DateHelper implements \Iterator, \Countable
+{
 	/**
 	 * current time of iteration cycle
 	 *
@@ -57,7 +57,8 @@ class Day extends DateHelper implements \Iterator, \Countable {
 	 * @param int  $end       [optional] the last hour of the day
 	 * @throws \Exception
 	 */
-	public function __construct($timestamp = null, $start = 0, $end = 23) {
+	public function __construct($timestamp = null, $start = 0, $end = 23)
+    {
 		parent::__construct($timestamp);
 
 		if ($start > $end) {
@@ -75,7 +76,8 @@ class Day extends DateHelper implements \Iterator, \Countable {
 	 *
 	 * @return \Ubl\Booking\Library\Hour
 	 */
-	public function current() {
+	public function current()
+    {
 		return new Hour($this->current->getTimestamp());
 	}
 
@@ -84,21 +86,24 @@ class Day extends DateHelper implements \Iterator, \Countable {
 	 *
 	 * @return int
 	 */
-	public function key() {
+	public function key()
+    {
 		return (int)$this->current->format('H');
 	}
 
 	/**
 	 * Iterate to next
 	 */
-	public function next() {
+	public function next()
+    {
 		$this->current = $this->current->modify('next hour');
 	}
 
 	/**
 	 * Reset iteration
 	 */
-	public function rewind() {
+	public function rewind()
+    {
 		$this->current = $this->origin;
 		if ($this->start > 0) {
             $this->current = $this->current->add(new \DateInterval("PT{$this->start}H"));
@@ -110,7 +115,8 @@ class Day extends DateHelper implements \Iterator, \Countable {
 	 *
 	 * @return bool
 	 */
-	public function valid() {
+	public function valid()
+    {
 		return (($this->current->format('d') === $this->origin->format('d'))
 			&& ((int)$this->current->format('H') <= $this->end));
 	}
@@ -120,7 +126,8 @@ class Day extends DateHelper implements \Iterator, \Countable {
 	 *
 	 * @return string
 	 */
-	public function getTitle() {
+	public function getTitle()
+    {
 		return $this->origin->format('d.m.Y');
 	}
 
@@ -129,7 +136,8 @@ class Day extends DateHelper implements \Iterator, \Countable {
 	 *
 	 * @param int $value
 	 */
-	public function setStart($value) {
+	public function setStart($value)
+    {
 		$this->start = (int)$value;
 	}
 
@@ -138,7 +146,8 @@ class Day extends DateHelper implements \Iterator, \Countable {
 	 *
 	 * @param int $value
 	 */
-	public function setEnd($value) {
+	public function setEnd($value)
+    {
 		$this->end = (int)$value;
 	}
 
@@ -147,7 +156,8 @@ class Day extends DateHelper implements \Iterator, \Countable {
 	 *
 	 * @return \DateTimeImmutable
 	 */
-	public function getStart() {
+	public function getStart()
+    {
 		return $this->origin->add(new \DateInterval("PT{$this->start}H"));
 	}
 
@@ -156,7 +166,8 @@ class Day extends DateHelper implements \Iterator, \Countable {
 	 *
 	 * @return \DateTimeImmutable
 	 */
-	public function getEnd() {
+	public function getEnd()
+    {
 		return $this->origin->add(new \DateInterval("PT{$this->end}H"));
 	}
 
@@ -165,7 +176,8 @@ class Day extends DateHelper implements \Iterator, \Countable {
 	 *
 	 * @return int
 	 */
-	public function count() {
+	public function count()
+    {
 		return $this->end - $this->start;
 	}
 }

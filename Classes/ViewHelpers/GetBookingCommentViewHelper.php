@@ -22,25 +22,44 @@
 
 namespace Ubl\Booking\ViewHelpers;
 
-use \Ubl\Booking\Domain\Model\Room;
-use \Ubl\Booking\Library\Hour;
+use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
+use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
+use Ubl\Booking\Domain\Model\Room;
 
 /**
  * Class GetBookingCommentViewHelper
  *
  * @package Ubl\Booking\ViewHelpers
  */
-class GetBookingCommentViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractConditionViewHelper {
+class GetBookingCommentViewHelper extends AbstractViewHelper
+{
+    /**
+     * Initializes arguments
+     *
+     * @return void
+     */
+    public function initializeArguments()
+    {
+        $this->registerArgument('room', Room::class,'\Ubl\Booking\Domain\Model\Room', true);
+        $this->registerArgument('timestamp', \DateTimeInterface::class,'\DateTimeInterface', true);
+    }
 
 	/**
 	 * Returns the comment of a booking
 	 *
-	 * @param \Ubl\Booking\Domain\Model\Room $room
-	 * @param \DateTimeInterface $timestamp
-	 * @return string
-	 */
-	public function render(Room $room, \DateTimeInterface $timestamp)
-    {
+     * @param array $arguments
+     * @param \Closure $renderChildrenClosure
+     * @param RenderingContextInterface $renderingContext
+     *
+     * @return string
+     */
+    public static function renderStatic(
+        array $arguments,
+        \Closure $renderChildrenClosure,
+        RenderingContextInterface $renderingContext
+    ) {
+        $room = $arguments['room'];
+        $timestamp = $arguments['timestamp'];
 		return $room->getBooking($timestamp)->getComment();
 	}
 }

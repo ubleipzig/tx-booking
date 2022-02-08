@@ -30,8 +30,8 @@ use \Ubl\Booking\Library\Day;
  *
  * @package Ubl\Booking\Domain\Model
  */
-class ClosingDay extends AbstractEntity {
-
+class ClosingDay extends AbstractEntity
+{
 	/**
 	 * the date of the closing day
 	 *
@@ -67,20 +67,24 @@ class ClosingDay extends AbstractEntity {
 	 * @param string  [optional] $name the name
 	 * @param string  [optional] $description the description
 	 */
-	public function __construct($date, $name = '', $description = '') {
+	public function __construct($date, $name = '', $description = '')
+    {
 		$this->setDate($date);
 		$this->setName($name);
 		$this->setDescription($description);
 	}
 
 	/**
-	 * returns the Day representation of the closing day
+	 * Returns the Day representation of the closing day
 	 *
-	 * @return \Ubl\Booking\Library\Day
-	 */
-	public function getDay() {
-		if (!$this->day) $this->setDay(new Day($this->date));
-
+     * @return \Ubl\Booking\Library\Day
+     * @throws \Exception
+     */
+	public function getDay()
+    {
+		if (!$this->day) {
+            $this->setDay(new Day($this->date));
+        }
 		return $this->day;
 	}
 }

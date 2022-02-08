@@ -32,33 +32,35 @@ use Ubl\Booking\Library\SettingsHelper;
  *
  * @package Ubl\Booking\Controller
  */
-abstract class AbstractController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
-
+abstract class AbstractController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
+{
 	/**
 	 * @var Ubl\Booking\Library\SettingsHelper
 	 */
 	protected $settingsHelper;
 
 	/**
-	 * Override getErrorFlashMessage to present
-	 * nice flash error messages.
+	 * Override getErrorFlashMessage to present flash error messages for booking.
 	 *
 	 * @return string
 	 */
-	protected function getErrorFlashMessage() {
+	protected function getErrorFlashMessage()
+    {
 		$defaultFlashMessage = parent::getErrorFlashMessage();
 		$locallangKey = sprintf('error.%s.%s', $this->request->getControllerName(), $this->actionMethodName);
 		return $this->translate($locallangKey, $defaultFlashMessage);
 	}
 
 	/**
-	 * helper function to render localized flashmessages
+	 * Helper function to render localized flashmessages
 	 *
 	 * @param string  $action
-	 * @param integer $severity optional severity code. One of the t3lib_FlashMessage constants
+	 * @param integer $severity [optional] Severity code. One of the t3lib_FlashMessage constants
+     *
 	 * @return void
 	 */
-	public function addFlashMessage($action, $severity = \TYPO3\CMS\Core\Messaging\FlashMessage::OK) {
+	public function addFlashMessageHelper($action, $severity = \TYPO3\CMS\Core\Messaging\FlashMessage::OK)
+    {
 		$messageLocallangKey = sprintf('flashmessage.%s.%s', $this->request->getControllerName(), $action);
 		$localizedMessage = $this->translate($messageLocallangKey, '[' . $messageLocallangKey . ']');
 		$titleLocallangKey = sprintf('%s.title', $messageLocallangKey);
@@ -67,13 +69,15 @@ abstract class AbstractController extends \TYPO3\CMS\Extbase\Mvc\Controller\Acti
 	}
 
 	/**
-	 * helper function to use localized strings in controllers
+	 * Helper function to use localized strings in controllers
 	 *
-	 * @param string $key            locallang key
-	 * @param string $defaultMessage the default message to show if key was not found
+	 * @param string $key            Key $locallang
+	 * @param string $defaultMessage Default message to show if key was not found
+     *
 	 * @return string
 	 */
-	protected function translate($key, $defaultMessage = '') {
+	protected function translate($key, $defaultMessage = '')
+    {
 		$message = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate($key, 'booking');
 		if ($message === NULL) {
 			$message = $defaultMessage;
@@ -86,7 +90,8 @@ abstract class AbstractController extends \TYPO3\CMS\Extbase\Mvc\Controller\Acti
 	 *
 	 * @return void
 	 */
-	public function initializeAction() {
+	public function initializeAction()
+    {
 		$this->settingsHelper = new SettingsHelper($this->settings);
 	}
 }

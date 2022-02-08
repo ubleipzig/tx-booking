@@ -29,4 +29,6 @@ if (!defined('TYPO3_MODE')) die('Access denied.');
 	['Booking' => 'showWeek, showDay, add, remove']
 );
 
-$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['extbase']['commandControllers'][$_EXTKEY] = \Ubl\Booking\Command\CleanupCommandController::class;
+if (TYPO3_MODE === 'BE') {
+    $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['extbase']['commandControllers'][$_EXTKEY] = \Ubl\Booking\Command\CleanupCommandController::class;
+}

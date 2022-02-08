@@ -27,8 +27,8 @@ namespace Ubl\Booking\Library;
  *
  * @package Ubl\Booking\Library
  */
-class Week extends DateHelper implements \Iterator, \Countable {
-
+class Week extends DateHelper implements \Iterator, \Countable
+{
 	/**
 	 * When the average day starts
 	 *
@@ -55,7 +55,8 @@ class Week extends DateHelper implements \Iterator, \Countable {
 	 *
 	 * @param int $timestamp [optional] the unix timestamp to create the week from
 	 */
-	public function __construct($timestamp = null) {
+	public function __construct($timestamp = null)
+    {
 		parent::__construct($timestamp);
 
 		$this->origin = $this->origin->modify('Monday this week');
@@ -67,7 +68,8 @@ class Week extends DateHelper implements \Iterator, \Countable {
 	 *
 	 * @return \Ubl\Booking\Library\Day
 	 */
-	public function current() {
+	public function current()
+    {
 		return new Day($this->current->getTimestamp(), $this->dayStart, $this->dayEnd);
 	}
 
@@ -76,14 +78,16 @@ class Week extends DateHelper implements \Iterator, \Countable {
 	 *
 	 * @return string
 	 */
-	public function key() {
+	public function key()
+    {
 		return $this->current->format('N');
 	}
 
 	/**
 	 * Iterate to next
 	 */
-	public function next() {
+	public function next()
+    {
 		$this->current = $this->current->modify('next day');
 	}
 
@@ -92,14 +96,16 @@ class Week extends DateHelper implements \Iterator, \Countable {
 	 *
 	 * @return bool
 	 */
-	public function valid() {
+	public function valid()
+    {
 		return ($this->current->format('W') === $this->origin->format('W'));
 	}
 
 	/**
 	 * Reset iteration
 	 */
-	public function rewind() {
+	public function rewind()
+    {
 		$this->current = $this->origin;
 	}
 
@@ -108,7 +114,8 @@ class Week extends DateHelper implements \Iterator, \Countable {
 	 *
 	 * @param $value
 	 */
-	public function setDayStart($value) {
+	public function setDayStart($value)
+    {
 		$this->dayStart = (int)$value;
 	}
 
@@ -117,7 +124,8 @@ class Week extends DateHelper implements \Iterator, \Countable {
 	 *
 	 * @param $value
 	 */
-	public function setDayEnd($value) {
+	public function setDayEnd($value)
+    {
 		$this->dayEnd = (int)$value;
 	}
 
@@ -126,7 +134,8 @@ class Week extends DateHelper implements \Iterator, \Countable {
 	 *
 	 * @return \DateTimeImmutable
 	 */
-	public function getStart() {
+	public function getStart()
+    {
 		return $this->origin->modify('Monday this week');
 	}
 
@@ -135,7 +144,8 @@ class Week extends DateHelper implements \Iterator, \Countable {
 	 *
 	 * @return \DateTimeImmutable
 	 */
-	public function getEnd() {
+	public function getEnd()
+    {
 		return $this->origin->modify('Monday next week -1 second');
 	}
 
@@ -144,7 +154,8 @@ class Week extends DateHelper implements \Iterator, \Countable {
 	 *
 	 * @return int
 	 */
-	public function count() {
+	public function count()
+    {
 		return 7;
 	}
 }

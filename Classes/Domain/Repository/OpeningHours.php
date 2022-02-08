@@ -30,7 +30,8 @@ use \Ubl\Booking\Domain\Model\Room as RoomModel;
  *
  * @package Ubl\Booking\Domain\Repository
  */
-class OpeningHours extends Repository {
+class OpeningHours extends Repository
+{
 
 	/**
 	 * The default ordering for queries
@@ -45,19 +46,18 @@ class OpeningHours extends Repository {
 	/**
 	 * Finds the opening hours for specified room and day
 	 *
-	 * @param \Ubl\Booking\Domain\Model\Room $room the room
-	 * @param \DateTimeInterface                                     $day the day
-	 * @return array the result
+	 * @param \Ubl\Booking\Domain\Model\Room $room Room
+	 * @param \DateTimeInterface $day Day
+     *
+	 * @return array
 	 */
-	public function findByRoomAndDay(RoomModel $room, \DateTimeInterface $day) {
+	public function findByRoomAndDay(RoomModel $room, \DateTimeInterface $day)
+    {
 		$query = $this->createQuery();
-
 		if (count($room->getOpeningTimesStorage()) > 0) {
 			$query->getQuerySettings()->setStoragePageIds($room->getOpeningTimesStorage());
 		}
-
 		$query->matching($query->equals('week_day', $day->format('N')));
-
 		return $this->reduceResult($query->execute(), $query->getQuerySettings()->getStoragePageIds());
 	}
 
@@ -67,22 +67,22 @@ class OpeningHours extends Repository {
 	 * @param \Ubl\Booking\Domain\Model\Room $room the room
 	 * @return array the result
 	 */
-	public function findAllByRoom(RoomModel $room) {
+	public function findAllByRoom(RoomModel $room)
+    {
 		$query = $this->createQuery();
-
 		if (count($room->getOpeningTimesStorage()) > 0) {
 			$query->getQuerySettings()->setStoragePageIds($room->getOpeningTimesStorage());
 		}
-
 		return $this->reduceResult($query->execute(), $query->getQuerySettings()->getStoragePageIds());
 	}
 
 	/**
 	 * Finds all opening hours
 	 *
-	 * @return array the result
+	 * @return array
 	 */
-	public function findAll() {
+	public function findAll()
+    {
 		$query = $this->createQuery();
 		$result  = $query->execute();
 		return $this->reduceResult($result, $query->getQuerySettings()->getStoragePageIds());
@@ -91,13 +91,14 @@ class OpeningHours extends Repository {
 	/**
 	 * Aggregates the result to omit overridden entries.
 	 *
-	 * @param \TYPO3\CMS\Extbase\Persistence\QueryResultInterface $result the result to reduce
-	 * @param $storagePids the storage pids in order
-	 * @return array the result
+	 * @param \TYPO3\CMS\Extbase\Persistence\QueryResultInterface $result Result of query to reduce
+	 * @param $storagePids Storage pids in order
+     *
+	 * @return array
 	 */
-	protected function reduceResult($result, $storagePids) {
+	protected function reduceResult($result, $storagePids)
+    {
 		$openingHours = [];
-
 		foreach ($storagePids as $pid) {
 			foreach ($result as $dset) {
 				$weekDay = $dset->getWeekDay();
@@ -105,7 +106,6 @@ class OpeningHours extends Repository {
 				$openingHours[$weekDay] = $dset;
 			}
 		}
-
 		sort($openingHours);
 		return $openingHours;
 	}

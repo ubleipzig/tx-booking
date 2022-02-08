@@ -28,14 +28,6 @@ foreach (['room', 'booking', 'closingday', 'openinghours'] as $table) {
 
 }
 
-$pluginSignature = 'booking_bookings';
-$TCA['tt_content']['types']['list']['subtypes_addlist'][$pluginSignature] = 'pi_flexform';
-
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue(
-    $pluginSignature,
-    'FILE:EXT:' . $_EXTKEY . '/Configuration/FlexForms/Bookings.xml'
-);
-
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
     $_EXTKEY,
     'Bookings',

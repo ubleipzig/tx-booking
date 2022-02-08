@@ -27,8 +27,8 @@ namespace Ubl\Booking\Library;
  *
  * @package Ubl\Booking\Library
  */
-abstract class AbstractEntity extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
-
+abstract class AbstractEntity extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
+{
 	/**
 	 * The plugin settings set by controller
 	 *
@@ -44,7 +44,8 @@ abstract class AbstractEntity extends \TYPO3\CMS\Extbase\DomainObject\AbstractEn
 	 * @return mixed
 	 * @throws \Exception in case of method or property are invalid
 	 */
-	public function __call($method, $arguments) {
+	public function __call($method, $arguments)
+    {
 		$pattern = '/^(?<method>[gs]et)(?<property>.*)$/';
 
 		$matches = [];

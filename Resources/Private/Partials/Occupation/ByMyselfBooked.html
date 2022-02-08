@@ -1,0 +1,11 @@
+{namespace ubl=Ubl\Booking\ViewHelpers}
+<td><input type="text" class="comment"
+           value="{ubl:getBookingComment(room: room, timestamp: hour.datetime)}" disabled="disabled"></td>
+<td></td>
+<td>
+    <ubl:bookable room="{room}" hour="{hour}">
+        <f:link.action title="{ubl:date(format:'H:i', object: hour)}" action="remove" arguments="{timestamp: hour.timestamp, room: room}"><i
+                class="fa fa-times" aria-hidden="true"></i>
+        </f:link.action>
+    </ubl:bookable>
+</td>

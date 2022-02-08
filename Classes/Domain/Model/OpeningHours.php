@@ -30,8 +30,8 @@ use \Ubl\Booking\Library\Day;
  *
  * @package Ubl\Booking\Domain\Model
  */
-class OpeningHours extends AbstractEntity {
-
+class OpeningHours extends AbstractEntity
+{
 	/**
 	 * The day of week
 	 *

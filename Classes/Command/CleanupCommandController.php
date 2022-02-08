@@ -23,6 +23,7 @@
 
 namespace Ubl\Booking\Command;
 
+use \TYPO3\CMS\Extbase\Mvc\Controller\CommandController;
 use Ubl\Booking\Library\Week;
 
 /**
@@ -32,10 +33,10 @@ use Ubl\Booking\Library\Week;
  *
  * @package Ubl\Booking\Command
  */
-class CleanupCommandController extends \TYPO3\CMS\Extbase\Mvc\Controller\CommandController {
-
+class CleanupCommandController extends CommandController
+{
 	/**
-	 * The repository of bookings
+	 * Repository of bookings
 	 *
 	 * @var \Ubl\Booking\Domain\Repository\Booking
 	 * @inject
@@ -46,8 +47,11 @@ class CleanupCommandController extends \TYPO3\CMS\Extbase\Mvc\Controller\Command
 	 * Removes old bookings
 	 *
 	 * @param int $weeks How many weeks to keep. If empty all bookings from previous week are removed
+     *
+     * @return void
 	 */
-	public function cleanupBookingsCommand($weeks = 0) {
+	public function cleanupBookingsCommand($weeks = 0)
+    {
 		$today = new Week();
 		$time = $today->sub(new \DateInterval("P{$weeks}W"));
 
@@ -55,7 +59,6 @@ class CleanupCommandController extends \TYPO3\CMS\Extbase\Mvc\Controller\Command
 		foreach ($bookings as $booking) {
 			$this->bookingRepository->remove($booking);
 		}
-
 		$this->output('%d bookings removed before %s', [count($bookings), $time->format('d-m-y H:i:s T (e, \G\M\T P)')]);
 	}
 }

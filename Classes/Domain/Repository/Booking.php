@@ -30,14 +30,15 @@ use \Ubl\Booking\Domain\Model\Room as RoomModel;
  *
  * @package Ubl\Booking\Domain\Repository
  */
-class Booking extends Repository {
-
+class Booking extends Repository
+{
 	/**
 	 * Booking constructor.
 	 *
 	 * @param \TYPO3\CMS\Extbase\Object\ObjectManagerInterface $objectManager
 	 */
-	public function __construct(\TYPO3\CMS\Extbase\Object\ObjectManagerInterface $objectManager) {
+	public function __construct(\TYPO3\CMS\Extbase\Object\ObjectManagerInterface $objectManager)
+    {
 		parent::__construct($objectManager);
 		$this->initializeObject();
 	}
@@ -45,7 +46,8 @@ class Booking extends Repository {
 	/**
 	 * initializes the repository object by removing the pid contraint from default query settings
 	 */
-	public function initializeObject() {
+	public function initializeObject()
+    {
 		$querySettings = $this->objectManager->get('TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings');
 		$querySettings->setRespectStoragePage(false);
 		$this->setDefaultQuerySettings($querySettings);
@@ -55,11 +57,13 @@ class Booking extends Repository {
 	 * Finds all Bookings by specified room and between specified start- and end-time
 	 *
 	 * @param \Ubl\Booking\Domain\Model\Room $room
-	 * @param \DateTimeInterface                                     $startTime
-	 * @param \DateTimeInterface                                     $endTime
-	 * @return \TYPO3\CMS\Extbase\Persistence\QueryResultInterface the result
+	 * @param \DateTimeInterface $startTime
+	 * @param \DateTimeInterface $endTime
+     *
+	 * @return \TYPO3\CMS\Extbase\Persistence\QueryResultInterface
 	 */
-	public function findByRoomAndBetween(RoomModel $room, \DateTimeInterface $startTime, \DateTimeInterface $endTime) {
+	public function findByRoomAndBetween(RoomModel $room, \DateTimeInterface $startTime, \DateTimeInterface $endTime)
+    {
 		$query = $this->createQuery();
 		$where = $query->logicalAnd([
 			$query->greaterThanOrEqual('time', $startTime->getTimestamp()),
@@ -72,13 +76,16 @@ class Booking extends Repository {
 	}
 
 	/**
-	 * Finds a booking by specified user and time. only one booking per user and time is allowed so this should return 0 or 1
+	 * Finds a booking by specified user and time. One booking per user only and time is allowed.
+     * Therefore this should return 0 or 1
 	 *
-	 * @param                    $user      the user's uid
-	 * @param \DateTimeInterface $startTime the time
-	 * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface the result
+	 * @param object $user User's uid
+	 * @param \DateTimeInterface $startTime Time
+     *
+	 * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
 	 */
-	public function findByUserAndTime($user, \DateTimeInterface $startTime) {
+	public function findByUserAndTime($user, \DateTimeInterface $startTime)
+    {
 		$query = $this->createQuery();
 		$where = $query->logicalAnd([
 			$query->equals('time', $startTime->getTimestamp()),
@@ -89,16 +96,17 @@ class Booking extends Repository {
 	}
 
 	/**
-	 * Finds a booking for specified user, room and time. should return 0 or 1
+	 * Finds a booking for specified user, room and time. Should return 0 or 1
 	 *
-	 * @param                                                        $user      the user
-	 * @param \Ubl\Booking\Domain\Model\Room $room      the room
-	 * @param \DateTimeInterface                                     $startTime the time
-	 * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface the result
+	 * @param object $user User
+	 * @param \Ubl\Booking\Domain\Model\Room $room Room
+	 * @param \DateTimeInterface $startTime Start time
+     *
+	 * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
 	 */
-	public function findByUserAndRoomAndTime($user, RoomModel $room, \DateTimeInterface $startTime) {
+	public function findByUserAndRoomAndTime($user, RoomModel $room, \DateTimeInterface $startTime)
+    {
 		$query = $this->createQuery();
-
 		$where = $query->logicalAnd([
 			$query->equals('time', $startTime->getTimestamp()),
 			$query->equals('room', $room),
@@ -112,13 +120,19 @@ class Booking extends Repository {
 	/**
 	 * Finds all bookings for specified user in specified rooms for a specified time period
 	 *
-	 * @param                    $user      the user
-	 * @param                    $rooms     the rooms
-	 * @param \DateTimeInterface $startTime the start time
-	 * @param \DateTimeInterface $endTime   the end time
-	 * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface the result
+	 * @param object $user      User
+	 * @param object $rooms     Rooms
+	 * @param \DateTimeInterface $startTime Start time
+	 * @param \DateTimeInterface $endTime   End time
+     *
+	 * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
 	 */
-	public function findByUserAndRoomsAndBetween($user, $rooms, \DateTimeInterface $startTime, \DateTimeInterface $endTime) {
+	public function findByUserAndRoomsAndBetween(
+        $user,
+        $rooms,
+        \DateTimeInterface $startTime,
+        \DateTimeInterface $endTime
+    ) {
 		$query = $this->createQuery();
 		$where = $query->logicalAnd([
 			$query->greaterThanOrEqual('time', $startTime->getTimestamp()),
@@ -134,12 +148,13 @@ class Booking extends Repository {
 	/**
 	 * Finds all bookings before a specified time
 	 *
-	 * @param \DateTimeInterface $time the time
+	 * @param \DateTimeInterface $time Time
+     *
 	 * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface the result
 	 */
-	public function findBeforeTime(\DateTimeInterface $time) {
+	public function findBeforeTime(\DateTimeInterface $time)
+    {
 		$query = $this->createQuery();
-
 		$where = $query->lessThan('time', $time->getTimestamp());
 		$query->matching($where);
 

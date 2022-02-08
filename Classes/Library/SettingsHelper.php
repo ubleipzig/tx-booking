@@ -27,8 +27,8 @@ namespace Ubl\Booking\Library;
  *
  * @package Ubl\Booking\Library
  */
-class SettingsHelper {
-
+class SettingsHelper
+{
 	/**
 	 * The settings
 	 *
@@ -41,7 +41,8 @@ class SettingsHelper {
 	 *
 	 * @param array $settings passed by controller method
 	 */
-	public function __construct($settings) {
+	public function __construct($settings)
+    {
 		$this->settings = $settings;
 	}
 
@@ -49,9 +50,11 @@ class SettingsHelper {
 	 * Whether to show next week according to the settings
 	 *
 	 * @param \Ubl\Booking\Library\Week $week the actual week
+     *
 	 * @return bool
 	 */
-	public function showNextWeek(Week $week) {
+	public function showNextWeek(Week $week)
+    {
 		if (empty($this->settings['limitBookingToWeeks'])) {
             return true;
         }
@@ -64,10 +67,13 @@ class SettingsHelper {
 	 * Whether to show previous week according to the settings
 	 *
 	 * @param \Ubl\Booking\Library\Week $week the actual week
+     *
 	 * @return bool
 	 */
-	public function showPreviousWeek(Week $week) {
-		if (empty($this->settings['limitBacklogToWeeks'])) {
+	public function showPreviousWeek(Week $week)
+    {
+		if (empty($this->settings['limitBacklogToWeeks']))
+        {
             return true;
         }
 		$today = new Week();
@@ -79,10 +85,12 @@ class SettingsHelper {
 	 * Whether to show the next day according to the settings
 	 *
 	 * @param \Ubl\Booking\Library\Day $day the actual day
+     *
 	 * @return bool
 	 */
 	public function showNextDay(Day $day) {
-		if (empty($this->settings['limitBookingToWeeks'])) {
+		if (empty($this->settings['limitBookingToWeeks']))
+        {
             return true;
         }
 		$today = new Week();
@@ -96,10 +104,12 @@ class SettingsHelper {
 	 * whether to show the previous day according to the settings
 	 *
 	 * @param \Ubl\Booking\Library\Day $day the actual day
+     *
 	 * @return bool
 	 */
 	public function showPreviousDay(Day $day) {
-		if (empty($this->settings['limitBacklogToWeeks'])) {
+		if (empty($this->settings['limitBacklogToWeeks']))
+        {
             return true;
         }
 		$today = new Week();
@@ -113,13 +123,14 @@ class SettingsHelper {
 	 * Whether the provided user is admin
 	 *
 	 * @param  $user_id [optional] if empty try the currently logged in user
+     *
 	 * @return bool
 	 */
-	public function isAdmin($user_id = null) {
+	public function isAdmin($user_id = null)
+    {
 		if ($user_id === null && $GLOBALS['TSFE']->fe_user->user['uid']) {
 			$user_id = $GLOBALS['TSFE']->fe_user->user['uid'];
 		}
-
 		return isset($this->settings['admins']) && isset($user_id)
 			? in_array($user_id, explode(',', $this->settings['admins']))
 			: false;
@@ -129,9 +140,11 @@ class SettingsHelper {
 	 * Whether the booking in advance is exceeded by the provided timestamp
 	 *
 	 * @param int $timestamp the time for the booking
+     *
 	 * @return bool
 	 */
-	public function exceededBookingLimit($timestamp) {
+	public function exceededBookingLimit($timestamp)
+    {
 		if (empty($this->settings['limitBookingToWeeks'])) {
             return true;
         }
@@ -146,7 +159,8 @@ class SettingsHelper {
 	 *
 	 * @return int|null
 	 */
-	public function getMaxBookings() {
+	public function getMaxBookings()
+    {
 		return isset($this->settings['maxBookingsPerDay']) ? (int)$this->settings['maxBookingsPerDay'] : null;
 	}
 }

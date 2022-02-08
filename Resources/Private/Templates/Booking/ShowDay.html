@@ -17,7 +17,8 @@
             <f:if condition="{nextDay}">
                 <f:link.action action="showDay" arguments="{timestamp: nextDay, room: Room}"
                                class="display: inline"><i
-                        class="fa fa-chevron-right" aria-hidden="true"></i></f:link.action>
+                        class="fa fa-chevron-right" aria-hidden="true"></i>
+                </f:link.action>
             </f:if>
         </div>
         <!-- week view -->
@@ -42,50 +43,18 @@
                         <ubl:date format="H:i" object="{Hour}"/> &ndash;
                         <ubl:date modify="next hour" format="H:i" object="{Hour}"/>
                     </td>
-                    <ubl:occupationSwitch room="{Room}" hour="{Hour}">
-                        <f:case value="available">
-                            <ubl:bookable room="{Room}" hour="{Hour}">
-                                <f:then>
-                                    <f:form action="add" arguments="{timestamp: Hour.timestamp, room: Room}">
-                                        <td><f:form.textfield name="comment" class="comment"></f:form.textfield></td>
-                                        <td><button type="submit"><i class="fa fa-check" aria-hidden="true"></i></button>
-                                        </td>
-                                    </f:form>
-                                    <td></td>
-                                </f:then>
-                                <f:else>
-                                    <td><input type="text" class="comment" value="" disabled="disabled"></td>
-                                    <td></td>
-                                    <td></td>
-                                </f:else>
-                            </ubl:bookable>
-                        </f:case>
-                        <f:case value="ownBooked">
-                            <td><input type="text" class="comment"
-                                       value="{ubl:getBookingComment(room: Room, timestamp: Hour.datetime)}" disabled="disabled"></td>
-                            <td></td>
-                            <td>
-                                <ubl:bookable room="{Room}" hour="{Hour}">
-                                    <f:link.action title="{ubl:date(format:'H:i', object: Hour)}" action="remove" arguments="{timestamp: Hour.timestamp, room: Room}"><i
-                                            class="fa fa-times" aria-hidden="true"></i></f:link.action>
-                                </ubl:bookable>
-                            </td>
-                        </f:case>
-                        <f:case value="foreignBooked">
-                            <td><input type="text" class="comment"
-                                       value="{ubl:getBookingComment(room: Room, timestamp: Hour.datetime)}"
-                                       disabled="disabled"></td>
-                            <td></td>
-                            <td></td>
-                        </f:case>
-                        <f:case value="offDuty">
-                            <td><input type="text" class="comment"
-                                       value=""
-                                       disabled="disabled"></td>
-                            <td></td>
-                            <td></td>
-                        </f:case>
-                    </ubl:occupationSwitch>
+                    <f:if condition="<ubl:getOccupation room='{Room}' hour='{Hour}' /> == 'available'">
+                        <f:render partial="Occupation/Available" arguments="{room:Room, hour:Hour}" />
+                    </f:if>
+                    <f:if condition="<ubl:getOccupation room='{Room}' hour='{Hour}' /> == 'byMyselfBooked'">
+                        <f:render partial="Occupation/ByMyselfBooked" arguments="{room:Room, hour:Hour}" />
+                    </f:if>
+                    <f:if condition="<ubl:getOccupation room='{Room}' hour='{Hour}' /> == 'byOtherBooked'">
+                        <f:render partial="Occupation/ByOtherBooked" arguments="{room:Room, timestamp: Hour.datetime }" />
+                    </f:if>
+                    <f:if condition="<ubl:getOccupation room='{Room}' hour='{Hour}' /> == 'offDuty'">
+                        <f:render partial="Occupation/OffDuty" />
+                    </f:if>
                 </tr>
             </f:for>
             </tbody>

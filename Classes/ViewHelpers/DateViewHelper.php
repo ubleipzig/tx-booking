@@ -22,26 +22,49 @@
 
 namespace Ubl\Booking\ViewHelpers;
 
+use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
+use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
+
 /**
  * Class DateViewHelper
  *
  * @package Ubl\Booking\ViewHelpers
  */
-class DateViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper {
+class DateViewHelper extends AbstractViewHelper
+{
+    /**
+     * Initializes arguments
+     *
+     * @return void
+     */
+    public function initializeArguments()
+    {
+        $this->registerArgument('format', 'string','The output format', true);
+        $this->registerArgument('object', 'object','Date object', true);
+        $this->registerArgument('modify', 'string','Modification of object done before processing', false, null);
+    }
 
 	/**
-	 * @param string $format the output format
-	 * @param DateTimeInterface $object the date
-	 * @param string $modify [optional] modification to the object made before formatting
+     * Render date
 	 *
+     * @param array $arguments
+     * @param \Closure $renderChildrenClosure
+     * @param RenderingContextInterface $renderingContext
+     *
      * @return string
-	 */
-	public function render($format, $object, $modify = null)
-    {
-		if ($modify) {
-			$object = $object->modify($modify);
-		}
-		return $object->format($format);
-	}
+     */
+    public static function renderStatic(
+        array $arguments,
+        \Closure $renderChildrenClosure,
+        RenderingContextInterface $renderingContext
+    ) {
+        $format = $arguments['format'];
+        $object = $arguments['object'];
+        $modify = $arguments['modify'] ?? null;
 
+        if ($modify) {
+            $object = $object->modify($modify);
+        }
+        return $object->format($format);
+    }
 }

@@ -33,10 +33,12 @@ class Hour extends DateHelper {
 	 * Hour constructor.
 	 *
 	 * @param int $timestamp [optional] the unix timestamp to create the object from
+     *
+     * @return void
 	 */
-	public function __construct($timestamp = null) {
+	public function __construct($timestamp = null)
+    {
 		parent::__construct($timestamp);
-
 		$this->origin = $this->origin->modify('this hour');
 	}
 }

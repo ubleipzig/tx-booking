@@ -29,8 +29,8 @@ use \Ubl\Booking\Library\AbstractEntity;
  *
  * @package Ubl\Booking\Domain\Model
  */
-class Booking extends AbstractEntity {
-
+class Booking extends AbstractEntity
+{
 	/**
 	 * Frontend user id
 	 *
@@ -39,7 +39,7 @@ class Booking extends AbstractEntity {
 	protected $feUser;
 
 	/**
-	 * The Room of this booking
+	 * Room of this booking
 	 *
 	 * @var \Ubl\Booking\Domain\Model\Room
 	 */
@@ -69,13 +69,16 @@ class Booking extends AbstractEntity {
 	/**
 	 * Booking constructor.
 	 *
-	 * @param        $timestamp the timestamp of the booking
-	 * @param        $room      the room this booking is for
-	 * @param string $comment   [optional] the comment of the booking
-	 * @throws \Exception if we want to create a booking without a logged in user
+	 * @param        $timestamp Timestamp of booking
+	 * @param        $room      Room which is booked
+	 * @param string $comment   [optional] Comment of booking
+	 * @throws \Exception If we want to create a booking without a logged user
 	 */
-	public function __construct($timestamp, $room, $comment = '') {
-		if (!$GLOBALS['TSFE']->fe_user->user) throw new \Exception('no user found');
+	public function __construct($timestamp, $room, $comment = '')
+    {
+		if (!$GLOBALS['TSFE']->fe_user->user) {
+            throw new \Exception('no user found');
+        }
 		$this->initializeObject();
 		$this->setTime($timestamp);
 		$this->setRoom($room);
@@ -88,9 +91,10 @@ class Booking extends AbstractEntity {
 	}
 
 	/**
-	 * initializes the model after creation with constructor or via DI (which is creating te object without invoking the constructor)
+	 * Initializes the model after creation with constructor or via DI (which is creating te object without invoking the constructor)
 	 */
-	public function initializeObject() {
+	public function initializeObject()
+    {
 		$this->dateTime = new \DateTimeImmutable('now', new \DateTimeZone(date_default_timezone_get()));
 	}
 
@@ -99,7 +103,8 @@ class Booking extends AbstractEntity {
 	 *
 	 * @return bool|\DateTimeImmutable
 	 */
-	public function getDateTime() {
+	public function getDateTime()
+    {
 		return $this->dateTime->setTimestamp($this->time);
 	}
 }

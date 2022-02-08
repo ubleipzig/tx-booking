@@ -29,8 +29,8 @@ namespace Ubl\Booking\Library;
  *
  * @package Ubl\Booking\Library
  */
-class Tca {
-
+class Tca
+{
 	/**
 	 * The opening hours repository
 	 *
@@ -43,10 +43,12 @@ class Tca {
 	 * Sets the week days as select items for backend form
 	 *
 	 * @param $config
+     *
 	 * @return mixed
 	 * @throws \Exception
 	 */
-	public function getDays($config) {
+	public function getDays($config)
+    {
 		$objectManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\CMS\Extbase\Object\ObjectManager');
 		$querySettings = $objectManager->get('TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings');
 		$openingHoursRepository = $objectManager->get('Ubl\Booking\Domain\Repository\OpeningHours');
@@ -77,10 +79,10 @@ class Tca {
 	 * @param $parameters
 	 * @param $parentObject
 	 */
-	public function getDayTitle(&$parameters, $parentObject) {
+	public function getDayTitle(&$parameters, $parentObject)
+    {
 		$record = \TYPO3\CMS\Backend\Utility\BackendUtility::getRecord($parameters['table'], $parameters['row']['uid']);
 		$week = new Week();
-
 		$i = $record['week_day'] ? (int)$record['week_day'] -1 : 0;
 		$hours = explode(',', $record['hours']);
 		sort($hours, SORT_NUMERIC);
@@ -93,9 +95,9 @@ class Tca {
 	 * @param $config
 	 * @return mixed
 	 */
-	public function getHours($config) {
+	public function getHours($config)
+    {
 		$day = new Day();
-
 		foreach ($day as $key => $hour) {
 			$title = $hour->format('H:i') . ' - ' . $hour->modify('next hour')->format('H:i');
 			$config['items'][] = [$title ,$key];
@@ -107,16 +109,17 @@ class Tca {
 	 * finds the correct pid after "save+new"
 	 *
 	 * @param $id
+     *
 	 * @return mixed
 	 */
-	protected function normalizePageUid($id) {
+	protected function normalizePageUid($id)
+    {
 		if ($id < 0) {
 			$parentRec = \TYPO3\CMS\Backend\Utility\BackendUtility::getRecord(
 				'tx_booking_domain_model_openinghours',
 				abs($id),
 				'pid'
 			);
-
 			return $parentRec['pid'];
 		} else {
 			return $id;

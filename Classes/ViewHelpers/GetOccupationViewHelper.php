@@ -22,33 +22,55 @@
 
 namespace Ubl\Booking\ViewHelpers;
 
-use \Ubl\Booking\Domain\Model\Room;
-use \Ubl\Booking\Library\Hour;
+use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
+use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
+use Ubl\Booking\Domain\Model\Room;
+use Ubl\Booking\Library\Hour;
 
 /**
  * Class OccupationSwitchViewHelper
  *
  * @package Ubl\Booking\ViewHelpers
  */
-class OccupationSwitchViewHelper extends \TYPO3\CMS\Fluid\ViewHelpers\SwitchViewHelper {
+class GetOccupationViewHelper extends AbstractViewHelper
+{
+    /**
+     * Initializes arguments
+     *
+     * @return void
+     */
+    public function initializeArguments()
+    {
+        $this->registerArgument('room', Room::class, '\Ubl\Booking\Domain\Model\Room', true);
+        $this->registerArgument('hour', Hour::class, '\Ubl\Booking\Library\Hour', true);
+    }
 
 	/**
 	 * Switch to render according to occupation of room and hour
 	 *
-	 * @param \Ubl\Booking\Domain\Model\Room $room
-	 * @param \Ubl\Booking\Library\Hour $hour
-	 * @return string
-	 */
-	public function render(Room $room, Hour $hour) {
+     * @param array $arguments
+     * @param \Closure $renderChildrenClosure
+     * @param RenderingContextInterface $renderingContext
+     *
+     * @return string
+     */
+    public static function renderStatic(
+        array $arguments,
+        \Closure $renderChildrenClosure,
+        RenderingContextInterface $renderingContext
+    ) {
+        $room = $arguments['room'];
+        $hour = $arguments['hour'];
+
 		switch ($room->getHourOccupation($hour)) {
 			case Room::OFFDUTY:
-				return parent::render('offDuty');
+                return 'offDuty';
 			case Room::AVAILABLE:
-				return parent::render('available');
+                return 'available';
 			case Room::FOREIGNBOOKED:
-				return parent::render('foreignBooked');
+                return 'byOtherBooked';
 			case Room::OWNBOOKED:
-				return parent::render('ownBooked');
+                return 'byMyselfBooked';
 		}
 	}
 }

@@ -30,23 +30,23 @@ use \Ubl\Booking\Domain\Model\Room as RoomModel;
  *
  * @package Ubl\Booking\Domain\Repository
  */
-class ClosingDay extends Repository {
-
+class ClosingDay extends Repository
+{
 	/**
 	 * Finds all closing days for specified room within specified time period
 	 *
-	 * @param \Ubl\Booking\Domain\Model\Room $room      the room
-	 * @param \DateTimeInterface                                     $startTime the start time
-	 * @param \DateTimeInterface                                     $endTime   the end time
-	 * @return \TYPO3\CMS\Extbase\Persistence\QueryResultInterface the result
+	 * @param \Ubl\Booking\Domain\Model\Room $room Room
+	 * @param \DateTimeInterface $startTime Start time
+	 * @param \DateTimeInterface $endTime   End time
+     *
+	 * @return \TYPO3\CMS\Extbase\Persistence\QueryResultInterface
 	 */
-	public function findByRoomAndBetween(RoomModel $room, \DateTimeInterface $startTime, \DateTimeInterface $endTime) {
+	public function findByRoomAndBetween(RoomModel $room, \DateTimeInterface $startTime, \DateTimeInterface $endTime)
+    {
 		$query = $this->createQuery();
-
 		if (count($room->getOpeningTimesStorage()) > 0) {
 			$query->getQuerySettings()->setStoragePageIds($room->getOpeningTimesStorage());
 		}
-
 		$where = $query->logicalAnd([
 			$query->greaterThanOrEqual('date', $startTime->getTimestamp()),
 			$query->lessThanOrEqual('date', $endTime->getTimestamp())
@@ -59,17 +59,17 @@ class ClosingDay extends Repository {
 	/**
 	 * Finds all closing days for specified room and day
 	 *
-	 * @param \Ubl\Booking\Domain\Model\Room $room the room
-	 * @param \DateTimeInterface                                     $day  the day
-	 * @return \Ubl\Booking\Domain\Model\ClosingDay the result
+	 * @param \Ubl\Booking\Domain\Model\Room $room Room
+	 * @param \DateTimeInterface $day Day
+     *
+	 * @return \Ubl\Booking\Domain\Model\ClosingDay
 	 */
-	public function findByRoomAndDay(RoomModel $room, \DateTimeInterface $day) {
+	public function findByRoomAndDay(RoomModel $room, \DateTimeInterface $day)
+    {
 		$query = $this->createQuery();
-
 		if (count($room->getOpeningTimesStorage()) > 0) {
 			$query->getQuerySettings()->setStoragePageIds($room->getOpeningTimesStorage());
 		}
-
 		$query->matching($query->equals('date', $day->getTimestamp()));
 
 		return $query->execute()->getFirst();

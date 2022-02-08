@@ -22,24 +22,39 @@
 
 namespace Ubl\Booking\ViewHelpers;
 
-use \Ubl\Booking\Domain\Model\Room;
-use \Ubl\Booking\Library\Hour;
+use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractConditionViewHelper;
+use Ubl\Booking\Domain\Model\Room;
+use Ubl\Booking\Library\Hour;
 
 /**
  * Class GetHourOccupationClassViewHelper
  *
  * @package Ubl\Booking\ViewHelpers
  */
-class GetHourOccupationClassViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractConditionViewHelper {
+class GetHourOccupationClassViewHelper extends AbstractConditionViewHelper
+{
+    /**
+     * Initializes arguments
+     *
+     * @return void
+     */
+    public function initializeArguments()
+    {
+        parent::initializeArguments();
+        $this->registerArgument('room', Room::class,'\Ubl\Booking\Domain\Model\Room', true);
+        $this->registerArgument('hour', Hour::class,'\Ubl\Booking\Library\Hour', true);
+    }
 
-	/**
+    /**
 	 * Returns the class name of a specific occupation for a room and hour
 	 *
-	 * @param \Ubl\Booking\Domain\Model\Room $room
-	 * @param \Ubl\Booking\Library\Hour $hour
 	 * @return string
 	 */
-	public function render(Room $room, Hour $hour) {
+	public function render()
+    {
+        $room = $this->arguments['room'];
+        $hour = $this->arguments['hour'];
+
 		switch ($room->getHourOccupation($hour)) {
 			case Room::OFFDUTY:
 				return 'offDutyTimeHours';

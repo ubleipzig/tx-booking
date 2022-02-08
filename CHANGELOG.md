@@ -1,5 +1,26 @@
 # Change Log
 
+## [v2.2.0](https://github.com/ubleipzig/tx-booking/tree/2.2.0)
+
+[Full Changelog](https://github.com/ubleipzig/tx-booking/compare/2.1.1...2.2.0)
+
+**Support**
+
+* removes support for typo3 v7
+* adds support for typo3 v9
+
+**Refactoring**
+
+* adjusts ViewHelpers to new requirements of fluid package
+  * changes namespace of extended classes 
+  * renames occupationSwitchViewHelper to GetOccupationViewHelper due to new parent class AbstractViewHelper 
+  * adds partials below folder _Occupation_ for each kind of booking at table row
+* removes _class.ext_update.php_ because of improbable use case and deprecated method to drop and rename tables 
+
+**Fixes**
+
+* renames method _addFlashMessage_ to _addFlashMessagesHelper_ due to corruption of native t3 method 
+
 ## [v2.1.1](https://github.com/ubleipzig/tx-booking/tree/2.1.1)
 
 [Full Changelog](https://github.com/ubleipzig/tx-booking/compare/2.1.0...2.1.1)

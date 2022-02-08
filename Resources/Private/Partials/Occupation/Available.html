@@ -1,0 +1,16 @@
+{namespace ubl=Ubl\Booking\ViewHelpers}
+<ubl:bookable room="{room}" hour="{hour}">
+    <f:then>
+        <f:form action="add" arguments="{timestamp: hour.timestamp, room: room}">
+            <td><f:form.textfield name="comment" class="comment"></f:form.textfield></td>
+            <td><button type="submit"><i class="fa fa-check" aria-hidden="true"></i></button>
+            </td>
+        </f:form>
+        <td></td>
+    </f:then>
+    <f:else>
+        <td><input type="text" class="comment" value="" disabled="disabled"></td>
+        <td></td>
+        <td></td>
+    </f:else>
+</ubl:bookable>

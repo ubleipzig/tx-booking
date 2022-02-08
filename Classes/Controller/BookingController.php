@@ -34,10 +34,10 @@ use \Ubl\Booking\Domain\Model\Booking;
  *
  * @package Ubl\Booking\Controller
  */
-class BookingController extends AbstractController {
-
+class BookingController extends AbstractController
+{
 	/**
-	 * The repository of bookings
+	 * Repository of bookings
 	 *
 	 * @var \Ubl\Booking\Domain\Repository\Booking
 	 * @inject
@@ -45,7 +45,7 @@ class BookingController extends AbstractController {
 	protected $bookingRepository;
 
 	/**
-	 * the repository of rooms
+	 * Repository of rooms
 	 *
 	 * @var \Ubl\Booking\Domain\Repository\Room
 	 * @inject
@@ -53,13 +53,15 @@ class BookingController extends AbstractController {
 	protected $roomRepository;
 
 	/**
-	 * Shows the overview of a day for a room
+	 * Shows overview of a room for one day
 	 *
-	 * @param integer                                                $timestamp
+	 * @param integer $timestamp
 	 * @param \Ubl\Booking\Domain\Model\Room $room
+     *
+     * @return void
 	 */
-	public function showDayAction($timestamp, $room) {
-		$today = new Day();
+	public function showDayAction($timestamp, $room)
+    {
 		$day = new Day($timestamp);
 		$room->fetchDayOccupation($day);
 		$room->setSettingsHelper($this->settingsHelper);
@@ -75,18 +77,17 @@ class BookingController extends AbstractController {
 	}
 
 	/**
-	 * shows the overview of a week for a room
+	 * Shows overview of rooms for one week
 	 *
 	 * @param integer $timestamp [optional] the timestamp of the week. if omitted the current week is taken.
 	 *                           the timestamp is always converted to 00:00 on the first day of the week.
 	 */
-	public function showWeekAction($timestamp = null) {
+	public function showWeekAction($timestamp = null)
+    {
 		$week = new Week($timestamp);
-
 		$rooms = $this->roomRepository->findAllWithOccupationForWeek($week, $this->settingsHelper);
 		$today = new Day();
 		$now = new \DateTimeImmutable('now', new \DateTimeZone(date_default_timezone_get()));
-
 
 		if ($this->settingsHelper->isAdmin() || $this->settingsHelper->showNextWeek($week)) {
 			$this->view->assign('nextWeek', $week->modify('Monday next week')->getTimestamp());
@@ -101,13 +102,14 @@ class BookingController extends AbstractController {
 	}
 
 	/**
-	 * adds a booking to a room for a user
+	 * Adds a booking for a room
 	 *
-	 * @param \Ubl\Booking\Domain\Model\Room $room      the room to add the booking for
-	 * @param integer                                                $timestamp the timestamp of the hour
-	 * @param string                                                 $comment   the comment of the booking
+	 * @param \Ubl\Booking\Domain\Model\Room $room  Room to book
+	 * @param integer $timestamp                    Timestamp of hour
+	 * @param string $comment                       Comment for booking
 	 */
-	public function addAction($room, $timestamp, $comment) {
+	public function addAction($room, $timestamp, $comment)
+    {
 		$hour = new Hour($timestamp);
 		$day = new Day($timestamp);
 		$today = new Day();
@@ -115,30 +117,31 @@ class BookingController extends AbstractController {
 		$rooms = $this->roomRepository->findAll();
 
 		if ($day->getDateTime() < $today->getDateTime()) {
-			$this->addFlashMessage('bookingInPast', \TYPO3\CMS\Core\Messaging\FlashMessage::ERROR);
+			$this->addFlashMessageHelper('bookingInPast', \TYPO3\CMS\Core\Messaging\FlashMessage::ERROR);
 		} else if (!$this->settingsHelper->isAdmin() && $this->settingsHelper->exceededBookingLimit($timestamp)) {
-			$this->addFlashMessage('bookingInFuture', \TYPO3\CMS\Core\Messaging\FlashMessage::ERROR);
+			$this->addFlashMessageHelper('bookingInFuture', \TYPO3\CMS\Core\Messaging\FlashMessage::ERROR);
 		} else if (!$room->isHourBookable($hour)) {
-			$this->addFlashMessage('alreadyBookedByForeignUser', \TYPO3\CMS\Core\Messaging\FlashMessage::ERROR);
+			$this->addFlashMessageHelper('alreadyBookedByForeignUser', \TYPO3\CMS\Core\Messaging\FlashMessage::ERROR);
 		} else if (!$this->settingsHelper->isAdmin() && (count($this->bookingRepository->findByUserAndTime($GLOBALS['TSFE']->fe_user->user['uid'], $hour->getDateTime())) > 0)) {
-			$this->addFlashMessage('alreadyBookedInOtherRoom', \TYPO3\CMS\Core\Messaging\FlashMessage::ERROR);
+			$this->addFlashMessageHelper('alreadyBookedInOtherRoom', \TYPO3\CMS\Core\Messaging\FlashMessage::ERROR);
 		} else if (!$this->settingsHelper->isAdmin() && ($this->settingsHelper->getMaxBookings() && count($this->bookingRepository->findByUserAndRoomsAndBetween($GLOBALS['TSFE']->fe_user->user['uid'], $rooms, $day->getStart(), $day->getEnd())) >= $this->settingsHelper->getMaxBookings())) {
-			$this->addFlashMessage('maxBookingsReached', \TYPO3\CMS\Core\Messaging\FlashMessage::ERROR);
+			$this->addFlashMessageHelper('maxBookingsReached', \TYPO3\CMS\Core\Messaging\FlashMessage::ERROR);
 		} else {
 			$this->bookingRepository->add(new Booking($timestamp, $room, $comment));
-			$this->addFlashMessage('successfullyBooked', \TYPO3\CMS\Core\Messaging\FlashMessage::OK);
+			$this->addFlashMessageHelper('successfullyBooked', \TYPO3\CMS\Core\Messaging\FlashMessage::OK);
 		}
 
 		$this->redirect('showDay', 'Booking', null, ['timestamp' => $timestamp, 'room' => $room]);
 	}
 
 	/**
-	 * removes a booking from a room for a user
+	 * Removes a booking from a room for a user
 	 *
-	 * @param \Ubl\Booking\Domain\Model\Room $room      the room to remove the booking for
-	 * @param integer                                                $timestamp the timestamp of the hour to remove
+	 * @param \Ubl\Booking\Domain\Model\Room $room  Room where booking should be removed
+	 * @param integer $timestamp                    Timestamp of hour to remove
 	 */
-	public function removeAction($room, $timestamp) {
+	public function removeAction($room, $timestamp)
+    {
 		$hour = new Hour($timestamp);
 		$day = new Day($timestamp);
 		$room->fetchDayOccupation($day);
@@ -146,12 +149,12 @@ class BookingController extends AbstractController {
 
 		// booking in the past, do not allow to remove
 		if ($now->getDateTime() > $hour->getDateTime()) {
-			$this->addFlashMessage('cannotRemovePastBooking', \TYPO3\CMS\Core\Messaging\FlashMessage::ERROR);
+			$this->addFlashMessageHelper('cannotRemovePastBooking', \TYPO3\CMS\Core\Messaging\FlashMessage::ERROR);
 		} else if ($booking = $this->bookingRepository->findByUserAndRoomAndTime($GLOBALS['TSFE']->fe_user->user['uid'], $room, $hour->getDateTime())->getFirst()) {
-			$this->addFlashMessage('bookingSuccessfullyRemoved');
+			$this->addFlashMessageHelper('bookingSuccessfullyRemoved');
 			$this->bookingRepository->remove($booking);
 		} else {
-			$this->addFlashMessage('noBookingToRemove', \TYPO3\CMS\Core\Messaging\FlashMessage::ERROR);
+			$this->addFlashMessageHelper('noBookingToRemove', \TYPO3\CMS\Core\Messaging\FlashMessage::ERROR);
 		}
 
 		$this->redirect('showDay', 'Booking', null, ['timestamp' => $timestamp, 'room' => $room]);

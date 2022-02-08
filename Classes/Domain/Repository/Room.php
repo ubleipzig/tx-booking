@@ -29,22 +29,25 @@ use \TYPO3\CMS\Extbase\Persistence\Repository;
  *
  * @package Ubl\Booking\Domain\Repository
  */
-class Room extends Repository {
-
+class Room extends Repository
+{
 	/**
 	 * Finds all rooms and fetch their occupation for specified week
 	 *
-	 * @param \Ubl\Booking\Library\Week           $week           the week
-	 * @param \Ubl\Booking\Library\SettingsHelper $settingsHelper the settings helper
-	 * @return \TYPO3\CMS\Extbase\Persistence\QueryResultInterface the result
+	 * @param \Ubl\Booking\Library\Week $week Week
+	 * @param \Ubl\Booking\Library\SettingsHelper $settingsHelper Settings helper
+     *
+	 * @return \TYPO3\CMS\Extbase\Persistence\QueryResultInterface
 	 */
-	public function findAllWithOccupationForWeek(\Ubl\Booking\Library\Week $week, \Ubl\Booking\Library\SettingsHelper $settingsHelper) {
+	public function findAllWithOccupationForWeek(
+        \Ubl\Booking\Library\Week $week,
+        \Ubl\Booking\Library\SettingsHelper $settingsHelper
+    ) {
 		$result = $this->findAll();
 		foreach ($result as $room) {
 			$room->fetchWeekOccupation($week);
 			$room->setSettingsHelper($settingsHelper);
 		}
-
 		return $result;
 	}
 }

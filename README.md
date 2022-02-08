@@ -11,8 +11,8 @@ Logged in users additionally can book timeslots of rooms according to the define
 maximum of bookings per day and location.
 
 ## Requirements
-* Typo3 > 7.6 < 8.7.99
-* PHP >= 7.0
+* Typo3 > 8.0 < 9.5.99
+* PHP >= 7.2
 * Icon font >= 0.9.0
 
 We have not tested it with higher versions but the codebase should be sufficient.
@@ -114,18 +114,3 @@ Go to *Scheduler->Add Task*
 * save the task **important! otherwise the form element for the argument is not appearing
 * specify the count of weeks to keep in the *weeks* argument field. 0 (zero) or empty
  means that all bookings prior to the current week are removed
-
-## Upgrade to 1.1.0
-In version 1.1.0 the Naming changed from `ubl_booking` to `booking`, class namespace changed from
-`LeipzigUniversityLibrary\UblBooking` to `Ubl\Booking`, composer-name changed from `ubl/ubl_booking` to `ubl/booking`
-
-In order to keep Your data follow these steps to convert them to the new names:
-
-0. set Webpage in maintenance mode
-1. install the new version as next to the old one, so you have `booking` and `ubl_booking` installed and activated.
-2. deactivate `ubl_booking`
-3. under *actions* run *Execute update script* for `bookings`
-4. replace plugin in each page
-5. enable stylesheets according to *Enable Stylesheets* above
-6. remove extension `ubl_booking`
-7. disable maintenance mode

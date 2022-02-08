@@ -1,5 +1,4 @@
 <?php
-namespace Ubl\Booking\ViewHelpers;
 /**
  * Class BookableViewHelper
  *
@@ -20,37 +19,52 @@ namespace Ubl\Booking\ViewHelpers;
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
+namespace Ubl\Booking\ViewHelpers;
 
-use \Ubl\Booking\Domain\Model\Room;
-use \Ubl\Booking\Library\Day;
-use \Ubl\Booking\Library\Hour;
+use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractConditionViewHelper;
+use Ubl\Booking\Domain\Model\Room;
+use Ubl\Booking\Library\Day;
+use Ubl\Booking\Library\Hour;
 
 /**
  * Class BookableViewHelper
  *
  * @package Ubl\Booking\ViewHelpers
  */
-class BookableViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractConditionViewHelper {
+class BookableViewHelper extends AbstractConditionViewHelper
+{
+    /**
+     * Initializes arguments
+     *
+     * @return void
+     */
+    public function initializeArguments()
+    {
+        parent::initializeArguments();
+        $this->registerArgument('room', Room::class,'\Ubl\Booking\Domain\Model\Room', true);
+        $this->registerArgument('day', Day::class,'\Ubl\Booking\Library\Day', false);
+        $this->registerArgument('hour', Hour::class,'\Ubl\Booking\Library\Hour', false);
+    }
 
 	/**
 	 * Whether the room im bookable for either the specified day or hour
 	 * be aware that you do not need to specify the day when you specified the hour
 	 *
-	 * @param \Ubl\Booking\Domain\Model\Room $room
-	 * @param \Ubl\Booking\Library\Day $day Optional.
-	 * @param \Ubl\Booking\Library\Hour $hour Optional.
 	 * @return string
 	 */
-	public function render(Room $room, Day $day = null, Hour $hour = null) {
+	public function render()
+    {
+        $room = $this->arguments['room'];
+        $day = $this->arguments['day'] ?? null;
+        $hour = $this->arguments['hour'] ?? null;
 		$result = false;
+
 		if ($day) {
 			$result = $room->isDayBookable($day);
 		}
-
 		if ($hour) {
 			$result = $room->isHourBookable($hour);
 		}
-
 		if ($result) {
 			return $this->renderThenChild();
 		} else {

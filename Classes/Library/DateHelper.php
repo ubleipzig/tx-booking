@@ -40,10 +40,11 @@ class DateHelper {
 	 * DateHelper constructor.
 	 *
 	 * @param int $timestamp [optional] the unix timestamp to create the object from
+     * @throws \Exception
 	 */
-	public function __construct($timestamp = null) {
+	public function __construct($timestamp = null)
+    {
 		$this->origin = new \DateTimeImmutable('now', new \DateTimeZone(date_default_timezone_get()));
-
 		if ($timestamp) {
             $this->origin = $this->origin->setTimestamp($timestamp);
         }
@@ -56,7 +57,8 @@ class DateHelper {
 	 * @param $args
 	 * @return mixed
 	 */
-	public function __call($method, $args) {
+	public function __call($method, $args)
+    {
 		return call_user_func_array([$this->origin, $method], $args);
 	}
 
@@ -65,7 +67,8 @@ class DateHelper {
 	 *
 	 * @return \DateTimeImmutable
 	 */
-	public function getDateTime() {
+	public function getDateTime()
+    {
 		return $this->origin;
 	}
 }

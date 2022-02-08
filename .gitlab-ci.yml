@@ -1,0 +1,23 @@
+stages:
+  - mirror
+
+gitolite_mirror:
+  stage: mirror
+  image:
+    name: alpine/git
+    entrypoint: [ "/bin/sh", "-c" ]
+  variables:
+    GIT_STRATEGY: clone
+    GIT_CHECKOUT: "false"
+  script: |
+    mkdir -p ~/.ssh
+    echo "${GITLAB_MIRROR_SERVICE}" > ~/.ssh/id_ecdsa
+    echo "${GITOLITE_SSH_FINGERPRINT}" > ~/.ssh/known_hosts
+    chmod go-rw -R ~/.ssh
+    cd /tmp
+    git clone --mirror ${CI_REPOSITORY_URL} project
+    cd project
+    git remote add gitolite git@git.ub.intern.uni-leipzig.de:tx-booking.git
+    git push --mirror gitolite
+  tags:
+    - docker

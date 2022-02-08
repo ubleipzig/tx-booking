@@ -33,8 +33,8 @@ use \Ubl\Booking\Library\Hour;
  *
  * @package Ubl\Booking\Domain\Model
  */
-class Room extends AbstractEntity {
-
+class Room extends AbstractEntity
+{
 	/**
 	 * The week representation of the room
 	 *
@@ -155,7 +155,8 @@ class Room extends AbstractEntity {
 	 * We are initializing the storage objects here since the constructor is not invoked for model when created by
 	 * repositories
 	 */
-	public function initializeObject() {
+	public function initializeObject()
+    {
 		$this->bookings = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
 		$this->closingDays = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
 	}
@@ -166,7 +167,8 @@ class Room extends AbstractEntity {
 	 * @param \Ubl\Booking\Domain\Model\Booking $booking
 	 * @return void
 	 */
-	public function addBooking(Booking $booking) {
+	public function addBooking(Booking $booking)
+    {
 		$this->bookings->attach($booking);
 	}
 
@@ -176,7 +178,8 @@ class Room extends AbstractEntity {
 	 * @param \Ubl\Booking\Domain\Model\Booking $booking
 	 * @return void
 	 */
-	public function removeBooking(Booking $booking) {
+	public function removeBooking(Booking $booking)
+    {
 		$this->bookings->detach($booking);
 	}
 
@@ -186,7 +189,8 @@ class Room extends AbstractEntity {
 	 * @param \Ubl\Booking\Domain\Model\ClosingDay $closingDay
 	 * @return void
 	 */
-	public function addClosingDay(ClosingDay $closingDay) {
+	public function addClosingDay(ClosingDay $closingDay)
+    {
 		$this->closingDays->attach($closingDay);
 	}
 
@@ -196,7 +200,8 @@ class Room extends AbstractEntity {
 	 * @param \Ubl\Booking\Domain\Model\ClosingDay $closingDay
 	 * @return void
 	 */
-	public function removeClosingDay(ClosingDay $closingDay) {
+	public function removeClosingDay(ClosingDay $closingDay)
+    {
 		$this->closingDays->detach($closingDay);
 	}
 
@@ -205,7 +210,8 @@ class Room extends AbstractEntity {
 	 *
 	 * @param \Ubl\Booking\Library\Week $week the week to fetch bookings for
 	 */
-	public function fetchWeekOccupation(Week $week) {
+	public function fetchWeekOccupation(Week $week)
+    {
 		$this->setOpeningHours($this->openingHoursRepository->findAllByRoom($this));
 
 		list($dayStart, $dayEnd) = $this->getMinMaxOpeningHours();
@@ -230,14 +236,17 @@ class Room extends AbstractEntity {
 	public function fetchDayOccupation(Day $day) {
 		$this->day = $day;
 
-		$this->setOpeningHours($this->openingHoursRepository->findByRoomAndDay($this, $this->day->getDateTime()));
-
+		$this->setOpeningHours(
+            $this->openingHoursRepository->findByRoomAndDay($this, $this->day->getDateTime())
+        );
 		list($dayStart, $dayEnd) = $this->getMinMaxOpeningHours($this->day);
 
 		$this->day->setStart($dayStart);
 		$this->day->setEnd($dayEnd);
 
-		if ($closingDay = $this->closingDayRepository->findByRoomAndDay($this, $this->day->getDateTime())) $this->addClosingDay($closingDay);
+		if ($closingDay = $this->closingDayRepository->findByRoomAndDay($this, $this->day->getDateTime())) {
+            $this->addClosingDay($closingDay);
+        }
 
 		foreach ($this->bookingRepository->findByRoomAndBetween($this, $this->day->getStart(), $this->day->getEnd()) as $booking) {
 			$this->addBooking($booking);
@@ -245,14 +254,18 @@ class Room extends AbstractEntity {
 	}
 
 	/**
-	 * return the kind of occupation of the room for a specified hour
+	 * Return the kind of occupation of the room for a specified hour
 	 *
-	 * @param \Ubl\Booking\Library\Hour $hour the hour to get the occupation for
+	 * @param \Ubl\Booking\Library\Hour $hour Hour of occupation
+     *
 	 * @return int the occupation as constant
+     * @throws \Exception
 	 */
-	public function getHourOccupation(Hour $hour) {
-		if (!$this->isDutyHour($hour)) return self::OFFDUTY;
-
+	public function getHourOccupation(Hour $hour)
+    {
+		if (!$this->isDutyHour($hour)) {
+            return self::OFFDUTY;
+        }
 		$day = new Day($hour->getTimestamp());
 
 		if ($this->getDayOccupation($day) === self::OFFDUTY) {
@@ -260,10 +273,14 @@ class Room extends AbstractEntity {
 		}
 
 		if ($booking = $this->getBooking($hour->getDateTime())) {
-			if ($booking->getFeUser() === $GLOBALS['TSFE']->fe_user->user['uid']) return self::OWNBOOKED;
-			if ($this->settingsHelper->isAdmin($booking->getFeUser()) || $booking->getFeUser() === 0) return self::OFFDUTY;
+			if ($booking->getFeUser() === $GLOBALS['TSFE']->fe_user->user['uid']) {
+                return self::OWNBOOKED;
+            }
+			if ($this->settingsHelper->isAdmin($booking->getFeUser()) || $booking->getFeUser() === 0) {
+                return self::OFFDUTY;
+            }
 			return self::FOREIGNBOOKED;
-		};
+		}
 
 		return self::AVAILABLE;
 	}
@@ -274,7 +291,8 @@ class Room extends AbstractEntity {
 	 * @param \Ubl\Booking\Library\Day $day the day to get the occupaton for
 	 * @return int the occupation as constant
 	 */
-	public function getDayOccupation(Day $day) {
+	public function getDayOccupation(Day $day)
+    {
 		foreach ($this->closingDays as $closingDay) {
 			if ($closingDay->getDay()->getTimestamp() === $day->getTimestamp()) return self::OFFDUTY;
 		}
@@ -288,16 +306,18 @@ class Room extends AbstractEntity {
 	 * @param \Ubl\Booking\Library\Day $day the day to test bookability for
 	 * @return bool true if bookable
 	 */
-	public function isDayBookable(Day $day) {
+	public function isDayBookable(Day $day)
+    {
 		$now = new Day();
 		if ($day->getDateTime() < $now->getDateTime()) {
 			return false;
 		}
-
-		if ($this->getDayOccupation($day) === self::OFFDUTY) return false;
-
-		if (!$GLOBALS['TSFE']->fe_user->user) return false;
-
+		if ($this->getDayOccupation($day) === self::OFFDUTY) {
+            return false;
+        }
+		if (!$GLOBALS['TSFE']->fe_user->user) {
+            return false;
+        }
 		return true;
 	}
 
@@ -307,7 +327,8 @@ class Room extends AbstractEntity {
 	 * @param \Ubl\Booking\Library\Hour $hour the hour to test bookability for
 	 * @return bool true if bookable
 	 */
-	public function isHourBookable(Hour $hour) {
+	public function isHourBookable(Hour $hour)
+    {
 		if (!$this->isDayBookable(new Day($hour->getTimestamp()))) return false;
 		$now = new \DateTimeImmutable('now', new \DateTimeZone(date_default_timezone_get()));
 		if ($hour->getDateTime() < $now) {
@@ -315,10 +336,12 @@ class Room extends AbstractEntity {
 		}
 		$occupation = $this->getHourOccupation($hour);
 
-		if (in_array($occupation, [self::OFFDUTY, self::FOREIGNBOOKED])) return false;
-
-		if (!$GLOBALS['TSFE']->fe_user->user) return false;
-
+		if (in_array($occupation, [self::OFFDUTY, self::FOREIGNBOOKED])) {
+            return false;
+        }
+		if (!$GLOBALS['TSFE']->fe_user->user) {
+            return false;
+        }
 		return true;
 	}
 
@@ -327,9 +350,11 @@ class Room extends AbstractEntity {
 	 *
 	 * @param \ArrayIterator $queryResponse the opening hours of the room
 	 */
-	public function setOpeningHours($queryResponse) {
+	public function setOpeningHours($queryResponse)
+    {
 		foreach ($queryResponse as $openingHours) {
-			$this->openingHours[$openingHours->getWeekDay()] = empty($openingHours->getHours()) ? [] : explode(',', $openingHours->getHours());
+			$this->openingHours[$openingHours->getWeekDay()] =
+                empty($openingHours->getHours()) ? [] : explode(',', $openingHours->getHours());
 		}
 	}
 
@@ -338,26 +363,31 @@ class Room extends AbstractEntity {
 	 *
 	 * @param \Ubl\Booking\Library\Day $day [optional] if provided only get the values for the provided day.
 	 *                                                              if not provided aggregated for the entire week
-	 * @return array start and end
+	 * @return array Contains $start and $end hour
 	 */
-	public function getMinMaxOpeningHours(Day $day = null) {
+	public function getMinMaxOpeningHours(Day $day = null)
+    {
 		// not all days defined? at least one day has 24h opening times
-		if (!$day && count($this->openingHours) < 7) return [0, 23];
+		if (!$day && count($this->openingHours) < 7) {
+            return [0, 23];
+        }
 
 		foreach ($this->openingHours as $dayOfWeek => $openingHours) {
 			if ($day && ((int)$day->format('N') !== $dayOfWeek)) continue;
 			if (count($openingHours) === 0) continue;
 			$min = min($openingHours);
 			$max = max($openingHours);
-			if (!isset($start) || $min < $start) $start = $min;
-			if (!isset($end) || $max > $end) $end = $max;
+			if (!isset($start) || $min < $start) {
+                $start = $min;
+            }
+			if (!isset($end) || $max > $end) {
+                $end = $max;
+            }
 		}
-
 		if (!isset($start) && !isset($end)) {
 			$start = 0;
 			$end = 23;
 		}
-
 		return [$start, $end];
 	}
 
@@ -367,20 +397,26 @@ class Room extends AbstractEntity {
 	 * @param \Ubl\Booking\Library\Hour $hour the hour to test dutyness for
 	 * @return bool true if duty hour
 	 */
-	public function isDutyHour(Hour $hour) {
+	public function isDutyHour(Hour $hour)
+    {
 		$day = $hour->format('N');
-		return isset($this->openingHours[$day]) ? in_array($hour->format('H'), $this->openingHours[$day]) : true;
+		return isset($this->openingHours[$day])
+            ? in_array($hour->format('H'), $this->openingHours[$day]) : true;
 	}
 
 	/**
 	 * Returns the booking for a timestamp
 	 *
 	 * @param \DateTimeInterface $timestamp the time to get the booking for
+     *
 	 * @return \Ubl\Booking\Domain\Model\Booking the booking if found
 	 */
-	public function getBooking(\DateTimeInterface $timestamp) {
+	public function getBooking(\DateTimeInterface $timestamp)
+    {
 		foreach ($this->bookings as $booking) {
-			if ($booking->getDateTime() == $timestamp) return $booking;
+			if ($booking->getDateTime() == $timestamp) {
+                return $booking;
+            }
 		}
 	}
 
@@ -389,9 +425,12 @@ class Room extends AbstractEntity {
 	 *
 	 * @return array of pids
 	 */
-	public function getOpeningTimesStorage() {
+	public function getOpeningTimesStorage()
+    {
 		return array_reduce(explode(',', $this->openingTimesStorage), function ($carry, $item) {
-			if (!empty($item)) $carry[] = (int)$item;
+			if (!empty($item)) {
+                $carry[] = (int)$item;
+            }
 			return $carry;
 		}, []);
 	}
