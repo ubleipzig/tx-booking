@@ -7,6 +7,7 @@ gitolite_mirror:
     name: alpine/git
     entrypoint: [ "/bin/sh", "-c" ]
   variables:
+    GIT_SSH_COMMAND: "ssh -o HostKeyAlgorithms=+ssh-rsa -o PubkeyAcceptedKeyTypes=+ssh-rsa"
     GIT_STRATEGY: clone
     GIT_CHECKOUT: "false"
   script: |
