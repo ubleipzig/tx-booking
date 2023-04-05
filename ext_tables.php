@@ -20,7 +20,7 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-if (!defined('TYPO3_MODE')) die('Access denied.');
+/**if (!defined('TYPO3_MODE')) die('Access denied.');
 
 foreach (['room', 'booking', 'closingday', 'openinghours'] as $table) {
     \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_booking_domain_model_' . $table);
@@ -35,3 +35,4 @@ foreach (['room', 'booking', 'closingday', 'openinghours'] as $table) {
 );
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile($_EXTKEY, 'Configuration/TypoScript/', 'Booking CSS Styles');
+*/
