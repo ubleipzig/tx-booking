@@ -12,7 +12,7 @@ maximum of bookings per day and location.
 
 ## Requirements
 * Typo3 > 8.0 < 9.5.99
-* PHP >= 7.2
+* PHP >= 7.4
 * Icon font >= 0.9.0
 
 We have not tested it with higher versions but the codebase should be sufficient.
