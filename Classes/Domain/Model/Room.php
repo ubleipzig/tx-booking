@@ -22,6 +22,7 @@
 
 namespace Ubl\Booking\Domain\Model;
 
+use TYPO3\CMS\Extbase\Annotation as Extbase;
 use \Ubl\Booking\Domain\Repository\OpeningHours;
 use \Ubl\Booking\Library\AbstractEntity;
 use \Ubl\Booking\Library\Week;
@@ -114,7 +115,7 @@ class Room extends AbstractEntity
 	 * The repository of the closing days
 	 *
 	 * @var \Ubl\Booking\Domain\Repository\ClosingDay
-	 * @inject
+	 * @Extbase\Inject
 	 */
 	protected $closingDayRepository;
 
@@ -122,7 +123,7 @@ class Room extends AbstractEntity
 	 * The repository of the Bookings
 	 *
 	 * @var \Ubl\Booking\Domain\Repository\Booking
-	 * @inject
+	 * @Extbase\Inject
 	 */
 	protected $bookingRepository;
 
@@ -130,7 +131,7 @@ class Room extends AbstractEntity
 	 * The repository of the opening ours
 	 *
 	 * @var \Ubl\Booking\Domain\Repository\OpeningHours
-	 * @inject
+	 * @Extbase\Inject
 	 */
 	protected $openingHoursRepository;
 
@@ -138,17 +139,17 @@ class Room extends AbstractEntity
 	 * The room's bookings
 	 *
 	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Ubl\Booking\Domain\Model\Booking>
-	 * @lazy
-	 * @cascade remove
+	 * @Extbase\ORM\Lazy
+     * @Extbase\ORM\Cascade
 	 */
-	protected $bookings;
+	 protected $bookings;
 
 	/**
 	 * The room's closing days
 	 *
 	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Ubl\Booking\Domain\Model\ClosingDay>
-	 * @lazy
-	 */
+	 * @Extbase\ORM\Lazy
+     */
 	protected $closingDays;
 
 	/**

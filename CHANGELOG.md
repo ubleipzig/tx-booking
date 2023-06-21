@@ -1,5 +1,15 @@
 # Change Log
 
+## [v2.2.1](https://github.com/ubleipzig/tx-booking/tree/2.2.1)
+
+[Full Changelog](https://github.com/ubleipzig/tx-booking/compare/2.2.0...2.2.1)
+
+**Fixes**
+
+* fixin' deprecated @inject annotation cmp. [82869](https://docs.typo3.org/c/typo3/cms-core/main/en-us/Changelog/9.0/Feature-82869-ReplaceInjectWithTYPO3CMSExtbaseAnnotationInject.html)
+* fixin' deprecated @cascade annotation cmp. [83093](https://docs.typo3.org/c/typo3/cms-core/main/en-us/Changelog/9.0/Feature-83093-ReplaceCascadeWithTYPO3CMSExtbaseAnnotationORMCascade.html)
+* fixin' deprecated @lazy annotation cmp. [83078](https://docs.typo3.org/c/typo3/cms-core/12.4/en-us/Changelog/9.0/Feature-83078-ReplaceLazyWithTYPO3CMSExtbaseAnnotationORMLazy.html)
+
 ## [v2.2.0](https://github.com/ubleipzig/tx-booking/tree/2.2.0)
 
 [Full Changelog](https://github.com/ubleipzig/tx-booking/compare/2.1.1...2.2.0)

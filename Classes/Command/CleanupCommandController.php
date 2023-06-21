@@ -23,6 +23,7 @@
 
 namespace Ubl\Booking\Command;
 
+use TYPO3\CMS\Extbase\Annotation as Extbase;
 use \TYPO3\CMS\Extbase\Mvc\Controller\CommandController;
 use Ubl\Booking\Library\Week;
 
@@ -39,7 +40,7 @@ class CleanupCommandController extends CommandController
 	 * Repository of bookings
 	 *
 	 * @var \Ubl\Booking\Domain\Repository\Booking
-	 * @inject
+	 * @Extbase\Inject
 	 */
 	protected $bookingRepository;
 

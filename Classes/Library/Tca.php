@@ -22,6 +22,8 @@
 
 namespace Ubl\Booking\Library;
 
+use TYPO3\CMS\Extbase\Annotation as Extbase;
+
 /**
  * Class Tca
  *
@@ -35,7 +37,7 @@ class Tca
 	 * The opening hours repository
 	 *
 	 * @var \Ubl\Booking\Domain\Repository\OpeningHours
-	 * @inject
+	 * @Exbase\Inject
 	 */
 	protected $openingHoursRepository;
 

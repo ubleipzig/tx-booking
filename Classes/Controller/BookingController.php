@@ -22,6 +22,7 @@
 
 namespace Ubl\Booking\Controller;
 
+use TYPO3\CMS\Extbase\Annotation as Extbase;
 use \Ubl\Booking\Library\Week;
 use \Ubl\Booking\Library\Day;
 use \Ubl\Booking\Library\Hour;
@@ -40,7 +41,7 @@ class BookingController extends AbstractController
 	 * Repository of bookings
 	 *
 	 * @var \Ubl\Booking\Domain\Repository\Booking
-	 * @inject
+	 * @Exbase\Inject
 	 */
 	protected $bookingRepository;
 
@@ -48,7 +49,7 @@ class BookingController extends AbstractController
 	 * Repository of rooms
 	 *
 	 * @var \Ubl\Booking\Domain\Repository\Room
-	 * @inject
+	 * @Extbase\Inject
 	 */
 	protected $roomRepository;
 
