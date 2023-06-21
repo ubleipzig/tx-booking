@@ -23,7 +23,7 @@
     "url": "https://composer.typo3.org/"
   }],
   "require": {
-    "php": ">=7.2.0",
+    "php": ">=7.4.0",
     "typo3/cms": "^8.7 || ^9.5"
   },
   "require-dev": {
