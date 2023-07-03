@@ -22,8 +22,10 @@
 
 namespace Ubl\Booking\Domain\Repository;
 
-use \TYPO3\CMS\Extbase\Persistence\Repository;
-use \Ubl\Booking\Domain\Model\Room as RoomModel;
+use TYPO3\CMS\Core\Database\ConnectionPool;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Persistence\Repository;
+use Ubl\Booking\Domain\Model\Room as RoomModel;
 
 /**
  * Class Booking
@@ -32,7 +34,15 @@ use \Ubl\Booking\Domain\Model\Room as RoomModel;
  */
 class Booking extends Repository
 {
-	/**
+    /**
+     * Name of table
+     *
+     * @var string $tableName
+     * @access protected
+     */
+    protected $tableName = 'tx_booking_domain_model_booking';
+
+    /**
 	 * Booking constructor.
 	 *
 	 * @param \TYPO3\CMS\Extbase\Object\ObjectManagerInterface $objectManager
@@ -43,8 +53,21 @@ class Booking extends Repository
 		$this->initializeObject();
 	}
 
-	/**
-	 * initializes the repository object by removing the pid contraint from default query settings
+    /**
+     * Get connection for table
+     *
+     * @param string $tbl	Table name
+     *
+     * @access protected
+     */
+    protected function getConnectionForTable($tbl)
+    {
+        /** @var ConnectionPool $connectionPool */
+        return GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable($tbl);
+    }
+
+    /**
+	 * initializes the repository object by removing the pid constraint from default query settings
 	 */
 	public function initializeObject()
     {
@@ -77,7 +100,7 @@ class Booking extends Repository
 
 	/**
 	 * Finds a booking by specified user and time. One booking per user only and time is allowed.
-     * Therefore this should return 0 or 1
+     * Therefor this should return 0 or 1
 	 *
 	 * @param object $user User's uid
 	 * @param \DateTimeInterface $startTime Time
@@ -154,10 +177,51 @@ class Booking extends Repository
 	 */
 	public function findBeforeTime(\DateTimeInterface $time)
     {
-		$query = $this->createQuery();
-		$where = $query->lessThan('time', $time->getTimestamp());
-		$query->matching($where);
-
-		return $query->execute();
+        $queryBuilder = $this->getConnectionForTable($this->tableName);
+        $queryBuilder->getRestrictions()->removeAll();
+        return $queryBuilder
+            ->select('uid')
+            ->from($this->tableName)
+            ->where(
+                $queryBuilder->expr()->lt(
+                    'time',
+                    $queryBuilder->quote($time->getTimestamp(), \PDO::PARAM_INT)
+                )
+            )
+            ->execute()
+            ->fetchAll()
+        ;
 	}
+
+    /**
+     * Remove bookings by id
+     *
+     * @param array $uids	Amount of uid to remove
+     *
+     * @return int 	Affected row to proceed.
+     * @access public
+     */
+    public function removeUsersByIds(array $uids) : int
+    {
+        $cnt = 0;
+        try {
+            $deleteList = implode(
+                ', ',
+                array_map(function ($item) {
+                    return "'" . $item . "'";
+                },
+                    $uids)
+            );
+            $queryBuilder = $this->getConnectionForTable($this->tableName);
+            $cnt = $queryBuilder
+                ->delete($this->tableName)
+                ->where(
+                    $queryBuilder->expr()->in('uid', $deleteList)
+                )
+                ->execute();
+        } catch (\Exception $e) {
+            'Error while operating on database:' . $e->getMessage() . ' with stack trace: ' . $e->getTraceAsString();
+        }
+        return $cnt;
+    }
 }

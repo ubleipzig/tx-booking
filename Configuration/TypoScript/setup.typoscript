@@ -1,5 +1,5 @@
 plugin.tx_booking {
-	_CSS_DEFAULT_STYLE (
+    _CSS_DEFAULT_STYLE (
 	/* booking layout styles */
 
 	.tx_booking .message {
