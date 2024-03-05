@@ -2,7 +2,7 @@
 
 ## [v2.3.0](https://github.com/ubleipzig/tx-booking/tree/2.3.0)
 
-https://github.com/ubleipzig/tx-booking/compare/2.2.1...2.3.0
+[Full Changelog](https://github.com/ubleipzig/tx-booking/compare/2.2.1...2.3.0)
 
 **Fixes**
 
