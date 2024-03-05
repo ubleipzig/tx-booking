@@ -1,5 +1,14 @@
 # Change Log
 
+## [v2.3.0](https://github.com/ubleipzig/tx-booking/tree/2.3.0)
+
+https://github.com/ubleipzig/tx-booking/compare/2.2.1...2.3.0
+
+**Fixes**
+
+* does a few methods properties to public at _Room_ model
+* uses _@TYPO3\CMS\Extbase\Annotation\Inject_ for repositories includes at _AbstractController_ class due to not accepting namespace defined 
+
 ## [v2.2.1](https://github.com/ubleipzig/tx-booking/tree/2.2.1)
 
 [Full Changelog](https://github.com/ubleipzig/tx-booking/compare/2.2.0...2.2.1)

@@ -41,7 +41,7 @@ class Room extends AbstractEntity
 	 *
 	 * @var \Ubl\Booking\Library\Week
 	 */
-	protected $week;
+	public $week;
 
 	/**
 	 * The day representation of the room
@@ -87,7 +87,7 @@ class Room extends AbstractEntity
 	 *
 	 * @var string
 	 **/
-	protected $name;
+	public $name;
 
 	/**
 	 * The description of the room
