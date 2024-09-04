@@ -121,7 +121,17 @@ class Day extends DateHelper implements \Iterator, \Countable
 			&& ((int)$this->current->format('H') <= $this->end));
 	}
 
-	/**
+    /**
+     * Returns timestamp of day
+     *
+     * @return string
+     */
+    public function getTimestamp()
+    {
+        return $this->origin->getTimestamp();;
+    }
+
+    /**
 	 * Returns title of the day
 	 *
 	 * @return string

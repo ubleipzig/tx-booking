@@ -41,4 +41,14 @@ class Hour extends DateHelper {
 		parent::__construct($timestamp);
 		$this->origin = $this->origin->modify('this hour');
 	}
+
+    /**
+     * Returns timestamp of hour
+     *
+     * @return string
+     */
+    public function getTimestamp()
+    {
+       return $this->origin->getTimestamp();
+    }
 }

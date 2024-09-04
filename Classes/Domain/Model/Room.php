@@ -48,7 +48,7 @@ class Room extends AbstractEntity
 	 *
 	 * @var \Ubl\Booking\Library\Day
 	 */
-	protected $day;
+	public $day;
 
 	/**
 	 * The opening hours resolved as array

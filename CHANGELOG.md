@@ -1,5 +1,14 @@
 # Change Log
 
+## [v2.3.1](https://github.com/ubleipzig/tx-booking/tree/2.3.1)
+
+[Full Changelog](https://github.com/ubleipzig/tx-booking/compare/2.3.0...2.3.1)
+
+**Fixes**
+
+* fixes by setting property _day_ to _public_ at _Room_ model
+* fixes by replacing internal fluid timestamp method with explicit defined getTimestamp() method at _Classes/Library/Day.php_ and _Classes/Library/Hour.php_ 
+
 ## [v2.3.0](https://github.com/ubleipzig/tx-booking/tree/2.3.0)
 
 [Full Changelog](https://github.com/ubleipzig/tx-booking/compare/2.2.1...2.3.0)
