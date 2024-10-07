@@ -29,7 +29,7 @@ foreach (['room', 'booking', 'closingday', 'openinghours'] as $table) {
 }
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
-    $_EXTKEY,
+    'Booking',
     'Bookings',
     'Bookings for Rooms'
 );

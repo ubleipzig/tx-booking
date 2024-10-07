@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 /**
  * ext_localconf.php
  *
@@ -23,7 +25,7 @@
 if (!defined('TYPO3_MODE')) die('Access denied.');
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-	'Ubl.' . $_EXTKEY,
+	'Ubl.Booking',
 	'Bookings',
 	['Booking' => 'showWeek, showDay, add, remove'],
 	['Booking' => 'showWeek, showDay, add, remove']
