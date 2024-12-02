@@ -1,5 +1,13 @@
 # Change Log
 
+## [v2.3.2](https://github.com/ubleipzig/tx-booking/tree/2.3.2)
+
+[Full Changelog](https://github.com/ubleipzig/tx-booking/compare/2.3.1...2.3.2)
+
+**Fixes**
+
+* removes outdated _showRecordFieldList_ parameter at TCA configuration 
+
 ## [v2.3.1](https://github.com/ubleipzig/tx-booking/tree/2.3.1)
 
 [Full Changelog](https://github.com/ubleipzig/tx-booking/compare/2.3.0...2.3.1)

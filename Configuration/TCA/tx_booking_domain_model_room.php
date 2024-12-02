@@ -18,11 +18,7 @@ return [
         'foreign_table_loadIcon' => '1'
     ],
     "interface" => [
-        "showRecordFieldList" => "hidden,name,opening_hours,closing_days"
     ],
-    /*"feInterface" => [
-        "fe_admin_fieldList" => "hidden, name, hours",
-    ],*/
     // 1-1-1 = style pointer which defines color, style and border
     "types" => [
         "0" => [

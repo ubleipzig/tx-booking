@@ -18,11 +18,7 @@ return [
         ]
     ],
     "interface" => [
-        "showRecordFieldList" => "hidden,room,time,fe_user, Comment"
     ],
-    /*"feInterface" => [
-        "fe_admin_fieldList" => "hidden, fe_user",
-    ],*/
     "types" => [
         "0" => [
             "showitem" => "hidden, --palette--;;1, room, time, fe_user, comment"

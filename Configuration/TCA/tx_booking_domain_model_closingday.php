@@ -21,7 +21,6 @@ return [
         ]
     ],
     'interface' => [
-        'showRecordFieldList' => 'name,date,description'
     ],
     'types' => [
         '1' => ['showitem' => 'name,date,description']
