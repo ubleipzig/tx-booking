@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Class Booking
  *
@@ -22,7 +23,7 @@
 
 namespace Ubl\Booking\Domain\Model;
 
-use \Ubl\Booking\Library\AbstractEntity;
+use Ubl\Booking\Library\AbstractEntity;
 
 /**
  * Class Booking
@@ -31,80 +32,81 @@ use \Ubl\Booking\Library\AbstractEntity;
  */
 class Booking extends AbstractEntity
 {
-	/**
-	 * Frontend user id
-	 *
-	 * @var integer
-	 */
-	protected $feUser;
+    /**
+     * Frontend user id
+     *
+     * @var integer
+     */
+    protected $feUser;
 
-	/**
-	 * Room of this booking
-	 *
-	 * @var \Ubl\Booking\Domain\Model\Room
-	 */
-	protected $room;
+    /**
+     * Room of this booking
+     *
+     * @var \Ubl\Booking\Domain\Model\Room
+     */
+    protected $room;
 
-	/**
-	 * The comment of the booking
-	 *
-	 * @var string
-	 */
-	protected $comment;
+    /**
+     * The comment of the booking
+     *
+     * @var string
+     */
+    protected $comment;
 
-	/**
-	 * The timestamp of the booking
-	 *
-	 * @var integer
-	 */
-	protected $time;
+    /**
+     * The timestamp of the booking
+     *
+     * @var integer
+     */
+    protected $time;
 
-	/**
-	 * The DateTime representation of the booking time
-	 *
-	 * @var \DateTimeImmutable
-	 */
-	private $dateTime;
+    /**
+     * The DateTime representation of the booking time
+     *
+     * @var \DateTimeImmutable
+     */
+    private $dateTime;
 
-	/**
-	 * Booking constructor.
-	 *
-	 * @param        $timestamp Timestamp of booking
-	 * @param        $room      Room which is booked
-	 * @param string $comment   [optional] Comment of booking
-	 * @throws \Exception If we want to create a booking without a logged user
-	 */
-	public function __construct($timestamp, $room, $comment = '')
+    /**
+     * Booking constructor.
+     *
+     * @param        $timestamp Timestamp of booking
+     * @param        $room      Room which is booked
+     * @param string $comment   [optional] Comment of booking
+     * @throws \Exception If we want to create a booking without a logged user
+     */
+    public function __construct($timestamp, $room, $comment = '')
     {
-		if (!$GLOBALS['TSFE']->fe_user->user) {
+        if (!$GLOBALS['TSFE']->fe_user->user) {
             throw new \Exception('no user found');
         }
-		$this->initializeObject();
-		$this->setTime($timestamp);
-		$this->setRoom($room);
-		$this->setComment($comment);
-		$this->setFeUser($GLOBALS['TSFE']->fe_user->user['uid']);
+        $this->initializeObject();
+        $this->setTime($timestamp);
+        $this->setRoom($room);
+        $this->setComment($comment);
+        $this->setFeUser($GLOBALS['TSFE']->fe_user->user['uid']);
 
-		if ($room->getBookingStorage()) {
-			$this->setPid($room->getBookingStorage());
-		}
-	}
+        if ($room->getBookingStorage()) {
+            $this->setPid($room->getBookingStorage());
+        }
+    }
 
-	/**
-	 * Initializes the model after creation with constructor or via DI (which is creating te object without invoking the constructor)
-	 */
-	public function initializeObject()
+    /**
+     * Initializes the model after creation with constructor or via DI
+     * (which is creating te object without invoking the constructor)
+     */
+    public function initializeObject()
     {
-		$this->dateTime = new \DateTimeImmutable('now', new \DateTimeZone(date_default_timezone_get()));
-	}
+        $this->dateTime = new \DateTimeImmutable('now', new \DateTimeZone(date_default_timezone_get()));
+    }
 
-	/**
-	 * returns the DateTime representation of the bookings unix timestamp
-	 *
-	 * @return bool|\DateTimeImmutable
-	 */
-	public function getDateTime()
+    /**
+     * returns the DateTime representation of the bookings unix timestamp
+     *
+     * @return bool|\DateTimeImmutable
+     */
+    public function getDateTime()
     {
-		return $this->dateTime->setTimestamp($this->time);
-	}
+        return $this->dateTime->setTimestamp($this->time);
+    }
 }

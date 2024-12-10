@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 /**
  * Class CleanupCommand
@@ -21,6 +22,7 @@ declare(strict_types=1);
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
+
 namespace Ubl\Booking\Command;
 
 use Symfony\Component\Console\Command\Command;
@@ -125,10 +127,10 @@ class CleanupCommand extends Command
             }
         } else {
             $cnt = count($bookingList);
-         }
+        }
         $io->writeln(
             sprintf('%d bookings removed before %s', $cnt, $time->format('d-m-y H:i:s T (e, \G\M\T P)'))
-       );
-       return 0;
+        );
+        return 0;
     }
 }

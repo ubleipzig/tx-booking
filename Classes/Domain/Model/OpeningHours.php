@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Class OpeningHours
  *
@@ -22,8 +23,8 @@
 
 namespace Ubl\Booking\Domain\Model;
 
-use \Ubl\Booking\Library\AbstractEntity;
-use \Ubl\Booking\Library\Day;
+use Ubl\Booking\Library\AbstractEntity;
+use Ubl\Booking\Library\Day;
 
 /**
  * Class OpeningHours
@@ -32,17 +33,17 @@ use \Ubl\Booking\Library\Day;
  */
 class OpeningHours extends AbstractEntity
 {
-	/**
-	 * The day of week
-	 *
-	 * @var integer
-	 **/
-	protected $weekDay;
+    /**
+     * The day of week
+     *
+     * @var integer
+     **/
+    protected $weekDay;
 
-	/**
-	 * The list of open hours
-	 *
-	 * @var string
-	 */
-	protected $hours;
+    /**
+     * The list of open hours
+     *
+     * @var string
+     */
+    protected $hours;
 }

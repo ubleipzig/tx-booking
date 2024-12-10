@@ -1,4 +1,5 @@
 <?php
+
 defined('TYPO3_MODE') or die();
 
 $ll = 'LLL:EXT:booking/Resources/Private/Language/locallang.xlf:';

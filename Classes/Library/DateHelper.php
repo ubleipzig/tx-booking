@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Class DateHelper
  *
@@ -27,48 +28,48 @@ namespace Ubl\Booking\Library;
  *
  * @package Ubl\Booking\Library
  */
-class DateHelper {
+class DateHelper
+{
+    /**
+     * the original DateTime for the object
+     *
+     * @var \DateTimeImmutable
+     */
+    protected $origin;
 
-	/**
-	 * the original DateTime for the object
-	 *
-	 * @var \DateTimeImmutable
-	 */
-	protected $origin;
-
-	/**
-	 * DateHelper constructor.
-	 *
-	 * @param int $timestamp [optional] the unix timestamp to create the object from
+    /**
+     * DateHelper constructor.
+     *
+     * @param int $timestamp [optional] the unix timestamp to create the object from
      * @throws \Exception
-	 */
-	public function __construct($timestamp = null)
+     */
+    public function __construct($timestamp = null)
     {
-		$this->origin = new \DateTimeImmutable('now', new \DateTimeZone(date_default_timezone_get()));
-		if ($timestamp) {
+        $this->origin = new \DateTimeImmutable('now', new \DateTimeZone(date_default_timezone_get()));
+        if ($timestamp) {
             $this->origin = $this->origin->setTimestamp($timestamp);
         }
-	}
+    }
 
-	/**
-	 * The magic method passes all unknown methods to the $origin
-	 *
-	 * @param $method
-	 * @param $args
-	 * @return mixed
-	 */
-	public function __call($method, $args)
+    /**
+     * The magic method passes all unknown methods to the $origin
+     *
+     * @param $method
+     * @param $args
+     * @return mixed
+     */
+    public function __call($method, $args)
     {
-		return call_user_func_array([$this->origin, $method], $args);
-	}
+        return call_user_func_array([$this->origin, $method], $args);
+    }
 
-	/**
-	 * Returns the $origin property which implements the \DateTimeInterface
-	 *
-	 * @return \DateTimeImmutable
-	 */
-	public function getDateTime()
+    /**
+     * Returns the $origin property which implements the \DateTimeInterface
+     *
+     * @return \DateTimeImmutable
+     */
+    public function getDateTime()
     {
-		return $this->origin;
-	}
+        return $this->origin;
+    }
 }

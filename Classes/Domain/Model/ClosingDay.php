@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Class ClosingDay
  *
@@ -22,8 +23,8 @@
 
 namespace Ubl\Booking\Domain\Model;
 
-use \Ubl\Booking\Library\AbstractEntity;
-use \Ubl\Booking\Library\Day;
+use Ubl\Booking\Library\AbstractEntity;
+use Ubl\Booking\Library\Day;
 
 /**
  * Class ClosingDay
@@ -32,59 +33,59 @@ use \Ubl\Booking\Library\Day;
  */
 class ClosingDay extends AbstractEntity
 {
-	/**
-	 * the date of the closing day
-	 *
-	 * @var integer
-	 **/
-	protected $date;
+    /**
+     * the date of the closing day
+     *
+     * @var integer
+     **/
+    protected $date;
 
-	/**
-	 * The name of the closing day
-	 *
-	 * @var string
-	 **/
-	protected $name;
+    /**
+     * The name of the closing day
+     *
+     * @var string
+     **/
+    protected $name;
 
-	/**
-	 * The description of the closing day
-	 *
-	 * @var string
-	 **/
-	protected $description;
+    /**
+     * The description of the closing day
+     *
+     * @var string
+     **/
+    protected $description;
 
-	/**
-	 * the Day representation of the closing day
-	 *
-	 * @var \Ubl\Booking\Library\Day
-	 */
-	protected $day;
+    /**
+     * the Day representation of the closing day
+     *
+     * @var \Ubl\Booking\Library\Day
+     */
+    protected $day;
 
-	/**
-	 * ClosingDay constructor.
-	 *
-	 * @param integer $date the date as unix timestamp
-	 * @param string  [optional] $name the name
-	 * @param string  [optional] $description the description
-	 */
-	public function __construct($date, $name = '', $description = '')
+    /**
+     * ClosingDay constructor.
+     *
+     * @param integer $date the date as unix timestamp
+     * @param string  [optional] $name the name
+     * @param string  [optional] $description the description
+     */
+    public function __construct($date, $name = '', $description = '')
     {
-		$this->setDate($date);
-		$this->setName($name);
-		$this->setDescription($description);
-	}
+        $this->setDate($date);
+        $this->setName($name);
+        $this->setDescription($description);
+    }
 
-	/**
-	 * Returns the Day representation of the closing day
-	 *
+    /**
+     * Returns the Day representation of the closing day
+     *
      * @return \Ubl\Booking\Library\Day
      * @throws \Exception
      */
-	public function getDay()
+    public function getDay()
     {
-		if (!$this->day) {
+        if (!$this->day) {
             $this->setDay(new Day($this->date));
         }
-		return $this->day;
-	}
+        return $this->day;
+    }
 }

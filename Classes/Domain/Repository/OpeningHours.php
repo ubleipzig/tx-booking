@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Class OpeningHours
  *
@@ -22,8 +23,8 @@
 
 namespace Ubl\Booking\Domain\Repository;
 
-use \TYPO3\CMS\Extbase\Persistence\Repository;
-use \Ubl\Booking\Domain\Model\Room as RoomModel;
+use TYPO3\CMS\Extbase\Persistence\Repository;
+use Ubl\Booking\Domain\Model\Room as RoomModel;
 
 /**
  * Class OpeningHours
@@ -32,81 +33,82 @@ use \Ubl\Booking\Domain\Model\Room as RoomModel;
  */
 class OpeningHours extends Repository
 {
-
-	/**
-	 * The default ordering for queries
-	 *
-	 * @var array
-	 */
-	protected $defaultOrderings = [
-		'week_day' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_DESCENDING,
-		'hours' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_DESCENDING
-	];
-
-	/**
-	 * Finds the opening hours for specified room and day
-	 *
-	 * @param \Ubl\Booking\Domain\Model\Room $room Room
-	 * @param \DateTimeInterface $day Day
+    /**
+     * The default ordering for queries
      *
-	 * @return array
-	 */
-	public function findByRoomAndDay(RoomModel $room, \DateTimeInterface $day)
-    {
-		$query = $this->createQuery();
-		if (count($room->getOpeningTimesStorage()) > 0) {
-			$query->getQuerySettings()->setStoragePageIds($room->getOpeningTimesStorage());
-		}
-		$query->matching($query->equals('week_day', $day->format('N')));
-		return $this->reduceResult($query->execute(), $query->getQuerySettings()->getStoragePageIds());
-	}
+     * @var array
+     */
+    protected $defaultOrderings = [
+        'week_day' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_DESCENDING,
+        'hours' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_DESCENDING
+    ];
 
-	/**
-	 * Finds all opening hours for specified room
-	 *
-	 * @param \Ubl\Booking\Domain\Model\Room $room the room
-	 * @return array the result
-	 */
-	public function findAllByRoom(RoomModel $room)
-    {
-		$query = $this->createQuery();
-		if (count($room->getOpeningTimesStorage()) > 0) {
-			$query->getQuerySettings()->setStoragePageIds($room->getOpeningTimesStorage());
-		}
-		return $this->reduceResult($query->execute(), $query->getQuerySettings()->getStoragePageIds());
-	}
-
-	/**
-	 * Finds all opening hours
-	 *
-	 * @return array
-	 */
-	public function findAll()
-    {
-		$query = $this->createQuery();
-		$result  = $query->execute();
-		return $this->reduceResult($result, $query->getQuerySettings()->getStoragePageIds());
-	}
-
-	/**
-	 * Aggregates the result to omit overridden entries.
-	 *
-	 * @param \TYPO3\CMS\Extbase\Persistence\QueryResultInterface $result Result of query to reduce
-	 * @param $storagePids Storage pids in order
+    /**
+     * Finds the opening hours for specified room and day
      *
-	 * @return array
-	 */
-	protected function reduceResult($result, $storagePids)
+     * @param \Ubl\Booking\Domain\Model\Room $room Room
+     * @param \DateTimeInterface $day Day
+     *
+     * @return array
+     */
+    public function findByRoomAndDay(RoomModel $room, \DateTimeInterface $day)
     {
-		$openingHours = [];
-		foreach ($storagePids as $pid) {
-			foreach ($result as $dset) {
-				$weekDay = $dset->getWeekDay();
-				if ($dset->getPid() !== $pid || $openingHours[$weekDay]) continue;
-				$openingHours[$weekDay] = $dset;
-			}
-		}
-		sort($openingHours);
-		return $openingHours;
-	}
+        $query = $this->createQuery();
+        if (count($room->getOpeningTimesStorage()) > 0) {
+            $query->getQuerySettings()->setStoragePageIds($room->getOpeningTimesStorage());
+        }
+        $query->matching($query->equals('week_day', $day->format('N')));
+        return $this->reduceResult($query->execute(), $query->getQuerySettings()->getStoragePageIds());
+    }
+
+    /**
+     * Finds all opening hours for specified room
+     *
+     * @param \Ubl\Booking\Domain\Model\Room $room the room
+     * @return array the result
+     */
+    public function findAllByRoom(RoomModel $room)
+    {
+        $query = $this->createQuery();
+        if (count($room->getOpeningTimesStorage()) > 0) {
+            $query->getQuerySettings()->setStoragePageIds($room->getOpeningTimesStorage());
+        }
+        return $this->reduceResult($query->execute(), $query->getQuerySettings()->getStoragePageIds());
+    }
+
+    /**
+     * Finds all opening hours
+     *
+     * @return array
+     */
+    public function findAll()
+    {
+        $query = $this->createQuery();
+        $result  = $query->execute();
+        return $this->reduceResult($result, $query->getQuerySettings()->getStoragePageIds());
+    }
+
+    /**
+     * Aggregates the result to omit overridden entries.
+     *
+     * @param \TYPO3\CMS\Extbase\Persistence\QueryResultInterface $result Result of query to reduce
+     * @param $storagePids Storage pids in order
+     *
+     * @return array
+     */
+    protected function reduceResult($result, $storagePids)
+    {
+        $openingHours = [];
+        foreach ($storagePids as $pid) {
+            foreach ($result as $dset) {
+                $weekDay = $dset->getWeekDay();
+                if ($dset->getPid() !== $pid || $openingHours[$weekDay]) {
+                    continue;
+                }
+                $openingHours[$weekDay] = $dset;
+            }
+        }
+        sort($openingHours);
+        return $openingHours;
+    }
 }

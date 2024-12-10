@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Class OccupationSwitchViewHelper
  *
@@ -45,9 +46,9 @@ class GetOccupationViewHelper extends AbstractViewHelper
         $this->registerArgument('hour', Hour::class, '\Ubl\Booking\Library\Hour', true);
     }
 
-	/**
-	 * Switch to render according to occupation of room and hour
-	 *
+    /**
+     * Switch to render according to occupation of room and hour
+     *
      * @param array $arguments
      * @param \Closure $renderChildrenClosure
      * @param RenderingContextInterface $renderingContext
@@ -62,15 +63,15 @@ class GetOccupationViewHelper extends AbstractViewHelper
         $room = $arguments['room'];
         $hour = $arguments['hour'];
 
-		switch ($room->getHourOccupation($hour)) {
-			case Room::OFFDUTY:
+        switch ($room->getHourOccupation($hour)) {
+            case Room::OFFDUTY:
                 return 'offDuty';
-			case Room::AVAILABLE:
+            case Room::AVAILABLE:
                 return 'available';
-			case Room::FOREIGNBOOKED:
+            case Room::FOREIGNBOOKED:
                 return 'byOtherBooked';
-			case Room::OWNBOOKED:
+            case Room::OWNBOOKED:
                 return 'byMyselfBooked';
-		}
-	}
+        }
+    }
 }

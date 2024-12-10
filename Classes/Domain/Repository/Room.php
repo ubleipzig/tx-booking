@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Class Room
  *
@@ -22,7 +23,7 @@
 
 namespace Ubl\Booking\Domain\Repository;
 
-use \TYPO3\CMS\Extbase\Persistence\Repository;
+use TYPO3\CMS\Extbase\Persistence\Repository;
 
 /**
  * Class Room
@@ -31,23 +32,23 @@ use \TYPO3\CMS\Extbase\Persistence\Repository;
  */
 class Room extends Repository
 {
-	/**
-	 * Finds all rooms and fetch their occupation for specified week
-	 *
-	 * @param \Ubl\Booking\Library\Week $week Week
-	 * @param \Ubl\Booking\Library\SettingsHelper $settingsHelper Settings helper
+    /**
+     * Finds all rooms and fetch their occupation for specified week
      *
-	 * @return \TYPO3\CMS\Extbase\Persistence\QueryResultInterface
-	 */
-	public function findAllWithOccupationForWeek(
+     * @param \Ubl\Booking\Library\Week $week Week
+     * @param \Ubl\Booking\Library\SettingsHelper $settingsHelper Settings helper
+     *
+     * @return \TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+     */
+    public function findAllWithOccupationForWeek(
         \Ubl\Booking\Library\Week $week,
         \Ubl\Booking\Library\SettingsHelper $settingsHelper
     ) {
-		$result = $this->findAll();
-		foreach ($result as $room) {
-			$room->fetchWeekOccupation($week);
-			$room->setSettingsHelper($settingsHelper);
-		}
-		return $result;
-	}
+        $result = $this->findAll();
+        foreach ($result as $room) {
+            $room->fetchWeekOccupation($week);
+            $room->setSettingsHelper($settingsHelper);
+        }
+        return $result;
+    }
 }

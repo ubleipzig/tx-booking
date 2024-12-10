@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 /**
@@ -22,11 +23,13 @@ declare(strict_types=1);
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-if (!defined('TYPO3_MODE')) die('Access denied.');
+if (!defined('TYPO3_MODE')) {
+    die('Access denied.');
+}
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-	'Ubl.Booking',
-	'Bookings',
-	['Booking' => 'showWeek, showDay, add, remove'],
-	['Booking' => 'showWeek, showDay, add, remove']
+    'Ubl.Booking',
+    'Bookings',
+    ['Booking' => 'showWeek, showDay, add, remove'],
+    ['Booking' => 'showWeek, showDay, add, remove']
 );

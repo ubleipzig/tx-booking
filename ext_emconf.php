@@ -1,4 +1,5 @@
 <?php
+
 /**
  * ext_emconf.php
  *
@@ -21,38 +22,38 @@
  */
 
 $EM_CONF[$_EXTKEY] = [
-	'title' => 'Booking for Rooms',
-	'description' => 'Manage bookings of rooms for frontend users',
-	'category' => 'plugin',
-	'version' => '2.3.2',
-	'state' => 'stable',
-	'uploadfolder' => false,
-	'createDirs' => '',
-	'clearcacheonload' => true,
-	'author' => 'Ulf Seltmann',
-	'author_email' => 'seltmann@ub.uni-leipzig.de',
-	'author_company' => 'Leipzig University Library',
-	'constraints' => [
-		'depends' => [
+    'title' => 'Booking for Rooms',
+    'description' => 'Manage bookings of rooms for frontend users',
+    'category' => 'plugin',
+    'version' => '2.3.2',
+    'state' => 'stable',
+    'uploadfolder' => false,
+    'createDirs' => '',
+    'clearcacheonload' => true,
+    'author' => 'Ulf Seltmann',
+    'author_email' => 'seltmann@ub.uni-leipzig.de',
+    'author_company' => 'Leipzig University Library',
+    'constraints' => [
+        'depends' => [
             'php' => '7.4.0-8.1.99',
-			'typo3' => '9.0.0-10.4.99',
-			'iconfont' => '>=0.9.0',
-		],
-		'conflicts' => [],
-		'suggests' => [],
-	],
-	'autoload' =>
-  [
-    'psr-4' =>
-    [
-      'Ubl\\Booking\\' => 'Classes',
+            'typo3' => '9.0.0-10.4.99',
+            'iconfont' => '>=0.9.0',
+        ],
+        'conflicts' => [],
+        'suggests' => [],
     ],
-  ],
-  'autoload-dev' =>
-  [
-    'psr-4' =>
+    'autoload' =>
     [
-      'Ubl\\Booking\\Tests' => 'Tests',
+        'psr-4' =>
+        [
+             'Ubl\\Booking\\' => 'Classes',
+        ],
     ],
-  ],
+    'autoload-dev' =>
+    [
+        'psr-4' =>
+        [
+              'Ubl\\Booking\\Tests' => 'Tests',
+        ],
+    ],
 ];

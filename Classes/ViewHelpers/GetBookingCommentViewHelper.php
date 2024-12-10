@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Class GetBookingCommentViewHelper
  *
@@ -40,13 +41,13 @@ class GetBookingCommentViewHelper extends AbstractViewHelper
      */
     public function initializeArguments()
     {
-        $this->registerArgument('room', Room::class,'\Ubl\Booking\Domain\Model\Room', true);
-        $this->registerArgument('timestamp', \DateTimeInterface::class,'\DateTimeInterface', true);
+        $this->registerArgument('room', Room::class, '\Ubl\Booking\Domain\Model\Room', true);
+        $this->registerArgument('timestamp', \DateTimeInterface::class, '\DateTimeInterface', true);
     }
 
-	/**
-	 * Returns the comment of a booking
-	 *
+    /**
+     * Returns the comment of a booking
+     *
      * @param array $arguments
      * @param \Closure $renderChildrenClosure
      * @param RenderingContextInterface $renderingContext
@@ -60,6 +61,6 @@ class GetBookingCommentViewHelper extends AbstractViewHelper
     ) {
         $room = $arguments['room'];
         $timestamp = $arguments['timestamp'];
-		return $room->getBooking($timestamp)->getComment();
-	}
+        return $room->getBooking($timestamp)->getComment();
+    }
 }

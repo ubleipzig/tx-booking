@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Class Tca
  *
@@ -33,98 +34,102 @@ use TYPO3\CMS\Extbase\Annotation as Extbase;
  */
 class Tca
 {
-	/**
-	 * The opening hours repository
-	 *
-	 * @var \Ubl\Booking\Domain\Repository\OpeningHours
-	 * @Exbase\Inject
-	 */
-	protected $openingHoursRepository;
-
-	/**
-	 * Sets the week days as select items for backend form
-	 *
-	 * @param $config
+    /**
+     * The opening hours repository
      *
-	 * @return mixed
-	 * @throws \Exception
-	 */
-	public function getDays($config)
-    {
-		$objectManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\CMS\Extbase\Object\ObjectManager');
-		$querySettings = $objectManager->get('TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings');
-		$openingHoursRepository = $objectManager->get('Ubl\Booking\Domain\Repository\OpeningHours');
+     * @var \Ubl\Booking\Domain\Repository\OpeningHours
+     * @Exbase\Inject
+     */
+    protected $openingHoursRepository;
 
-		// workaround, see https://forge.typo3.org/issues/50551
-		$pageUid = $this->normalizePageUid($config['row']['pid']);
-
-		$querySettings->setStoragePageIds([$pageUid]);
-		$openingHoursRepository->setDefaultQuerySettings($querySettings);
-		$openingHours = [];
-		$week = new Week();
-
-		foreach($openingHoursRepository->findAll() as $weekday) {
-			$openingHours[] = $weekday->getWeekDay();
-		}
-		foreach ($week as $key => $day) {
-			if (!in_array($key, $openingHours) || (string)$key === $config['row']['week_day']) $config['items'][] = [$day->format('l'),$key];
-		}
-
-		if (count($config['items']) === 0) throw new \Exception('no week days left');
-
-		return $config;
-	}
-
-	/**
-	 * Sets the title parameter for listing in backend view
-	 *
-	 * @param $parameters
-	 * @param $parentObject
-	 */
-	public function getDayTitle(&$parameters, $parentObject)
-    {
-		$record = \TYPO3\CMS\Backend\Utility\BackendUtility::getRecord($parameters['table'], $parameters['row']['uid']);
-		$week = new Week();
-		$i = $record['week_day'] ? (int)$record['week_day'] -1 : 0;
-		$hours = explode(',', $record['hours']);
-		sort($hours, SORT_NUMERIC);
-		$parameters['title'] = $week->add(new \DateInterval("P{$i}D"))->format('l') . ' (' . implode(',', $hours) . ')';
-	}
-
-	/**
-	 * sets the choosable opening hours as select items in backend form
-	 *
-	 * @param $config
-	 * @return mixed
-	 */
-	public function getHours($config)
-    {
-		$day = new Day();
-		foreach ($day as $key => $hour) {
-			$title = $hour->format('H:i') . ' - ' . $hour->modify('next hour')->format('H:i');
-			$config['items'][] = [$title ,$key];
-		}
-		return $config;
-	}
-
-	/**
-	 * finds the correct pid after "save+new"
-	 *
-	 * @param $id
+    /**
+     * Sets the week days as select items for backend form
      *
-	 * @return mixed
-	 */
-	protected function normalizePageUid($id)
+     * @param $config
+     *
+     * @return mixed
+     * @throws \Exception
+     */
+    public function getDays($config)
     {
-		if ($id < 0) {
-			$parentRec = \TYPO3\CMS\Backend\Utility\BackendUtility::getRecord(
-				'tx_booking_domain_model_openinghours',
-				abs($id),
-				'pid'
-			);
-			return $parentRec['pid'];
-		} else {
-			return $id;
-		}
-	}
+        $objectManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\CMS\Extbase\Object\ObjectManager');
+        $querySettings = $objectManager->get('TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings');
+        $openingHoursRepository = $objectManager->get('Ubl\Booking\Domain\Repository\OpeningHours');
+
+        // workaround, see https://forge.typo3.org/issues/50551
+        $pageUid = $this->normalizePageUid($config['row']['pid']);
+
+        $querySettings->setStoragePageIds([$pageUid]);
+        $openingHoursRepository->setDefaultQuerySettings($querySettings);
+        $openingHours = [];
+        $week = new Week();
+
+        foreach ($openingHoursRepository->findAll() as $weekday) {
+            $openingHours[] = $weekday->getWeekDay();
+        }
+        foreach ($week as $key => $day) {
+            if (!in_array($key, $openingHours) || (string)$key === $config['row']['week_day']) {
+                $config['items'][] = [$day->format('l'),$key];
+            }
+        }
+
+        if (count($config['items']) === 0) {
+            throw new \Exception('no week days left');
+        }
+
+        return $config;
+    }
+
+    /**
+     * Sets the title parameter for listing in backend view
+     *
+     * @param $parameters
+     * @param $parentObject
+     */
+    public function getDayTitle(&$parameters, $parentObject)
+    {
+        $record = \TYPO3\CMS\Backend\Utility\BackendUtility::getRecord($parameters['table'], $parameters['row']['uid']);
+        $week = new Week();
+        $i = $record['week_day'] ? (int)$record['week_day'] - 1 : 0;
+        $hours = explode(',', $record['hours']);
+        sort($hours, SORT_NUMERIC);
+        $parameters['title'] = $week->add(new \DateInterval("P{$i}D"))->format('l') . ' (' . implode(',', $hours) . ')';
+    }
+
+    /**
+     * sets the choosable opening hours as select items in backend form
+     *
+     * @param $config
+     * @return mixed
+     */
+    public function getHours($config)
+    {
+        $day = new Day();
+        foreach ($day as $key => $hour) {
+            $title = $hour->format('H:i') . ' - ' . $hour->modify('next hour')->format('H:i');
+            $config['items'][] = [$title ,$key];
+        }
+        return $config;
+    }
+
+    /**
+     * finds the correct pid after "save+new"
+     *
+     * @param $id
+     *
+     * @return mixed
+     */
+    protected function normalizePageUid($id)
+    {
+        if ($id < 0) {
+            $parentRec = \TYPO3\CMS\Backend\Utility\BackendUtility::getRecord(
+                'tx_booking_domain_model_openinghours',
+                abs($id),
+                'pid'
+            );
+            return $parentRec['pid'];
+        } else {
+            return $id;
+        }
+    }
 }

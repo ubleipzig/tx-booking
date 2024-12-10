@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Class Hour
  *
@@ -27,20 +28,20 @@ namespace Ubl\Booking\Library;
  *
  * @package Ubl\Booking\Library
  */
-class Hour extends DateHelper {
-
-	/**
-	 * Hour constructor.
-	 *
-	 * @param int $timestamp [optional] the unix timestamp to create the object from
+class Hour extends DateHelper
+{
+    /**
+     * Hour constructor.
+     *
+     * @param int $timestamp [optional] the unix timestamp to create the object from
      *
      * @return void
-	 */
-	public function __construct($timestamp = null)
+     */
+    public function __construct($timestamp = null)
     {
-		parent::__construct($timestamp);
-		$this->origin = $this->origin->modify('this hour');
-	}
+        parent::__construct($timestamp);
+        $this->origin = $this->origin->modify('this hour');
+    }
 
     /**
      * Returns timestamp of hour
@@ -49,6 +50,6 @@ class Hour extends DateHelper {
      */
     public function getTimestamp()
     {
-       return $this->origin->getTimestamp();
+        return $this->origin->getTimestamp();
     }
 }

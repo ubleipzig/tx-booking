@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Class SettingsHelper
  *
@@ -29,138 +30,137 @@ namespace Ubl\Booking\Library;
  */
 class SettingsHelper
 {
-	/**
-	 * The settings
-	 *
-	 * @var array
-	 */
-	protected $settings;
-
-	/**
-	 * SettingsHelper constructor.
-	 *
-	 * @param array $settings passed by controller method
-	 */
-	public function __construct($settings)
-    {
-		$this->settings = $settings;
-	}
-
-	/**
-	 * Whether to show next week according to the settings
-	 *
-	 * @param \Ubl\Booking\Library\Week $week the actual week
+    /**
+     * The settings
      *
-	 * @return bool
-	 */
-	public function showNextWeek(Week $week)
+     * @var array
+     */
+    protected $settings;
+
+    /**
+     * SettingsHelper constructor.
+     *
+     * @param array $settings passed by controller method
+     */
+    public function __construct($settings)
     {
-		if (empty($this->settings['limitBookingToWeeks'])) {
+        $this->settings = $settings;
+    }
+
+    /**
+     * Whether to show next week according to the settings
+     *
+     * @param \Ubl\Booking\Library\Week $week the actual week
+     *
+     * @return bool
+     */
+    public function showNextWeek(Week $week)
+    {
+        if (empty($this->settings['limitBookingToWeeks'])) {
             return true;
         }
-		$today = new Week();
-		$limit = $today->add(new \DateInterval("P{$this->settings['limitBookingToWeeks']}W"));
-		return $week->getDateTime() < $limit;
-	}
+        $today = new Week();
+        $limit = $today->add(new \DateInterval("P{$this->settings['limitBookingToWeeks']}W"));
+        return $week->getDateTime() < $limit;
+    }
 
-	/**
-	 * Whether to show previous week according to the settings
-	 *
-	 * @param \Ubl\Booking\Library\Week $week the actual week
+    /**
+     * Whether to show previous week according to the settings
      *
-	 * @return bool
-	 */
-	public function showPreviousWeek(Week $week)
+     * @param \Ubl\Booking\Library\Week $week the actual week
+     *
+     * @return bool
+     */
+    public function showPreviousWeek(Week $week)
     {
-		if (empty($this->settings['limitBacklogToWeeks']))
-        {
+        if (empty($this->settings['limitBacklogToWeeks'])) {
             return true;
         }
-		$today = new Week();
-		$limit = $today->sub(new \DateInterval("P{$this->settings['limitBacklogToWeeks']}W"));
-		return $week->getDateTime() > $limit;
-	}
+        $today = new Week();
+        $limit = $today->sub(new \DateInterval("P{$this->settings['limitBacklogToWeeks']}W"));
+        return $week->getDateTime() > $limit;
+    }
 
-	/**
-	 * Whether to show the next day according to the settings
-	 *
-	 * @param \Ubl\Booking\Library\Day $day the actual day
+    /**
+     * Whether to show the next day according to the settings
      *
-	 * @return bool
-	 */
-	public function showNextDay(Day $day) {
-		if (empty($this->settings['limitBookingToWeeks']))
-        {
+     * @param \Ubl\Booking\Library\Day $day the actual day
+     *
+     * @return bool
+     */
+    public function showNextDay(Day $day)
+    {
+        if (empty($this->settings['limitBookingToWeeks'])) {
             return true;
         }
-		$today = new Week();
-		$nextDay = $day->modify('next day');
-		$nextDaysWeek = new Week($nextDay->getTimestamp());
-		$limit = $today->add(new \DateInterval("P{$this->settings['limitBookingToWeeks']}W"));
-		return !($limit < $nextDaysWeek->getDateTime());
-	}
+        $today = new Week();
+        $nextDay = $day->modify('next day');
+        $nextDaysWeek = new Week($nextDay->getTimestamp());
+        $limit = $today->add(new \DateInterval("P{$this->settings['limitBookingToWeeks']}W"));
+        return !($limit < $nextDaysWeek->getDateTime());
+    }
 
-	/**
-	 * whether to show the previous day according to the settings
-	 *
-	 * @param \Ubl\Booking\Library\Day $day the actual day
+    /**
+     * whether to show the previous day according to the settings
      *
-	 * @return bool
-	 */
-	public function showPreviousDay(Day $day) {
-		if (empty($this->settings['limitBacklogToWeeks']))
-        {
+     * @param \Ubl\Booking\Library\Day $day the actual day
+     *
+     * @return bool
+     */
+    public function showPreviousDay(Day $day)
+    {
+        if (empty($this->settings['limitBacklogToWeeks'])) {
             return true;
         }
-		$today = new Week();
-		$previousDay = $day->modify('previous day');
-		$previousDaysWeek = new Week($previousDay->getTimestamp());
-		$limit = $today->sub(new \DateInterval("P{$this->settings['limitBacklogToWeeks']}W"));
-		return !($limit > $previousDaysWeek->getDateTime());
-	}
+        $today = new Week();
+        $previousDay = $day->modify('previous day');
+        $previousDaysWeek = new Week($previousDay->getTimestamp());
+        $limit = $today->sub(new \DateInterval("P{$this->settings['limitBacklogToWeeks']}W"));
+        return !($limit > $previousDaysWeek->getDateTime());
+    }
 
-	/**
-	 * Whether the provided user is admin
-	 *
-	 * @param  $user_id [optional] if empty try the currently logged in user
+    /**
+     * Whether the provided user is admin
      *
-	 * @return bool
-	 */
-	public function isAdmin($user_id = null)
+     * @param  $user_id [optional] if empty try the currently logged in user
+     *
+     * @return bool
+     */
+    public function isAdmin($user_id = null)
     {
-		if ($user_id === null && $GLOBALS['TSFE']->fe_user->user['uid']) {
-			$user_id = $GLOBALS['TSFE']->fe_user->user['uid'];
-		}
-		return isset($this->settings['admins']) && isset($user_id)
-			? in_array($user_id, explode(',', $this->settings['admins']))
-			: false;
-	}
+        if ($user_id === null && $GLOBALS['TSFE']->fe_user->user['uid']) {
+            $user_id = $GLOBALS['TSFE']->fe_user->user['uid'];
+        }
+        return isset($this->settings['admins']) && isset($user_id)
+            ? in_array($user_id, explode(',', $this->settings['admins']))
+            : false;
+    }
 
-	/**
-	 * Whether the booking in advance is exceeded by the provided timestamp
-	 *
-	 * @param int $timestamp the time for the booking
+    /**
+     * Whether the booking in advance is exceeded by the provided timestamp
      *
-	 * @return bool
-	 */
-	public function exceededBookingLimit($timestamp)
+     * @param int $timestamp the time for the booking
+     *
+     * @return bool
+     */
+    public function exceededBookingLimit($timestamp)
     {
-		if (empty($this->settings['limitBookingToWeeks'])) {
+        if (empty($this->settings['limitBookingToWeeks'])) {
             return true;
         }
-		$today = new Week();
-		$week = new Week($timestamp);
-		$limit = $today->add(new \DateInterval("P{$this->settings['limitBookingToWeeks']}W"));
-		return $week->getDateTime() > $limit;
-	}
+        $today = new Week();
+        $week = new Week($timestamp);
+        $limit = $today->add(new \DateInterval("P{$this->settings['limitBookingToWeeks']}W"));
+        return $week->getDateTime() > $limit;
+    }
 
-	/**
-	 * Returns the maximum bookings per day and plugin
-	 *
-	 * @return int|null
-	 */
-	public function getMaxBookings()
+    /**
+     * Returns the maximum bookings per day and plugin
+     *
+     * @return int|null
+     */
+    public function getMaxBookings()
     {
-		return isset($this->settings['maxBookingsPerDay']) ? (int)$this->settings['maxBookingsPerDay'] : null;
-	}
+        return isset($this->settings['maxBookingsPerDay']) ? (int)$this->settings['maxBookingsPerDay'] : null;
+    }
 }

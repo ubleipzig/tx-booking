@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Class GetHourOccupationClassViewHelper
  *
@@ -41,29 +42,29 @@ class GetHourOccupationClassViewHelper extends AbstractConditionViewHelper
     public function initializeArguments()
     {
         parent::initializeArguments();
-        $this->registerArgument('room', Room::class,'\Ubl\Booking\Domain\Model\Room', true);
-        $this->registerArgument('hour', Hour::class,'\Ubl\Booking\Library\Hour', true);
+        $this->registerArgument('room', Room::class, '\Ubl\Booking\Domain\Model\Room', true);
+        $this->registerArgument('hour', Hour::class, '\Ubl\Booking\Library\Hour', true);
     }
 
     /**
-	 * Returns the class name of a specific occupation for a room and hour
-	 *
-	 * @return string
-	 */
-	public function render()
+     * Returns the class name of a specific occupation for a room and hour
+     *
+     * @return string
+     */
+    public function render()
     {
         $room = $this->arguments['room'];
         $hour = $this->arguments['hour'];
 
-		switch ($room->getHourOccupation($hour)) {
-			case Room::OFFDUTY:
-				return 'offDutyTimeHours';
-			case Room::AVAILABLE:
-				return 'openingHours';
-			case Room::FOREIGNBOOKED:
-				return 'bookedHours';
-			case Room::OWNBOOKED:
-				return 'ownbookedHours';
-		}
-	}
+        switch ($room->getHourOccupation($hour)) {
+            case Room::OFFDUTY:
+                return 'offDutyTimeHours';
+            case Room::AVAILABLE:
+                return 'openingHours';
+            case Room::FOREIGNBOOKED:
+                return 'bookedHours';
+            case Room::OWNBOOKED:
+                return 'ownbookedHours';
+        }
+    }
 }

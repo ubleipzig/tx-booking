@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Class ClosingDay
  *
@@ -22,8 +23,8 @@
 
 namespace Ubl\Booking\Domain\Repository;
 
-use \TYPO3\CMS\Extbase\Persistence\Repository;
-use \Ubl\Booking\Domain\Model\Room as RoomModel;
+use TYPO3\CMS\Extbase\Persistence\Repository;
+use Ubl\Booking\Domain\Model\Room as RoomModel;
 
 /**
  * Class ClosingDay
@@ -32,46 +33,46 @@ use \Ubl\Booking\Domain\Model\Room as RoomModel;
  */
 class ClosingDay extends Repository
 {
-	/**
-	 * Finds all closing days for specified room within specified time period
-	 *
-	 * @param \Ubl\Booking\Domain\Model\Room $room Room
-	 * @param \DateTimeInterface $startTime Start time
-	 * @param \DateTimeInterface $endTime   End time
+    /**
+     * Finds all closing days for specified room within specified time period
      *
-	 * @return \TYPO3\CMS\Extbase\Persistence\QueryResultInterface
-	 */
-	public function findByRoomAndBetween(RoomModel $room, \DateTimeInterface $startTime, \DateTimeInterface $endTime)
-    {
-		$query = $this->createQuery();
-		if (count($room->getOpeningTimesStorage()) > 0) {
-			$query->getQuerySettings()->setStoragePageIds($room->getOpeningTimesStorage());
-		}
-		$where = $query->logicalAnd([
-			$query->greaterThanOrEqual('date', $startTime->getTimestamp()),
-			$query->lessThanOrEqual('date', $endTime->getTimestamp())
-		]);
-		$query->matching($where);
-
-		return $query->execute();
-	}
-
-	/**
-	 * Finds all closing days for specified room and day
-	 *
-	 * @param \Ubl\Booking\Domain\Model\Room $room Room
-	 * @param \DateTimeInterface $day Day
+     * @param \Ubl\Booking\Domain\Model\Room $room Room
+     * @param \DateTimeInterface $startTime Start time
+     * @param \DateTimeInterface $endTime   End time
      *
-	 * @return \Ubl\Booking\Domain\Model\ClosingDay
-	 */
-	public function findByRoomAndDay(RoomModel $room, \DateTimeInterface $day)
+     * @return \TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+     */
+    public function findByRoomAndBetween(RoomModel $room, \DateTimeInterface $startTime, \DateTimeInterface $endTime)
     {
-		$query = $this->createQuery();
-		if (count($room->getOpeningTimesStorage()) > 0) {
-			$query->getQuerySettings()->setStoragePageIds($room->getOpeningTimesStorage());
-		}
-		$query->matching($query->equals('date', $day->getTimestamp()));
+        $query = $this->createQuery();
+        if (count($room->getOpeningTimesStorage()) > 0) {
+            $query->getQuerySettings()->setStoragePageIds($room->getOpeningTimesStorage());
+        }
+        $where = $query->logicalAnd([
+            $query->greaterThanOrEqual('date', $startTime->getTimestamp()),
+            $query->lessThanOrEqual('date', $endTime->getTimestamp())
+        ]);
+        $query->matching($where);
 
-		return $query->execute()->getFirst();
-	}
+        return $query->execute();
+    }
+
+    /**
+     * Finds all closing days for specified room and day
+     *
+     * @param \Ubl\Booking\Domain\Model\Room $room Room
+     * @param \DateTimeInterface $day Day
+     *
+     * @return \Ubl\Booking\Domain\Model\ClosingDay
+     */
+    public function findByRoomAndDay(RoomModel $room, \DateTimeInterface $day)
+    {
+        $query = $this->createQuery();
+        if (count($room->getOpeningTimesStorage()) > 0) {
+            $query->getQuerySettings()->setStoragePageIds($room->getOpeningTimesStorage());
+        }
+        $query->matching($query->equals('date', $day->getTimestamp()));
+
+        return $query->execute()->getFirst();
+    }
 }

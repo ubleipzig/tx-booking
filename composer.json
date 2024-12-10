@@ -1,7 +1,7 @@
 {
   "name": "ubl/booking",
   "type": "typo3-cms-extension",
-  "description": "Manage bookings of rooms for fe users",
+  "description": "Managed bookings of rooms for fe users",
   "keywords": [
     "TYPO3",
     "CMS",
@@ -24,13 +24,12 @@
   }],
   "require": {
     "php": ">=7.4.0",
-    "typo3/cms": "^8.7 || ^9.5"
+    "typo3/cms": "^9.5 || ^10.4"
   },
   "require-dev": {
-    "namelesscoder/typo3-repository-client": "^1.2",
-    "nimut/testing-framework": "^1.0",
-    "mikey179/vfsstream": "^1.4",
-    "phpunit/phpunit": "^4.7 || ^5.0"
+    "nimut/testing-framework": "^6.0",
+    "mikey179/vfsstream": "^1.6.7",
+    "phpunit/phpunit": "^8.5.22||^9.5"
   },
   "autoload": {
     "psr-4": {

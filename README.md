@@ -1,24 +1,22 @@
 # ubl/booking
-Manage bookings of rooms for typo3 frontend users
+Manages bookings of rooms for typo3 frontend users
 
 This extension was created out of the need to manage bookings for
 group study rooms available to students and patrons of leipzig university library.
 
 Anonymous website visitors get an overview of rooms and occupation in a
-specific period of time, managable in the typo3-backend.
+specific period of time, manageable in the typo3-backend.
 
-Logged in users additionally can book timeslots of rooms according to the defined
+Logged users additionally can book timeslots of rooms according to the defined
 maximum of bookings per day and location.
 
 ## Requirements
-* Typo3 > 8.0 < 9.5.99
+* Typo3 > 9.5 < 10.4.99
 * PHP >= 7.4
 * Icon font >= 0.9.0
 
-We have not tested it with higher versions but the codebase should be sufficient.
-
 ## Usage
-This extension provides a plugin which has to be assign to the designated page.
+This extension provides a plugin which has to be assigned to the designated page.
 
 ### Create a Location
 Add a *New content element->Plugins->General Plugin*.
@@ -62,43 +60,43 @@ To create a closing day go to the page that you specified as *Record Storage Pag
 in the *Configuration*-Section earlier, *Create a new Record* and choose **Closing Day**
 
 You have to provide at least a *Closing day name* and a *Date*. The days are shown
-as non-bookable in week overview and its not possible to create bookings from the frontend
-on these days. However there is no validation on bookings one creates from backend but they are not
+as non-bookable in week overview, and it's not possible to create bookings from the frontend
+on these days. However, there is no validation on bookings one creates from backend, but they are not
 shown in frontend either.
 
 ### define Opening Hours
-By default all hours of all days a week are bookable. With opening hours one can define
+By default, all hours of all days a week are bookable. With opening hours one can define
 the opening hours of a day.
 
 To create opening hours for a day go to the page that you specified as *Record Storage Page*
 in the *Configuration*-Section earlier, *Create a new Record* and choose **Opening Hours**
 
-Select the day of week you want to specify he opening hours for and then select the hours
+Select the day of week you want to specify opening hours for and then select the hours
 of duty.
 
 If you select no hours at all the day is closed for bookings entirely. Like this one
  can create weekly closed days i.e. sunday.
 
 ## Advanced Customization
-By default closing days and opening hours count for all rooms. However if you want to define
+By default, closing days and opening hours count for all rooms. However, if you want to define
 different rules for different rooms you can create a new *Record Storage Page* and specify it
 for the designated room(s).
 
-Just open the already created room-record and register newly created *Record Storage Page*
+Open an already created room-record and register newly created *Record Storage Page*
 under *Opening times storage pages*.
 
-You even can register multiple pages if you want to make use of the inheritance principle.
-The rule is, what comes first counts. For example if you define opening hours for monday on
+You even can register multiple pages, if you like to make use of an inheritance principle.
+The rule is, what comes first counts. For example if you define opening hours for Monday on
 two pages the opening hours of the page that is listed first are taken.
 
-Closing days are inherited as well. However overriding makes no sense here.
+Closing days are inherited as well. However, overriding makes no sense here.
 
 To get a better overview of bookings made for a room you also can specify a storage page
 for a rooms bookings.
 
-To do so register the designated storage page under *Booking storage page*
-and you are good to go. Future bookings are stored under that page, but bookings
-from the plugin's storage page are taken in account as well so you dont have to
+Register the designated storage page under *Booking storage page*
+and continue. Future bookings are stored under that page, but bookings
+from the plugin's storage page are taken in account as well so you don't have to
 worry about old bookings.
 
 ## Cleanup old Bookings

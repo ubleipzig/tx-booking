@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Class AbstractController
  *
@@ -34,64 +35,64 @@ use Ubl\Booking\Library\SettingsHelper;
  */
 abstract class AbstractController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 {
-	/**
-	 * @var Ubl\Booking\Library\SettingsHelper
-	 */
-	protected $settingsHelper;
+    /**
+     * @var Ubl\Booking\Library\SettingsHelper
+     */
+    protected $settingsHelper;
 
-	/**
-	 * Override getErrorFlashMessage to present flash error messages for booking.
-	 *
-	 * @return string
-	 */
-	protected function getErrorFlashMessage()
-    {
-		$defaultFlashMessage = parent::getErrorFlashMessage();
-		$locallangKey = sprintf('error.%s.%s', $this->request->getControllerName(), $this->actionMethodName);
-		return $this->translate($locallangKey, $defaultFlashMessage);
-	}
-
-	/**
-	 * Helper function to render localized flashmessages
-	 *
-	 * @param string  $action
-	 * @param integer $severity [optional] Severity code. One of the t3lib_FlashMessage constants
+    /**
+     * Override getErrorFlashMessage to present flash error messages for booking.
      *
-	 * @return void
-	 */
-	public function addFlashMessageHelper($action, $severity = \TYPO3\CMS\Core\Messaging\FlashMessage::OK)
+     * @return string
+     */
+    protected function getErrorFlashMessage()
     {
-		$messageLocallangKey = sprintf('flashmessage.%s.%s', $this->request->getControllerName(), $action);
-		$localizedMessage = $this->translate($messageLocallangKey, '[' . $messageLocallangKey . ']');
-		$titleLocallangKey = sprintf('%s.title', $messageLocallangKey);
-		$localizedTitle = $this->translate($titleLocallangKey, '[' . $titleLocallangKey . ']');
-		parent::addFlashMessage($localizedMessage, $localizedTitle, $severity);
-	}
+        $defaultFlashMessage = parent::getErrorFlashMessage();
+        $locallangKey = sprintf('error.%s.%s', $this->request->getControllerName(), $this->actionMethodName);
+        return $this->translate($locallangKey, $defaultFlashMessage);
+    }
 
-	/**
-	 * Helper function to use localized strings in controllers
-	 *
-	 * @param string $key            Key $locallang
-	 * @param string $defaultMessage Default message to show if key was not found
+    /**
+     * Helper function to render localized flashmessages
      *
-	 * @return string
-	 */
-	protected function translate($key, $defaultMessage = '')
+     * @param string  $action
+     * @param integer $severity [optional] Severity code. One of the t3lib_FlashMessage constants
+     *
+     * @return void
+     */
+    public function addFlashMessageHelper($action, $severity = \TYPO3\CMS\Core\Messaging\FlashMessage::OK)
     {
-		$message = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate($key, 'booking');
-		if ($message === NULL) {
-			$message = $defaultMessage;
-		}
-		return $message;
-	}
+        $messageLocallangKey = sprintf('flashmessage.%s.%s', $this->request->getControllerName(), $action);
+        $localizedMessage = $this->translate($messageLocallangKey, '[' . $messageLocallangKey . ']');
+        $titleLocallangKey = sprintf('%s.title', $messageLocallangKey);
+        $localizedTitle = $this->translate($titleLocallangKey, '[' . $titleLocallangKey . ']');
+        parent::addFlashMessage($localizedMessage, $localizedTitle, $severity);
+    }
 
-	/**
-	 * Initialization method invoked before action method is invoked
-	 *
-	 * @return void
-	 */
-	public function initializeAction()
+    /**
+     * Helper function to use localized strings in controllers
+     *
+     * @param string $key            Key $locallang
+     * @param string $defaultMessage Default message to show if key was not found
+     *
+     * @return string
+     */
+    protected function translate($key, $defaultMessage = '')
     {
-		$this->settingsHelper = new SettingsHelper($this->settings);
-	}
+        $message = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate($key, 'booking');
+        if ($message === null) {
+            $message = $defaultMessage;
+        }
+        return $message;
+    }
+
+    /**
+     * Initialization method invoked before action method is invoked
+     *
+     * @return void
+     */
+    public function initializeAction()
+    {
+        $this->settingsHelper = new SettingsHelper($this->settings);
+    }
 }

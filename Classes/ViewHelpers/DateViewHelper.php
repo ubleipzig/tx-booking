@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Class DateViewHelper
  *
@@ -39,14 +40,14 @@ class DateViewHelper extends AbstractViewHelper
      */
     public function initializeArguments()
     {
-        $this->registerArgument('format', 'string','The output format', true);
-        $this->registerArgument('object', 'object','Date object', true);
-        $this->registerArgument('modify', 'string','Modification of object done before processing', false, null);
+        $this->registerArgument('format', 'string', 'The output format', true);
+        $this->registerArgument('object', 'object', 'Date object', true);
+        $this->registerArgument('modify', 'string', 'Modification of object done before processing', false, null);
     }
 
-	/**
+    /**
      * Render date
-	 *
+     *
      * @param array $arguments
      * @param \Closure $renderChildrenClosure
      * @param RenderingContextInterface $renderingContext

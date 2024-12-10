@@ -1,5 +1,13 @@
 # Change Log
 
+## [v2.3.3](https://github.com/ubleipzig/tx-booking/tree/2.3.3)
+
+[Full Changelog](https://github.com/ubleipzig/tx-booking/compare/2.3.2...2.3.3)
+
+* removes _ext_tables.php_, content mainly migrated to _/Configuration/TCA/Overrides/tt_content.php_ 
+* fixes Typo3 exception [1546632293](https://docs.typo3.org/m/typo3/reference-exceptions/main/en-us/Exceptions/1546632293.html) by setting variables of _\TYPO3\CMS\Extbase\Persistence\ObjectStorage_ to *public*
+* updates code to PSR2 standard besides some exceptions concerning characters exceeded line limit 
+
 ## [v2.3.2](https://github.com/ubleipzig/tx-booking/tree/2.3.2)
 
 [Full Changelog](https://github.com/ubleipzig/tx-booking/compare/2.3.1...2.3.2)
