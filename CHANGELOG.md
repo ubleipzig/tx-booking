@@ -1,5 +1,11 @@
 # Change Log
 
+## [v2.3.4](https://github.com/ubleipzig/tx-booking/tree/2.3.4)
+
+[Full Changelog](https://github.com/ubleipzig/tx-booking/compare/2.3.3...2.3.4)
+
+* sorting tables of rooms at frontend just as the order at the backend
+
 ## [v2.3.3](https://github.com/ubleipzig/tx-booking/tree/2.3.3)
 
 [Full Changelog](https://github.com/ubleipzig/tx-booking/compare/2.3.2...2.3.3)

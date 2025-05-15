@@ -33,6 +33,15 @@ use TYPO3\CMS\Extbase\Persistence\Repository;
 class Room extends Repository
 {
     /**
+     * The default ordering for queries
+     *
+     * @var array
+     */
+    protected $defaultOrderings = [
+        'sorting' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING
+    ];
+
+    /**
      * Finds all rooms and fetch their occupation for specified week
      *
      * @param \Ubl\Booking\Library\Week $week Week
