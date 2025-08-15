@@ -2,29 +2,40 @@
 <f:layout name="Default"/>
 <f:section name="main">
     <div class="bookingFormDiv">
-        <div class="bookingFormObjectName">{Room.name}</div>
-        <div class="date left">
+        <h2 class="bookingFormObjectName">{Room.name}</h2>
+        <div class="date">
+            <f:comment>
             <!-- previous day -->
+            </f:comment>
             <f:if condition="{previousDay}">
-                <f:link.action action="showDay" arguments="{timestamp: previousDay, room: Room}"><i
-                        class="fa fa-chevron-left"
-                        aria-hidden="true"></i>
+                <f:link.action
+                  action="showDay"
+                  arguments="{timestamp: previousDay, room: Room}">
+                    <i class="fa fa-chevron-left" aria-hidden="true"></i>
                 </f:link.action>
             </f:if>
             <span id="bookingeIDWorking">
                 <f:translate key="{ubl:date(format:'l',object:Room.day)}">[weekDays]</f:translate>, <ubl:date format="d.m.Y" object="{Room.day}"/></span>
+            <f:comment>
             <!-- next day -->
+            </f:comment>
             <f:if condition="{nextDay}">
-                <f:link.action action="showDay" arguments="{timestamp: nextDay, room: Room}"
-                               class="display: inline"><i
-                        class="fa fa-chevron-right" aria-hidden="true"></i>
+                <f:link.action
+                  action="showDay"
+                  arguments="{timestamp: nextDay, room: Room}"
+                  class="next-day">
+                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
                 </f:link.action>
             </f:if>
         </div>
+        <f:comment>
         <!-- week view -->
-        <div class="right">
-            <f:link.action class="backToWeekView" action="showWeek"
-                           arguments="{timestamp: Room.day.timestamp}"><f:translate key="backToWeekView">[backToWeekView]</f:translate>
+        </f:comment>
+        <div class="week-link">
+            <f:link.action
+              class="backToWeekView"
+              action="showWeek"
+              arguments="{timestamp: Room.day.timestamp}"><f:translate key="backToWeekView">[backToWeekView]</f:translate>
             </f:link.action>
         </div>
         <table class="bookingForm ">
@@ -59,7 +70,7 @@
             </f:for>
             </tbody>
         </table>
-        <div class="right">
+        <div class="week-link">
             <f:link.action class="backToWeekView" action="showWeek" arguments="{timestamp: Room.day.timestamp}"><f:translate key="backToWeekView">[backToWeekView]</f:translate>
             </f:link.action>
         </div>
