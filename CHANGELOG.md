@@ -1,5 +1,12 @@
 # Change Log
 
+## [v2.4.0](https://github.com/ubleipzig/tx-booking/tree/2.4.0)
+
+[Full Changelog](https://github.com/ubleipzig/tx-booking/compare/2.3.4...2.4.0)
+
+* adds support for typo3 v11 and removes support for v9 and v10
+* replaces deprecated ObjectManager and ObjectManagerInterface objects by DI methods [refs 94619](https://docs.typo3.org/c/typo3/cms-core/main/en-us/Changelog/11.4/Deprecation-94619-ExtbaseObjectManager.html)
+
 ## [v2.3.4](https://github.com/ubleipzig/tx-booking/tree/2.3.4)
 
 [Full Changelog](https://github.com/ubleipzig/tx-booking/compare/2.3.3...2.3.4)

@@ -24,6 +24,7 @@
 namespace Ubl\Booking\Library;
 
 use TYPO3\CMS\Extbase\Annotation as Extbase;
+use TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings;
 
 /**
  * Class Tca
@@ -40,31 +41,41 @@ class Tca
      * @var \Ubl\Booking\Domain\Repository\OpeningHours
      * @Exbase\Inject
      */
-    protected $openingHoursRepository;
+    protected $openingHoursRepository = null;
+
+
+    /**
+     * Constructor
+     *
+     * @param Typo3QuerySettings $querySettings
+     *
+     * @access public
+     */
+    public function __construct(Typo3QuerySettings $querySettings)
+    {
+        $this->querySettings = $querySettings;
+    }
+
 
     /**
      * Sets the week days as select items for backend form
      *
      * @param $config
      *
-     * @return mixed
+     * @return array
+     * @access public
      * @throws \Exception
      */
-    public function getDays($config)
+    public function getDays($config): array
     {
-        $objectManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\CMS\Extbase\Object\ObjectManager');
-        $querySettings = $objectManager->get('TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings');
-        $openingHoursRepository = $objectManager->get('Ubl\Booking\Domain\Repository\OpeningHours');
-
         // workaround, see https://forge.typo3.org/issues/50551
         $pageUid = $this->normalizePageUid($config['row']['pid']);
-
-        $querySettings->setStoragePageIds([$pageUid]);
-        $openingHoursRepository->setDefaultQuerySettings($querySettings);
+        $this->querySettings->setStoragePageIds([$pageUid]);
+        $this->openingHoursRepository->setDefaultQuerySettings($this->querySettings);
         $openingHours = [];
         $week = new Week();
 
-        foreach ($openingHoursRepository->findAll() as $weekday) {
+        foreach ($this->openingHoursRepository->findAll() as $weekday) {
             $openingHours[] = $weekday->getWeekDay();
         }
         foreach ($week as $key => $day) {
@@ -85,6 +96,8 @@ class Tca
      *
      * @param $parameters
      * @param $parentObject
+     *
+     * @access public
      */
     public function getDayTitle(&$parameters, $parentObject)
     {
@@ -100,9 +113,11 @@ class Tca
      * sets the choosable opening hours as select items in backend form
      *
      * @param $config
-     * @return mixed
+     *
+     * @return array
+     * @access public
      */
-    public function getHours($config)
+    public function getHours($config): array
     {
         $day = new Day();
         foreach ($day as $key => $hour) {
@@ -117,9 +132,10 @@ class Tca
      *
      * @param $id
      *
-     * @return mixed
+     * @return string
+     * @access protected
      */
-    protected function normalizePageUid($id)
+    protected function normalizePageUid($id): string
     {
         if ($id < 0) {
             $parentRec = \TYPO3\CMS\Backend\Utility\BackendUtility::getRecord(

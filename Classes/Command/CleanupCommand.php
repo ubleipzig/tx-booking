@@ -50,7 +50,7 @@ class CleanupCommand extends Command
      * @Extbase\Inject
      * @var \Ubl\Booking\Domain\Repository\Booking
      */
-    protected $bookingRepository;
+    protected $bookingRepository = null;
 
     /**
      * Size of chunk for large scales sql queries
@@ -102,8 +102,6 @@ class CleanupCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $isDryRun = $input->getOption('dry-run') != false ? true : false;
-        $this->objectManager = GeneralUtility::makeInstance(ObjectManager::class);
-        $this->bookingRepository = $this->objectManager->get(Booking::class);
 
         $io = new SymfonyStyle($input, $output);
         $io->title($this->getDescription());
@@ -132,5 +130,17 @@ class CleanupCommand extends Command
             sprintf('%d bookings removed before %s', $cnt, $time->format('d-m-y H:i:s T (e, \G\M\T P)'))
         );
         return 0;
+    }
+
+    /**
+     * Inject booking repository
+     *
+     * @param Booking $bookingRepository
+     * @return void
+     * @access public
+     */
+    public function injectBookingRepository(Booking $bookingRepository)
+    {
+        $this->bookingRepository = $bookingRepository;
     }
 }

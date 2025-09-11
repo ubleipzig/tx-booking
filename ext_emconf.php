@@ -35,8 +35,8 @@ $EM_CONF[$_EXTKEY] = [
     'author_company' => 'Leipzig University Library',
     'constraints' => [
         'depends' => [
-            'php' => '7.4.0-8.1.99',
-            'typo3' => '9.0.0-10.4.99',
+            'php' => '7.4.0-8.2.99',
+            'typo3' => '11.0.0-11.5.99',
             'iconfont' => '>=0.9.0',
         ],
         'conflicts' => [],

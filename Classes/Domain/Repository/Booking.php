@@ -44,17 +44,6 @@ class Booking extends Repository
     protected $tableName = 'tx_booking_domain_model_booking';
 
     /**
-     * Booking constructor.
-     *
-     * @param \TYPO3\CMS\Extbase\Object\ObjectManagerInterface $objectManager
-     */
-    public function __construct(\TYPO3\CMS\Extbase\Object\ObjectManagerInterface $objectManager)
-    {
-        parent::__construct($objectManager);
-        $this->initializeObject();
-    }
-
-    /**
      * Get connection for table
      *
      * @param string $tbl Table name
@@ -70,9 +59,9 @@ class Booking extends Repository
     /**
      * initializes the repository object by removing the pid constraint from default query settings
      */
-    public function initializeObject()
+    public function initializeObject(): void
     {
-        $querySettings = $this->objectManager->get('TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings');
+        $querySettings = $this->createQuery()->getQuerySettings();
         $querySettings->setRespectStoragePage(false);
         $this->setDefaultQuerySettings($querySettings);
     }
@@ -190,7 +179,7 @@ class Booking extends Repository
                 )
             )
             ->execute()
-            ->fetchAll()
+            ->fetchAllAssociative()
         ;
     }
 
