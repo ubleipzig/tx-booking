@@ -30,7 +30,7 @@ use TYPO3\CMS\Extbase\Persistence\Repository;
  *
  * @package Ubl\Booking\Domain\Repository
  */
-class Room extends Repository
+class RoomRepository extends Repository
 {
     /**
      * The default ordering for queries

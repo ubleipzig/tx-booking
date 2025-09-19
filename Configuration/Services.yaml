@@ -7,3 +7,9 @@ services:
   Ubl\Booking\:
     resource: '../Classes/*'
     exclude: '../Classes/Domain/Model/*'
+
+  Ubl\Booking\Command\CleanupCommand:
+    tags:
+      - name: 'console.command'
+        command: 'booking:cleanup'
+        description: 'Cleanup room bookings from booking after a pre-defined period in weeks.'

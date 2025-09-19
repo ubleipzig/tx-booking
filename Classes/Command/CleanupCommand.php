@@ -31,8 +31,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Object\ObjectManager;
-use Ubl\Booking\Domain\Repository\Booking;
+use Ubl\Booking\Domain\Repository\BookingRepository;
 use Ubl\Booking\Library\Week;
 
 /**
@@ -47,10 +46,21 @@ class CleanupCommand extends Command
     /**
      * Repository of bookings
      *
-     * @Extbase\Inject
-     * @var \Ubl\Booking\Domain\Repository\Booking
+     * @var BookingRepository $bookingRepository
      */
-    protected $bookingRepository = null;
+    protected ?BookingRepository $bookingRepository = null;
+
+    /**
+     * Inject booking repository
+     *
+     * @param BookingRepository $bookingRepository
+     * @return void
+     * @access public
+     */
+    public function injectBookingRepository(BookingRepository $bookingRepository): void
+    {
+        $this->bookingRepository = $bookingRepository;
+    }
 
     /**
      * Size of chunk for large scales sql queries
@@ -73,7 +83,7 @@ class CleanupCommand extends Command
      *
      * @return void
      */
-    public function configure()
+    public function configure(): void
     {
         $this
             ->setDescription('Removes booking of rooms at a defined interval.')
@@ -99,7 +109,7 @@ class CleanupCommand extends Command
      * @param OutputInterface $output
      * @return int
      */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $isDryRun = $input->getOption('dry-run') != false ? true : false;
 
@@ -129,18 +139,6 @@ class CleanupCommand extends Command
         $io->writeln(
             sprintf('%d bookings removed before %s', $cnt, $time->format('d-m-y H:i:s T (e, \G\M\T P)'))
         );
-        return 0;
-    }
-
-    /**
-     * Inject booking repository
-     *
-     * @param Booking $bookingRepository
-     * @return void
-     * @access public
-     */
-    public function injectBookingRepository(Booking $bookingRepository)
-    {
-        $this->bookingRepository = $bookingRepository;
+        return Command::SUCCESS;
     }
 }

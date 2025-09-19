@@ -31,7 +31,7 @@ use Ubl\Booking\Domain\Model\Room as RoomModel;
  *
  * @package Ubl\Booking\Domain\Repository
  */
-class ClosingDay extends Repository
+class ClosingDayRepository extends Repository
 {
     /**
      * Finds all closing days for specified room within specified time period

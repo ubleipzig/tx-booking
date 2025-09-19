@@ -31,7 +31,7 @@ use Ubl\Booking\Domain\Model\Room as RoomModel;
  *
  * @package Ubl\Booking\Domain\Repository
  */
-class OpeningHours extends Repository
+class OpeningHoursRepository extends Repository
 {
     /**
      * The default ordering for queries

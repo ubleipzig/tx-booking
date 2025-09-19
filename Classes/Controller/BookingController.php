@@ -38,22 +38,6 @@ use Ubl\Booking\Domain\Model\Booking;
 class BookingController extends AbstractController
 {
     /**
-     * Repository of bookings
-     *
-     * @var \Ubl\Booking\Domain\Repository\Booking
-     * @TYPO3\CMS\Extbase\Annotation\Inject
-     */
-    protected $bookingRepository;
-
-    /**
-     * Repository of rooms
-     *
-     * @var \Ubl\Booking\Domain\Repository\Room
-     * @TYPO3\CMS\Extbase\Annotation\Inject
-     */
-    protected $roomRepository;
-
-    /**
      * Shows overview of a room for one day
      *
      * @param integer $timestamp

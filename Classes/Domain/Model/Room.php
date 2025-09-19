@@ -24,7 +24,9 @@
 namespace Ubl\Booking\Domain\Model;
 
 use TYPO3\CMS\Extbase\Annotation as Extbase;
-use Ubl\Booking\Domain\Repository\OpeningHours;
+use Ubl\Booking\Domain\Repository\BookingRepository;
+use Ubl\Booking\Domain\Repository\ClosingDayRepository;
+use Ubl\Booking\Domain\Repository\OpeningHoursRepository;
 use Ubl\Booking\Library\AbstractEntity;
 use Ubl\Booking\Library\Week;
 use Ubl\Booking\Library\Day;
@@ -113,30 +115,6 @@ class Room extends AbstractEntity
     protected $bookingStorage;
 
     /**
-     * The repository of the closing days
-     *
-     * @var \Ubl\Booking\Domain\Repository\ClosingDay
-     * @Extbase\Inject
-     */
-    protected $closingDayRepository;
-
-    /**
-     * The repository of the Bookings
-     *
-     * @var \Ubl\Booking\Domain\Repository\Booking
-     * @Extbase\Inject
-     */
-    protected $bookingRepository;
-
-    /**
-     * The repository of the opening ours
-     *
-     * @var \Ubl\Booking\Domain\Repository\OpeningHours
-     * @Extbase\Inject
-     */
-    protected $openingHoursRepository;
-
-    /**
      * The room's bookings
      *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Ubl\Booking\Domain\Model\Booking>
@@ -152,6 +130,57 @@ class Room extends AbstractEntity
      * @Extbase\ORM\Lazy
      */
     public $closingDays;
+
+    /**
+     * The repository of the Bookings
+     *
+     * @var BookingRepository
+     */
+    protected ?BookingRepository $bookingRepository = null;
+
+    /**
+     * Inject BookingRepository
+     *
+     * @param BookingRepository $bookingRepository
+     */
+    public function injectBookingRepository(BookingRepository $bookingRepository): void
+    {
+        $this->bookingRepository = $bookingRepository;
+    }
+
+    /**
+     * The repository of the closing days
+     *
+     * @var ClosingDayRepository
+     */
+    protected ?ClosingDayRepository $closingDayRepository = null;
+
+    /**
+     * Inject ClosingDayRepository
+     *
+     * @param ClosingDayRepository $closingDayRepository
+     */
+    public function injectClosingDayRepository(ClosingDayRepository $closingDayRepository): void
+    {
+        $this->closingDayRepository = $closingDayRepository;
+    }
+
+    /**
+     * The repository of the opening ours
+     *
+     * @var OpeningHoursRepository
+     */
+    protected ?OpeningHoursRepository $openingHoursRepository = null;
+
+    /**
+     * Inject OpeningHoursRepository
+     *
+     * @param OpeningHoursRepository $openingHoursRepository
+     */
+    public function injectOpeningHoursRepository(OpeningHoursRepository $openingHoursRepository): void
+    {
+        $this->openingHoursRepository = $openingHoursRepository;
+    }
 
     /**
      * We are initializing the storage objects here since the constructor is not invoked for model when created by

@@ -24,7 +24,11 @@
 
 namespace Ubl\Booking\Controller;
 
+use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use Ubl\Booking\Library\SettingsHelper;
+use Ubl\Booking\Domain\Repository\BookingRepository;
+use Ubl\Booking\Domain\Repository\RoomRepository;
+
 
 /**
  * Class AbstractController
@@ -33,12 +37,46 @@ use Ubl\Booking\Library\SettingsHelper;
  *
  * @package Ubl\Booking\Controller
  */
-abstract class AbstractController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
+class AbstractController extends ActionController
 {
     /**
      * @var Ubl\Booking\Library\SettingsHelper
      */
     protected $settingsHelper;
+
+    /**
+     * Repository of bookings
+     *
+     * @var BookingRepository
+     */
+    protected ?BookingRepository $bookingRepository = null;
+
+    /**
+     * Inject BookingRepository
+     *
+     * @param BookingRepository $bookingRepository
+     */
+    public function injectBookingRepository(BookingRepository $bookingRepository): void
+    {
+        $this->bookingRepository = $bookingRepository;
+    }
+
+    /**
+     * Repository of rooms
+     *
+     * @var RoomRepository
+     */
+    protected ?RoomRepository $roomRepository = null;
+
+    /**
+     * Inject RoomRepository
+     *
+     * @param RoomRepository $roomRepository
+     */
+    public function injectRoomRepository(RoomRepository $roomRepository): void
+    {
+        $this->roomRepository = $roomRepository;
+    }
 
     /**
      * Override getErrorFlashMessage to present flash error messages for booking.

@@ -33,7 +33,7 @@ use Ubl\Booking\Domain\Model\Room as RoomModel;
  *
  * @package Ubl\Booking\Domain\Repository
  */
-class Booking extends Repository
+class BookingRepository extends Repository
 {
     /**
      * Name of table

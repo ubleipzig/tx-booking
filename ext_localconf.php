@@ -28,8 +28,8 @@ if (!defined('TYPO3_MODE')) {
 }
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-    'Ubl.Booking',
+    'Booking',
     'Bookings',
-    ['Booking' => 'showWeek, showDay, add, remove'],
-    ['Booking' => 'showWeek, showDay, add, remove']
+    [\Ubl\Booking\Controller\BookingController::class => 'showWeek, showDay, add, remove'],
+    [\Ubl\Booking\Controller\BookingController::class => 'showWeek, showDay, add, remove']
 );
