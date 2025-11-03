@@ -1,5 +1,11 @@
 # Change Log
 
+## [v3.0.1](https://github.com/ubleipzig/tx-booking/tree/3.0.1)
+
+[Full Changelog](https://github.com/ubleipzig/tx-booking/compare/3.0.0...3.0.1)
+
+* fixes dependency injection at _/Classes/library/TCA.php_ for Typo3QuerySettings
+
 ## [v3.0.0](https://github.com/ubleipzig/tx-booking/tree/3.0.0)
 
 [Full Changelog](https://github.com/ubleipzig/tx-booking/compare/2.3.4...3.0.0)

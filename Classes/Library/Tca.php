@@ -25,6 +25,7 @@ namespace Ubl\Booking\Library;
 
 use TYPO3\CMS\Extbase\Annotation as Extbase;
 use TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings;
+use Ubl\Booking\Domain\Repository\OpeningHoursRepository;
 
 /**
  * Class Tca
@@ -38,24 +39,42 @@ class Tca
     /**
      * The opening hours repository
      *
-     * @var \Ubl\Booking\Domain\Repository\OpeningHours
-     * @Exbase\Inject
+     * @var OpeningHoursRepository
      */
     protected $openingHoursRepository = null;
 
+    /**
+     * Inject Typo3QuerySettings
+     *
+     * @param OpeningHoursRepository $openingHoursRepository
+     *
+     * @return void
+     * @access public
+     */
+    public function injectsOpeningHoursRepository(OpeningHoursRepository $openingHoursRepository): void
+    {
+        $this->openingHoursRepository = $openingHoursRepository;
+    }
 
     /**
-     * Constructor
+     * Typo3QuerySettings
+     *
+     * @var Typo3QuerySettings $querySettings
+     */
+    protected $querySettings = null;
+
+    /**
+     * Inject Typo3QuerySettings
      *
      * @param Typo3QuerySettings $querySettings
      *
+     * @return void
      * @access public
      */
-    public function __construct(Typo3QuerySettings $querySettings)
+    public function injectsQuerySettings(Typo3QuerySettings $querySettings): void
     {
         $this->querySettings = $querySettings;
     }
-
 
     /**
      * Sets the week days as select items for backend form
