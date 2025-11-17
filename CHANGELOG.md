@@ -1,5 +1,11 @@
 # Change Log
 
+## [v3.0.2](https://github.com/ubleipzig/tx-booking/tree/3.0.2)
+
+[Full Changelog](https://github.com/ubleipzig/tx-booking/compare/3.0.1...3.0.2)
+
+* improves css and html styles of extensions
+
 ## [v3.0.1](https://github.com/ubleipzig/tx-booking/tree/3.0.1)
 
 [Full Changelog](https://github.com/ubleipzig/tx-booking/compare/3.0.0...3.0.1)
